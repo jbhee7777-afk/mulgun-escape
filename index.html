@@ -228,6 +228,9 @@ h1,h2,h3{margin:0;text-wrap:balance;font-weight:400}
 .mat-s{font-size:.85em;color:var(--muted)}
 .mat-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;background:rgba(0,0,0,.25)}
 .mat-edit{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 14px}
+.mat-edit small{font-size:.8em;color:var(--muted);align-self:center}
+.mat.builtin{border-color:color-mix(in oklab,var(--gold) 45%,transparent)}
+.mat-badge{font-family:var(--round);font-weight:400;font-size:.9em;padding:.1em .6em;border-radius:99px;background:var(--gold);color:#3d2700}
 .mat-edit input{flex:1 1 100%;min-width:0;padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.25);color:#fff;font:inherit}
 .mini{width:2.2em;height:2.2em;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.1)}
 .mini:hover{background:rgba(255,255,255,.22)}
@@ -1053,7 +1056,7 @@ function renderLesson({lesson}){
       <section class="mats">
         <h3>${I('play')} 수업 자료</h3>
         <div class="mat-grid" id="matGrid"></div>
-        ${list.length ? '' : `<div class="empty">아직 수업 자료가 없어요.<br>위쪽의 <b>자료 편집</b>을 켜고 PPT 슬라이드, PDF, 게임 링크, 활동지를 추가하세요.</div>`}
+        ${list.length || builtinMats(l.n).length ? '' : `<div class="empty">아직 수업 자료가 없어요.<br>위쪽의 <b>자료 편집</b>을 켜고 PPT 슬라이드, PDF, 게임 링크, 활동지를 추가하세요.</div>`}
         <div class="add-panel edit-only grid">
           <div class="row">
             <button class="btn sm" data-add="slides">${I('image')} 슬라이드 이미지</button>
@@ -1099,14 +1102,20 @@ function renderLesson({lesson}){
 }
 async function renderMats(l){
   const list = mats(l.n), grid = $('#matGrid'); if(!grid) return;
-  grid.innerHTML = list.map((m, i) => {
-    const meta = TYPE_META[m.type];
+  const bl = builtinMats(l.n), hiddenN = (BUILTIN[l.n] || []).length - bl.length;
+  const head = m => {
+    const meta = TYPE_META[m.type] || TYPE_META.link;
     const sub = m.type === 'slides' ? `슬라이드 ${m.files.length}장` : m.type === 'file' ? esc(m.fileName || '') : m.type === 'pdf' ? 'PDF 문서' : esc(meta.label);
+    return `<button class="mat-open" data-open="${m.id}">
+        ${m.type === 'slides' ? `<img class="mat-thumb" data-thumb="${esc(m.files[0] || '')}" data-builtin="${m.builtin ? 1 : ''}" alt="">` : `<span class="mat-ic">${I(meta.icon)}</span>`}
+        <span class="mat-t">${esc(m.title)}</span><span class="mat-s">${m.builtin ? '<b class="mat-badge">기본 자료</b> ' : ''}${sub}</span>
+      </button>`;
+  };
+  grid.innerHTML = bl.map(m => `<div class="mat builtin" data-id="${m.id}">${head(m)}
+      <div class="mat-edit edit-only"><button class="mini" data-hide="${m.id}" title="이 기본 자료 숨기기">${I('close')}</button><small>모든 선생님께 보이는 기본 자료예요</small></div></div>`).join('')
+    + list.map((m, i) => {
     return `<div class="mat" data-id="${m.id}">
-      <button class="mat-open" data-open="${m.id}">
-        ${m.type === 'slides' ? `<img class="mat-thumb" data-thumb="${m.files[0] || ''}" alt="">` : `<span class="mat-ic">${I(meta.icon)}</span>`}
-        <span class="mat-t">${esc(m.title)}</span><span class="mat-s">${sub}</span>
-      </button>
+      ${head(m)}
       <div class="mat-edit edit-only">
         <input value="${esc(m.title)}" data-rename="${m.id}" aria-label="자료 이름">
         <button class="mini" data-mv="-1" data-mid="${m.id}" title="앞으로" ${i === 0 ? 'disabled' : ''}>${I('up')}</button>
@@ -1114,8 +1123,12 @@ async function renderMats(l){
         ${m.type === 'slides' ? `<button class="mini" data-more="${m.id}" title="슬라이드 이미지 더 넣기">${I('plus')}</button>` : ''}
         <button class="mini del" data-del="${m.id}" title="삭제">${I('trash')}</button>
       </div></div>`;
-  }).join('');
-  grid.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openMaterial(list.find(m => m.id === b.dataset.open)));
+  }).join('')
+    + (hiddenN > 0 ? `<button class="btn sm edit-only" id="unhide" style="align-self:start">숨긴 기본 자료 ${hiddenN}개 다시 보이기</button>` : '');
+  const all = [...bl, ...list];
+  grid.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openMaterial(all.find(m => m.id === b.dataset.open)));
+  grid.querySelectorAll('[data-hide]').forEach(b => b.onclick = () => { S.hidden = S.hidden || {}; S.hidden[b.dataset.hide] = 1; save(); rerender(); toast('이 컴퓨터에서만 숨겼어요'); });
+  if($('#unhide')) $('#unhide').onclick = () => { Object.keys(S.hidden || {}).filter(k => k.startsWith(`b${l.n}-`)).forEach(k => delete S.hidden[k]); save(); rerender(); };
   grid.querySelectorAll('[data-rename]').forEach(inp => inp.onchange = () => { const m = list.find(x => x.id === inp.dataset.rename); m.title = inp.value.trim() || m.title; save(); renderMats(l); });
   grid.querySelectorAll('[data-mv]').forEach(b => b.onclick = () => { const i = list.findIndex(m => m.id === b.dataset.mid), j = i + +b.dataset.mv; if(j < 0 || j >= list.length) return; [list[i], list[j]] = [list[j], list[i]]; save(); renderMats(l); });
   grid.querySelectorAll('[data-del]').forEach(b => b.onclick = async () => {
@@ -1126,7 +1139,63 @@ async function renderMats(l){
   grid.querySelectorAll('[data-more]').forEach(b => b.onclick = () => pickFiles('image/*', true, async files => {
     const m = list.find(x => x.id === b.dataset.more); m.files.push(...await storeFiles(sortFiles(files))); save(); renderMats(l); toast(`슬라이드 ${files.length}장을 더 넣었어요`);
   }));
-  for(const img of grid.querySelectorAll('[data-thumb]')){ if(img.dataset.thumb){ const u = await fileUrl(img.dataset.thumb); if(u) img.src = u; } }
+  for(const img of grid.querySelectorAll('[data-thumb]')){ if(img.dataset.thumb){ const u = img.dataset.builtin ? assetUrl(img.dataset.thumb) : await fileUrl(img.dataset.thumb); if(u) img.src = u; } }
+}
+
+/* ---------- 기본 자료: GitHub 저장소의 materials 폴더 ----------
+   GitHub Pages가 materials/files.json 에 폴더 안 파일 목록을 적어 준다.
+   폴더 이름의 첫 숫자 = 차시. 이미지는 슬라이드 묶음, PDF는 PDF, links.txt는 링크, 나머지는 첨부 파일. */
+let BUILTIN = {};
+const assetUrl = p => p.split('/').map(encodeURIComponent).join('/');
+const builtinMats = n => (BUILTIN[n] || []).map((m, k) => ({...m, id:`b${n}-${k}`, builtin:true})).filter(m => !(S.hidden || {})[m.id]);
+const natural = (a, b) => a.localeCompare(b, 'ko', {numeric:true});
+const EMBED_HOSTS = /docs\.google\.com\/presentation|youtube\.com|youtu\.be|canva\.com/;
+async function parseLinks(path){
+  try{
+    const t = await (await fetch(assetUrl(path), {cache:'no-cache'})).text();
+    return t.split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith('#')).map(line => {
+      let [title, url, mode] = line.split('|').map(s => (s || '').trim());
+      if(!url){ url = title; title = '링크 자료'; }
+      if(!/^https?:\/\//i.test(url)) url = 'https://' + url;
+      return {type:EMBED_HOSTS.test(url) && mode !== '새창' ? 'embed' : 'link', title, url};
+    });
+  }catch(e){ return []; }
+}
+async function loadBuiltin(){
+  let paths;
+  try{
+    const r = await fetch('materials/files.json', {cache:'no-cache'});
+    if(!r.ok) return;
+    paths = await r.json();
+  }catch(e){ return; /* 파일로 열었거나 기본 자료가 없으면 건너뜀 */ }
+  const groups = {};
+  for(const raw of paths){
+    const rel = String(raw).replace(/^\/?materials\//, ''), parts = rel.split('/');
+    if(parts.length < 2) continue;
+    const n = parseInt((parts[0].match(/\d+/) || [])[0], 10);
+    if(!(n >= 1 && n <= 24)) continue;
+    const sub = parts.length > 2 ? parts[1] : '';
+    ((groups[n] = groups[n] || {})[sub] = groups[n][sub] || []).push('materials/' + rel);
+  }
+  const out = {};
+  for(const n of Object.keys(groups)){
+    const items = [];
+    for(const sub of Object.keys(groups[n]).sort(natural)){
+      const files = groups[n][sub].sort((a, b) => natural(a.split('/').pop(), b.split('/').pop()));
+      const name = p => p.split('/').pop(), ext = p => (name(p).match(/\.([^.]+)$/) || [])[1]?.toLowerCase() || '';
+      const imgs = files.filter(p => /^(png|jpe?g|gif|webp)$/.test(ext(p)));
+      if(imgs.length) items.push({type:'slides', title:sub || `${n}차시 수업 PPT`, files:imgs});
+      for(const p of files){
+        if(imgs.includes(p) || /^(md|html|json)$/.test(ext(p))) continue;
+        if(name(p).toLowerCase() === 'links.txt'){ items.push(...await parseLinks(p)); continue; }
+        const title = name(p).replace(/\.[^.]+$/, '');
+        items.push(ext(p) === 'pdf' ? {type:'pdf', title, files:[p]} : {type:'file', title, fileName:name(p), files:[p]});
+      }
+    }
+    out[n] = items;
+  }
+  BUILTIN = out;
+  if(view.screen === 'lesson') rerender();
 }
 function pickFiles(accept, multiple, cb){
   const inp = $('#fileIn'); inp.value = ''; inp.accept = accept; inp.multiple = multiple;
@@ -1176,8 +1245,9 @@ let P = null, idleT = null;
 async function openMaterial(m){
   if(!m) return;
   if(m.type === 'link'){ window.open(m.url, '_blank', 'noopener'); return; }
+  const getUrl = m.builtin ? async p => assetUrl(p) : fileUrl;
   if(m.type === 'file'){
-    const u = await fileUrl(m.files[0]); if(!u) return toast('파일을 찾을 수 없어요');
+    const u = await getUrl(m.files[0]); if(!u) return toast('파일을 찾을 수 없어요');
     const a = document.createElement('a'); a.href = u; a.download = m.fileName || m.title; document.body.appendChild(a); a.click(); a.remove(); return;
   }
   const pr = $('#presenter');
@@ -1190,12 +1260,12 @@ async function openMaterial(m){
   $('#pClose').onclick = closePresenter; $('#pFs').onclick = toggleFs;
   const stage = $('#pStage');
   if(m.type === 'slides'){
-    P.urls = await Promise.all(m.files.map(fileUrl));
+    P.urls = await Promise.all(m.files.map(getUrl));
     stage.innerHTML = `<img id="pImg" alt=""><button class="p-zone l" aria-label="이전 슬라이드"></button><button class="p-zone r" aria-label="다음 슬라이드"></button><div class="p-prog" id="pProg"></div><div class="p-hint">← → 키, 화면 클릭, 프레젠터로 넘길 수 있어요 · Esc 닫기</div>`;
     stage.querySelector('.p-zone.l').onclick = () => slide(-1); stage.querySelector('.p-zone.r').onclick = () => slide(1);
     slide(0);
   } else {
-    const src = m.type === 'pdf' ? await fileUrl(m.files[0]) : embedUrl(m.url);
+    const src = m.type === 'pdf' ? await getUrl(m.files[0]) : embedUrl(m.url);
     stage.innerHTML = `<iframe src="${esc(src)}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
     $('#pCount').textContent = '';
   }
@@ -1495,6 +1565,7 @@ addEventListener('keydown', e => {
 });
 
 go('home');
+loadBuiltin();
 </script>
 </body>
 </html>

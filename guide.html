@@ -157,7 +157,7 @@ footer a{color:var(--gold)}
 
 <section id="materials"><div class="wrap">
   <h2>수업 자료 넣기</h2>
-  <p class="lead"><b>자료 편집</b>을 켜고 차시 화면 아래의 버튼으로 넣어요. 넣은 자료는 이름 바꾸기, 순서 바꾸기, 지우기가 돼요.</p>
+  <p class="lead"><b>자료 편집</b>을 켜고 차시 화면 아래의 버튼으로 넣어요. 넣은 자료는 이름 바꾸기, 순서 바꾸기, 지우기가 돼요. 여기서 넣은 자료는 내 컴퓨터에만 저장돼요. 모든 선생님께 나누려면 아래 <a href="#builtin">기본 자료</a>를 보세요.</p>
   <div class="two">
     <img src="screenshots/06-edit.png" alt="자료 편집을 켠 차시 화면" loading="lazy" style="border-radius:14px;border:1px solid var(--line)">
     <div class="tbl"><table>
@@ -170,6 +170,23 @@ footer a{color:var(--gold)}
   </div>
   <p class="note" style="margin-top:20px"><b>슬라이드 순서</b> · 파일 이름 순서(슬라이드1, 슬라이드2, … 슬라이드10)대로 자동 정렬돼요. 나중에 몇 장 더 넣고 싶으면 자료 카드의 <b>+</b> 버튼을 누르세요.<br>
   <b>구글 슬라이드</b> · 공유 설정이 "링크가 있는 모든 사용자"여야 앱 안에 보여요.</p>
+
+  <h3 id="builtin" style="font-family:var(--display);font-size:28px;color:var(--night);margin:44px 0 6px">기본 자료: 모든 선생님께 한 번에 나누기</h3>
+  <p class="lead">앱 안에서 올린 자료는 내 컴퓨터에만 저장돼요. 다른 선생님 화면에도 보이게 하려면 GitHub 저장소의 <code>materials</code> 폴더에 올려요. 올리면 1~2분 뒤 모든 선생님 앱의 그 차시에 <b>기본 자료</b> 표시와 함께 나타나요.</p>
+  <ol class="steps">
+    <li><div><h3>PPT를 이미지로 저장</h3><p>PowerPoint에서 <b>파일 → 내보내기 → 파일 형식 변경 → JPEG</b>, "모든 슬라이드"로 저장하면 슬라이드 이미지 폴더가 생겨요.</p></div></li>
+    <li><div><h3>폴더 이름을 차시 번호로</h3><p>폴더 이름을 <code>07</code>, <code>7차시</code>, <code>07_재료 비교</code>처럼 차시 번호로 시작하게 바꿔요.</p></div></li>
+    <li><div><h3>GitHub에 끌어다 놓기</h3><p>저장소의 <code>materials</code> 폴더에서 <b>Add file → Upload files</b>를 누르고 폴더를 통째로 끌어다 놓은 뒤 <b>Commit changes</b>.</p></div></li>
+  </ol>
+  <div class="tbl" style="margin-top:18px"><table>
+    <tr><th>폴더에 넣는 것</th><th>앱에서 보이는 모습</th></tr>
+    <tr><td>슬라이드 이미지</td><td>파일 이름 순서(1, 2, … 10)대로 넘기는 슬라이드 한 묶음</td></tr>
+    <tr><td>하위 폴더의 이미지</td><td>하위 폴더 이름이 제목인 슬라이드 묶음 (예: <code>07/게임 슬라이드/</code>)</td></tr>
+    <tr><td>PDF</td><td>앱 안에서 바로 열리는 PDF</td></tr>
+    <tr><td><code>links.txt</code></td><td>한 줄에 <code>제목 | 주소</code>. 게임 사이트, 구글 슬라이드, 유튜브 링크</td></tr>
+    <tr><td>hwp·pptx 등 그 밖의 파일</td><td>누르면 내려받는 첨부 파일 (활동지 등)</td></tr>
+  </table></div>
+  <p class="note" style="margin-top:18px"><b>알아 두기</b> · 저장소는 공개라서 누구나 자료를 볼 수 있어요. 학생 사진이나 개인정보가 담긴 자료는 올리지 마세요. 파일 하나는 25MB까지 올릴 수 있고, 슬라이드는 PNG보다 JPEG가 가벼워요. 각 선생님은 <b>자료 편집</b>을 켜고 필요 없는 기본 자료를 자기 컴퓨터에서만 숨길 수 있어요.</p>
 </div></section>
 
 <section id="class"><div class="wrap">
