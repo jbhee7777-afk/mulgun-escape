@@ -70,8 +70,13 @@
 .detect{flex:1;display:flex;gap:26px;min-height:0;margin-top:6px}
 .dmain{flex:1;display:flex;gap:26px}
 .silbox{width:470px;flex:none;background:radial-gradient(circle at 50% 45%,#fff 0%,#fff3d9 60%,#ffe2ad 100%);border-radius:32px;position:relative;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px #fff,0 14px 30px rgba(61,43,31,.2);overflow:hidden}
-.silbox img{max-width:72%;max-height:72%;filter:brightness(0) opacity(.82);transition:filter .9s,transform .9s}
-.silbox.show img{filter:none;transform:scale(1.08)}
+.silbox img{max-width:72%;max-height:72%;opacity:0;transition:filter .9s,transform .9s,opacity .6s}
+.silbox.zoom img{opacity:1;filter:blur(7px) saturate(.5) brightness(.95);transform:scale(3.4)}
+.silbox.show img{opacity:1;filter:none;transform:scale(1.08)}
+.silbox .mq{position:absolute;font-family:var(--head);font-size:230px;color:#f0c45a;line-height:1;animation:wob 2.4s ease-in-out infinite;transition:opacity .5s}
+.silbox.zoom .mq,.silbox.show .mq{opacity:0}
+.silbox .zl{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-family:var(--head);font-size:24px;color:var(--navy);opacity:0}
+.silbox.zoom:not(.show) .zl{opacity:1}
 .silbox .rq{position:absolute;top:16px;left:20px;font-family:var(--head);font-size:26px;color:var(--navy);background:#fff;padding:4px 16px;border-radius:14px}
 .silbox .nm{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-family:var(--head);font-size:44px;color:#e3523f;opacity:0;transition:.5s}
 .silbox.show .nm{opacity:1}
@@ -257,13 +262,13 @@
 
 <!-- 7 탐정 규칙 -->
 <section class="slide" data-phase="미션 2 · 10분"
- data-notes="<b>모둠 게임 안내</b> — 모둠마다 미니 화이트보드(또는 종이)를 준비해요. 힌트 하나 열 때마다 모둠이 의논해서 ‘물건 이름’을 써 들어요. 힌트 1개에서 맞히면 3점, 2개 2점, 3개 1점. 정답 공개 뒤엔 ‘왜 태어났을까?’를 꼭 말해 보게 해요.">
+ data-notes="<b>모둠 게임 안내</b> — 모둠마다 미니 화이트보드(또는 종이)를 준비해요. 단서는 글 힌트 3개 → 마지막에 ‘그림 단서’(물건을 아주 가까이서 흐리게 본 모습) 순서로 열려요. 단서 하나 열 때마다 모둠이 의논해서 ‘물건 이름’을 써 들어요. 1개에서 맞히면 4점, 2개 3점, 3개 2점, 그림 단서 1점. 정답 공개 뒤엔 ‘왜 태어났을까?’를 꼭 말해 보게 해요.">
   <div class="kicker">MISSION 2</div>
   <h2 class="title">🔍 이유 탐정 추리 게임</h2>
   <div class="rules" style="max-width:1120px">
-    <div class="rule"><span>1</span><div>그림자 물건과 <b class="hl">힌트</b>를 보고 모둠이 의논해요.</div></div>
+    <div class="rule"><span>1</span><div>물건은 <b class="hl">비밀 상자</b> 속에 숨어 있어요. 힌트를 듣고 모둠이 의논해요.</div></div>
     <div class="rule"><span>2</span><div>정답을 보드에 써서 “하나, 둘, 셋!” 하면 번쩍 들어요.</div></div>
-    <div class="rule"><span>3</span><div>힌트 1개로 맞히면 <b class="c-coral">3점</b>, 2개 <b class="c-coral">2점</b>, 3개 <b class="c-coral">1점</b>!</div></div>
+    <div class="rule"><span>3</span><div>힌트 1개로 맞히면 <b class="c-coral">4점</b>, 2개 <b class="c-coral">3점</b>, 3개 <b class="c-coral">2점</b>, 그림 단서까지 보면 <b class="c-coral">1점</b>!</div></div>
     <div class="rule"><span>4</span><div>정답이 나오면 그 물건이 <b class="hl">태어난 이유</b>를 말해요.</div></div>
   </div>
   <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:320px">
@@ -271,14 +276,15 @@
 
 <!-- 8 탐정 게임 -->
 <section class="slide" data-phase="미션 2 · 10분" style="padding-top:78px"
- data-notes="<b>진행</b> — 오른쪽 번호로 문제를 골라요(1~7). ‘힌트 열기’를 누를 때마다 힌트가 하나씩 열려요. 모둠이 보드를 들면 ‘정답 공개’ → 그림자가 진짜 물건으로 바뀌고 ‘태어난 이유’가 나와요. 맞힌 모둠에 ＋점수. 시간이 부족하면 4~5문제만 해도 돼요.">
+ data-notes="<b>진행</b> — 오른쪽 번호로 문제를 골라요(1~7). ‘힌트 열기’를 누를 때마다 단서가 하나씩 열려요(글 힌트 3개 → 그림 단서). 힌트 ①은 일부러 어렵게 만들었어요. 모둠이 보드를 들면 ‘정답 공개’ → 물건이 나타나고 ‘태어난 이유’가 나와요. 맞힌 모둠에 ＋점수. 시간이 부족하면 4~5문제만 해도 돼요.">
   <div class="detect">
     <div class="dmain">
-      <div class="silbox" id="silBox"><span class="rq" id="dRound">1번 문제</span><img id="dImg" src="img/obj_straw.png" alt=""><div class="nm" id="dName"></div></div>
+      <div class="silbox" id="silBox"><span class="rq" id="dRound">1번 문제</span><div class="mq">?</div><img id="dImg" src="img/obj_straw.png" alt=""><div class="zl">🔎 아주 가까이서 본 모습</div><div class="nm" id="dName"></div></div>
       <div class="hints">
         <div class="hint" id="h1"><span class="hn">힌트 1</span><span class="tx"></span><span class="lock">🔒</span></div>
         <div class="hint" id="h2"><span class="hn">힌트 2</span><span class="tx"></span><span class="lock">🔒</span></div>
         <div class="hint" id="h3"><span class="hn">힌트 3</span><span class="tx"></span><span class="lock">🔒</span></div>
+        <div class="hint" id="h4"><span class="hn">그림 단서</span><span class="tx">왼쪽 상자에 물건을 아주 가까이서 본 모습이 나타났어요!</span><span class="lock">🔒</span></div>
         <div class="reason" id="dReason"></div>
         <div class="dbtns"><button class="btn navy" onclick="openHint()">🔓 힌트 열기</button><button class="btn mint" onclick="revealDetect()">🎉 정답 공개</button><button class="btn ghost" onclick="nextDetect()">다음 문제 ▶</button></div>
       </div>
@@ -286,7 +292,7 @@
     <div class="dside">
       <div class="rounds" id="rounds"></div>
       <div class="score"><h4>🏆 모둠 점수</h4><div id="teams1"></div></div>
-      <div class="ptguide">힌트 1개 3점 · 2개 2점 · 3개 1점</div>
+      <div class="ptguide">힌트 1개 4점 · 2개 3점<br>3개 2점 · 그림 단서 1점</div>
     </div>
   </div>
 </section>
@@ -481,31 +487,31 @@ function addPt(t, d){ score[t] = Math.max(0, score[t] + d); if(d > 0) S.ok(); dr
 function setTeams(d){ TEAMS = Math.min(8, Math.max(2, TEAMS + d)); if(turn >= TEAMS) turn = 0; drawTeams(); drawTurn(); }
 
 /* ---------- 미션 2: 이유 탐정 ---------- */
-const DETECT = [
-  {id:'straw', name:'구부러지는 빨대', h:['나는 목이 마를 때 만나요.', '키가 작은 아이가 높은 컵의 음료를 마시기 힘들었대요.', '내 목은 꼬불꼬불 구부러져요.'],
+const DETECT = [ /* h: 글 힌트 3개(점점 쉬워져요), z: 그림 단서로 확대할 부분 */
+  {id:'straw', name:'구부러지는 빨대', z:'70% 12%', h:['나는 하루에도 여러 번 사람의 입과 만나요.', '옛날, 키 작은 아이가 가게의 높은 컵에 든 음료를 마시려다 무척 고생했대요.', '내 몸 한가운데에는 주름이 있어서 꺾을 수 있어요.'],
    r:'곧은 빨대로 마시려면 컵을 기울이거나 일어서야 해서 불편했어요. 그래서 <b>목을 구부릴 수 있는 빨대</b>가 태어났어요. 앉아서도, 누워서도 편하게 마실 수 있어요.'},
-  {id:'suitcase', name:'바퀴 달린 가방', h:['나는 여행 갈 때 자주 만나요.', '무거운 짐을 들고 오래 걸으면 팔이 너무 아팠대요.', '나는 바닥을 데굴데굴 굴러가요.'],
+  {id:'suitcase', name:'바퀴 달린 가방', z:'50% 92%', h:['공항이나 기차역에 가면 나를 정말 많이 볼 수 있어요.', '무거운 짐을 손으로 들고 오래 걸으면 팔이 너무 아팠대요.', '나는 다리 대신 동그란 것으로 움직이고, 긴 꼬리를 쭉 뽑을 수 있어요.'],
    r:'무거운 가방을 계속 들고 다니기 힘들었어요. 그래서 <b>바퀴와 손잡이를 단 가방</b>이 태어났어요. 이제 끌기만 하면 돼요.'},
-  {id:'clothespin', name:'빨래집게', h:['나는 햇볕 좋은 날 바쁘게 일해요.', '바람이 불면 널어 둔 옷이 날아가 버렸대요.', '나는 입을 꽉 다물고 물건을 꼭 잡아요.'],
+  {id:'clothespin', name:'빨래집게', z:'48% 45%', h:['나는 햇볕과 바람을 아주 좋아해요.', '젖은 것을 줄에 걸어 두면 바람에 날아가 버려서 속상했대요.', '나는 작은 용수철 덕분에 입을 꽉 다물 수 있어요.'],
    r:'바람에 빨래가 날아가거나 떨어져서 불편했어요. 그래서 <b>빨래를 꽉 잡아 주는 집게</b>가 태어났어요.'},
-  {id:'bandage', name:'반창고', h:['나는 다쳤을 때 만나요.', '작은 상처에 붕대를 감으려니 너무 번거로웠대요.', '나는 끈적끈적, 피부에 착 붙어요.'],
+  {id:'bandage', name:'반창고', z:'50% 50%', h:['“아야!” 소리가 나면 나는 바빠져요.', '아주 작은 것을 덮으려고 천을 칭칭 감는 게 너무 번거로웠대요.', '나는 한쪽이 끈적끈적하고, 가운데는 폭신해요.'],
    r:'작은 상처에도 붕대와 거즈를 감아야 해서 불편했어요. 그래서 <b>바로 붙일 수 있는 반창고</b>가 태어났어요.'},
-  {id:'glasses', name:'안경', h:['나는 얼굴 위에 살아요.', '글씨나 칠판이 흐릿하게 보여서 불편했대요.', '나는 동그란 창문 두 개를 가졌어요.'],
+  {id:'glasses', name:'안경', z:'50% 45%', h:['나는 두 귀에 살짝 걸쳐서 살아요.', '멀리 있는 글씨가 뿌옇게 보여서 공부하기가 불편했대요.', '나는 투명한 창문 두 개를 가지고 있어요.'],
    r:'잘 안 보여서 책을 읽거나 길을 걷기 힘들었어요. 그래서 <b>또렷하게 보이게 도와주는 안경</b>이 태어났어요.'},
-  {id:'mittens', name:'장갑', h:['나는 추운 겨울에 인기가 많아요.', '눈싸움을 하면 손이 꽁꽁 얼어서 아팠대요.', '나는 손에 쏙 끼우는 따뜻한 집이에요.'],
+  {id:'mittens', name:'장갑', z:'28% 40%', h:['나는 일 년 중 한 계절에만 인기가 아주 많아요.', '눈사람을 만들다 보면 손끝이 빨갛게 얼어서 아팠대요.', '나는 늘 짝꿍과 함께 다니고, 엄지만 따로 방이 있어요.'],
    r:'추운 날 손이 시리고 아파서 불편했어요. 그래서 <b>손을 따뜻하게 감싸 주는 장갑</b>이 태어났어요.'},
-  {id:'flashlight', name:'손전등', h:['나는 캄캄할 때 꼭 필요해요.', '밤길을 걸을 때 앞이 안 보여서 위험했대요.', '나는 들고 다니는 작은 해님이에요.'],
+  {id:'flashlight', name:'손전등', z:'14% 55%', h:['전기가 갑자기 나가면 사람들이 제일 먼저 나를 찾아요.', '캠핑장의 밤길이 너무 깜깜해서 넘어질 뻔했대요.', '버튼을 누르면 내 한쪽 얼굴에서 작은 해님이 떠요.'],
    r:'어두운 곳에서는 앞이 안 보여 위험하고 불편했어요. 그래서 <b>들고 다닐 수 있는 불빛, 손전등</b>이 태어났어요.'}
 ];
 let dIdx = 0, dHint = 0; const dDone = {};
 function drawRounds(){ document.getElementById('rounds').innerHTML = DETECT.map((d, i) => `<button class="${i === dIdx ? 'on' : dDone[i] ? 'done' : ''}" onclick="setDetect(${i})">${i + 1}</button>`).join(''); }
 function setDetect(i){ dIdx = i; dHint = 0; const d = DETECT[i]; S.flip();
-  document.getElementById('silBox').classList.remove('show'); document.getElementById('dImg').src = `img/obj_${d.id}.png`;
+  document.getElementById('silBox').classList.remove('show', 'zoom'); const im = document.getElementById('dImg'); im.src = `img/obj_${d.id}.png`; im.style.transformOrigin = d.z || '50% 50%';
   document.getElementById('dRound').textContent = `${i + 1}번 문제`; document.getElementById('dName').textContent = d.name;
-  [1, 2, 3].forEach(k => { const h = document.getElementById('h' + k); h.classList.remove('open'); h.querySelector('.tx').textContent = d.h[k - 1]; });
+  [1, 2, 3].forEach(k => { const h = document.getElementById('h' + k); h.classList.remove('open'); h.querySelector('.tx').textContent = d.h[k - 1]; }); document.getElementById('h4').classList.remove('open');
   document.getElementById('dReason').classList.remove('show'); drawRounds(); }
-function openHint(){ if(dHint >= 3) return; dHint++; document.getElementById('h' + dHint).classList.add('open'); S.tick(); }
-function revealDetect(){ const d = DETECT[dIdx]; [1, 2, 3].forEach(k => document.getElementById('h' + k).classList.add('open'));
+function openHint(){ if(dHint >= 4) return; dHint++; document.getElementById('h' + dHint).classList.add('open'); if(dHint === 4) document.getElementById('silBox').classList.add('zoom'); S.tick(); }
+function revealDetect(){ const d = DETECT[dIdx]; [1, 2, 3, 4].forEach(k => document.getElementById('h' + k).classList.add('open'));
   document.getElementById('silBox').classList.add('show'); const r = document.getElementById('dReason'); r.innerHTML = '💡 ' + d.r; r.classList.add('show'); dDone[dIdx] = 1; S.win(); drawRounds(); }
 function nextDetect(){ setDetect((dIdx + 1) % DETECT.length); }
 
