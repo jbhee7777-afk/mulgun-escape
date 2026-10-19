@@ -21,7 +21,7 @@
 .screen .scene{position:absolute;inset:0;opacity:0;transition:opacity .9s;display:flex;align-items:center;justify-content:center}
 .screen .scene.on{opacity:1}
 .screen .scene .bgi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.screen .scene.on .bgi{animation:kb 14s ease-in-out forwards}
+
 @keyframes kb{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.14) translate(-2%,-2%)}}
 .screen .card{position:relative;text-align:center;color:#fff;padding:40px}
 .screen .card h2{font-size:64px;line-height:1.3}
@@ -38,30 +38,22 @@
 .tside .info b{color:var(--navy)}
 
 
-/* 극장 장면 (그림 조합) */
-.screen .bgi{filter:blur(3px) brightness(.9)}
-.sc1 .pen{position:absolute;left:30%;top:46%;width:28%;transform:rotate(-12deg);animation:wig 1.6s ease-in-out infinite}
-@keyframes wig{50%{transform:rotate(-4deg) translateY(-6px)}}
-.sc1 .paper{position:absolute;left:20%;top:56%;width:22%;height:24%;background:#fff;border-radius:8px;transform:rotate(-6deg);box-shadow:0 6px 14px rgba(0,0,0,.2)}
-.sc1 .paper.p2{left:38%;top:60%;transform:rotate(5deg)}
-.sc1 .think{position:absolute;right:12%;top:12%;background:#fff;border-radius:40px;padding:22px 34px;font-family:var(--head);font-size:44px;color:var(--navy);box-shadow:0 8px 0 rgba(0,0,0,.15);text-align:center;line-height:1.3}
-.sc1 .mag{position:absolute;right:18%;top:48%;width:16%;animation:look 2.4s ease-in-out infinite}
-@keyframes look{0%,100%{transform:translateX(0) rotate(0)}50%{transform:translateX(-90px) rotate(-12deg)}}
-.sc1 .qq1,.sc1 .qq2{position:absolute;font-family:var(--head);font-size:90px;color:var(--coral);animation:bob 2s ease-in-out infinite}
-.sc1 .qq1{left:12%;top:16%}.sc1 .qq2{left:56%;top:26%;animation-delay:.6s}
-.sc2{background:radial-gradient(circle at 50% 35%,#fff7cf 0%,#ffd76b 35%,#3b4a9a 75%)}
-.sc2 .bulb{position:absolute;left:50%;top:6%;width:13%;transform:translateX(-50%);filter:drop-shadow(0 0 40px #fff3b0);animation:bob 2s ease-in-out infinite}
-.sc2 .combine{position:absolute;left:0;right:0;top:46%;display:flex;align-items:center;justify-content:center;gap:24px}
-.sc2 .combine .pen{width:26%}
-.sc2 .plus,.sc2 .eq{font-family:var(--head);font-size:90px;color:#fff;text-shadow:0 4px 0 rgba(0,0,0,.2)}
-.sc2 .eraser{width:70px;height:56px;border-radius:12px;background:#ff9fb2;box-shadow:inset 0 -8px 0 #f07c95}
-.sc2 .erp{height:300px;transform:rotate(30deg);opacity:0}
+/* 극장 장면 (Canva 3컷 그림) */
+.screen .bgi{filter:blur(18px) brightness(.75);transform:scale(1.2)}
+.screen .pan{position:absolute;top:0;height:100%;width:auto;left:50%;transform:translateX(-50%);box-shadow:0 0 40px rgba(0,0,0,.5)}
+.screen .scene.on .pan{animation:kb2 14s ease-in-out forwards}
+@keyframes kb2{from{transform:translateX(-50%) scale(1)}to{transform:translateX(-50%) scale(1.06)}}
+.sc1 .think{position:absolute;right:4%;top:10%;background:#fff;border-radius:40px;padding:20px 30px;font-family:var(--head);font-size:40px;color:var(--navy);box-shadow:0 8px 0 rgba(0,0,0,.15);text-align:center;line-height:1.3;z-index:2}
+.sc1 .qq1,.sc1 .qq2{position:absolute;font-family:var(--head);font-size:100px;color:var(--gold);text-shadow:0 4px 0 rgba(0,0,0,.25);animation:bob 2s ease-in-out infinite;z-index:2}
+.sc1 .qq1{left:8%;top:18%}.sc1 .qq2{left:14%;top:48%;animation-delay:.6s}
+.sc2 .combine{position:absolute;right:2%;top:12%;width:24%;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2;background:rgba(255,255,255,.92);border-radius:28px;padding:18px 10px}
+.sc2 .combine .pen{width:80%}
+.sc2 .plus,.sc2 .eq{font-family:var(--head);font-size:46px;color:var(--navy);line-height:1}
+.sc2 .eraser{width:60px;height:46px;border-radius:12px;background:#ff9fb2;box-shadow:inset 0 -8px 0 #f07c95}
+.sc2 .erp{height:150px;transform:rotate(30deg);opacity:0}
 .sc2.on .erp{animation:popin .8s 2.2s forwards}
 @keyframes popin{0%{opacity:0;transform:rotate(30deg) scale(.3)}70%{opacity:1;transform:rotate(30deg) scale(1.2)}100%{opacity:1;transform:rotate(30deg) scale(1)}}
-.sc3 .year{position:absolute;left:50%;top:9%;transform:translateX(-50%);background:var(--gold);color:#5a3d00;font-family:var(--head);font-size:46px;padding:10px 30px;border-radius:24px;box-shadow:0 6px 0 #d79e12;white-space:nowrap}
-.sc3 .many{position:absolute;inset:0}
-.sc3 .many img{position:absolute;width:9%;opacity:0;animation:rainp 1s forwards}
-@keyframes rainp{0%{opacity:0;transform:translateY(-120px) rotate(var(--r))}100%{opacity:1;transform:translateY(0) rotate(var(--r))}}
+.sc3 .year{position:absolute;left:50%;top:6%;transform:translateX(-50%);background:var(--gold);color:#5a3d00;font-family:var(--head);font-size:44px;padding:10px 30px;border-radius:24px;box-shadow:0 6px 0 #d79e12;white-space:nowrap;z-index:2}
 
 /* 발명 공식 */
 .formula{display:flex;align-items:stretch;gap:22px;margin-top:26px}
@@ -229,14 +221,12 @@
     <div class="screen" id="screen">
       <div class="prog" id="tProg"></div>
       <div class="scene on" data-i="0"><div class="card"><div style="font-size:90px">📺</div><h2>물건 탄생 극장</h2><p>지우개 달린 연필은 왜 태어났을까?</p></div></div>
-      <div class="scene sc1" data-i="1"><img class="bgi" src="../01/img/classroom.jpg" alt="">
-        <img class="pen" src="../01/img/obj_pencil.png" alt=""><div class="paper"></div><div class="paper p2"></div>
-        <div class="think">지우개가<br>어디 갔지?</div><img class="mag" src="../01/img/ic_search.png" alt=""><span class="qq1">?</span><span class="qq2">?</span></div>
-      <div class="scene sc2" data-i="2"><img class="bulb" src="../01/img/obj_bulb.png" alt="">
+      <div class="scene sc1" data-i="1"><img class="bgi" src="img/story1.jpg" alt=""><img class="pan" src="img/story1.jpg" alt="지우개를 찾는 하이먼">
+        <div class="think">지우개가<br>어디 갔지?</div><span class="qq1">?</span><span class="qq2">?</span></div>
+      <div class="scene sc2" data-i="2"><img class="bgi" src="img/story2.jpg" alt=""><img class="pan" src="img/story2.jpg" alt="좋은 생각이 떠오른 하이먼">
         <div class="combine"><img class="pen" src="../01/img/obj_pencil.png" alt=""><span class="plus">+</span><span class="eraser"></span><span class="eq">=</span><img class="erp" src="img/obj_erpencil.png" alt=""></div></div>
-      <div class="scene sc3" data-i="3"><img class="bgi" src="../01/img/classroom.jpg" alt="">
-        <div class="year">1858년 발명 등록!</div>
-        <div class="many">${'<img src="img/obj_erpencil.png" alt="">'.repeat(1)}</div></div>
+      <div class="scene sc3" data-i="3"><img class="bgi" src="img/story3.jpg" alt=""><img class="pan" src="img/story3.jpg" alt="지우개 달린 연필을 쓰는 어린이들">
+        <div class="year">1858년 발명 등록!</div></div>
       <div class="scene" data-i="4"><div class="card"><div style="font-size:80px">😣 → 💡 → ✏️</div><h2>불편함에서<br>새로운 물건이 태어났어요!</h2></div></div>
       <div class="sub" id="tSub"></div>
       <div class="bigplay" id="bigPlay" onclick="theaterPlay()"><span>▶</span></div>
@@ -453,7 +443,7 @@ const SCRIPT = [
 let tIdx = 0, tPlaying = false, tVoice = true, tTimer = null, koVoice = null;
 function pickVoice(){ try{ const v = speechSynthesis.getVoices(); koVoice = v.find(x => /ko/i.test(x.lang) && /Heami|SunHi|Yuna|Google/i.test(x.name)) || v.find(x => /ko/i.test(x.lang)) || null; }catch(e){} }
 try{ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }catch(e){}
-function showScene(i){ const was = document.querySelector('#screen .scene.on'); document.querySelectorAll('#screen .scene').forEach(s => s.classList.toggle('on', +s.dataset.i === i)); if(i === 3 && (!was || +was.dataset.i !== 3)) fillMany(); }
+function showScene(i){ const was = document.querySelector('#screen .scene.on'); document.querySelectorAll('#screen .scene').forEach(s => s.classList.toggle('on', +s.dataset.i === i)); }
 function playLine(){
   clearTimeout(tTimer); if(!tPlaying) return;
   if(tIdx >= SCRIPT.length){ theaterStop(true); return; }
@@ -478,10 +468,6 @@ function theaterToggle(){ tPlaying ? theaterStop(false) : theaterPlay(); }
 function theaterRestart(){ theaterStop(false); tIdx = 0; showScene(0); document.getElementById('tSub').textContent = ''; document.getElementById('tProg').style.width = 0; theaterPlay(); }
 function theaterVoice(){ tVoice = !tVoice; document.getElementById('tVoice').textContent = tVoice ? '🔊 소리 켜짐' : '🔇 자막만'; if(!tVoice) try{ speechSynthesis.cancel(); }catch(e){} }
 hooks.theater = () => {};
-function fillMany(){ const m = document.querySelector('.sc3 .many'); m.innerHTML = '';
-  for(let i = 0; i < 14; i++){ const im = document.createElement('img'); im.src = 'img/obj_erpencil.png'; im.alt = '';
-    im.style.left = (6 + (i % 7) * 13) + '%'; im.style.top = (30 + Math.floor(i / 7) * 30 + (i % 2) * 6) + '%';
-    im.style.setProperty('--r', (Math.random() * 60 - 30) + 'deg'); im.style.animationDelay = (i * .12) + 's'; m.appendChild(im); } }
 hooks.leave = i => { if(slides[i] && slides[i].dataset.hook === 'theater') theaterStop(false); };
 
 /* ---------- 모둠 점수 (두 게임이 함께 써요) ---------- */
