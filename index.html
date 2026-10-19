@@ -420,7 +420,6 @@ body.edit .edit-only.grid{display:grid!important}
   <button class="brand" id="brandBtn" title="처음 화면"><span class="bk" id="brandKey"></span><span class="nm" id="brandName">물건 비밀 연구소</span></button>
   <div class="top-stickers" id="topStickers"></div>
   <div class="tools">
-    <button class="chip" id="classChip" title="반 바꾸기"></button>
     <button class="chip" id="editBtn" title="선생님용 자료 편집"></button>
     <button class="icon-btn" id="soundBtn" title="소리"></button>
     <button class="icon-btn" id="fsBtn" title="전체 화면 (F)"></button>
@@ -725,7 +724,6 @@ function renderTop(){
   $('#topStickers').innerHTML = ROOMS.map(r => cls().escaped[r.no]
     ? `<span class="slot got" style="--c:${r.color}" title="${r.no}번 방 ${esc(r.stickerName)}">${r.sticker}</span>`
     : `<span class="slot" title="${r.no}번 방 스티커">${r.no}</span>`).join('');
-  $('#classChip').innerHTML = `${I('card')} ${esc(cls().name)}`;
   $('#editBtn').innerHTML = `${I('pencil')} ${editMode ? '편집 중' : '자료 편집'}`;
   $('#editBtn').classList.toggle('on', editMode);
   $('#soundBtn').innerHTML = I(S.sound ? 'sound' : 'mute');
@@ -1161,16 +1159,11 @@ function openSettings(){
   const m = $('#modal'), c = cls();
   m.innerHTML = `<div class="modal" role="dialog" aria-modal="true" aria-label="설정">
     <div class="modal-head"><h2>선생님 설정</h2><button class="icon-btn" id="xClose">${I('close')}</button></div>
-    <div class="set-sec"><h3>반 관리</h3>
-      <p>반마다 진행 상황(자물쇠·스티커)이 따로 저장돼요. 수업 자료는 모든 반이 함께 써요.</p>
-      <div class="row"><select id="xCls" style="flex:1 1 180px">${S.classes.map(k => `<option value="${k.id}" ${k.id === c.id ? 'selected' : ''}>${esc(k.name)}</option>`).join('')}</select>
-      <button class="btn sm" id="xAdd">${I('plus')} 반 추가</button><button class="btn sm" id="xDelCls">${I('trash')} 이 반 삭제</button></div>
-      <label>반 이름<input id="xName" value="${esc(c.name)}"></label>
-    </div>
-    <div class="set-sec"><h3>요원증</h3>
-      <div class="row"><label style="flex:1 1 220px">연구소 이름<input id="xAgency" value="${esc(S.agency)}"></label>
+    <div class="set-sec"><h3>우리 반과 요원증</h3>
+      <div class="row"><label style="flex:1 1 220px">반 이름 (예: 2학년 3반)<input id="xName" value="${esc(c.name)}"></label>
       <label style="flex:1 1 220px">소속 (예: 새싹초 2학년 3반)<input id="xSchool" value="${esc(S.school)}" placeholder="비우면 반 이름이 들어가요"></label></div>
-      <label>학생 명단 (${esc(c.name)} · 한 줄에 한 명)<textarea id="xRoster" placeholder="김하늘&#10;이바다&#10;박구름">${esc(c.roster)}</textarea></label>
+      <label>연구소 이름<input id="xAgency" value="${esc(S.agency)}"></label>
+      <label>학생 명단 (한 줄에 한 명)<textarea id="xRoster" placeholder="김하늘&#10;이바다&#10;박구름">${esc(c.roster)}</textarea></label>
       <div class="row"><button class="btn sm" id="xPrint">${I('print')} 요원증 미리 인쇄하기</button></div>
     </div>
     <div class="set-sec"><h3>도입 이야기</h3><p>한 줄이 화면 한 장면이에요.</p>
@@ -1178,9 +1171,9 @@ function openSettings(){
       <div class="row"><button class="btn sm" id="xStoryReset">기본 이야기로 되돌리기</button></div>
     </div>
     <div class="set-sec"><h3>진행 상황</h3>
-      <p>지금 반: <b>${esc(c.name)}</b> · 해결한 미션 ${Object.keys(c.done).length}/24 · 스티커 ${stickerCount()}/5<br>
+      <p>해결한 미션 ${Object.keys(c.done).length}/24 · 스티커 ${stickerCount()}/5<br>
       <b>자료 편집</b>을 켜면 잠긴 방에도 들어갈 수 있고, 차시 화면에서 해결을 취소할 수 있어요.</p>
-      <div class="row"><button class="btn sm" id="xResetProg">${I('trash')} 이 반 진행 처음부터</button></div>
+      <div class="row"><button class="btn sm" id="xResetProg">${I('trash')} 진행 처음부터 다시</button></div>
     </div>
     <div class="set-sec"><h3>백업</h3>
       <p>모든 내용(진행 상황, 슬라이드, 파일)은 이 컴퓨터의 이 브라우저에만 저장돼요. 다른 컴퓨터로 옮기거나 혹시 모를 상황에 대비해 가끔 백업 파일로 내보내 두세요.</p>
@@ -1199,17 +1192,10 @@ function openSettings(){
   $('#xClose').onclick = () => { commit(); close(); };
   $('#xSave').onclick = () => { commit(); close(); toast('저장했어요'); };
   m.onclick = e => { if(e.target === m){ commit(); close(); } };
-  $('#xCls').onchange = () => { commit(); S.cur = $('#xCls').value; save(); openSettings(); };
-  $('#xAdd').onclick = () => { commit(); const k = newClass(`${S.classes.length + 1}반`); S.classes.push(k); S.cur = k.id; save(); openSettings(); toast('새 반을 만들었어요. 이름을 바꿔 주세요'); };
-  $('#xDelCls').onclick = async () => {
-    if(S.classes.length === 1) return toast('반이 하나뿐이라 지울 수 없어요');
-    if(!(await ask(`'${esc(cls().name)}'의 진행 기록을 모두 지울까요?`, '지우기'))) return;
-    S.classes = S.classes.filter(k => k.id !== S.cur); S.cur = S.classes[0].id; save(); openSettings();
-  };
   $('#xPrint').onclick = () => { commit(); printCards(); };
   $('#xStoryReset').onclick = () => { $('#xStory').value = DEFAULT_STORY.join('\n'); };
   $('#xResetProg').onclick = async () => {
-    if(!(await ask(`'${esc(cls().name)}'의 자물쇠와 스티커를 모두 처음 상태로 돌릴까요?`, '처음부터'))) return;
+    if(!(await ask('자물쇠와 스티커를 모두 처음 상태로 돌릴까요?', '처음부터'))) return;
     const k = cls(); k.done = {}; k.escaped = {}; save(); openSettings(); toast('처음 상태로 돌렸어요');
   };
   $('#xExport').onclick = () => { commit(); exportBackup(); };
@@ -1243,7 +1229,6 @@ async function importBackup(file){
 /* ---------- 상단 버튼 · 키보드 ---------- */
 function toggleFs(){ try{ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {}); }catch(e){} }
 $('#brandBtn').onclick = () => go('home');
-$('#classChip').onclick = () => openSettings();
 $('#setBtn').onclick = () => openSettings();
 $('#fsBtn').onclick = toggleFs;
 $('#soundBtn').onclick = () => { S.sound = !S.sound; save(); renderTop(); if(S.sound) SFX.unlock(); };
