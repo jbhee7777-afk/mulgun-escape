@@ -1034,7 +1034,7 @@ function renderRoom({room, unlock}){
 const missionText = l => (S.missions[l.n] || l.act);
 const TYPE_META = {
   slides:{icon:'image', label:'슬라이드'}, pdf:{icon:'pdf', label:'PDF 자료'}, embed:{icon:'play', label:'화면 안에서 보기'},
-  link:{icon:'link', label:'새 창으로 열기'}, file:{icon:'clip', label:'첨부 파일'}
+  link:{icon:'link', label:'새 창으로 열기'}, file:{icon:'clip', label:'첨부 파일'}, lesson:{icon:'play', label:'수업 화면 (게임 포함)'}
 };
 function renderLesson({lesson}){
   const l = lessonOf(lesson), r = ROOMS[l.room - 1], c = cls(), list = mats(l.n), done = !!c.done[l.n];
@@ -1156,6 +1156,8 @@ async function parseLinks(path){
     return t.split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith('#')).map(line => {
       let [title, url, mode] = line.split('|').map(s => (s || '').trim());
       if(!url){ url = title; title = '링크 자료'; }
+      /* 저장소 안의 수업 화면(lessons/…html) → 앱 안에서 띄우는 '수업' 자료 */
+      if(mode === '수업' || /^(\.\/)?lessons\//.test(url)) return {type:'lesson', title, url:url.replace(/^\.\//, '')};
       if(!/^https?:\/\//i.test(url)) url = 'https://' + url;
       return {type:EMBED_HOSTS.test(url) && mode !== '새창' ? 'embed' : 'link', title, url};
     });
@@ -1192,7 +1194,7 @@ async function loadBuiltin(){
         items.push(ext(p) === 'pdf' ? {type:'pdf', title, files:[p]} : {type:'file', title, fileName:name(p), files:[p]});
       }
     }
-    out[n] = items;
+    out[n] = items.filter(m => m.type === 'lesson').concat(items.filter(m => m.type !== 'lesson')); /* 수업 화면을 맨 앞에 */
   }
   BUILTIN = out;
   if(view.screen === 'lesson') rerender();
@@ -1265,8 +1267,9 @@ async function openMaterial(m){
     stage.querySelector('.p-zone.l').onclick = () => slide(-1); stage.querySelector('.p-zone.r').onclick = () => slide(1);
     slide(0);
   } else {
-    const src = m.type === 'pdf' ? await getUrl(m.files[0]) : embedUrl(m.url);
+    const src = m.type === 'pdf' ? await getUrl(m.files[0]) : m.type === 'lesson' ? assetUrl(m.url) : embedUrl(m.url);
     stage.innerHTML = `<iframe src="${esc(src)}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+    if(m.type === 'lesson'){ const f = stage.querySelector('iframe'); f.onload = () => { try{ f.focus(); }catch(e){} }; }
     $('#pCount').textContent = '';
   }
   wake();
@@ -1547,6 +1550,19 @@ $('#setBtn').onclick = () => openSettings();
 $('#fsBtn').onclick = toggleFs;
 $('#soundBtn').onclick = () => { S.sound = !S.sound; save(); renderTop(); if(S.sound) SFX.unlock(); };
 $('#editBtn').onclick = () => { editMode = !editMode; document.body.classList.toggle('edit', editMode); toast(editMode ? '자료 편집을 켰어요. 잠긴 방에도 들어갈 수 있어요.' : '자료 편집을 껐어요'); rerender(); };
+
+/* 수업 화면(lessons/…)이 '차시 미션 완료'를 알려 오면 자물쇠를 연다 — {type:'lesson-complete', lesson:차시 번호} */
+addEventListener('message', e => {
+  const d = e.data || {};
+  if(e.origin !== location.origin || d.type !== 'lesson-complete') return;
+  const l = lessonOf(d.lesson); if(!l) return;
+  const c = cls();
+  setTimeout(() => {
+    closePresenter();
+    if(c.done[l.n]){ toast(`${l.n}차시는 이미 해결한 미션이에요`); return; }
+    c.done[l.n] = today(); save(); go('room', {room:l.room, unlock:l.n});
+  }, 1400);
+});
 
 addEventListener('keydown', e => {
   if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;

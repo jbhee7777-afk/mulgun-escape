@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>1차시 인쇄용 상황 카드</title>
+<link rel="stylesheet" href="../fonts/jua.css"><link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;color:#4a3426;background:#ddd;word-break:keep-all}
+.page{width:210mm;height:297mm;margin:0 auto;background:#fff;padding:8mm 8mm 6mm;display:flex;flex-direction:column}
+.hd{display:flex;justify-content:space-between;align-items:center;font-family:'Jua',sans-serif;font-size:11pt;color:#9a7b5f;margin-bottom:3mm;padding:0 2mm}
+.grid{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);border-top:.3mm dashed #bbb;border-left:.3mm dashed #bbb}
+.c{border-right:.3mm dashed #bbb;border-bottom:.3mm dashed #bbb;padding:3.5mm}
+.in{height:100%;border-radius:5mm;background:#fff7e3;border:.8mm solid #ffc53d;display:flex;align-items:center;gap:4mm;padding:3mm 5mm;position:relative}
+.no{position:absolute;left:-1mm;top:-1mm;width:11mm;height:11mm;border-radius:50%;background:#2d3a7c;color:#ffe39a;font-family:'Jua',sans-serif;font-size:15pt;display:flex;align-items:center;justify-content:center}
+.in img{width:27mm;height:27mm;object-fit:contain;flex:none}
+.tx h3{font-family:'Jua',sans-serif;font-weight:400;font-size:15.5pt;color:#2d3a7c;line-height:1.25}
+.tx p{font-size:10.5pt;color:#7a6352;margin-top:1.6mm;line-height:1.45}
+.tx p b{font-family:'Jua',sans-serif;font-weight:400;color:#e3523f}
+.sh{position:absolute;right:3mm;top:2mm;font-family:'Jua',sans-serif;font-size:8.5pt;color:#ff7b6b}
+@media print{body{background:none}}
+</style></head><body>
+<div class="page">
+  <div class="hd"><span>🃏 1번 방 · 1차시 미션 2 — 만약 ○○이 없다면?</span><span>✂️ 점선을 따라 잘라 쓰세요 · 번호는 화면 카드 번호와 같아요</span></div>
+  <div class="grid" id="g"></div>
+</div>
+<script>
+const C=[['chair','의자가 사라졌어요!','계속 서서 공부하는 모습'],['umbrella','비가 오는데 우산이 없어요!','비를 맞으며 학교에 오는 모습'],
+['clock','시계가 사라졌어요!','쉬는 시간이 언제 끝나는지 몰라 두리번거리는 모습'],['pencil','연필이 사라졌어요!','받아쓰기를 해야 하는데 쓸 것이 없는 모습'],
+['sneakers','신발이 사라졌어요!','맨발로 운동장을 조심조심 걷는 모습'],['cup','컵이 사라졌어요!','목이 마른데 물을 마실 수 없는 모습'],
+['bulb','전등이 사라졌어요!','깜깜해서 책이 안 보이는 모습'],['backpack','가방이 사라졌어요!','책과 준비물을 품에 한가득 안고 오는 모습']];
+document.getElementById('g').innerHTML=C.map((c,i)=>`<div class="c"><div class="in"><span class="no">${i+1}</span><span class="sh">🤫 우리 모둠만 보기</span><img src="img/obj_${c[0]}.png" alt=""><div class="tx"><h3>${c[1]}</h3><p>이렇게 표현해요 👉 <b>${c[2]}</b></p></div></div></div>`).join('');
+</script></body></html>

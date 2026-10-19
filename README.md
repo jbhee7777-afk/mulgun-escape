@@ -48,3 +48,4 @@
 - `guide.html` — 사용 설명서
 - `screenshots/` — 화면 캡처
 - `materials/` — 모든 선생님께 보이는 차시별 기본 자료
+- `lessons/` — 차시별 수업 화면(HTML 슬라이드·게임). `lessons/01/` = 1차시, 글꼴은 `lessons/fonts/` 공용. 수업 화면이 `{type:'lesson-complete', lesson:차시}` 메시지를 보내면 앱이 그 차시 자물쇠를 열어요.

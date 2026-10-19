@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>1차시 활동지 · 물건 구조 신청서</title>
+<link rel="stylesheet" href="../fonts/jua.css"><link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;color:#4a3426;background:#ddd;word-break:keep-all}
+.page{width:210mm;height:297mm;margin:0 auto;position:relative;overflow:hidden;background:#fffaf0;
+  background-image:radial-gradient(#f6e3c2 1.1px,transparent 1.1px);background-size:5mm 5mm;padding:9mm 11mm}
+.page::before{content:"";position:absolute;inset:4.5mm;border:1.2mm dashed #ffc9b8;border-radius:7mm;pointer-events:none}
+.h{font-family:'Jua','Malgun Gothic',sans-serif;font-weight:400}
+.top{position:relative;height:33mm;display:flex;align-items:center;gap:4mm;padding:0 4mm}
+.banner{flex:1;position:relative;background:#2d3a7c;border-radius:8mm;color:#fff;padding:4.5mm 7mm 4.5mm 34mm;box-shadow:0 1.6mm 0 #1c2557}
+.banner .room{display:inline-block;background:#ffc53d;color:#5a3d00;border-radius:3mm;padding:.8mm 3mm;font-size:10.5pt}
+.banner h1{font-size:27pt;line-height:1.15;margin-top:1.2mm;letter-spacing:.3mm}
+.banner h1 em{font-style:normal;color:#ffe39a}
+.banner .mail{position:absolute;left:3mm;bottom:-1mm;width:30mm}
+.agent{position:absolute;right:0;top:-2mm;width:26mm;transform:rotate(6deg)}
+.stamp{position:absolute;right:25mm;top:-2mm;width:20mm;height:20mm;border-radius:50%;border:.7mm solid #ff7b6b;color:#ff7b6b;background:#fff;
+  display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Jua',sans-serif;font-size:10pt;line-height:1.1;transform:rotate(-12deg);z-index:2}
+.who{display:flex;gap:4mm;margin:2mm 32mm 0 4mm}
+.who div{flex:1;background:#fff;border:.5mm solid #f0d9b5;border-radius:4mm;padding:2.2mm 4mm;font-family:'Jua',sans-serif;font-size:12pt;color:#9a7b5f}
+.sec{position:relative;margin:3mm 4mm 0;background:#fff;border-radius:5mm;padding:2.6mm 4.5mm 3mm;border:.5mm solid #f0d9b5;box-shadow:0 1mm 0 #f3e2c4}
+.sec .t{display:flex;align-items:center;gap:2.5mm;font-size:14pt;margin-bottom:2.2mm}
+.sec .n{width:8mm;height:8mm;border-radius:50%;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12pt;flex:none}
+.c1 .n{background:#4fd1ae}.c2 .n{background:#ff7b6b}.c3 .n{background:#7cc4ff}.c4 .n{background:#b39ddb}
+.c1{background:#f1fbf7}.c2{background:#fff5f2}.c3{background:#f2f8ff}.c4{background:#f7f3fd}
+.found{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+.found div{height:16mm;border:.6mm dashed #9ddfca;border-radius:4mm;background:#fff;position:relative}
+.found div::after{content:"?";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Jua',sans-serif;font-size:20pt;color:#d6f2e9}
+.draw{display:flex;gap:4mm}
+.frame{flex:1.35;height:40mm;border-radius:5mm;background:#fff;border:.7mm solid #ffb3a5;position:relative}
+.frame::before{content:"🖍️ 물건 그림";position:absolute;left:3mm;top:2mm;font-size:9pt;color:#e4a092}
+.frame .corner{position:absolute;width:5mm;height:5mm;border-radius:50%;background:#ffd8cf}
+.meta{flex:1;display:flex;flex-direction:column;justify-content:center;gap:3mm}
+.meta label{font-family:'Jua',sans-serif;font-size:12pt;color:#c4614f}
+.meta .ln{border-bottom:.5mm dotted #e8b3a8;height:9mm}
+.lines .ln{border-bottom:.5mm dotted #a9cbe8;height:9.5mm;display:flex;align-items:flex-end;padding-bottom:1mm;font-size:12.5pt;color:#7aa3c7}
+.sentence{font-size:13pt;display:flex;align-items:flex-end;gap:1.5mm;height:11mm;color:#8a6fb8}
+.sentence .bl{border-bottom:.5mm dotted #c2b0e0;flex:1;height:8mm}
+.sentence .bl.s{flex:.55}
+.bonus{margin:3mm 4mm 0;display:flex;gap:4mm;background:#fff6d6;border:.6mm solid #ffd76b;border-radius:5mm;padding:3mm 4.5mm;position:relative}
+.bonus .t{font-size:13.5pt;margin-bottom:1.6mm;color:#9a6a00}
+.bonus .bx{width:28mm;height:21mm;border:.6mm dashed #f4c54a;border-radius:4mm;background:#fff;flex:none}
+.bonus .tx{flex:1;font-size:11.5pt;color:#9a7b2f}
+.bonus .tx .ln{border-bottom:.5mm dotted #f0cf73;height:7mm}
+.bonus .star{position:absolute;right:4mm;top:-4mm;font-size:18pt}
+.self{margin:3mm 4mm 0;display:flex;gap:3mm}
+.self div{flex:1;background:#fff;border:.5mm solid #f0d9b5;border-radius:4mm;padding:2.2mm 2.5mm;text-align:center;font-size:10.5pt;line-height:1.35}
+.self div b{display:block;font-family:'Jua',sans-serif;font-weight:400;color:#ffc53d;font-size:15pt;letter-spacing:1mm;margin-top:.8mm}
+.foot{position:absolute;left:12mm;right:12mm;bottom:6.5mm;display:flex;justify-content:space-between;align-items:center;font-family:'Jua',sans-serif;font-size:10pt;color:#c4a27e}
+.foot .key{display:flex;gap:1.5mm;align-items:center}
+.foot .key i{width:5mm;height:5mm;border-radius:50%;border:.4mm dashed #e3b55a;display:inline-block}
+.foot .key i.on{background:#ffc53d;border:none}
+.deco{position:absolute;pointer-events:none}
+@media print{body{background:none}.page{margin:0}}
+</style></head>
+<body><div class="page">
+  <div class="top">
+    <div class="banner">
+      <img class="mail" src="img/ic_mail.png" alt="">
+      <span class="room h">🔐 1번 방 · 1차시 미션 3</span>
+      <h1 class="h">물건 <em>구조</em> 신청서</h1>
+    </div>
+    <div class="stamp">긴급<br>구조!</div>
+    <img class="agent" src="img/agent.png" alt="">
+  </div>
+  <div class="who"><div>요원 번호 :</div><div style="flex:1.6">요원 이름 :</div></div>
+
+  <div class="sec c1"><div class="t h"><span class="n">1</span>사라진 교실에서 내가 찾은 물건을 쓰거나 그려요.</div>
+    <div class="found"><div></div><div></div><div></div><div></div></div>
+    <img class="deco" src="img/obj_clock.png" style="right:6mm;top:2mm;width:12mm;transform:rotate(12deg)" alt="">
+  </div>
+
+  <div class="sec c2"><div class="t h"><span class="n">2</span>가장 먼저 되찾고 싶은 물건을 그려요.</div>
+    <div class="draw">
+      <div class="frame"><span class="corner" style="right:2.5mm;top:2.5mm"></span><span class="corner" style="right:2.5mm;bottom:2.5mm"></span><span class="corner" style="left:2.5mm;bottom:2.5mm"></span></div>
+      <div class="meta"><label>물건 이름</label><div class="ln"></div><label>이 물건을 쓰는 곳</label><div class="ln"></div></div>
+    </div>
+    <img class="deco" src="img/obj_pencil.png" style="right:6mm;top:3mm;width:24mm;transform:rotate(-14deg)" alt="">
+  </div>
+
+  <div class="sec c3"><div class="t h"><span class="n">3</span>이 물건이 없으면 이런 점이 불편해요.</div>
+    <div class="lines"><div class="ln">이 물건이 없으면</div><div class="ln"></div></div>
+    <img class="deco" src="img/obj_umbrella.png" style="right:5mm;top:-4mm;width:6mm;transform:rotate(18deg)" alt="">
+  </div>
+
+  <div class="sec c4"><div class="t h"><span class="n">4</span>그래서 이 물건이 꼭 필요해요.</div>
+    <div class="sentence"><span class="bl s"></span>은/는<span class="bl"></span>때 꼭 필요해요.</div>
+  </div>
+
+  <div class="bonus">
+    <span class="star">⭐</span>
+    <div class="bx"></div>
+    <div class="tx"><div class="t h">보너스 미션! 나를 행복하게 해 주는 물건</div>이 물건이 나를 행복하게 하는 까닭은<div class="ln"></div><div class="ln"></div></div>
+  </div>
+
+  <div class="self">
+    <div>물건이 사라지면<br>불편한 점을 찾았어요.<b>☆☆☆</b></div>
+    <div>물건이 필요한 까닭을<br>말할 수 있어요.<b>☆☆☆</b></div>
+    <div>친구들과 즐겁게<br>미션에 참여했어요.<b>☆☆☆</b></div>
+  </div>
+
+  <div class="foot"><span>물건 교과서 · 물건의 비밀 발견하기</span><span class="key">🗝️ 열쇠 조각 <i class="on"></i><i></i><i></i><i></i></span></div>
+</div></body></html>
