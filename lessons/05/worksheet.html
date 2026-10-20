@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>5차시 활동지 · 탐정 관찰 기록지</title>
+<link rel="stylesheet" href="../fonts/jua.css"><link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;color:#4a3426;background:#ddd;word-break:keep-all}
+.page{width:210mm;height:297mm;margin:0 auto;position:relative;overflow:hidden;background:#fffaf0;
+  background-image:radial-gradient(#f6e3c2 1.1px,transparent 1.1px);background-size:5mm 5mm;padding:9mm 11mm}
+.page::before{content:"";position:absolute;inset:4.5mm;border:1.2mm dashed #8fe3d9;border-radius:7mm;pointer-events:none}
+.h{font-family:'Jua','Malgun Gothic',sans-serif;font-weight:400}
+.top{position:relative;height:31mm;display:flex;align-items:center;padding:0 4mm}
+.banner{flex:1;position:relative;background:#137f76;border-radius:8mm;color:#fff;padding:4mm 7mm 4mm 31mm;box-shadow:0 1.6mm 0 #0b5952}
+.banner .room{display:inline-block;background:#ffc53d;color:#5a3d00;border-radius:3mm;padding:.8mm 3mm;font-size:10.5pt}
+.banner h1{font-size:26pt;line-height:1.15;margin-top:1.2mm}
+.banner h1 em{font-style:normal;color:#c9fff6}
+.banner .ic{position:absolute;left:4mm;bottom:-1mm;width:24mm}
+.agent{position:absolute;right:0;top:-2mm;width:25mm;transform:rotate(6deg)}
+.who{display:flex;gap:4mm;margin:2mm 31mm 0 4mm}
+.who div{flex:1;background:#fff;border:.5mm solid #f0d9b5;border-radius:4mm;padding:2mm 4mm;font-family:'Jua',sans-serif;font-size:12pt;color:#9a7b5f}
+.sec{position:relative;margin:3mm 4mm 0;background:#fff;border-radius:5mm;padding:2.6mm 4.5mm 3mm;border:.5mm solid #f0d9b5;box-shadow:0 1mm 0 #f3e2c4}
+.sec .t{display:flex;align-items:center;gap:2.5mm;font-size:13.5pt;margin-bottom:2mm}
+.sec .n{width:8mm;height:8mm;border-radius:50%;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12pt;flex:none}
+.c1 .n{background:#4fc9bd}.c1{background:#effcfa}
+.c2 .n{background:#7cc4ff}.c2{background:#f2f8ff}
+.c3 .n{background:#ff7b6b}.c3{background:#fff5f2}
+/* 1. 그림 + 돋보기 */
+.draw{display:flex;gap:4mm;align-items:center}
+.big{flex:1;height:50mm;border:.6mm solid #8fe3d9;border-radius:4mm;background:#fff;position:relative}
+.big .lb{position:absolute;left:3mm;top:2mm;font-size:9pt;color:#4fb3a8}
+.big .nm{position:absolute;left:3mm;right:3mm;bottom:2.5mm;border-bottom:.5mm dotted #8fe3d9;height:8mm;font-family:'Jua',sans-serif;font-size:10.5pt;color:#4fb3a8;display:flex;align-items:flex-end}
+.mag{width:60mm;flex:none;position:relative;height:50mm}
+.mag .lens{position:absolute;left:2mm;top:0;width:44mm;height:44mm;border-radius:50%;border:2.6mm solid #5b3f8c;background:#fff}
+.mag .hd{position:absolute;left:38mm;top:35mm;width:6mm;height:19mm;border-radius:3mm;background:#7d5bb8;transform:rotate(-45deg);transform-origin:top center}
+.mag .lb{position:absolute;left:5mm;top:14mm;width:39mm;text-align:center;font-size:8.5pt;color:#9a86c4;line-height:1.4}
+/* 2. 오감 표 */
+table{width:100%;border-collapse:separate;border-spacing:2mm 1.5mm;margin:-1.5mm -2mm}
+td{background:#fff;border:.5mm solid #b9d7ff;border-radius:3mm;height:11.5mm;font-size:9.5pt;color:#9bb5d6;vertical-align:top;padding:1.5mm 2.5mm}
+td.lab{width:34mm;background:#2d3a7c;border-color:#2d3a7c;color:#fff;font-family:'Jua',sans-serif;font-size:12pt;text-align:center;vertical-align:middle;line-height:1.25}
+td.lab small{display:block;font-family:'Gowun Dodum',sans-serif;font-size:8.5pt;color:#cdd4ff}
+/* 3. 특별한 점 + 수수께끼 */
+.sent{font-size:12pt;display:flex;align-items:flex-end;gap:1.5mm;height:9.5mm;color:#d24634}
+.sent .bl{border-bottom:.5mm dotted #f0b5a9;flex:1;height:7mm}
+.bottom{display:flex;gap:4mm;margin:3mm 4mm 0;align-items:stretch}
+.self{flex:1;display:flex;flex-direction:column;gap:2mm}
+.self div{background:#fff;border:.5mm solid #f0d9b5;border-radius:4mm;padding:2mm 3mm;font-size:10.5pt;display:flex;justify-content:space-between;align-items:center}
+.self div b{font-family:'Jua',sans-serif;font-weight:400;color:#ffc53d;font-size:14pt;letter-spacing:.8mm}
+.tip{width:62mm;flex:none;background:#fff6d6;border:.5mm solid #ffd76b;border-radius:4mm;padding:2.5mm 3mm;font-size:9.8pt;line-height:1.55;color:#8a6200}
+.tip b{font-family:'Jua',sans-serif;font-weight:400;font-size:11pt}
+.foot{position:absolute;left:12mm;right:12mm;bottom:6.5mm;display:flex;justify-content:space-between;align-items:center;font-family:'Jua',sans-serif;font-size:10pt;color:#7cbcb4}
+.foot .key{display:flex;gap:1.5mm;align-items:center}
+.foot .key i{width:5mm;height:5mm;border-radius:50%;border:.4mm dashed #4fc9bd;display:inline-block}
+.foot .key i.on{background:#4fe0d2;border:none}
+@media print{body{background:none}.page{margin:0}}
+</style></head>
+<body><div class="page">
+  <div class="top">
+    <div class="banner">
+      <img class="ic" src="../01/img/ic_search.png" alt="">
+      <span class="room h">🔐 2번 방 · 5차시 미션 4</span>
+      <h1 class="h">탐정 <em>관찰</em> 기록지</h1>
+    </div>
+    <img class="agent" src="../01/img/agent.png" alt="">
+  </div>
+  <div class="who"><div>요원 번호 :</div><div style="flex:1.6">요원 이름 :</div></div>
+
+  <div class="sec c1"><div class="t h"><span class="n">1</span>물건을 크게 그리고, 가장 자세히 본 부분을 돋보기에 그려요.</div>
+    <div class="draw">
+      <div class="big"><span class="lb">🖍️ 내가 관찰한 물건</span><div class="nm">물건 이름 :</div></div>
+      <div class="mag"><div class="hd"></div><div class="lens"></div><div class="lb">🔍 가장 자세히<br>본 부분</div></div>
+    </div>
+  </div>
+
+  <div class="sec c2"><div class="t h"><span class="n">2</span>여러 감각으로 관찰한 것을 써요.</div>
+    <table>
+      <tr><td class="lab">👀 눈으로<small>색 · 모양 · 크기</small></td><td></td></tr>
+      <tr><td class="lab">✋ 손으로<small>느낌 · 무게</small></td><td></td></tr>
+      <tr><td class="lab">👂 귀로<small>흔들고 두드리면</small></td><td></td></tr>
+      <tr><td class="lab">👃 코로<small>살랑살랑 부채질</small></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="sec c3"><div class="t h"><span class="n">3</span>특별한 점을 찾고, 수수께끼를 만들어요.</div>
+    <div class="sent">이 물건은<span class="bl"></span>이(가) 특별해요.</div>
+    <div class="sent">🕵️ 나는<span class="bl"></span>해요.</div>
+    <div class="sent">&nbsp; &nbsp; 나는<span class="bl"></span>해요. 나는 누구일까요?</div>
+  </div>
+
+  <div class="bottom">
+    <div class="self">
+      <div>여러 감각으로 물건을 관찰했어요.<b>☆☆☆</b></div>
+      <div>물건의 특별한 점을 찾았어요.<b>☆☆☆</b></div>
+      <div>관찰 단서로 수수께끼를 만들었어요.<b>☆☆☆</b></div>
+    </div>
+    <div class="tip"><b>💡 관찰 낱말 주머니</b><br>매끈매끈 · 울퉁불퉁 · 딱딱해요<br>말랑말랑 · 반짝반짝 · 길쭉해요<br>째깍째깍 · 바스락 · 딸깍</div>
+  </div>
+
+  <div class="foot"><span>물건 교과서 · 물건을 자세히 탐구하기</span><span class="key">🗝️ 2번 방 열쇠 조각 <i class="on"></i><i></i><i></i><i></i><i></i></span></div>
+</div><script src="../shared/print.js"></script></body></html>

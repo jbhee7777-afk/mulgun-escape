@@ -72,7 +72,7 @@ function openBlank(el){ if(el.classList.contains('open')) return; el.classList.a
 
 /* ---------- 열쇠 조각 ---------- */
 function litKey(){ const n = (window.LESSON || {}).keyPieces || 1;
-  for(let k = 1; k <= 4; k++){ const p = document.getElementById('p' + k); if(!p) continue; if(k < n) p.classList.add('lit'); else p.classList.remove('lit'); }
+  for(let k = 1; k <= 8; k++){ const p = document.getElementById('p' + k); if(!p) continue; if(k < n) p.classList.add('lit'); else p.classList.remove('lit'); }
   const p = document.getElementById('p' + n); if(!p) return; setTimeout(() => p.classList.add('lit'), 60); S.win();
   const box = document.getElementById('keybox'), bb = p.getBBox(), sx = box.clientWidth / 700;
   for(let i = 0; i < 28; i++){ const s = document.createElement('div'); s.className = 'spark';
@@ -83,6 +83,6 @@ hooks.key = () => setTimeout(litKey, 400);
 /* ---------- 차시 완료 → 방탈출 앱에 알리기 ---------- */
 function complete(){ const L = window.LESSON || {}; S.win();
   try{ parent.postMessage({type:'lesson-complete', room:L.room, lesson:L.lesson}, '*'); }catch(e){}
-  const b = document.getElementById('doneBtn'); if(b){ b.textContent = `🎉 완료! 열쇠 조각 ${L.keyPieces}/4`; b.disabled = true; } }
+  const b = document.getElementById('doneBtn'); if(b){ b.textContent = `🎉 완료! 열쇠 조각 ${L.keyPieces}/${document.querySelectorAll(".piece").length || 4}`; b.disabled = true; } }
 
 function startDeck(){ const startAt = parseInt(location.hash.slice(1)) - 1; go(isNaN(startAt) ? 0 : Math.min(Math.max(startAt, 0), slides.length - 1)); }
