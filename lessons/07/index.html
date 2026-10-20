@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2번 방 · 7차시 재료가 다르면 달라질까?</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<style>
+/* 2번 방 색 */
+:root{--teal:#4fe0d2;--teal2:#d6fbf5;--tealdk:#139c8f}
+#topbar .room{background:#137f76;box-shadow:0 3px 0 #0b5952}
+.emo{display:flex;align-items:center;justify-content:center;line-height:1;font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif}
+
+/* 재료 무늬(견본과 물건 입히기에 함께 써요) */
+.tx-paper{background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(70,70,70,.28) 9px 11px),repeating-linear-gradient(90deg,transparent 0 46%,rgba(70,70,70,.12) 46% 48%),#f1ead6}
+.tx-cloth{background:repeating-linear-gradient(45deg,#6b8fd6 0 3px,#4d6fb8 3px 6px),#5a7cc4}
+.tx-vinyl{background:linear-gradient(115deg,rgba(255,255,255,.0) 30%,rgba(255,255,255,.85) 38%,rgba(255,255,255,0) 46%),linear-gradient(160deg,#bfe9ff,#7fcdf5)}
+.tx-foil{background:conic-gradient(from 20deg,#f4f4f4,#a8a8a8,#ececec,#8f8f8f,#e4e4e4,#a0a0a0,#f4f4f4)}
+.tx-glass{background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.95) 40%,transparent 46%),linear-gradient(135deg,#eafcff,#a6e2f2 55%,#e3f9ff)}
+.tx-metal{background:linear-gradient(90deg,#8d939a,#e2e6ea 22%,#7b8187 45%,#d0d5da 70%,#8a9096)}
+.tx-rubber{background:radial-gradient(circle at 30% 25%,#5a6876,#26303a 60%)}
+.tx-wool{background:repeating-linear-gradient(90deg,#f4a6c8 0 7px,#e283ae 7px 9px),#f4a6c8}
+.tx-wood{background:repeating-linear-gradient(90deg,#cf955a 0 7px,#b97d43 7px 9px,#d9a46a 9px 16px,#c08648 16px 18px)}
+.tx-tissue{background:radial-gradient(#fff 40%,transparent 41%) 0 0/9px 9px,#f3f3f3}
+.tx-choco{background:linear-gradient(90deg,rgba(255,255,255,.18) 2px,transparent 2px) 0 0/34px 34px,linear-gradient(0deg,rgba(255,255,255,.18) 2px,transparent 2px) 0 0/34px 34px,#6b3d1f}
+.tx-ice{background:linear-gradient(130deg,transparent 40%,rgba(255,255,255,.9) 42%,transparent 44%),linear-gradient(60deg,transparent 55%,rgba(255,255,255,.7) 56%,transparent 58%),linear-gradient(160deg,#e7f8ff,#a9def5)}
+.tx-box{background:repeating-linear-gradient(90deg,#c99b63 0 5px,#b98a54 5px 7px),#c99b63}
+.sw{border-radius:20px;box-shadow:inset 0 0 0 3px rgba(0,0,0,.08),0 5px 0 rgba(0,0,0,.08)}
+
+/* 물건 + 재료 입히기: 회색으로 바꾼 그림 위에 같은 모양으로 오린 무늬를 겹쳐요 */
+.dress{position:relative;aspect-ratio:1}
+.dress>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:grayscale(1) brightness(1.35) contrast(.8)}
+.dress>.skin{position:absolute;inset:0;mix-blend-mode:multiply;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;opacity:1}
+.dress.real>img{filter:none}
+.dress.real>.skin{display:none}
+
+/* 지난 시간 */
+.recap{display:flex;gap:40px;flex:1;align-items:center}
+.recap .box{flex:1;display:flex;flex-direction:column;gap:18px}
+.homework{background:var(--paper);border:3px dashed var(--coral);border-radius:28px;padding:24px 30px;font-size:31px;line-height:1.6}
+.homework b{color:#e3523f}
+
+/* 이야기: 가게 간판 */
+.shop{display:flex;gap:14px;justify-content:center;margin-top:16px}
+.shop .it{width:150px;background:#fff;border-radius:22px;padding:8px;box-shadow:0 0 0 4px rgba(255,255,255,.6);text-align:center;font-family:var(--head);font-size:19px;color:var(--navy)}
+
+/* 미션 1: 재료 실험실 */
+.lab{flex:1;display:flex;gap:22px;min-height:0;margin-top:4px}
+.ltable{flex:1;display:grid;grid-template-columns:200px repeat(4,1fr);grid-template-rows:118px repeat(4,1fr);gap:10px}
+.ltable .mh{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:var(--head);font-size:28px;color:var(--navy)}
+.ltable .mh .sw{width:100%;flex:1}
+.ltable .th{display:flex;align-items:center;gap:10px;background:var(--navy);color:#fff;border-radius:20px;padding:8px 14px;font-family:var(--head);font-size:23px;line-height:1.25}
+.ltable .th .emo{font-size:36px}
+.lc{background:#fff;border:3px solid var(--line);border-radius:20px;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:56px;cursor:pointer;position:relative;transition:.2s}
+.lc.o{color:#0f8a6e;border-color:var(--mint);background:var(--mint2)}
+.lc.x{color:#e3523f;border-color:#ffc0b5;background:#fff5f2}
+.lc.t{color:#c48a00;border-color:var(--gold);background:#fffaea}
+.lc .ex{position:absolute;right:8px;bottom:4px;font-size:22px;opacity:0;transition:.3s}
+.lab.show .lc .ex{opacity:1}
+.lc.match::after{content:"✔";position:absolute;left:8px;top:4px;font-size:20px;color:#0f8a6e}
+.lside{width:300px;display:flex;flex-direction:column;gap:12px}
+.lside .key{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:12px 16px;font-size:23px;line-height:1.6}
+.lside .key b{font-family:var(--head);font-size:30px}
+.lside .btn{font-size:22px;padding:12px 10px}
+.lmsg{background:var(--mint2);border-radius:20px;padding:12px 16px;font-size:23px;line-height:1.5;display:none}
+.lab.show .lmsg{display:block;animation:enter .5s}
+.lmsg b{color:#0f8a6e}
+
+/* 미션 2: 엉터리 물건 가게 */
+.store{flex:1;display:flex;gap:24px;min-height:0;margin-top:6px}
+.counter{width:560px;flex:none;display:flex;flex-direction:column;gap:12px;align-items:center}
+.counter .stage{width:520px;background:#fff;border-radius:34px;box-shadow:0 0 0 8px #ffe39a,0 16px 30px rgba(61,43,31,.2);padding:20px;position:relative}
+.counter .price{position:absolute;top:-22px;right:-18px;background:#e3523f;color:#fff;font-family:var(--head);font-size:30px;padding:10px 20px;border-radius:18px;transform:rotate(8deg);box-shadow:0 6px 0 #b03a2b;z-index:2}
+.counter .verdict{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-size:250px;z-index:3;font-family:'Segoe UI Emoji',sans-serif;opacity:.88}
+.store.rev .verdict{display:flex;animation:enter .4s}
+.sinfo{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.sname{font-family:var(--head);font-size:52px;color:var(--navy);line-height:1.2}
+.sname small{display:block;font-size:24px;color:var(--ink2)}
+.sname .mt{color:#e3523f}
+.sq{background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 22px;font-size:29px;line-height:1.55}
+.sans{border-radius:22px;padding:16px 22px;font-size:28px;line-height:1.55;display:none;gap:16px;align-items:center}
+.store.rev .sans{display:flex;animation:enter .5s}
+.sans.bad{background:#fff5f2;border:3px solid #ffc0b5}.sans.good{background:var(--mint2);border:3px solid var(--mint)}
+.sans .sw{width:110px;height:110px;flex:none}
+.sans b{color:#e3523f}.sans.good b{color:#0f8a6e}
+.sbtns{display:flex;gap:12px;margin-top:auto;flex-wrap:wrap}
+.sbtns .btn{font-size:23px;padding:12px 18px}
+.dside{width:220px;display:flex;flex-direction:column;gap:10px}
+.rounds{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rounds button{height:48px;border-radius:14px;background:#fff;border:3px solid var(--line);font-size:21px;color:var(--navy)}
+.rounds button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.rounds button.done{background:var(--mint2);border-color:var(--mint);color:#0f8a6e}
+.tally{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:12px;text-align:center;font-family:var(--head);font-size:21px;color:var(--ink2)}
+.tally b{display:block;font-size:52px;color:#e3523f;line-height:1.1}
+.tally button{width:44px;height:40px;border-radius:12px;background:var(--gold2);font-size:22px;color:#5a3d00;margin:3px}
+
+/* 미션 3: 꼬마 우산 실험 */
+.ubox{flex:1;display:flex;gap:22px;min-height:0;margin-top:6px}
+.urows{flex:1;display:flex;flex-direction:column;gap:8px}
+.urow{display:grid;grid-template-columns:120px 1fr 150px 150px;gap:10px;align-items:stretch;flex:1;max-height:92px}
+.urow .tn{display:flex;align-items:center;justify-content:center;background:var(--navy);color:#fff;border-radius:18px;font-family:var(--head);font-size:26px}
+.urow .hd{display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:22px;color:var(--ink2)}
+.ucell{background:#fff;border:3px solid var(--line);border-radius:18px;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;font-family:var(--head);font-size:26px;color:var(--navy)}
+.ucell .sw{width:56px;height:56px;border-radius:14px}
+.ucell.dry{background:#fff8dc;border-color:var(--gold);font-size:40px}
+.ucell.wet{background:#e3f4ff;border-color:#7cc4ff;font-size:40px}
+.uside{width:330px;display:flex;flex-direction:column;gap:12px}
+.uclock{background:var(--navy);color:#fff;border-radius:24px;padding:12px;text-align:center;font-family:var(--head)}
+.uclock small{display:block;font-size:22px;color:var(--gold2)}
+.uclock b{display:block;font-size:72px;line-height:1.05;font-weight:400}
+.uside .btn{font-size:22px;padding:12px 10px}
+.spray{display:flex;gap:6px;justify-content:center}
+.spray i{width:40px;height:40px;border-radius:50%;background:#e3f4ff;border:3px solid #7cc4ff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:20px}
+.spray i.on{background:#7cc4ff}
+.uconc{background:var(--mint2);border-radius:20px;padding:12px 16px;font-size:23px;line-height:1.5;display:none}
+.uconc.show{display:block;animation:enter .5s}
+.uconc b{color:#0f8a6e}
+.mats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:20px}
+.mat{background:var(--paper);border:3px solid var(--line);border-radius:26px;padding:16px;text-align:center;box-shadow:0 8px 0 var(--line)}
+.mat .sw{height:150px;margin-bottom:10px}
+.mat h3{font-size:34px;color:var(--navy)}
+.mat p{font-size:22px;color:var(--ink2)}
+
+/* 발표 */
+.quizshow{display:flex;gap:50px;align-items:center;flex:1}
+.qsteps{flex:1;display:flex;flex-direction:column;gap:14px}
+.qsteps .s{font-size:30px;background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 22px}
+.qsteps .s b{color:var(--navy)}
+.qpick{width:420px;flex:none;text-align:center}
+.qpick .pickball{width:300px;height:300px;font-size:160px;margin:0 auto 18px}
+.progress4 div{width:130px}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 2번 방 · 물건을 자세히 탐구하기</span><span class="ls">7차시 / 5~9</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 5분"
+ data-notes="<b>시작</b> — “2번 방 열쇠 조각 두 개를 모았어요. 오늘은 세 번째! 물건을 만드는 ‘재료’의 비밀을 찾아요.”">
+  <div class="cover">
+    <img class="doorimg bob" src="../05/img/door2.jpg" alt="2번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill mint">2번 방 · 7차시</span>
+      <h1 class="title">재료가 다르면<br>달라질까?</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">종이, 천, 비닐, 포일… 무엇이 다를까?</p>
+      <button class="btn mint" style="margin-top:34px" onclick="go(1)">🚪 2번 방 다시 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 + 숙제 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>지난 시간 떠올리기 + 숙제 확인</b> — ① 6차시 비밀 문장 함께 읽기 ② 집에서 찾아온 종이·천·플라스틱 물건을 모둠 책상 위에 재료별로 나눠 놓게 해요.">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">6차시 비밀 문장, 기억나요?</h2>
+  <div class="recap">
+    <div class="box">
+      <div class="cipher" style="font-size:44px;margin-top:10px;padding:24px 40px">물건의 특별한 <span class="blank" onclick="openBlank(this)">생김새</span>에는<br>저마다 하는 <span class="blank" onclick="openBlank(this)">일</span>이 있어요.</div>
+      <div class="homework">🕵️ <b>숙제 확인!</b> <b>종이·천·플라스틱</b> 물건을 찾아왔나요?<br>재료끼리 모아서 책상 위에 놓아 봐요.</div>
+    </div>
+    <img src="../01/img/agent.png" alt="" style="width:300px" class="bob">
+  </div>
+</section>
+
+<!-- 3 이야기 -->
+<section class="slide dark" data-phase="도입 · 5분" data-hook="story"
+ data-notes="<b>이야기</b> — 말풍선을 누르면 글자가 한 번에 나와요. 아래 물건들을 보며 “사고 싶은 물건이 있나요?” 물어보세요(종이 우산, 유리 운동화, 쇠 장갑).">
+  <div class="alarm">🚨 싹쓸이 마법사의 엉터리 물건 가게!</div>
+  <div class="storywrap">
+    <img class="wizard" src="../01/img/wizard.jpg" alt="싹쓸이 마법사">
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px">
+      <div class="bubble" id="storyText" style="min-height:300px;font-size:31px;line-height:1.65;padding:34px 40px"></div>
+      <div class="shop" id="shop"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 미션 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>학습 목표 함께 읽기</b> — 오늘 미션 4개를 해결하면 2번 방 열쇠 조각 세 번째!">
+  <div class="kicker">MISSION BRIEFING</div>
+  <h2 class="title" style="font-size:60px">오늘의 미션 네 가지</h2>
+  <div class="missions" style="gap:20px">
+    <div class="mcard"><span class="tag">미션 1</span><div class="ic emo" style="font-size:96px">🧪</div><h3>재료 실험실</h3><p>예상하고 실험해요</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><div class="ic emo" style="font-size:96px">🏪</div><h3>엉터리 물건 가게</h3><p>살까, 말까?</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><div class="ic emo" style="font-size:96px">☂️</div><h3>꼬마 우산 실험</h3><p>비를 막는 재료는?</p></div>
+    <div class="mcard"><span class="tag">미션 4</span><img class="ic" src="../01/img/ic_mail.png" alt=""><h3>재료 탐정 보고서</h3><p>알게 된 것 정리</p></div>
+    <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 3</h3><p>2번 방 세 번째!</p></div>
+  </div>
+  <div class="goal"><b>🎯 학습 목표</b> 여러 재료의 특징을 비교하고, 쓰임새에 알맞은 재료를 고를 수 있어요.</div>
+</section>
+
+<!-- 5 재료 소개 -->
+<section class="slide" data-phase="미션 1 · 10분"
+ data-notes="<b>재료 실험 준비</b> — 모둠마다 종이(신문지나 복사지), 천(손수건 조각), 비닐(지퍼백 조각), 알루미늄 포일을 손바닥만 하게 잘라 두고, 스포이트나 물컵·손전등을 준비해요. 재료를 하나씩 만져 보고 느낌을 말하게 해요.">
+  <div class="kicker">MISSION 1</div>
+  <h2 class="title" style="font-size:58px">🧪 오늘의 재료 친구들</h2>
+  <div class="mats">
+    <div class="mat"><div class="sw tx-paper"></div><h3>종이</h3><p>신문지 · 공책 · 상자</p></div>
+    <div class="mat"><div class="sw tx-cloth"></div><h3>천</h3><p>손수건 · 옷 · 가방</p></div>
+    <div class="mat"><div class="sw tx-vinyl"></div><h3>비닐</h3><p>비닐봉지 · 우비 · 지퍼백</p></div>
+    <div class="mat"><div class="sw tx-foil"></div><h3>알루미늄 포일</h3><p>김밥 포장 · 요리할 때</p></div>
+  </div>
+  <div class="goal" style="margin-top:30px"><b>🔬 실험 순서</b> ① 결과를 먼저 예상해요 → ② 모둠이 실험해요 → ③ 결과를 표에 적어요</div>
+</section>
+
+<!-- 6 미션 1 실험표 -->
+<section class="slide" data-phase="미션 1 · 10분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 실험을 한 줄씩 해요(물 → 구기기 → 빛 → 찢기). 먼저 손을 들어 예상을 묻고, 모둠이 실험한 뒤 칸을 눌러 결과를 적어요(누를 때마다 ⭕ → △ → ❌ → 빈칸). 4줄이 끝나면 ‘실험 결과 비교’를 눌러 우리 결과와 선생님 결과를 비교해요. 모둠마다 칸 2~3개씩 발표하면 16칸이 금방 채워져요.">
+  <div class="lab" id="lab">
+    <div class="ltable" id="ltable"></div>
+    <div class="lside">
+      <div class="key"><b class="c-mint">⭕</b> 그래요 &nbsp; <b style="color:#c48a00">△</b> 조금 &nbsp; <b class="c-coral">❌</b> 아니에요<br><span style="font-size:20px">칸을 누를 때마다 바뀌어요.</span></div>
+      <button class="btn mint" onclick="labShow()">🔍 실험 결과 비교</button>
+      <button class="btn ghost" onclick="labReset()">🧽 표 지우기</button>
+      <div class="lmsg" id="lmsg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 미션 2 규칙 -->
+<section class="slide" data-phase="미션 2 · 8분"
+ data-notes="<b>엉터리 물건 가게 안내</b> — 마법사가 이상한 재료로 만든 물건을 팔아요. 진짜 쓸 만한 물건도 섞여 있어요! 물건이 나오면 “하나, 둘, 셋!”에 👍(살래요) 또는 👎(안 살래요)를 들어요. 안 살 물건이면 “어떤 재료로 바꿀까?”까지 말해요.">
+  <div class="kicker">MISSION 2</div>
+  <h2 class="title">🏪 엉터리 물건 가게</h2>
+  <div class="rules" style="max-width:1120px">
+    <div class="rule"><span>1</span><div>마법사가 <b class="hl">이상한 재료</b>로 만든 물건을 팔아요.</div></div>
+    <div class="rule"><span>2</span><div>“하나, 둘, 셋!” 👍 <b class="c-mint">살래요</b> 또는 👎 <b class="c-coral">안 살래요</b>를 들어요.</div></div>
+    <div class="rule"><span>3</span><div>안 살 물건이면 <b class="c-navy">어떤 재료로 바꿀지</b> 말해요.</div></div>
+    <div class="rule"><span>4</span><div>조심! 진짜 <b class="hl">쓸 만한 물건</b>도 섞여 있어요.</div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/wizard.jpg" alt="" style="right:80px;bottom:100px;width:280px;border-radius:50%">
+</section>
+
+<!-- 8 미션 2 가게 -->
+<section class="slide" data-phase="미션 2 · 8분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 물건을 골라요(16개, 그중 5개는 쓸 만한 물건). 👍/👎를 들게 한 뒤 ‘판정!’. 맞힌 학생 수를 오른쪽 ‘정답 손님’에 더하면 반 전체 기록이 돼요. 모둠마다 한 명씩 ‘바꿀 재료’를 말하게 하면 두 바퀴를 돌 수 있어요.">
+  <div class="store" id="store">
+    <div class="counter"><div class="stage"><span class="price" id="sPrice"></span><div class="dress" id="sDress"></div><div class="verdict" id="sVerdict"></div></div></div>
+    <div class="sinfo">
+      <div class="sname" id="sName"></div>
+      <div class="sq">🤔 이 물건, <b>살까요? 말까요?</b><br>👍 살래요 &nbsp;/&nbsp; 👎 안 살래요 — 왜 그렇게 생각해요?</div>
+      <div class="sans" id="sAns"></div>
+      <div class="sbtns"><button class="btn coral" onclick="judge()">⚖️ 판정!</button><button class="btn ghost" onclick="setItem((iIdx + 1) % ITEMS.length)">다음 물건 ▶</button></div>
+    </div>
+    <div class="dside">
+      <div class="rounds" id="sRounds"></div>
+      <div class="tally">정답 손님<b id="tally">0</b>명<br><button onclick="addTally(-1)">−</button><button onclick="addTally(1)">＋</button><button onclick="addTally(5)">＋5</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 미션 3 안내 -->
+<section class="slide" data-phase="미션 3 · 12분"
+ data-notes="<b>꼬마 우산 실험 준비</b> — 모둠마다: 나무젓가락 1개, 고무줄 2개, 휴지를 뭉쳐 만든 ‘휴지 인형’(종이컵 위에 올려요), 재료 4가지 중 하나(모둠이 골라요), 분무기 1개(반 전체). 우산을 5분 동안 만든 뒤, 모둠 차례대로 선생님이 분무기를 5번 뿌려요. 휴지 인형이 젖었는지 확인해요. 교과서 ‘비가 오는데 우산이 없어요(50~51쪽)’ 연계.">
+  <div class="kicker">MISSION 3</div>
+  <h2 class="title">☂️ 꼬마 우산 실험</h2>
+  <div class="rules" style="max-width:1120px">
+    <div class="rule"><span>1</span><div>휴지 인형이 비를 맞지 않게 <b class="hl">꼬마 우산</b>을 만들어요.</div></div>
+    <div class="rule"><span>2</span><div>재료 <b class="c-navy">한 가지</b>를 골라 나무젓가락에 고무줄로 묶어요. (5분)</div></div>
+    <div class="rule"><span>3</span><div>분무기 비를 <b class="c-coral">5번</b> 뿌려요. 휴지 인형은 ☀️ 보송보송? 💧 축축?</div></div>
+    <div class="rule"><span>4</span><div>왜 그 재료가 비를 잘 막았는지 말해요.</div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:320px">
+</section>
+
+<!-- 10 미션 3 기록판 -->
+<section class="slide" data-phase="미션 3 · 12분" style="padding-top:78px"
+ data-notes="<b>진행</b> — ① 모둠이 재료를 고르면 ‘재료’ 칸을 눌러 바꿔요. ② ‘만들기 5분’. ③ 모둠마다 예상(☀️/💧)을 누르고, 분무기 칸을 눌러 5번 뿌린 뒤 결과를 눌러요. ④ 모두 끝나면 ‘결론 보기’.">
+  <div class="ubox">
+    <div class="urows" id="urows"></div>
+    <div class="uside">
+      <div class="uclock"><small id="uLbl">우산 만들기</small><b id="uClock">5:00</b></div>
+      <button class="btn mint" id="uGo" onclick="buildGo()">▶ 만들기 5분</button>
+      <div class="spray" id="spray"></div>
+      <button class="btn ghost" onclick="sprayOne()">💦 분무기 한 번</button>
+      <button class="btn coral" onclick="uConclude()">💡 결론 보기</button>
+      <div class="uconc" id="uconc">☀️ 보송보송했던 재료는 <b>물이 스며들지 않는</b> 비닐과 포일이에요.<br>그래서 진짜 우산은 <b>비닐</b>이나 <b>물이 스며들지 않게 만든 천</b>으로 만들어요!</div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 활동지 안내 -->
+<section class="slide" data-phase="미션 4 · 6분"
+ data-notes="<b>재료 탐정 보고서</b> — ‘활동지 바로 인쇄’로 인쇄해 나눠 줘요. ① 미션 1 실험 결과를 표에 옮겨 적고 ② 우산 실험 결과 ③ 상황에 알맞은 재료 고르기. 예시 답안은 📗 단추로 볼 수 있어요.">
+  <div class="kicker">MISSION 4 · 활동지</div>
+  <div class="ws">
+    <img class="wsprev" src="img/worksheet_preview.png" alt="활동지 미리 보기">
+    <div class="steps">
+      <h2 class="title" style="font-size:52px;margin-bottom:4px">📮 재료 탐정 보고서</h2>
+      <div class="s"><span>1</span>재료 실험 결과를 표에 적어요</div>
+      <div class="s"><span>2</span>꼬마 우산 실험 결과를 적어요</div>
+      <div class="s"><span>3</span>상황에 알맞은 재료를 골라요</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
+    </div>
+  </div>
+</section>
+
+<!-- 12 타이머 -->
+<section class="slide center" data-phase="미션 4 · 6분"
+ data-notes="<b>활동 시간</b> — 기본 6분. 칠판의 실험 결과를 보면서 써도 돼요.">
+  <div class="kicker">MISSION 4 · 활동 시간</div>
+  <h2 class="title" style="font-size:56px;margin-bottom:36px">재료 탐정 보고서를 써요!</h2>
+  <div class="timer" data-sec="360"></div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="left:90px;bottom:96px;width:250px">
+</section>
+
+<!-- 13 발표 -->
+<section class="slide" data-phase="정리 · 4분"
+ data-notes="<b>재료 추천 발표</b> — 번호를 뽑은 학생이 보고서 3번 중 하나를 골라 ‘왜 그 재료인지’ 말해요. 2명.">
+  <div class="kicker">PRESENTATION</div>
+  <h2 class="title" style="font-size:56px">🎤 재료 추천 발표</h2>
+  <div class="quizshow">
+    <div class="qsteps">
+      <div class="s">① “<b>○○</b>을(를) 만들 때는”</div>
+      <div class="s">② “<b>△△</b>(으)로 만드는 게 좋아요.”</div>
+      <div class="s">③ “왜냐하면 <b>~하기 때문이에요</b>.”</div>
+      <div class="s">④ 친구들은 👍 또는 다른 재료를 추천해요.</div>
+    </div>
+    <div class="qpick">
+      <div class="pickball" id="picker">?</div>
+      <div class="pickset">인원 <input type="number" id="pickMax" value="25" min="2" max="40"> 명
+        <button class="btn coral" style="font-size:24px;padding:11px 24px" onclick="pick()">🎲 뽑기</button></div>
+      <div class="history" id="pickHist"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 4분"
+ data-notes="<b>배움 정리</b> — 빈칸에 들어갈 말을 먼저 말하게 한 뒤 눌러 공개해요.">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 2번 방 세 번째 비밀 문장</h2>
+  <div class="cipher">재료마다 <span class="blank" onclick="openBlank(this)">특징</span>이 달라서<br>쓰임새에 알맞은 <span class="blank" onclick="openBlank(this)">재료</span>를 골라 만들어요.</div>
+  <div class="chips"><span class="chip">재료</span><span class="chip">이름</span><span class="chip">특징</span><span class="chip">가격</span></div>
+</section>
+
+<!-- 15 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 4분" data-hook="key"
+ data-notes="<b>보상</b> — 2번 방 열쇠 조각 3개째! 열쇠를 누르면 다시 반짝여요.">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 2번 방 열쇠 조각 <span class="c-gold">3</span>개!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">5차시 ✔</div><div class="on">6차시 ✔</div><div class="on">7차시 ✔</div><div>8차시</div><div>9차시</div></div>
+</section>
+
+<!-- 16 다음 -->
+<section class="slide" data-phase="정리 · 4분"
+ data-notes="<b>다음 차시 예고</b> — 집에서 종이 상자·종이컵처럼 ‘튼튼한 종이 물건’을 찾아보기. 종이를 어떻게 했길래 튼튼할까?">
+  <div class="kicker">NEXT MISSION</div>
+  <div class="next">
+    <img class="doorimg" src="../05/img/door2.jpg" alt="">
+    <div>
+      <span class="pill mint">8차시 예고</span>
+      <h2 class="title" style="font-size:80px">종이의<br>놀라운 힘</h2>
+      <p class="big" style="color:var(--ink2);margin-top:18px">얇은 종이로 <b class="hl">책을 들어 올릴 수</b> 있을까?<br>🕵️ 튼튼한 종이 물건을 찾아오세요!</p>
+      <button class="btn mint" id="doneBtn" style="margin-top:26px" onclick="complete()">✅ 7차시 미션 완료</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:2, lesson:7, keyPieces:3};</script>
+<script src="../shared/base.js"></script>
+<script>
+/* ---------- 재료와 물건 ---------- */
+const MAT = {paper:'종이', cloth:'천', vinyl:'비닐', foil:'포일', glass:'유리', metal:'쇠', rubber:'고무', wool:'털실', wood:'나무', tissue:'휴지', choco:'초콜릿', ice:'얼음', box:'종이 상자'};
+const OBJ = {
+  umbrella:['우산', '../01/img/obj_umbrella.png'], sneakers:['운동화', '../01/img/obj_sneakers.png'], mittens:['장갑', '../02/img/obj_mittens.png'], cup:['컵', '../01/img/obj_cup.png'],
+  chair:['의자', '../01/img/obj_chair.png'], backpack:['책가방', '../01/img/obj_backpack.png'], suitcase:['여행 가방', '../02/img/obj_suitcase.png'], glasses:['안경', '../02/img/obj_glasses.png'],
+  flashlight:['손전등', '../02/img/obj_flashlight.png'], pencil:['연필', '../01/img/obj_pencil.png'], scissors:['가위', '../01/img/obj_scissors_flat.png'], straw:['빨대', '../02/img/obj_straw.png'],
+  clothespin:['빨래집게', '../02/img/obj_clothespin.png']};
+/* 받침에 따라 로/으로 (ㄹ 받침은 로) */
+const ro = w => { const c = w.charCodeAt(w.length - 1) - 0xAC00, j = c % 28; return w + (c >= 0 && c < 11172 && j && j !== 8 ? '으로' : '로'); };
+/* 물건 그림에 재료 무늬 입히기 */
+const dress = (o, m) => `<img src="${OBJ[o][1]}" alt=""><div class="skin tx-${m}" style="-webkit-mask-image:url(${OBJ[o][1]});mask-image:url(${OBJ[o][1]})"></div>`;
+
+/* ---------- 이야기 ---------- */
+hooks.story = () => { typewriter(document.getElementById('storyText'),
+  '“어서 오세요, 마법사의 물건 가게예요! 흐흐흐.”<br>마법사가 물건의 <b class="c-coral">재료</b>를 몽땅 바꿔 버렸어요.<br>종이 우산, 유리 운동화, 쇠 장갑…<br>요원 여러분, <b class="c-navy">재료의 비밀</b>을 밝혀 주세요!');
+  document.getElementById('shop').innerHTML = [['umbrella', 'paper'], ['sneakers', 'glass'], ['mittens', 'metal']].map(([o, m]) => `<div class="it"><div class="dress">${dress(o, m)}</div>${MAT[m]} ${OBJ[o][0]}</div>`).join(''); };
+
+/* ---------- 미션 1: 재료 실험실 (a: 선생님 실험 결과, o ⭕ / t △ / x ❌) ---------- */
+const LMAT = ['paper', 'cloth', 'vinyl', 'foil'];
+const TESTS = [['💧', '물이 스며드나요?', ['o', 'o', 'x', 'x']], ['✊', '구기면 자국이 남나요?', ['o', 't', 't', 'o']], ['🔦', '빛이 비치나요?', ['t', 't', 'o', 'x']], ['✋', '손으로 쉽게 찢어지나요?', ['o', 'x', 't', 'o']]];
+const SYM = {o:'⭕', t:'△', x:'❌', '':''}, NEXT = {'':'o', o:'t', t:'x', x:''};
+let lab = TESTS.map(() => LMAT.map(() => ''));
+function drawLab(){ const T = document.getElementById('ltable');
+  T.innerHTML = '<div></div>' + LMAT.map(m => `<div class="mh"><div class="sw tx-${m}"></div>${MAT[m]}</div>`).join('')
+    + TESTS.map((t, r) => `<div class="th"><span class="emo">${t[0]}</span>${t[1]}</div>` + LMAT.map((m, c) => { const v = lab[r][c];
+      return `<div class="lc ${v} ${v && v === t[2][c] ? 'match' : ''}" onclick="labCell(${r},${c})">${SYM[v]}<span class="ex">${SYM[t[2][c]]}</span></div>`; }).join('')).join(''); }
+function labCell(r, c){ lab[r][c] = NEXT[lab[r][c]]; S.tick(); drawLab(); }
+function labShow(){ document.getElementById('lab').classList.add('show'); S.win();
+  const same = TESTS.reduce((n, t, r) => n + t[2].filter((v, c) => lab[r][c] === v).length, 0);
+  document.getElementById('lmsg').innerHTML = `오른쪽 아래 작은 기호가 선생님 실험 결과예요. 우리 결과와 <b>${same}칸</b>이 같아요!<br>💡 <b>비닐·포일</b>은 물이 스며들지 않고, <b>천</b>은 잘 찢어지지 않아요.`; }
+function labReset(){ lab = TESTS.map(() => LMAT.map(() => '')); document.getElementById('lab').classList.remove('show'); S.flip(); drawLab(); }
+
+/* ---------- 미션 2: 엉터리 물건 가게 (ok: 쓸 만한 물건, w: 판정 까닭, b: 알맞은 재료) ---------- */
+const ITEMS = [
+  {o:'umbrella', m:'paper', p:'100원', w:'비에 젖으면 <b>흐물흐물 찢어져요</b>.', b:'vinyl', bn:'비닐이나 물이 스며들지 않는 천'},
+  {o:'sneakers', m:'glass', p:'500원', w:'딱딱하고 <b>깨지면 다쳐요</b>. 발도 아파요.', b:'cloth', bn:'천과 고무'},
+  {o:'mittens', m:'metal', p:'300원', w:'<b>차갑고</b> 손가락을 구부릴 수 없어요.', b:'wool', bn:'털실'},
+  {o:'cup', m:'tissue', p:'50원', w:'물을 부으면 <b>줄줄 새요</b>.', b:'glass', bn:'유리나 도자기'},
+  {o:'backpack', m:'cloth', p:'1000원', ok:1, w:'천은 <b>가볍고 튼튼하고</b> 잘 찢어지지 않아요.', b:'cloth', bn:'천'},
+  {o:'chair', m:'paper', p:'200원', w:'앉으면 <b>찌그러져요</b>.', b:'wood', bn:'나무나 쇠'},
+  {o:'suitcase', m:'box', p:'300원', w:'비에 젖고 <b>쉽게 찢어져요</b>.', b:'vinyl', bn:'단단한 플라스틱'},
+  {o:'glasses', m:'wood', p:'400원', w:'렌즈가 나무라서 <b>앞이 안 보여요</b>.', b:'glass', bn:'투명한 유리나 플라스틱'},
+  {o:'umbrella', m:'vinyl', p:'800원', ok:1, w:'비닐은 <b>물이 스며들지 않아요</b>. 비닐우산은 진짜 있어요!', b:'vinyl', bn:'비닐'},
+  {o:'flashlight', m:'ice', p:'100원', w:'손에 쥐면 <b>녹아서 물이 돼요</b>.', b:'metal', bn:'플라스틱이나 쇠'},
+  {o:'pencil', m:'rubber', p:'50원', w:'흐물흐물 휘어서 <b>글씨를 쓸 수 없어요</b>.', b:'wood', bn:'나무'},
+  {o:'scissors', m:'metal', p:'700원', ok:1, w:'쇠는 <b>단단하고 날카로워서</b> 종이가 잘 잘려요.', b:'metal', bn:'쇠'},
+  {o:'straw', m:'wool', p:'30원', w:'구멍 사이로 <b>물이 새서</b> 빨아 마실 수 없어요.', b:'vinyl', bn:'플라스틱이나 종이'},
+  {o:'clothespin', m:'choco', p:'200원', w:'손에서 <b>녹고 쉽게 부러져요</b>. 빨래에 초콜릿이 묻어요!', b:'wood', bn:'나무나 플라스틱'},
+  {o:'cup', m:'glass', p:'900원', ok:1, w:'유리는 <b>물이 새지 않고</b> 속이 보여요.', b:'glass', bn:'유리'},
+  {o:'chair', m:'wood', p:'1500원', ok:1, w:'나무는 <b>단단하고 튼튼해서</b> 앉아도 괜찮아요.', b:'wood', bn:'나무'}];
+let iIdx = 0, tally = 0; const iDone = {};
+function setItem(i){ iIdx = i; const it = ITEMS[i]; S.flip(); const st = document.getElementById('store'); st.classList.remove('rev');
+  const d = document.getElementById('sDress'); d.className = 'dress'; d.innerHTML = dress(it.o, it.m);
+  document.getElementById('sPrice').textContent = '단돈 ' + it.p + '!';
+  document.getElementById('sName').innerHTML = `<small>물건 ${i + 1} / ${ITEMS.length}</small><span class="mt">${ro(MAT[it.m])}</span> 만든 ${OBJ[it.o][0]}`;
+  document.getElementById('sRounds').innerHTML = ITEMS.map((_, n) => `<button class="${n === i ? 'on' : iDone[n] ? 'done' : ''}" onclick="setItem(${n})">${n + 1}</button>`).join(''); }
+function judge(){ const it = ITEMS[iIdx], a = document.getElementById('sAns');
+  document.getElementById('sVerdict').textContent = it.ok ? '⭕' : '❌';
+  a.className = 'sans ' + (it.ok ? 'good' : 'bad');
+  a.innerHTML = it.ok ? `<div class="sw tx-${it.b}"></div><div>👍 <b>살래요!</b> ${it.w}</div>` : `<div class="sw tx-${it.b}"></div><div>👎 <b>안 살래요!</b> ${it.w}<br>👉 <b>${ro(it.bn)}</b> 바꿔요.</div>`;
+  document.getElementById('store').classList.add('rev'); iDone[iIdx] = 1; it.ok ? S.win() : S.no();
+  document.querySelectorAll('#sRounds button')[iIdx].className = 'on'; }
+function addTally(d){ tally = Math.max(0, tally + d); if(d > 0) S.ok(); document.getElementById('tally').textContent = tally; }
+
+/* ---------- 미션 3: 꼬마 우산 실험 ---------- */
+const UMAT = ['paper', 'cloth', 'vinyl', 'foil'], UEXPECT = {paper:'wet', cloth:'wet', vinyl:'dry', foil:'dry'};
+let uTeams = 6, uLeft = 300, uTimer = null, sprays = 0; const uRow = [...Array(8)].map(() => ({m:-1, p:'', r:''}));
+function drawU(){ document.getElementById('urows').innerHTML = '<div class="urow" style="max-height:44px"><div></div><div class="hd">고른 재료</div><div class="hd">예상</div><div class="hd">결과</div></div>'
+  + uRow.slice(0, uTeams).map((u, t) => `<div class="urow"><div class="tn">${t + 1}모둠</div>
+    <div class="ucell" onclick="uMat(${t})">${u.m < 0 ? '<span style="color:#c9b38e">눌러서 고르기</span>' : `<div class="sw tx-${UMAT[u.m]}"></div>${MAT[UMAT[u.m]]}`}</div>
+    <div class="ucell ${u.p}" onclick="uFlip(${t},'p')">${u.p === 'dry' ? '☀️' : u.p === 'wet' ? '💧' : '<span style="color:#c9b38e;font-size:22px">?</span>'}</div>
+    <div class="ucell ${u.r}" onclick="uFlip(${t},'r')">${u.r === 'dry' ? '☀️' : u.r === 'wet' ? '💧' : '<span style="color:#c9b38e;font-size:22px">?</span>'}</div></div>`).join('')
+  + `<div style="text-align:center;font-size:19px;color:var(--ink2)">모둠 수 <button class="btn ghost" style="font-size:16px;padding:2px 10px" onclick="uSetTeams(-1)">−</button> ${uTeams} <button class="btn ghost" style="font-size:16px;padding:2px 10px" onclick="uSetTeams(1)">＋</button></div>`;
+  document.getElementById('uClock').textContent = `${Math.floor(uLeft / 60)}:${String(uLeft % 60).padStart(2, '0')}`;
+  document.getElementById('spray').innerHTML = [...Array(5)].map((_, k) => `<i class="${k < sprays ? 'on' : ''}">💦</i>`).join(''); }
+function uMat(t){ uRow[t].m = (uRow[t].m + 1) % UMAT.length; S.tick(); drawU(); }
+function uFlip(t, k){ uRow[t][k] = uRow[t][k] === '' ? 'dry' : uRow[t][k] === 'dry' ? 'wet' : ''; S.tick(); drawU(); }
+function uSetTeams(d){ uTeams = Math.min(8, Math.max(2, uTeams + d)); drawU(); }
+function buildStop(){ clearInterval(uTimer); uTimer = null; document.getElementById('uGo').textContent = '▶ 만들기 5분'; }
+function buildGo(){ if(uTimer){ buildStop(); return; } document.getElementById('uGo').textContent = '⏸ 멈춤'; S.tick();
+  uTimer = setInterval(() => { uLeft--; if(uLeft <= 0){ buildStop(); uLeft = 0; S.end(); document.getElementById('uLbl').textContent = '비 내리기 시작!'; } drawU(); }, 1000); }
+function sprayOne(){ sprays = sprays >= 5 ? 1 : sprays + 1; snd([[1400, .05, 'triangle', .05], [900, .08, 'triangle', .04]]); drawU(); }
+function uConclude(){ document.getElementById('uconc').classList.add('show'); S.win(); }
+hooks.leave = i => { if(slides[i] && slides[i].querySelector('#uClock')) buildStop(); };
+
+window.onEsc = () => {};
+drawLab(); setItem(0); drawU(); startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>
