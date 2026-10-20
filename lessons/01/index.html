@@ -38,7 +38,7 @@ img{display:block;user-select:none;-webkit-user-drag:none}
 #dots i{width:12px;height:12px;border-radius:50%;background:#ead6b8;display:block;cursor:pointer}
 #dots i.on{background:var(--coral);transform:scale(1.25)}
 #dots i.done{background:#f5b9a8}
-#tools{position:absolute;right:24px;bottom:24px;display:flex;gap:8px;z-index:21}
+#tools{position:absolute;right:24px;bottom:24px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;max-width:400px;z-index:21}
 #tools button{background:#fff;color:var(--ink2);font-size:16px;padding:8px 12px;border-radius:12px;border:2px solid var(--line)}
 #notes{position:absolute;left:24px;right:24px;bottom:84px;background:#2b2118;border-radius:18px;padding:18px 24px;font-size:22px;line-height:1.6;color:#fbefdc;z-index:30;display:none;max-height:300px;overflow:auto;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 #notes b{color:var(--gold)}
@@ -456,7 +456,7 @@ b{font-family:var(--head);font-weight:400}
 
 <div id="notes"></div>
 <div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
-<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="printSheet('cards.html')">🖨️ 상황 카드</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="printSheet('cards.html')">🖨️ 상황 카드</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
 </div></div>
 
 <script>

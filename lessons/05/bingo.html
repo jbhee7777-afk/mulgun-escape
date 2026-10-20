@@ -14,11 +14,11 @@ body{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;color:#4a3426;backgrou
 .top small{display:block;font-family:'Gowun Dodum',sans-serif;font-size:10.5pt;color:#c9fff6}
 .who{display:flex;gap:4mm}
 .who div{flex:1;background:#fff;border:.5mm solid #f0d9b5;border-radius:4mm;padding:2.5mm 4mm;font-family:'Jua',sans-serif;font-size:13pt;color:#9a7b5f}
-.grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:3mm}
-.c{background:#fff;border:.8mm solid #8fe3d9;border-radius:5mm;display:flex;flex-direction:column;align-items:center;padding:4mm 3mm 3mm;text-align:center}
-.c .e{font-size:30pt;line-height:1.1}
-.c .t{font-family:'Jua',sans-serif;font-size:15pt;color:#2d3a7c;margin-top:1.5mm;line-height:1.2}
-.c .ln{margin-top:auto;width:100%;border-bottom:.5mm dotted #8fbcb6;height:9mm;font-size:10pt;color:#8fbcb6;display:flex;align-items:flex-end}
+.grid{flex:1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:2.5mm}
+.c{background:#fff;border:.8mm solid #8fe3d9;border-radius:4mm;display:flex;flex-direction:column;align-items:center;padding:2.5mm 2mm 2mm;text-align:center}
+.c .e{font-size:22pt;line-height:1.1}
+.c .t{font-family:'Jua',sans-serif;font-size:12.5pt;color:#2d3a7c;margin-top:1.5mm;line-height:1.2}
+.c .ln{margin-top:auto;width:100%;border-bottom:.5mm dotted #8fbcb6;height:8mm;font-size:9pt;color:#8fbcb6;display:flex;align-items:flex-end}
 .tip{background:#fff6d6;border:.5mm solid #ffd76b;border-radius:4mm;padding:3mm 5mm;font-size:11pt;line-height:1.6;color:#8a6200}
 .tip b{font-family:'Jua',sans-serif;font-weight:400}
 div.page:last-of-type{page-break-after:auto}
@@ -29,13 +29,15 @@ div.page:last-of-type{page-break-after:auto}
 <script>
 /* 칸 순서는 수업 화면(index.html)의 BOARDS 와 같아요 */
 const BOARDS = [
-  ['A', [['🪨', '울퉁불퉁해요'], ['🪞', '매끈매끈해요'], ['🔍', '투명해요'], ['🕳️', '구멍이 있어요'], ['🧽', '말랑말랑해요'], ['✨', '반짝반짝해요'], ['⚪', '동그래요'], ['🔔', '두드리면 소리가 나요'], ['🧊', '만지면 차가워요']]],
-  ['B', [['🦓', '줄무늬가 있어요'], ['🪶', '아주 가벼워요'], ['🏋️', '꽤 무거워요'], ['🌵', '까칠까칠해요'], ['🟦', '네모나요'], ['📏', '길쭉해요'], ['🪵', '나무로 되어 있어요'], ['🔢', '숫자나 글자가 있어요'], ['📄', '접을 수 있어요']]]];
+  ['', [['🪨', '울퉁불퉁해요', '솔방울, 지구본'], ['🪞', '매끈매끈해요', '유리창, 책상 위'], ['🔍', '투명해요', '물병, 자'], ['🕳️', '구멍이 있어요', '단추, 리코더'],
+    ['🧽', '말랑말랑해요', '지우개, 스펀지'], ['✨', '반짝반짝해요', '수도꼭지, 스티커'], ['⚪', '동그래요', '공, 시계'], ['🔔', '두드리면 소리가 나요', '실로폰, 책상'],
+    ['🧊', '만지면 차가워요', '창틀, 가위 날'], ['🦓', '줄무늬가 있어요', '커튼, 공책 줄'], ['🪶', '아주 가벼워요', '종이컵, 깃털'], ['🌵', '까칠까칠해요', '수세미, 칠판지우개'],
+    ['🟦', '네모나요', '책, 교과서'], ['📏', '길쭉해요', '자, 연필'], ['🪵', '나무로 되어 있어요', '책상, 연필'], ['🔢', '숫자나 글자가 있어요', '달력, 시계']]]];
 document.getElementById('pages').innerHTML = BOARDS.map(([n, cells]) => `<div class="page">
-  <div class="top"><span class="bd h">${n}판</span><h1 class="h">교실 관찰 빙고<small>2번 방 · 5차시 미션 3 · 교실을 돌며 찾아서 직접 만져 보고 써요</small></h1></div>
+  <div class="top"><span class="bd h">16칸</span><h1 class="h">교실 관찰 빙고<small>2번 방 · 5차시 미션 3 · 교실을 돌며 찾아서 직접 만져 보고 써요</small></h1></div>
   <div class="who"><div>모둠 :</div><div style="flex:2">모둠 친구들 :</div></div>
-  <div class="grid">${cells.map(c => `<div class="c"><span class="e">${c[0]}</span><span class="t">${c[1]}</span><div class="ln">물건 :</div></div>`).join('')}</div>
-  <div class="tip"><b>💡 약속</b> 찾은 물건은 꼭 <b>직접 보고 만져서</b> 확인해요. 친구 물건은 허락받고 만져요. 선생님이 부른 칸에 물건을 썼으면 ○를 쳐요. 한 줄이 되면 “빙고!”</div>
+  <div class="grid">${cells.map(c => `<div class="c"><span class="e">${c[0]}</span><span class="t">${c[1]}</span><div class="ln">물건 :&nbsp;${c[2] ? `<span class="ex">${c[2]}</span>` : ""}</div></div>`).join('')}</div>
+  <div class="tip"><b>💡 약속</b> 찾은 물건은 꼭 <b>직접 보고 만져서</b> 확인해요. 친구 물건은 허락받고 만져요. 선생님이 부른 칸에 물건을 썼으면 ○를 쳐요. 가로·세로·대각선 한 줄이 되면 “빙고!”</div>
 </div>`).join('');
 </script>
 <script src="../shared/print.js"></script>

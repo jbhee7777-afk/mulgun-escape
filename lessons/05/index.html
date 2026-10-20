@@ -107,12 +107,12 @@
 
 /* 미션 3: 교실 관찰 빙고 */
 .bingo{flex:1;display:flex;gap:26px;min-height:0;margin-top:6px}
-.bgrid{width:690px;flex:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bgrid{width:780px;flex:none;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .bc{background:#fff;border:4px solid var(--line);border-radius:24px;box-shadow:0 6px 0 var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;position:relative;transition:.3s;padding:6px}
-.bc .emo{font-size:58px}
-.bc span{font-family:var(--head);font-size:28px;color:var(--navy);line-height:1.2}
+.bc .emo{font-size:44px}
+.bc span{font-family:var(--head);font-size:23px;color:var(--navy);line-height:1.2}
 .bc.called{background:var(--teal2);border-color:var(--teal);box-shadow:0 6px 0 #7fd8cf}
-.bc.called::after{content:"";position:absolute;inset:10px;border:8px solid rgba(227,82,63,.75);border-radius:50%}
+.bc.called::after{content:"";position:absolute;inset:8px;border:7px solid rgba(227,82,63,.75);border-radius:50%}
 .bc.now{transform:scale(1.06);box-shadow:0 0 0 8px var(--gold)}
 .bside{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
 .btabs{display:flex;gap:10px}
@@ -269,12 +269,12 @@
 
 <!-- 9 미션 3 규칙 -->
 <section class="slide" data-phase="미션 3 · 8분"
- data-notes="<b>교실 관찰 빙고 안내</b> — ‘관찰 빙고판’(오른쪽 아래 🖨️)을 모둠마다 1장씩 나눠 줘요. 4분 동안 교실을 돌아다니며 칸에 맞는 물건을 찾아 직접 만져 보고 이름을 써요. 그다음 선생님이 칸을 하나씩 불러요. 그 칸에 물건을 쓴 모둠만 ○를 쳐요. 한 줄이 먼저 완성되면 “빙고!” — 그 줄의 물건을 실제로 보여 주며 확인해요.">
+ data-notes="<b>교실 관찰 빙고 안내</b> — ‘관찰 빙고판’(오른쪽 아래 🖨️)을 모둠마다 1장씩 나눠 줘요. 5분 동안 교실을 돌아다니며 칸에 맞는 물건을 찾아 직접 만져 보고 이름을 써요. 그다음 선생님이 칸을 하나씩 불러요. 그 칸에 물건을 쓴 모둠만 ○를 쳐요. 한 줄이 먼저 완성되면 “빙고!” — 그 줄의 물건을 실제로 보여 주며 확인해요.">
   <div class="kicker">MISSION 3</div>
   <h2 class="title">🎯 교실 관찰 빙고</h2>
   <div class="rules" style="max-width:1120px">
     <div class="rule"><span>1</span><div>모둠마다 <b class="hl">관찰 빙고판</b>을 받아요.</div></div>
-    <div class="rule"><span>2</span><div><b class="c-navy">4분</b> 동안 교실을 돌며 칸에 맞는 물건을 찾아 <b class="c-coral">직접 만져 보고</b> 이름을 써요.</div></div>
+    <div class="rule"><span>2</span><div><b class="c-navy">5분</b> 동안 교실을 돌며 <b class="hl">16칸</b>에 맞는 물건을 찾아 <b class="c-coral">직접 만져 보고</b> 이름을 써요.</div></div>
     <div class="rule"><span>3</span><div>선생님이 칸을 부르면, 그 칸에 쓴 물건이 있는 모둠만 ○!</div></div>
     <div class="rule"><span>4</span><div>한 줄이 완성되면 “빙고!” 그 물건을 보여 주며 확인해요.</div></div>
   </div>
@@ -283,12 +283,12 @@
 
 <!-- 10 미션 3 빙고 -->
 <section class="slide" data-phase="미션 3 · 8분" style="padding-top:78px"
- data-notes="<b>진행</b> — ① ‘찾기 4분’을 누르고 모둠이 교실을 돌아요. ② 다 모이면 ‘칸 부르기’를 누를 때마다 칸이 하나씩 골라져요. 빙고판이 A판·B판 두 개라서 두 판을 할 수 있어요(빙고판 인쇄물에도 두 장이 들어 있어요).">
+ data-notes="<b>진행</b> — ① ‘찾기 5분’을 누르고 모둠이 교실을 돌아요(16칸을 다 못 채워도 괜찮아요). ② 다 모이면 ‘칸 부르기’를 누를 때마다 칸이 하나씩 골라져요. 가로·세로·대각선 한 줄이 먼저 완성된 모둠이 “빙고!”. 계속 불러서 두 줄, 세 줄 빙고까지 해도 좋아요.">
   <div class="bingo">
     <div class="bgrid" id="bGrid"></div>
     <div class="bside">
-      <div class="btabs"><button id="bt0" onclick="setBoard(0)">🅰️ A판</button><button id="bt1" onclick="setBoard(1)">🅱️ B판</button></div>
-      <div class="bstep"><h4>① 교실 돌며 찾기</h4><div class="row"><b id="bClock">4:00</b><button class="btn mint" id="bGo" onclick="bingoSearch()">▶ 찾기 4분</button></div></div>
+      <div class="bstep" style="font-size:24px;line-height:1.5"><h4>🎯 16칸 관찰 빙고</h4>가로·세로·대각선 한 줄이 먼저 완성되면 “빙고!”</div>
+      <div class="bstep"><h4>① 교실 돌며 찾기</h4><div class="row"><b id="bClock">5:00</b><button class="btn mint" id="bGo" onclick="bingoSearch()">▶ 찾기 5분</button></div></div>
       <div class="bstep"><h4>② 칸 부르기</h4><div class="row"><button class="btn coral" onclick="bingoCall()">🎲 칸 부르기</button><button class="btn ghost" onclick="setBoard(bIdx)">↺ 처음부터</button></div>
         <div class="callnow" id="bNow"></div><div class="hist" id="bHist"></div></div>
     </div>
@@ -386,7 +386,7 @@
 
 <div id="notes"></div>
 <div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
-<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="printSheet('bingo.html')">🖨️ 관찰 빙고판</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="printSheet('bingo.html')">🖨️ 관찰 빙고판</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
 </div></div>
 
 <script>window.LESSON = {room:2, lesson:5, keyPieces:1};</script>
@@ -466,17 +466,17 @@ function touchReveal(){ touchStop(); const n = document.getElementById('tName').
   if(document.getElementById('tName').value.trim()) tFound.push(n); S.win(); drawTouch(); }
 function touchReset(){ touchStop(); tLeft = 20; tSaid.clear(); document.getElementById('tName').value = ''; document.getElementById('tFound').textContent = ''; S.flip(); drawTouch(); }
 
-/* ---------- 미션 3: 교실 관찰 빙고 (A판·B판, 칸 순서는 bingo.html 과 같아요) ---------- */
-const BOARDS = [
-  [['🪨', '울퉁불퉁해요'], ['🪞', '매끈매끈해요'], ['🔍', '투명해요'], ['🕳️', '구멍이 있어요'], ['🧽', '말랑말랑해요'], ['✨', '반짝반짝해요'], ['⚪', '동그래요'], ['🔔', '두드리면 소리가 나요'], ['🧊', '만지면 차가워요']],
-  [['🦓', '줄무늬가 있어요'], ['🪶', '아주 가벼워요'], ['🏋️', '꽤 무거워요'], ['🌵', '까칠까칠해요'], ['🟦', '네모나요'], ['📏', '길쭉해요'], ['🪵', '나무로 되어 있어요'], ['🔢', '숫자나 글자가 있어요'], ['📄', '접을 수 있어요']]];
-let bIdx = 0, bLeft = 240, bTimer = null; let bCalled = [];
+/* ---------- 미션 3: 교실 관찰 빙고 (4×4, 칸 순서는 bingo.html 과 같아요) ---------- */
+const BOARDS = [[['🪨', '울퉁불퉁해요'], ['🪞', '매끈매끈해요'], ['🔍', '투명해요'], ['🕳️', '구멍이 있어요'],
+  ['🧽', '말랑말랑해요'], ['✨', '반짝반짝해요'], ['⚪', '동그래요'], ['🔔', '두드리면 소리가 나요'],
+  ['🧊', '만지면 차가워요'], ['🦓', '줄무늬가 있어요'], ['🪶', '아주 가벼워요'], ['🌵', '까칠까칠해요'],
+  ['🟦', '네모나요'], ['📏', '길쭉해요'], ['🪵', '나무로 되어 있어요'], ['🔢', '숫자나 글자가 있어요']]];
+let bIdx = 0, bLeft = 300, bTimer = null; let bCalled = [];
 function drawBoard(){ const B = BOARDS[bIdx]; document.getElementById('bGrid').innerHTML = B.map((c, i) => `<div class="bc ${bCalled.includes(i) ? 'called' : ''} ${bCalled[bCalled.length - 1] === i ? 'now' : ''}"><span class="emo">${c[0]}</span><span>${c[1]}</span></div>`).join('');
-  [0, 1].forEach(n => document.getElementById('bt' + n).className = n === bIdx ? 'on' : '');
   document.getElementById('bClock').textContent = `${Math.floor(bLeft / 60)}:${String(bLeft % 60).padStart(2, '0')}`;
   document.getElementById('bHist').textContent = bCalled.length ? '부른 칸: ' + bCalled.map(i => B[i][1]).join(' · ') : ''; }
-function setBoard(n){ bIdx = n; bCalled = []; bingoStop(); bLeft = 240; document.getElementById('bNow').textContent = ''; S.flip(); drawBoard(); }
-function bingoStop(){ clearInterval(bTimer); bTimer = null; const g = document.getElementById('bGo'); if(g) g.textContent = '▶ 찾기 4분'; }
+function setBoard(n){ bIdx = n; bCalled = []; bingoStop(); bLeft = 300; document.getElementById('bNow').textContent = ''; S.flip(); drawBoard(); }
+function bingoStop(){ clearInterval(bTimer); bTimer = null; const g = document.getElementById('bGo'); if(g) g.textContent = '▶ 찾기 5분'; }
 function bingoSearch(){ if(bTimer){ bingoStop(); return; } document.getElementById('bGo').textContent = '⏸ 멈추기'; S.tick();
   bTimer = setInterval(() => { bLeft--; if(bLeft <= 0){ bingoStop(); bLeft = 0; S.end(); } drawBoard(); }, 1000); }
 function bingoCall(){ const B = BOARDS[bIdx], left = B.map((_, i) => i).filter(i => !bCalled.includes(i)); if(!left.length) return;
