@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>8차시 활동지 · 종이 힘 보고서</title>
+<link rel="stylesheet" href="../fonts/jua.css"><link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<style>
+/* 6·7차시와 같은 깔끔한 꾸밈 */
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#22313a;--sub:#6b7b84;--line:#d7e3e6;--teal:#127d74;--teal2:#e8f6f4;--gold:#f2b51c}
+body{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;color:var(--ink);background:#ddd;word-break:keep-all}
+.page{width:210mm;height:297mm;margin:0 auto;position:relative;overflow:hidden;background:#fff;padding:14mm 15mm 12mm}
+.h{font-family:'Jua','Malgun Gothic',sans-serif;font-weight:400}
+.head{display:flex;align-items:flex-end;gap:5mm;padding-bottom:4mm;border-bottom:.6mm solid var(--ink)}
+.head .lt{flex:1}
+.head .tag{font-size:9.5pt;color:var(--teal);letter-spacing:.4mm;font-weight:700}
+.head h1{font-size:27pt;line-height:1.1;margin-top:1.5mm}
+.head h1 span{color:var(--teal)}
+.head .goal{font-size:10pt;color:var(--sub);margin-top:1.5mm}
+.head .agent{width:22mm;margin-bottom:-2mm}
+.who{display:flex;gap:3mm;margin-top:3.5mm}
+.who div{flex:1;border-bottom:.35mm solid var(--line);padding:1mm 0;font-size:10pt;color:var(--sub)}
+.who div:first-child{flex:.5}
+.step{margin-top:3mm}
+.step .tt{display:flex;align-items:center;gap:3mm;margin-bottom:2.5mm}
+.step .no{font-family:'Jua',sans-serif;font-size:11pt;color:#fff;background:var(--teal);border-radius:50%;width:7mm;height:7mm;display:flex;align-items:center;justify-content:center;flex:none}
+.step .tt h2{font-size:14pt}
+.step .tt small{font-size:9.5pt;color:var(--sub);margin-left:auto}
+/* 1. 표 */
+table{width:100%;border-collapse:collapse;font-size:10.5pt}
+th,td{border:.35mm solid var(--line);text-align:center;height:9mm}
+th{font-family:'Jua',sans-serif;font-weight:400;font-size:11pt;background:var(--teal2);color:var(--teal);height:8mm}
+th svg{width:12mm;height:9mm;display:block;margin:0 auto}
+th .pp{fill:#fff8e8;stroke:#127d74;stroke-width:6;stroke-linejoin:round;stroke-linecap:round}
+td.q{text-align:left;padding:0 3mm;width:34mm;font-size:10pt;color:var(--sub)}
+td .ex{font-size:12pt}
+/* 2·3 */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.box{border:.35mm solid var(--line);border-radius:3mm;padding:3mm 4mm;display:flex;flex-direction:column;gap:2mm;position:relative}
+.box .lb{font-size:9pt;color:var(--teal);font-weight:700}
+.draw{height:22mm;border:.35mm dashed #a9c4c8;border-radius:2.5mm;position:relative}
+.ln{border-bottom:.35mm solid var(--line);min-height:8mm;display:flex;align-items:flex-end;padding-bottom:1mm;font-size:10.5pt;gap:2mm;color:var(--sub)}
+.ln .ex{color:var(--ink)}
+.pick{display:flex;gap:2mm;flex-wrap:wrap}
+.pick span{border:.35mm solid var(--line);border-radius:10mm;padding:1.2mm 3mm;font-size:10pt;position:relative}
+.pick span .ex{position:absolute;inset:-1.2mm;border:.6mm solid #e03131;border-radius:10mm}
+/* 4 */
+.finds{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
+.find{border:.35mm solid var(--line);border-radius:3mm;padding:2.5mm 3mm;display:flex;flex-direction:column;gap:1.5mm}
+.find .draw{height:11mm}
+.foot{position:absolute;left:15mm;right:15mm;bottom:12mm;display:flex;align-items:center;gap:5mm;padding-top:3.5mm;border-top:.35mm solid var(--line)}
+.check{flex:1;display:flex;gap:4mm}
+.check div{flex:1;font-size:9pt;color:var(--sub);line-height:1.35}
+.check div b{display:block;font-family:'Jua',sans-serif;font-weight:400;font-size:12pt;color:var(--gold);letter-spacing:.6mm}
+.key{display:flex;align-items:center;gap:1.2mm;font-size:8.5pt;color:var(--sub)}
+.key i{width:3.6mm;height:3.6mm;border-radius:50%;border:.3mm solid var(--teal);display:inline-block}
+.key i.on{background:var(--teal)}
+.exbox{display:none}
+@media print{body{background:none}.page{margin:0}}
+</style></head>
+<body><div class="page">
+  <div class="head">
+    <div class="lt">
+      <div class="tag">2번 방 · 8차시 · 미션 4</div>
+      <h1 class="h">종이 힘 <span>보고서</span></h1>
+      <div class="goal">종이를 접거나 말면 튼튼한 정도가 어떻게 달라지는지 실험해요.</div>
+    </div>
+    <img class="agent" src="../01/img/agent.png" alt="">
+  </div>
+  <div class="who"><div>번호</div><div>이름</div></div>
+
+  <div class="step">
+    <div class="tt"><span class="no">1</span><h2 class="h">모양마다 예상하고 실험해요</h2><small>종이 크기는 모두 같아요</small></div>
+    <table>
+      <tr><th>모양</th>
+        <th><svg viewBox="0 0 100 70"><line class="pp" x1="10" y1="35" x2="90" y2="35"/></svg>평평하게</th>
+        <th><svg viewBox="0 0 100 70"><polyline class="pp" points="12,58 50,12 88,58"/></svg>반으로 접기</th>
+        <th><svg viewBox="0 0 100 70"><polyline class="pp" points="8,52 22,18 36,52 50,18 64,52 78,18 92,52"/></svg>병풍 접기</th>
+        <th><svg viewBox="0 0 100 70"><circle class="pp" cx="50" cy="35" r="24"/></svg>둥글게 말기</th>
+        <th><svg viewBox="0 0 100 70"><polygon class="pp" points="50,8 82,62 18,62"/></svg>세모 기둥</th></tr>
+      <tr><td class="q">내 예상 순위 (1~5등)</td><td><span class="ex">5</span></td><td><span class="ex">4</span></td><td><span class="ex">1</span></td><td><span class="ex">2</span></td><td><span class="ex">3</span></td></tr>
+      <tr><td class="q">버틴 동전 수 (개)</td><td><span class="ex">1</span></td><td><span class="ex">6</span></td><td><span class="ex">18</span></td><td><span class="ex">15</span></td><td><span class="ex">12</span></td></tr>
+    </table>
+  </div>
+
+  <div class="step">
+    <div class="tt"><span class="no">2</span><h2 class="h">가장 튼튼했던 모양은?</h2></div>
+    <div class="two">
+      <div class="box"><span class="lb">그 모양을 그려요</span><div class="draw"><div class="exbox">〰️ 병풍 접기</div></div></div>
+      <div class="box"><span class="lb">왜 튼튼했을까요?</span>
+        <div class="ln"><span class="ex">접힌 줄이 작은 기둥처럼 세워져서</span></div>
+        <div class="ln"><span class="ex">무게를 나눠서 받쳐 주기 때문이에요.</span></div>
+        <span class="lb" style="margin-top:1mm">내 예상과 비교하면?</span>
+        <div class="pick"><span>😀 맞았어요<i class="ex"></i></span><span>😮 달랐어요</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="tt"><span class="no">3</span><h2 class="h">우리 모둠 종이 기둥</h2></div>
+    <div class="two">
+      <div class="box"><span class="lb">우리 모둠 기둥 모양을 그려요</span><div class="draw" style="height:19mm"></div></div>
+      <div class="box">
+        <div class="ln">올린 책 : <span class="ex">7</span> 권</div>
+        <span class="lb" style="margin-top:1mm">다시 만든다면 이렇게 바꾸고 싶어요</span>
+        <div class="ln"><span class="ex">종이를 두 겹으로 겹쳐서 둥글게 말고 싶어요.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="tt"><span class="no">★</span><h2 class="h">우리 주변의 튼튼한 종이 물건을 찾아요</h2><small>접었나요? 말았나요? 겹쳤나요?</small></div>
+    <div class="finds">
+      <div class="find"><div class="draw"></div><div class="ln">물건 <span class="ex">골판지 상자</span></div><div class="ln">비밀 <span class="ex">물결 모양 종이</span></div></div>
+      <div class="find"><div class="draw"></div><div class="ln">물건 <span class="ex">종이컵</span></div><div class="ln">비밀 <span class="ex">입구를 말았어요</span></div></div>
+      <div class="find"><div class="draw"></div><div class="ln">물건 <span class="ex">휴지심</span></div><div class="ln">비밀 <span class="ex">둥근 기둥</span></div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="check">
+      <div>예상하고 실험했어요<b>☆☆☆</b></div>
+      <div>모양에 따라 힘이 다른 것을 알아요<b>☆☆☆</b></div>
+      <div>새로운 기둥 아이디어를 냈어요<b>☆☆☆</b></div>
+    </div>
+    <div class="key">2번 방 열쇠 <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+  </div>
+</div><script src="../shared/print.js"></script></body></html>
