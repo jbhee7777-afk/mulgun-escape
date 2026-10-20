@@ -15,7 +15,7 @@
 .exbox img{max-width:80%;max-height:75%;object-fit:contain}
 .answer .nohint::before,.answer .nohint::after{content:none !important}
 .answer .exstamp{display:flex}
-.exstamp{display:none;position:absolute;right:7mm;top:32mm;z-index:5;align-items:center;justify-content:center;width:26mm;height:26mm;border-radius:50%;border:1mm solid #e03131;color:#e03131;font-family:Jua,'Malgun Gothic',sans-serif;font-size:11pt;line-height:1.25;text-align:center;transform:rotate(-12deg);background:rgba(255,255,255,.75)}
+.exstamp{display:none;position:absolute;right:7mm;top:46mm;z-index:5;align-items:center;justify-content:center;width:26mm;height:26mm;border-radius:50%;border:1mm solid #e03131;color:#e03131;font-family:Jua,'Malgun Gothic',sans-serif;font-size:11pt;line-height:1.25;text-align:center;transform:rotate(-12deg);background:rgba(255,255,255,.75)}
 #sheetBtns{position:fixed;right:18px;top:18px;z-index:9;display:flex;gap:8px}
 #sheetBtns button{font-family:Jua,'Malgun Gothic',sans-serif;font-size:18px;border:none;border-radius:14px;padding:12px 18px;cursor:pointer;background:#ffc53d;color:#5a3d00;box-shadow:0 4px 0 #d79e12}
 #sheetBtns button.ans{background:#fff;color:#e03131;box-shadow:0 4px 0 #f0b3b3}

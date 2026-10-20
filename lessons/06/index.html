@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2번 방 · 6차시 생김새에는 비밀이 있다</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<style>
+/* 2번 방 색 */
+:root{--teal:#4fe0d2;--teal2:#d6fbf5;--tealdk:#139c8f}
+#topbar .room{background:#137f76;box-shadow:0 3px 0 #0b5952}
+.emo{display:flex;align-items:center;justify-content:center;line-height:1;font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif}
+/* 물건 그림: 그림 파일, 실제 사진(../shared/photos, 출처는 CREDITS.md), 또는 직접 그린 그림(svg) */
+.ph{border-radius:22%;object-fit:cover !important;box-shadow:0 0 0 3px #fff,0 4px 10px rgba(61,43,31,.22)}
+.fig{position:relative;aspect-ratio:1;background:#fff;border-radius:28px;overflow:hidden}
+.fig>img,.fig>svg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.fig>img.photo{object-fit:cover}
+.ring{position:absolute;transform:translate(-50%,-50%);border-radius:50%;aspect-ratio:1;height:auto !important;border:7px dashed #e3523f;box-shadow:0 0 0 6px rgba(255,255,255,.7);pointer-events:none;animation:pulse 1.4s infinite}
+.fig>.after{opacity:0;transition:opacity .9s ease .25s}
+.fig.erased>.after{opacity:1}
+.fig.erased>.before{opacity:0;transition:opacity .9s ease .25s}
+.fig.erased .ring{display:none}
+.wipe{position:absolute;transform:translate(-50%,-50%);font-size:80px;font-family:'Segoe UI Emoji',sans-serif;pointer-events:none;opacity:0}
+.fig.erased .wipe{animation:wipe 1.1s ease-in-out}
+@keyframes wipe{0%{opacity:1;transform:translate(-90%,-60%) rotate(-15deg)}25%{transform:translate(-10%,-40%) rotate(10deg)}50%{transform:translate(-90%,-20%) rotate(-10deg)}75%{opacity:1;transform:translate(-10%,0%) rotate(10deg)}100%{opacity:0;transform:translate(-50%,-30%)}}
+
+/* 지난 시간 */
+.recap{display:flex;gap:40px;flex:1;align-items:center}
+.recap .box{flex:1;display:flex;flex-direction:column;gap:18px}
+.homework{background:var(--paper);border:3px dashed var(--coral);border-radius:28px;padding:24px 30px;font-size:31px;line-height:1.6}
+.homework b{color:#e3523f}
+
+/* 이야기 */
+.erased3{display:flex;gap:18px;justify-content:center;margin-top:16px}
+.erased3 .fig{width:150px;border-radius:24px;box-shadow:0 0 0 4px rgba(255,255,255,.7)}
+
+/* 미션 1: 생김새 지우개 */
+.eraser{flex:1;display:flex;gap:26px;min-height:0;margin-top:6px}
+.eraser .fig{width:600px;flex:none;box-shadow:0 0 0 6px #fff,0 14px 30px rgba(61,43,31,.2)}
+.einfo{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.ename{font-family:var(--head);font-size:54px;color:var(--navy)}
+.ename small{display:block;font-size:24px;color:var(--ink2)}
+.estep{background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 22px;font-size:29px;line-height:1.5}
+.estep b{color:#e3523f}
+.eans{background:var(--mint2);border-radius:22px;padding:14px 22px;font-size:28px;line-height:1.55;display:none}
+.eans.show{display:block;animation:enter .5s}
+.eans b{color:#0f8a6e}
+.ebtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto}
+.ebtns .btn{font-size:21px;padding:11px 14px}
+.dside{width:220px;display:flex;flex-direction:column;gap:10px}
+.rounds{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rounds button{height:50px;border-radius:14px;background:#fff;border:3px solid var(--line);font-size:22px;color:var(--navy)}
+.rounds button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.rounds button.done{background:var(--mint2);border-color:var(--mint);color:#0f8a6e}
+
+/* 미션 2: 실험 스테이션 */
+.stations{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px}
+.st{background:var(--paper);border:3px solid var(--line);border-radius:26px;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 0 var(--line)}
+.st .hd{display:flex;align-items:center;gap:10px;font-family:var(--head);font-size:30px;color:var(--navy)}
+.st .hd .emo{font-size:46px}
+.st .no{width:44px;height:44px;border-radius:50%;background:var(--teal);color:#04392b;font-family:var(--head);font-size:26px;display:flex;align-items:center;justify-content:center;flex:none}
+.st .need{font-size:21px;color:var(--ink2);line-height:1.45;background:#fff;border-radius:14px;padding:8px 12px}
+.st .how{font-size:23px;line-height:1.5}
+.st .grp{margin-top:auto;font-family:var(--head);font-size:28px;color:#e3523f;text-align:center;min-height:44px;background:#fff5f2;border-radius:16px;padding:6px}
+.st.empty .grp{color:#c9b38e;background:#fff}
+.rot{display:flex;align-items:center;gap:18px;background:var(--navy);color:#fff;border-radius:26px;padding:12px 24px;box-shadow:0 8px 0 #1c2557}
+.rot .r{font-family:var(--head);font-size:30px;color:var(--gold2)}
+.rot b{font-family:var(--head);font-weight:400;font-size:64px;line-height:1;min-width:170px;text-align:center}
+.rot b.low{color:#ff9a8a}
+.rot .btn{font-size:22px;padding:11px 16px}
+.rot .sp{margin-left:auto;font-size:20px;color:#cdd4ff;display:flex;align-items:center;gap:8px}
+.rot .sp button{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.15);color:#fff;font-size:20px}
+.secret{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+.sc{background:var(--paper);border:3px solid var(--line);border-radius:24px;padding:16px 22px;font-size:28px;line-height:1.5;cursor:pointer;box-shadow:0 6px 0 var(--line);min-height:150px}
+.sc .q{font-family:var(--head);font-size:30px;color:var(--navy)}
+.sc .a{opacity:0;transition:.4s;margin-top:6px}
+.sc .a b{color:#0f8a6e}
+.sc.open .a{opacity:1}
+.sc.open{border-color:var(--mint);background:var(--mint2)}
+
+/* 미션 3: 물건 디자이너 */
+.design{flex:1;display:flex;gap:24px;min-height:0;margin-top:6px}
+.dmain{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.prob{display:flex;align-items:center;gap:20px;background:var(--navy);color:#fff;border-radius:28px;padding:16px 28px;box-shadow:0 8px 0 #1c2557}
+.prob .emo{font-size:76px;width:100px;flex:none}
+.prob .t{font-family:var(--head);font-size:38px;line-height:1.4}
+.prob .t small{display:block;font-size:22px;color:var(--gold2)}
+.drow2{flex:1;display:flex;gap:20px;min-height:0}
+.board{flex:1;border-radius:28px;background:#fff;border:5px solid #c9d3e6;box-shadow:inset 0 0 0 10px #f3f6fb;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:20px}
+.board .big{font-family:var(--head);font-size:120px;line-height:1;color:var(--navy)}
+.board .big.low{color:#e3523f}
+.board p{font-size:28px;color:var(--ink2);line-height:1.5}
+.board .btn{font-size:24px;padding:12px 22px}
+.real{width:420px;flex:none;display:none;flex-direction:column;gap:10px}
+.real.show{display:flex;animation:enter .5s}
+.real .fig{width:100%;box-shadow:0 0 0 5px #fff,0 10px 24px rgba(61,43,31,.18)}
+.real .cap{background:var(--mint2);border-radius:20px;padding:12px 18px;font-size:25px;line-height:1.5}
+.real .cap b{color:#0f8a6e}
+.dbtns{display:flex;gap:12px}
+.dbtns .btn{font-size:23px;padding:12px 18px}
+.score{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:10px 12px}
+.score h4{font-family:var(--head);font-weight:400;font-size:22px;color:var(--ink2);text-align:center;margin-bottom:6px}
+.team{display:flex;align-items:center;gap:8px;padding:4px 4px;font-family:var(--head);font-size:22px}
+.team .tn{flex:1}
+.team .pt{width:40px;text-align:center;font-size:26px;color:#e3523f}
+.team button{width:34px;height:34px;border-radius:10px;background:var(--gold2);font-size:22px;color:#5a3d00}
+.team button.m{background:#f1e6d4;color:var(--ink2)}
+.ptguide{font-size:19px;color:var(--ink2);text-align:center;line-height:1.4}
+
+/* 발표 */
+.quizshow{display:flex;gap:50px;align-items:center;flex:1}
+.qsteps{flex:1;display:flex;flex-direction:column;gap:14px}
+.qsteps .s{font-size:30px;background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 22px}
+.qsteps .s b{color:var(--navy)}
+.qpick{width:420px;flex:none;text-align:center}
+.qpick .pickball{width:300px;height:300px;font-size:160px;margin:0 auto 18px}
+.progress4 div{width:130px}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 2번 방 · 물건을 자세히 탐구하기</span><span class="ls">6차시 / 5~9</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 5분"
+ data-notes="<b>시작</b> — “2번 방 열쇠 조각을 하나 모았어요. 오늘은 두 번째 조각! 물건의 ‘생김새’에 숨은 비밀을 찾아요.”">
+  <div class="cover">
+    <img class="doorimg bob" src="../05/img/door2.jpg" alt="2번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill mint">2번 방 · 6차시</span>
+      <h1 class="title">생김새에는<br>비밀이 있다</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">손잡이, 눈금, 빗살은 왜 있을까?</p>
+      <button class="btn mint" style="margin-top:34px" onclick="go(1)">🚪 2번 방 다시 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 + 숙제 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>지난 시간 떠올리기 + 숙제 확인</b> — ① 5차시 비밀 문장 함께 읽기 ② 집에서 찾아온 ‘특별한 생김새가 있는 물건’을 2~3명 보여 주며 “이 부분은 왜 이렇게 생겼을까?” 물어보기. 답은 오늘 미션에서 찾아요.">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">5차시 비밀 문장, 기억나요?</h2>
+  <div class="recap">
+    <div class="box">
+      <div class="cipher" style="font-size:44px;margin-top:10px;padding:24px 40px">여러 <span class="blank" onclick="openBlank(this)">감각</span>으로 자세히 관찰하면<br>물건의 <span class="blank" onclick="openBlank(this)">특징</span>을 찾을 수 있어요.</div>
+      <div class="homework">🕵️ <b>숙제 확인!</b> <b>특별한 생김새</b>가 있는 물건을 찾아왔나요?<br>“이 부분은 <b>왜</b> 이렇게 생겼을까?”</div>
+    </div>
+    <img src="../01/img/agent.png" alt="" style="width:300px" class="bob">
+  </div>
+</section>
+
+<!-- 3 이야기 -->
+<section class="slide dark" data-phase="도입 · 5분" data-hook="story"
+ data-notes="<b>이야기</b> — 말풍선을 누르면 글자가 한 번에 나와요. 아래 그림 세 개에서 무엇이 지워졌는지 물어보세요(컵 손잡이, 가위 손잡이, 빗살).">
+  <div class="alarm">🚨 싹쓸이 마법사의 생김새 지우개!</div>
+  <div class="storywrap">
+    <img class="wizard" src="../01/img/wizard.jpg" alt="싹쓸이 마법사">
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px">
+      <div class="bubble" id="storyText" style="min-height:300px;font-size:31px;line-height:1.65;padding:34px 40px"></div>
+      <div class="erased3" id="erased3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 미션 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>학습 목표 함께 읽기</b> — 오늘 미션 4개를 해결하면 2번 방 열쇠 조각 2번째!">
+  <div class="kicker">MISSION BRIEFING</div>
+  <h2 class="title" style="font-size:60px">오늘의 미션 네 가지</h2>
+  <div class="missions" style="gap:20px">
+    <div class="mcard"><span class="tag">미션 1</span><div class="ic emo" style="font-size:96px">🧽</div><h3>생김새 지우개</h3><p>없어지면 어떻게 될까?</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><div class="ic emo" style="font-size:96px">🧪</div><h3>실험 스테이션</h3><p>직접 해 보며 비밀 찾기</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><div class="ic emo" style="font-size:96px">✏️</div><h3>물건 디자이너</h3><p>1분 만에 생김새 그리기</p></div>
+    <div class="mcard"><span class="tag">미션 4</span><img class="ic" src="../01/img/ic_mail.png" alt=""><h3>생김새 비밀 카드</h3><p>내 물건의 비밀 기록</p></div>
+    <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 2</h3><p>2번 방 두 번째!</p></div>
+  </div>
+  <div class="goal"><b>🎯 학습 목표</b> 물건의 특별한 생김새가 어떤 일을 하는지 알아보고 말할 수 있어요.</div>
+</section>
+
+<!-- 5 미션 1 규칙 -->
+<section class="slide" data-phase="미션 1 · 6분"
+ data-notes="<b>생김새 지우개 안내</b> — 빨간 점선 동그라미가 오늘 지울 생김새예요. ‘지우개!’를 누르면 그 부분이 사라져요. 친구 한 명이 나와서 ‘그 생김새가 없는 물건’을 쓰는 몸짓을 하고, 다 같이 “○○이 없으면 ~해서 불편해요!” 하고 말해요.">
+  <div class="kicker">MISSION 1</div>
+  <h2 class="title">🧽 생김새 지우개</h2>
+  <div class="rules" style="max-width:1120px">
+    <div class="rule"><span>1</span><div>빨간 동그라미 속 <b class="hl">생김새</b>의 이름을 말해요.</div></div>
+    <div class="rule"><span>2</span><div>“지우개!” 하면 그 생김새가 <b class="c-coral">사라져요</b>.</div></div>
+    <div class="rule"><span>3</span><div>한 친구가 나와 <b class="c-navy">사라진 물건을 쓰는 몸짓</b>을 해요. 어떻게 될까요?</div></div>
+    <div class="rule"><span>4</span><div>“○○이 없으면 <b class="hl">~해서 불편해요!</b>” 다 같이 말해요.</div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:320px">
+</section>
+
+<!-- 6 미션 1 게임 -->
+<section class="slide" data-phase="미션 1 · 6분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 물건을 골라요(12개). ① 생김새 이름 묻기 → ② ‘지우개!’ → ③ 몸짓 → ④ ‘하는 일 보기’로 정리. 모둠마다 한 명씩 나와 몸짓을 하면 두 바퀴를 돌 수 있어요.">
+  <div class="eraser">
+    <div class="fig" id="eFig"></div>
+    <div class="einfo">
+      <div class="ename" id="eName"></div>
+      <div class="estep">🔴 빨간 동그라미 속 생김새는 무엇일까요?<br>🧽 지우면 <b>어떤 일</b>이 생길까요? 몸으로 보여 줘요!</div>
+      <div class="eans" id="eAns"></div>
+      <div class="ebtns"><button class="btn coral" onclick="eraseGo()">🧽 지우개!</button><button class="btn mint" onclick="eraseAns()">💡 하는 일 보기</button><button class="btn ghost" onclick="setErase(eIdx)" title="되돌리기">↺</button><button class="btn ghost" onclick="setErase((eIdx + 1) % ERASE.length)">다음 ▶</button></div>
+    </div>
+    <div class="dside"><div class="rounds" id="eRounds"></div></div>
+  </div>
+</section>
+
+<!-- 7 미션 2 스테이션 안내 -->
+<section class="slide" data-phase="미션 2 · 12분"
+ data-notes="<b>실험 스테이션 준비</b> — 교실 네 곳에 실험대를 차려 두세요(준비물은 카드에 있어요). ‘실험 카드’(오른쪽 아래 🖨️)를 인쇄해 실험대마다 놓아 두면 학생들이 읽고 실험해요. 컵에는 뜨거운 물을 쓰지 말고, 미지근한 물이나 콩·쌀을 담아요.">
+  <div class="kicker">MISSION 2</div>
+  <h2 class="title" style="font-size:58px">🧪 생김새 실험 스테이션</h2>
+  <div class="stations" id="stIntro"></div>
+</section>
+
+<!-- 8 미션 2 순환 -->
+<section class="slide" data-phase="미션 2 · 12분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 두 모둠이 한 팀이 되어 실험대를 돌아요. ‘시작’을 누르면 2분 30초가 흐르고, 끝나면 종이 울리며 자동으로 다음 실험대가 표시돼요. 4번 돌면 모든 실험을 해 봐요. 모둠 수는 오른쪽 위에서 바꿀 수 있어요.">
+  <div style="display:flex;flex-direction:column;gap:16px;flex:1">
+    <div class="rot"><span class="r" id="rRound">1번째 실험</span><b id="rClock">2:30</b><button class="btn mint" id="rGo" onclick="rotGo()">▶ 시작</button><button class="btn ghost" onclick="rotNext()">⏭ 다음 실험대로</button>
+      <span class="sp">모둠 수 <button onclick="rotTeams(-1)">−</button><span id="rTeamN">6</span><button onclick="rotTeams(1)">＋</button></span></div>
+    <div class="stations" id="stRot" style="margin-top:0;flex:1;margin-bottom:56px"></div>
+  </div>
+</section>
+
+<!-- 9 미션 2 정리 -->
+<section class="slide" data-phase="미션 2 · 12분"
+ data-notes="<b>실험 정리</b> — 실험대마다 한 팀씩 ‘무엇이 달랐는지’ 발표하게 한 뒤, 카드를 눌러 비밀을 공개해요.">
+  <div class="kicker">THINK TOGETHER</div>
+  <h2 class="title" style="font-size:56px">🔐 실험으로 찾은 생김새의 비밀</h2>
+  <div class="secret" id="stSecret"></div>
+</section>
+
+<!-- 10 미션 3 규칙 -->
+<section class="slide" data-phase="미션 3 · 7분"
+ data-notes="<b>물건 디자이너 안내</b> — 모둠마다 미니 화이트보드(또는 이면지)와 보드마커를 준비해요. 문제를 읽고 1분 동안 ‘이 불편함을 해결할 생김새’를 그려요. 정답은 하나가 아니에요! 그럴듯한 생각이면 모두 ⭐, 실제 물건과 같은 생각이면 ⭐ 하나 더.">
+  <div class="kicker">MISSION 3</div>
+  <h2 class="title">✏️ 물건 디자이너</h2>
+  <div class="rules" style="max-width:1120px">
+    <div class="rule"><span>1</span><div>화면의 <b class="hl">불편한 문제</b>를 읽어요.</div></div>
+    <div class="rule"><span>2</span><div>모둠 보드에 문제를 해결할 <b class="c-coral">생김새</b>를 1분 안에 그려요.</div></div>
+    <div class="rule"><span>3</span><div>“하나, 둘, 셋!” 보드를 들어요. 좋은 생각마다 <b class="c-navy">⭐</b>!</div></div>
+    <div class="rule"><span>4</span><div>실제 물건은 어떻게 생겼을까? <b class="hl">진짜 생김새</b>와 비교해요.</div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:320px">
+</section>
+
+<!-- 11 미션 3 게임 -->
+<section class="slide" data-phase="미션 3 · 7분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 문제를 골라요(12개). ‘1분 그리기’ → 보드 들기 → ‘진짜 생김새 보기’. 좋은 생각에 ⭐＋. 모둠마다 두 번 이상 그릴 수 있어요.">
+  <div class="design">
+    <div class="dmain">
+      <div class="prob" id="dProb"></div>
+      <div class="drow2">
+        <div class="board"><div class="big" id="dClock">60</div><p>모둠 보드에 해결할 <b>생김새</b>를 그려요!</p><button class="btn mint" id="dGo" onclick="drawGo()">▶ 1분 그리기</button></div>
+        <div class="real" id="dReal"><div class="fig" id="dFig"></div><div class="cap" id="dCap"></div></div>
+      </div>
+      <div class="dbtns"><button class="btn coral" onclick="showReal()">👀 진짜 생김새 보기</button><button class="btn ghost" onclick="setDesign((dIdx + 1) % DESIGN.length)">다음 문제 ▶</button></div>
+    </div>
+    <div class="dside">
+      <div class="rounds" id="dRounds"></div>
+      <div class="score"><h4>⭐ 모둠 점수</h4><div id="teams1"></div></div>
+      <div class="ptguide">좋은 생각 ⭐ 1개<br>진짜와 같으면 ⭐ 1개 더</div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 활동지 안내 -->
+<section class="slide" data-phase="미션 4 · 6분"
+ data-notes="<b>생김새 비밀 카드</b> — ‘활동지 바로 인쇄’로 인쇄해 나눠 줘요. 숙제로 찾아온 물건(없으면 필통 속 물건)을 골라요. ① 그리고 특별한 생김새에 ○ ② 하는 일과 없을 때의 불편함 ③ 내가 더하고 싶은 생김새. 예시 답안은 오른쪽 아래 📗 단추로 볼 수 있어요.">
+  <div class="kicker">MISSION 4 · 활동지</div>
+  <div class="ws">
+    <img class="wsprev" src="img/worksheet_preview.png" alt="활동지 미리 보기">
+    <div class="steps">
+      <h2 class="title" style="font-size:52px;margin-bottom:4px">📮 생김새 비밀 카드</h2>
+      <div class="s"><span>1</span>물건을 그리고 특별한 생김새에 ○를 해요</div>
+      <div class="s"><span>2</span>그 생김새가 하는 일을 써요</div>
+      <div class="s"><span>3</span>그 생김새가 없으면 어떨지 써요</div>
+      <div class="s bonus"><span>★</span>내가 새 생김새를 더한다면?</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
+    </div>
+  </div>
+</section>
+
+<!-- 13 타이머 -->
+<section class="slide center" data-phase="미션 4 · 6분"
+ data-notes="<b>활동 시간</b> — 기본 6분. “그 부분을 손으로 만져 보고, 없다고 생각해 보세요!” 일찍 끝나면 짝과 카드 바꿔 읽기.">
+  <div class="kicker">MISSION 4 · 활동 시간</div>
+  <h2 class="title" style="font-size:56px;margin-bottom:36px">생김새의 비밀을 기록해요!</h2>
+  <div class="timer" data-sec="360"></div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="left:90px;bottom:96px;width:250px">
+</section>
+
+<!-- 14 발표 -->
+<section class="slide" data-phase="정리 · 4분"
+ data-notes="<b>생김새 발명가 발표</b> — 번호를 뽑은 학생이 자기 카드의 ‘더하고 싶은 생김새’를 소개해요. 2명.">
+  <div class="kicker">PRESENTATION</div>
+  <h2 class="title" style="font-size:56px">🎤 생김새 발명가 발표</h2>
+  <div class="quizshow">
+    <div class="qsteps">
+      <div class="s">① “제 물건은 <b>○○</b>이에요.”</div>
+      <div class="s">② “<b>△△ 생김새</b>는 ~하는 일을 해요.”</div>
+      <div class="s">③ “저는 여기에 <b>□□</b>를 더하고 싶어요!”</div>
+      <div class="s">④ 친구들은 좋은 점을 한 가지씩 말해 줘요.</div>
+    </div>
+    <div class="qpick">
+      <div class="pickball" id="picker">?</div>
+      <div class="pickset">인원 <input type="number" id="pickMax" value="25" min="2" max="40"> 명
+        <button class="btn coral" style="font-size:24px;padding:11px 24px" onclick="pick()">🎲 뽑기</button></div>
+      <div class="history" id="pickHist"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 4분"
+ data-notes="<b>배움 정리</b> — 빈칸에 들어갈 말을 먼저 말하게 한 뒤 눌러 공개해요.">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 2번 방 두 번째 비밀 문장</h2>
+  <div class="cipher">물건의 특별한 <span class="blank" onclick="openBlank(this)">생김새</span>에는<br>저마다 하는 <span class="blank" onclick="openBlank(this)">일</span>이 있어요.</div>
+  <div class="chips"><span class="chip">일</span><span class="chip">색깔</span><span class="chip">생김새</span><span class="chip">가격</span></div>
+</section>
+
+<!-- 16 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 4분" data-hook="key"
+ data-notes="<b>보상</b> — 2번 방 열쇠 조각 2개째! 열쇠를 누르면 다시 반짝여요.">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 2번 방 열쇠 조각 <span class="c-gold">2</span>개!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">5차시 ✔</div><div class="on">6차시 ✔</div><div>7차시</div><div>8차시</div><div>9차시</div></div>
+</section>
+
+<!-- 17 다음 -->
+<section class="slide" data-phase="정리 · 4분"
+ data-notes="<b>다음 차시 예고</b> — 집에서 종이·천·플라스틱으로 된 물건을 하나씩 찾아보기(가져올 수 있으면 가져오기).">
+  <div class="kicker">NEXT MISSION</div>
+  <div class="next">
+    <img class="doorimg" src="../05/img/door2.jpg" alt="">
+    <div>
+      <span class="pill mint">7차시 예고</span>
+      <h2 class="title" style="font-size:80px">재료가 다르면<br>달라질까?</h2>
+      <p class="big" style="color:var(--ink2);margin-top:18px">종이, 천, 플라스틱… <b class="hl">재료</b>마다 무엇이 다를까?<br>🕵️ 종이·천·플라스틱 물건을 하나씩 찾아오세요!</p>
+      <button class="btn mint" id="doneBtn" style="margin-top:26px" onclick="complete()">✅ 6차시 미션 완료</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="printSheet('stations.html')">🖨️ 실험 카드</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:2, lesson:6, keyPieces:2};</script>
+<script src="../shared/base.js"></script>
+<script>
+/* ---------- 물건 그림: img(그림 파일) · ph(실제 사진) · sv(직접 그린 그림) ----------
+   미션 1에서 지울 물건은 '지운 그림'이 따로 있어요: img/erased_<이름>.png (svg 는 SVG_OFF) */
+const ticks = [...Array(41)].map((_, i) => `<line x1="${10 + i * 2}" y1="36" x2="${10 + i * 2}" y2="${i % 10 ? (i % 5 ? 41 : 44) : 48}" stroke="#5a3d00" stroke-width=".6"/>`).join('') + [0, 1, 2, 3, 4].map(n => `<text x="${10 + n * 20}" y="55" font-size="6" text-anchor="middle" fill="#5a3d00" font-family="sans-serif">${n}</text>`).join('');
+const teeth = [...Array(16)].map((_, i) => `<rect x="${12 + i * 4.9}" y="38" width="2.6" height="${i % 2 ? 34 : 38}" rx="1.2" fill="#4f7fe0"/>`).join('');
+const holes = [[44, 44], [56, 44], [44, 56], [56, 56]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3.6" fill="#fff"/><circle cx="${x}" cy="${y}" r="3.6" fill="none" stroke="#a8326b" stroke-width=".8"/>`).join('');
+const SVG = {
+  ruler:['<svg viewBox="0 0 100 100"><rect x="6" y="36" width="88" height="28" rx="3" fill="#ffd25e" stroke="#c99a1a" stroke-width="1.5"/>', ticks, '</svg>'],
+  comb:['<svg viewBox="0 0 100 100"><rect x="10" y="24" width="80" height="16" rx="6" fill="#4f7fe0"/>', teeth, '</svg>'],
+  button:['<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="#ff8fc8" stroke="#d65a9a" stroke-width="2"/><circle cx="50" cy="50" r="22" fill="none" stroke="#e874b0" stroke-width="1.5"/>', holes, '</svg>'],
+  cap:['<svg viewBox="0 0 100 100"><rect x="34" y="52" width="32" height="40" rx="4" fill="#cfe9ff" stroke="#8ab6db"/><rect x="26" y="22" width="48" height="32" rx="6" fill="#ff7b6b"/>', [...Array(11)].map((_, i) => `<line x1="${30 + i * 4}" y1="25" x2="${30 + i * 4}" y2="51" stroke="#c94a3b" stroke-width="1.4"/>`).join(''), '</svg>']};
+const svgOn = k => SVG[k].join(''), svgOff = k => SVG[k][0] + SVG[k][2];
+const OBJ = {
+  cup:{n:'머그컵', img:'../01/img/obj_cup.png'}, ruler:{n:'자', sv:1}, comb:{n:'빗', sv:1}, button:{n:'단추', sv:1}, scissors:{n:'가위', img:'../01/img/obj_scissors_flat.png'},
+  sneakers:{n:'운동화', img:'../01/img/obj_sneakers.png'}, backpack:{n:'책가방', img:'../01/img/obj_backpack.png'}, clothespin:{n:'빨래집게', img:'../02/img/obj_clothespin.png'},
+  clock:{n:'벽시계', img:'../01/img/obj_clock.png'}, umbrella:{n:'우산', img:'../01/img/obj_umbrella.png'},
+  straw:{n:'구부러지는 빨대', img:'../02/img/obj_straw.png'}, spoon:{n:'숟가락', ph:1}, chair:{n:'의자', img:'../01/img/obj_chair.png'}, glasses:{n:'안경', img:'../02/img/obj_glasses.png'},
+  suitcase:{n:'바퀴 달린 가방', img:'../02/img/obj_suitcase.png'}, flashlight:{n:'손전등', img:'../02/img/obj_flashlight.png'}, bucket:{n:'두레박', ph:1}, tap:{n:'수도꼭지', ph:1},
+  earphone:{n:'헤드폰', ph:1}, watch:{n:'손목시계', ph:1}, alarm:{n:'자명종', ph:1}, ktx:{n:'고속 열차', ph:1}, cap:{n:'병뚜껑', sv:1}, erpencil:{n:'지우개 달린 연필', img:'../02/img/obj_erpencil.png'}};
+const pic = (k, cls = '') => { const o = OBJ[k]; if(o.sv) return `<div class="${cls}" style="position:absolute;inset:0">${cls === 'after' ? svgOff(k) : svgOn(k)}</div>`;
+  return `<img class="${cls} ${o.ph ? 'photo' : ''}" src="${cls === 'after' ? `img/erased_${k}.png` : o.img || `../shared/photos/${k}.jpg`}" alt="">`; };
+/* 그림 + (x, y, r: 퍼센트) 자리에 빨간 동그라미. erase 면 지운 그림을 겹쳐 두었다가 '지우개!' 때 보여 줘요 */
+function fig(k, s, opts = {}){ const g = s ? `left:${s[0]}%;top:${s[1]}%;width:${s[2] * 2}%;height:${s[2] * 2}%` : '';
+  return (opts.erase ? pic(k, 'before') + pic(k, 'after') : pic(k)) + (s && !opts.noRing ? `<div class="ring" style="${g}"></div>` : '') + (opts.erase && s ? `<div class="wipe" style="left:${s[0]}%;top:${s[1]}%">🧽</div>` : ''); }
+
+/* ---------- 이야기 ---------- */
+hooks.story = () => { typewriter(document.getElementById('storyText'),
+  '“흐흐흐, 이번엔 <b class="c-coral">생김새 지우개</b>다! 쓱싹쓱싹!”<br>손잡이가, 빗살이, 눈금이 사라졌어요.<br>물건들이 갑자기 쓸모없어졌대요!<br>요원 여러분, 생김새마다 숨은 <b class="c-navy">하는 일</b>을 찾아 주세요!');
+  document.getElementById('erased3').innerHTML = ['cup', 'scissors', 'comb'].map(k => `<div class="fig erased">${fig(k, null, {erase:1})}</div>`).join(''); };
+
+/* ---------- 미션 1: 생김새 지우개 (s: x, y, r 퍼센트 / f: 생김새 / w: 하는 일 / x: 없으면) ---------- */
+const ERASE = [
+  {k:'cup', s:[84, 46, 14], f:'손잡이', w:'뜨거운 컵도 손이 데지 않게 <b>잡을 수 있어요</b>.', x:'컵이 뜨거워서 손으로 잡을 수 없어요.'},
+  {k:'ruler', s:[50, 43, 13], f:'눈금', w:'길이를 <b>숫자로 정확하게</b> 잴 수 있어요.', x:'몇 cm인지 알 수 없어요.'},
+  {k:'comb', s:[50, 55, 22], f:'빗살', w:'빗살 사이로 머리카락이 나뉘어 <b>엉킨 머리가 풀려요</b>.', x:'머리를 빗을 수 없고 엉킨 머리가 그대로예요.'},
+  {k:'scissors', s:[75, 50, 14], f:'손잡이 구멍', w:'손가락을 넣어 <b>힘껏 벌렸다 오므릴</b> 수 있어요.', x:'가위를 쥘 수가 없어서 자를 수 없어요.'},
+  {k:'clock', s:[50, 50, 38], f:'숫자와 눈금', w:'바늘이 가리키는 곳을 보고 <b>몇 시 몇 분</b>인지 알아요.', x:'바늘만 있어서 몇 시인지 알 수 없어요.'},
+  {k:'umbrella', s:[53, 11, 11], f:'구부러진 손잡이', w:'잡기 쉽고 팔이나 고리에 <b>걸어 둘</b> 수 있어요.', x:'잡기 불편하고 걸어 둘 곳이 없어요.'},
+  {k:'chair', s:[61, 21, 17], f:'등받이', w:'등을 <b>기대고 편하게</b> 앉을 수 있어요.', x:'등을 기댈 곳이 없어서 오래 앉으면 허리가 아파요.'},
+  {k:'suitcase', s:[52, 90, 9], f:'바퀴', w:'무거운 가방을 <b>끌고 다닐</b> 수 있어요.', x:'무거운 가방을 계속 들고 다녀야 해요.'},
+  {k:'erpencil', s:[79, 9, 8], f:'지우개', w:'틀린 글씨를 <b>바로 지울</b> 수 있어요.', x:'지우개를 따로 찾아야 해요.'},
+  {k:'backpack', s:[51, 7, 6], f:'위쪽 손잡이 고리', w:'손으로 <b>들거나 고리에 걸어</b> 둘 수 있어요.', x:'가방을 걸어 둘 수 없고 손으로 들기 어려워요.'},
+  {k:'flashlight', s:[90, 42, 7], f:'손목 끈', w:'손목에 걸어서 <b>떨어뜨리지 않아요</b>.', x:'어두운 곳에서 손전등을 놓치기 쉬워요.'},
+  {k:'button', s:[50, 50, 13], f:'단추 구멍', w:'실로 꿰매어 <b>옷에 단단히 달</b> 수 있어요.', x:'실을 꿸 곳이 없어서 옷에 달 수 없어요.'}];
+let eIdx = 0; const eDone = {};
+function setErase(i){ eIdx = i; const e = ERASE[i]; S.flip();
+  const f = document.getElementById('eFig'); f.className = 'fig'; f.innerHTML = fig(e.k, e.s, {erase:1});
+  document.getElementById('eName').innerHTML = `<small>물건 ${i + 1} / ${ERASE.length}</small>${OBJ[e.k].n}`;
+  document.getElementById('eAns').classList.remove('show');
+  document.getElementById('eRounds').innerHTML = ERASE.map((_, n) => `<button class="${n === i ? 'on' : eDone[n] ? 'done' : ''}" onclick="setErase(${n})">${n + 1}</button>`).join(''); }
+function eraseGo(){ document.getElementById('eFig').classList.add('erased'); S.poof(); }
+function eraseAns(){ const e = ERASE[eIdx], a = document.getElementById('eAns');
+  a.innerHTML = `🔎 지운 생김새: <b>${e.f}</b><br>💡 하는 일: ${e.w}<br>😣 없으면: ${e.x}`; a.classList.add('show'); eDone[eIdx] = 1; S.win();
+  document.querySelectorAll('#eRounds button')[eIdx].className = 'on'; }
+
+/* ---------- 미션 2: 실험 스테이션 ---------- */
+const STATIONS = [
+  {e:'📏', n:'눈금 실험실', need:'자, 눈금 없는 종이띠(자와 같은 길이), 공책', how:'① 종이띠로 공책 길이를 재요.<br>② 자로 다시 재요.<br>③ 몇 cm인지 말할 수 있는 쪽은?', a:'<b>눈금</b>이 있으면 길이를 <b>숫자로 정확하게</b> 잴 수 있어요.'},
+  {e:'☕', n:'손잡이 실험실', need:'손잡이 있는 컵, 손잡이 없는 컵, 콩이나 쌀(또는 미지근한 물)', how:'① 두 컵에 콩을 가득 담아요.<br>② 손가락 두 개로만 들어 봐요.<br>③ 더 쉽게 들리는 쪽은?', a:'<b>손잡이</b>가 있으면 손가락을 걸어 <b>쉽게 꽉 잡고</b>, 뜨거운 컵에도 손이 닿지 않아요.'},
+  {e:'🪮', n:'빗살 실험실', need:'빗, 엉클어 놓은 털실 뭉치(또는 인형 머리)', how:'① 손가락으로 엉킨 실을 풀어요.<br>② 빗으로 살살 빗어요.<br>③ 더 빨리 풀리는 쪽은?', a:'<b>빗살</b> 사이사이로 가닥이 나뉘어서 엉킨 것이 <b>쉽게 풀려요</b>.'},
+  {e:'🧴', n:'홈 실험실', need:'옆에 홈이 있는 병뚜껑 병, 매끈한 뚜껑 통, 로션 조금', how:'① 손에 로션을 살짝 발라요.<br>② 두 뚜껑을 열어 봐요.<br>③ 덜 미끄러운 쪽은?', a:'뚜껑 옆 <b>홈</b>(울퉁불퉁한 줄)이 손을 붙잡아서 <b>미끄러지지 않아요</b>.'}];
+const ROT_SEC = 150; let rRound = 0, rLeft = ROT_SEC, rTimer = null, rTeamN = 6;
+const groupName = g => g * 2 + 2 <= rTeamN ? `${g * 2 + 1}·${g * 2 + 2}모둠` : `${g * 2 + 1}모둠`;
+function drawRot(){ const G = Math.ceil(rTeamN / 2);
+  document.getElementById('stRot').innerHTML = STATIONS.map((s, k) => { const gs = [...Array(G)].map((_, g) => g).filter(g => (g + rRound) % STATIONS.length === k);
+    return `<div class="st ${gs.length ? '' : 'empty'}"><div class="hd"><span class="no">${k + 1}</span><span class="emo">${s.e}</span>${s.n}</div><div class="need">🧺 ${s.need}</div><div class="how">${s.how}</div><div class="grp">${gs.length ? gs.map(groupName).join(', ') : '쉬는 실험대'}</div></div>`; }).join('');
+  document.getElementById('rRound').textContent = `${rRound + 1}번째 실험`;
+  const c = document.getElementById('rClock'); c.textContent = `${Math.floor(rLeft / 60)}:${String(rLeft % 60).padStart(2, '0')}`; c.classList.toggle('low', rLeft <= 20);
+  document.getElementById('rTeamN').textContent = rTeamN; }
+function rotStop(){ clearInterval(rTimer); rTimer = null; document.getElementById('rGo').textContent = '▶ 시작'; }
+function rotGo(){ if(rTimer){ rotStop(); return; } document.getElementById('rGo').textContent = '⏸ 멈춤'; S.tick();
+  rTimer = setInterval(() => { rLeft--; if(rLeft <= 0){ S.end(); rotNext(true); return; } drawRot(); }, 1000); }
+function rotNext(keep){ rRound = (rRound + 1) % STATIONS.length; rLeft = ROT_SEC; if(!keep) rotStop(); S.flip(); drawRot(); }
+function rotTeams(d){ rTeamN = Math.min(8, Math.max(2, rTeamN + d)); drawRot(); }
+document.getElementById('stIntro').innerHTML = STATIONS.map((s, k) => `<div class="st"><div class="hd"><span class="no">${k + 1}</span><span class="emo">${s.e}</span>${s.n}</div><div class="need">🧺 준비물: ${s.need}</div><div class="how">${s.how}</div></div>`).join('');
+document.getElementById('stSecret').innerHTML = STATIONS.map((s, k) => `<div class="sc" onclick="this.classList.add('open');S.ok()"><div class="q">${s.e} ${k + 1}. ${s.n} — 무엇이 달랐나요?</div><div class="a">💡 ${s.a}</div></div>`).join('');
+
+/* ---------- 모둠 점수 ---------- */
+let TEAMS = 6; const score = Array(8).fill(0);
+function drawTeams(){ const el = document.getElementById('teams1');
+  el.innerHTML = [...Array(TEAMS)].map((_, t) => `<div class="team"><span class="tn">${t + 1}모둠</span><button class="m" onclick="addPt(${t},-1)">−</button><span class="pt">${score[t]}</span><button onclick="addPt(${t},1)">＋</button></div>`).join('')
+    + `<div style="text-align:center;margin-top:6px;font-size:18px;color:var(--ink2)">모둠 수 <button class="m" style="width:30px;height:30px;border-radius:8px;background:#f1e6d4" onclick="setTeams(-1)">−</button> ${TEAMS} <button style="width:30px;height:30px;border-radius:8px;background:var(--gold2)" onclick="setTeams(1)">＋</button></div>`; }
+function addPt(t, d){ score[t] = Math.max(0, score[t] + d); if(d > 0) S.ok(); drawTeams(); }
+function setTeams(d){ TEAMS = Math.min(8, Math.max(2, TEAMS + d)); drawTeams(); }
+
+/* ---------- 미션 3: 물건 디자이너 (p: 불편한 문제 / f: 진짜 생김새 / s: 동그라미 자리) ---------- */
+const DESIGN = [
+  {e:'🥛', p:'누워서 컵에 든 우유를 마시고 싶어요.', k:'straw', s:[43, 17, 10], f:'목에 <b>주름</b>이 있어서 구부려 마실 수 있어요.'},
+  {e:'👟', p:'달리기만 하면 신발이 자꾸 벗겨져요.', k:'sneakers', s:[45, 40, 22], f:'<b>끈</b>을 꽉 묶어 발에 딱 맞게 조여요.'},
+  {e:'🍲', p:'국물을 떠먹고 싶은데 자꾸 흘러요.', k:'spoon', s:[52, 84, 15], f:'<b>오목하게 파인</b> 곳에 국물이 담겨요.'},
+  {e:'🌬️', p:'바람이 불면 빨래가 날아가 버려요.', k:'clothespin', s:[47, 45, 12], f:'<b>용수철</b>이 집게 입을 꽉 다물게 해요.'},
+  {e:'👓', p:'고개를 숙이면 안경이 자꾸 흘러내려요.', k:'glasses', s:[86, 67, 10], f:'안경다리 <b>끝이 구부러져서</b> 귀에 걸려요.'},
+  {e:'🪣', p:'깊은 우물 바닥에 있는 물을 떠야 해요.', k:'bucket', s:[45, 14, 14], f:'<b>긴 줄</b>이 달려 있어서 깊은 곳까지 내려요.'},
+  {e:'🚰', p:'수돗물이 사방으로 튀어서 옷이 젖어요.', k:'tap', s:[44, 45, 13], f:'끝에 <b>작은 그물망</b>이 있어서 물줄기가 부드러워요.'},
+  {e:'🎧', p:'헤드폰을 오래 쓰면 귀가 아파요.', k:'earphone', s:[82, 72, 15], f:'귀에 닿는 곳에 <b>푹신한 쿠션</b>이 있어요.'},
+  {e:'⌚', p:'시계를 손에 들고 다니면 잃어버리기 쉬워요.', k:'watch', s:[70, 12, 16], f:'손목에 감는 <b>가죽 끈</b>이 있어요.'},
+  {e:'⏰', p:'아침에 소리가 작아서 못 일어나요.', k:'alarm', s:[48, 22, 30], f:'머리에 <b>종 두 개</b>가 있어서 따르릉 크게 울려요.'},
+  {e:'🚄', p:'아주 빠른 기차가 바람에 막혀 느려져요.', k:'ktx', s:[50, 62, 22], f:'앞모양이 <b>뾰족하고 매끈해서</b> 바람을 가르고 달려요.'},
+  {e:'🧴', p:'손에 물이 묻으면 병뚜껑이 미끄러워 안 열려요.', k:'cap', s:[50, 38, 26], f:'뚜껑 옆에 <b>오톨도톨한 홈</b>이 있어서 손이 미끄러지지 않아요.'}];
+let dIdx = 0, dLeft = 60, dTimer = null; const dDone = {};
+function drawStop(){ clearInterval(dTimer); dTimer = null; document.getElementById('dGo').textContent = '▶ 1분 그리기'; }
+function setDesign(i){ dIdx = i; drawStop(); dLeft = 60; S.flip(); const d = DESIGN[i];
+  document.getElementById('dProb').innerHTML = `<span class="emo">${d.e}</span><div class="t"><small>문제 ${i + 1} / ${DESIGN.length} · 이 불편함을 해결할 생김새는?</small>${d.p}</div>`;
+  document.getElementById('dReal').classList.remove('show'); const c = document.getElementById('dClock'); c.textContent = dLeft; c.classList.remove('low');
+  document.getElementById('dRounds').innerHTML = DESIGN.map((_, n) => `<button class="${n === i ? 'on' : dDone[n] ? 'done' : ''}" onclick="setDesign(${n})">${n + 1}</button>`).join(''); }
+function drawGo(){ if(dTimer){ drawStop(); return; } document.getElementById('dGo').textContent = '⏸ 멈춤'; S.tick();
+  dTimer = setInterval(() => { dLeft--; const c = document.getElementById('dClock'); c.textContent = Math.max(0, dLeft); c.classList.toggle('low', dLeft <= 10); if(dLeft <= 0){ drawStop(); S.end(); c.textContent = '보드 들기!'; } }, 1000); }
+function showReal(){ drawStop(); const d = DESIGN[dIdx]; document.getElementById('dFig').innerHTML = fig(d.k, d.s);
+  document.getElementById('dCap').innerHTML = `<b>${OBJ[d.k].n}</b> — ${d.f}`; document.getElementById('dReal').classList.add('show'); dDone[dIdx] = 1; S.win();
+  document.querySelectorAll('#dRounds button')[dIdx].className = 'on'; }
+hooks.leave = i => { if(slides[i] && slides[i].querySelector('#rClock')) rotStop(); if(slides[i] && slides[i].querySelector('#dClock')) drawStop(); };
+
+window.onEsc = () => {};
+setErase(0); drawRot(); drawTeams(); setDesign(0); startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>

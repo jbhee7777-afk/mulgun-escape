@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>6차시 실험 카드</title>
+<link rel="stylesheet" href="../fonts/jua.css"><link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<style>
+/* 활동지(worksheet.html)와 같은 깔끔한 꾸밈 */
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#22313a;--sub:#6b7b84;--line:#d7e3e6;--teal:#127d74;--teal2:#e8f6f4}
+body{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;color:var(--ink);background:#ddd;word-break:keep-all}
+.page{width:210mm;height:297mm;margin:0 auto 6mm;position:relative;overflow:hidden;background:#fff;padding:12mm 14mm;display:flex;flex-direction:column;gap:10mm}
+.card{flex:1;border:.4mm solid var(--line);border-radius:4mm;padding:7mm 8mm;display:flex;flex-direction:column;gap:4mm;position:relative}
+.card+.card::before{content:"✂";position:absolute;left:-2mm;top:-7.6mm;font-size:10pt;color:#9aa}
+.card+.card::after{content:"";position:absolute;left:4mm;right:0;top:-5.4mm;border-top:.3mm dashed #bcc}
+.hd{display:flex;align-items:center;gap:4mm;padding-bottom:3.5mm;border-bottom:.6mm solid var(--ink)}
+.hd .no{font-family:'Jua',sans-serif;font-size:12pt;color:#fff;background:var(--teal);border-radius:50%;width:9mm;height:9mm;display:flex;align-items:center;justify-content:center}
+.hd h2{font-family:'Jua',sans-serif;font-weight:400;font-size:22pt}
+.hd .e{font-size:22pt;margin-left:auto}
+.hd .tag{font-size:9pt;color:var(--teal);font-weight:700;letter-spacing:.3mm}
+.row{display:grid;grid-template-columns:24mm 1fr;gap:3mm;font-size:12pt;line-height:1.6}
+.row .k{font-size:9.5pt;color:var(--teal);font-weight:700;padding-top:1mm}
+.safe{font-size:10pt;color:#c2410c}
+.rec{margin-top:auto;background:var(--teal2);border-radius:3mm;padding:4mm 5mm;display:flex;flex-direction:column;gap:3mm}
+.rec .q{font-size:10.5pt;color:var(--sub)}
+.opts{display:flex;gap:4mm}
+.opts div{flex:1;border:.35mm solid var(--line);background:#fff;border-radius:10mm;padding:2.2mm;text-align:center;font-family:'Jua',sans-serif;font-size:13pt;position:relative}
+.opts div .ex{position:absolute;inset:-1.5mm;border:.7mm solid #e03131;border-radius:10mm}
+.found{display:flex;align-items:flex-end;gap:2mm;font-size:11pt;color:var(--sub)}
+.found .bl{flex:1;border-bottom:.35mm solid #b9cfd2;min-height:8mm;display:flex;align-items:flex-end;padding-bottom:1mm;color:var(--ink)}
+div.page:last-of-type{page-break-after:auto}
+@media print{body{background:none}.page{margin:0}}
+</style></head>
+<body>
+<div id="pages"></div>
+<script>
+/* 실험 내용은 수업 화면(index.html)의 STATIONS 와 같아요. o: 비교할 두 가지(뒤쪽이 생김새가 있는 쪽) */
+const ST = [
+  ['📏', '눈금 실험실', '자, 눈금 없는 종이띠(자와 같은 길이), 공책', '① 종이띠로 공책 길이를 재요.<br>② 자로 다시 재요.<br>③ 몇 cm인지 말할 수 있는 쪽은?', ['종이띠', '자'], '눈금이 있으면 길이를 숫자로 정확하게 잴 수 있어요.', ''],
+  ['☕', '손잡이 실험실', '손잡이 있는 컵, 손잡이 없는 컵, 콩이나 쌀(또는 미지근한 물)', '① 두 컵에 콩을 가득 담아요.<br>② 손가락 두 개로만 들어 봐요.<br>③ 더 쉽게 들리는 쪽은?', ['손잡이 없는 컵', '손잡이 있는 컵'], '손잡이에 손가락을 걸면 쉽게 꽉 잡을 수 있어요.', '뜨거운 물은 쓰지 않아요.'],
+  ['🪮', '빗살 실험실', '빗, 엉클어 놓은 털실 뭉치(또는 인형 머리)', '① 손가락으로 엉킨 실을 풀어 봐요.<br>② 빗으로 살살 빗어 봐요.<br>③ 더 빨리 풀리는 쪽은?', ['손가락', '빗'], '빗살 사이로 실이 나뉘어서 엉킨 것이 쉽게 풀려요.', ''],
+  ['🧴', '홈 실험실', '옆에 홈이 있는 병뚜껑 병, 매끈한 뚜껑 통, 로션 조금', '① 손에 로션을 살짝 발라요.<br>② 두 뚜껑을 열어 봐요.<br>③ 덜 미끄러운 쪽은?', ['매끈한 뚜껑', '홈이 있는 뚜껑'], '홈이 손을 붙잡아 줘서 미끄러지지 않아요.', '다 하면 손을 닦아요.']];
+const card = (s, i) => `<div class="card">
+  <div class="hd"><span class="no">${i + 1}</span><div><div class="tag">2번 방 · 6차시 실험 스테이션</div><h2>${s[1]}</h2></div><span class="e">${s[0]}</span></div>
+  <div class="row"><span class="k">준비물</span><span>${s[2]}</span></div>
+  <div class="row"><span class="k">실험 방법</span><span>${s[3]}</span></div>
+  ${s[6] ? `<div class="row"><span class="k">안전</span><span class="safe">⚠️ ${s[6]}</span></div>` : ''}
+  <div class="rec"><div class="q">더 쉬웠던 쪽에 ○ 해요</div><div class="opts"><div>${s[4][0]}</div><div>${s[4][1]}<span class="ex"></span></div></div>
+    <div class="found">알게 된 비밀<span class="bl"><span class="ex">${s[5]}</span></span></div></div>
+</div>`;
+document.getElementById('pages').innerHTML = [0, 2].map(p => `<div class="page">${card(ST[p], p)}${card(ST[p + 1], p + 1)}</div>`).join('');
+</script>
+<script src="../shared/print.js"></script>
+</body></html>
