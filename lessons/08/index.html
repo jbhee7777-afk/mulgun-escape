@@ -21,21 +21,28 @@
 
 /* 접기 모양 그림(끝에서 본 모습) */
 .shape svg{width:100%;height:100%;display:block}
+.shape.ph{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 0 0 3px #fff,0 4px 10px rgba(61,43,31,.15)}
+.shape.ph img{width:100%;height:100%;object-fit:contain;display:block}
 .shape .pp{fill:var(--paperc);stroke:#b89b5e;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}
 
 /* 미션 1: 종이 마술 */
 .magic{flex:1;display:flex;gap:26px;min-height:0;margin-top:6px}
-.mstage{flex:1;background:linear-gradient(#fef6e4 70%,#e8d3a6 70%);border-radius:30px;position:relative;overflow:hidden;box-shadow:0 0 0 8px #fff,0 14px 30px rgba(61,43,31,.2)}
-.mstage svg{width:100%;height:100%;display:block}
+.mstage{flex:1;background:#2b2118;border-radius:30px;position:relative;overflow:hidden;box-shadow:0 0 0 8px #fff,0 14px 30px rgba(61,43,31,.2)}
+.mph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.mph.on{opacity:1}
+.mstage .cover{position:absolute;inset:0;background:rgba(26,32,72,.72);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--head);font-size:64px;gap:8px;transition:opacity .5s;z-index:2}
+.mstage .cover span{font-size:120px}
+.mstage .cover.off{opacity:0;pointer-events:none}
+.mstage .cnt,.mstage .tag,.mstage .boom{z-index:3}
+.mstage .drop{position:absolute;left:50%;top:-80px;width:90px;height:90px;margin-left:-45px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3b0,#f2cf4a 45%,#c9a227);box-shadow:0 6px 0 #a8841a;z-index:3;opacity:0}
+.mstage .drop.go{animation:coin .55s ease-in}
+@keyframes coin{0%{opacity:1;transform:translateY(0)}100%{opacity:1;transform:translateY(330px) scale(.55)}}
 .mstage .cnt{position:absolute;left:28px;top:20px;background:#fff;border-radius:20px;padding:8px 22px;font-family:var(--head);font-size:30px;color:var(--navy);box-shadow:0 5px 0 var(--line)}
 .mstage .cnt b{font-size:52px;color:#e3523f;font-weight:400}
 .mstage .boom{position:absolute;left:0;right:0;top:36%;text-align:center;font-family:var(--head);font-size:110px;color:#e3523f;-webkit-text-stroke:6px #fff;paint-order:stroke fill;opacity:0;pointer-events:none}
 .mstage .boom.on{animation:boom 1.6s ease-out forwards}
 @keyframes boom{0%{opacity:0;transform:scale(.4)}20%{opacity:1;transform:scale(1.15)}70%{opacity:1;transform:scale(1)}100%{opacity:0}}
 .mstage .tag{position:absolute;right:24px;top:20px;background:var(--navy);color:#fff;border-radius:16px;padding:8px 18px;font-family:var(--head);font-size:26px}
-#bridge{transition:transform .9s cubic-bezier(.5,0,.8,.4),opacity .9s}
-#bridge.fall{transform:translateY(240px) rotate(8deg);opacity:.0}
-.coin{transition:transform .9s cubic-bezier(.5,0,.8,.4)}
 .mside{width:330px;display:flex;flex-direction:column;gap:12px}
 .mside .mq{background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 18px;font-size:25px;line-height:1.5}
 .mside .mq b{color:var(--navy)}
@@ -57,14 +64,14 @@
 .need b{color:#9a6a00}
 .shapes5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:18px}
 .sc5{background:var(--paper);border:3px solid var(--line);border-radius:26px;padding:14px;text-align:center;box-shadow:0 8px 0 var(--line)}
-.sc5 .shape{height:120px;margin-bottom:6px}
+.sc5 .shape{height:150px;margin-bottom:8px}
 .sc5 h3{font-size:30px;color:var(--navy)}
 .sc5 p{font-size:20px;color:var(--ink2);line-height:1.4}
 
 .lab8{flex:1;display:flex;gap:22px;min-height:0;margin-top:4px}
 .lrows{flex:1;display:flex;flex-direction:column;gap:10px}
 .lrow{flex:1;display:grid;grid-template-columns:110px 190px 1fr 300px;gap:12px;align-items:center;background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:6px 14px;transition:.3s}
-.lrow .shape{height:76px}
+.lrow .shape{height:84px}
 .lrow .nm{font-family:var(--head);font-size:30px;color:var(--navy);line-height:1.15}
 .lrow .nm small{display:block;font-size:18px;color:var(--ink2)}
 .bar{height:46px;background:#f3ead6;border-radius:23px;position:relative;overflow:hidden}
@@ -85,7 +92,7 @@
 /* 비밀 + 생활 속 */
 .secret{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
 .sc{background:var(--paper);border:3px solid var(--line);border-radius:24px;padding:16px 20px;font-size:26px;line-height:1.5;cursor:pointer;box-shadow:0 6px 0 var(--line);min-height:190px;display:flex;flex-direction:column;gap:8px}
-.sc .shape{height:80px}
+.sc .shape{height:110px}
 .sc .sq8{font-family:var(--head);font-size:28px;color:var(--navy)}
 .sc .a{opacity:0;transition:.4s}
 .sc .a b{color:#0f8a6e}
@@ -192,20 +199,17 @@
 </section>
 
 <!-- 5 미션 1 마술 -->
-<section class="slide" data-phase="미션 1 · 5분" style="padding-top:78px"
- data-notes="<b>종이 마술 쇼(선생님 시범 + 화면)</b> — 실제로 책 두 권 사이에 종이를 걸쳐 보여 주면 더 좋아요. ① 평평한 종이 위에 동전을 몇 개 올릴 수 있을지 손을 들어 예상 ② ‘평평한 종이’로 동전 올리기 → 와르르! ③ 같은 종이를 병풍처럼 접으면? 다시 예상 ④ ‘병풍 접은 종이’ → 동전이 쌓여도 버텨요. “종이는 그대로인데 무엇이 달라졌을까?”">
+<section class="slide" data-phase="미션 1 · 5분" data-hook="magic" style="padding-top:78px"
+ data-notes="<b>종이 마술 쇼(선생님 시범 + 실제 실험 사진)</b> — 화면은 실제 실험 모습이에요. 선생님이 책 두 무더기 사이에 종이를 걸쳐 함께 보여 주면 더 좋아요. ① 평평한 종이 위에 동전을 몇 개 올릴 수 있을지 손을 들어 예상 ② ‘평평한 종이’로 동전 올리기 → 와르르! ③ 같은 종이를 병풍처럼 접으면? 다시 예상 ④ ‘병풍 접은 종이’ → 동전이 쌓여도 버텨요. “종이는 그대로인데 무엇이 달라졌을까?”">
   <div class="magic">
     <div class="mstage" id="mStage">
+      <img class="mph on" id="phFlat" src="img/exp_flat.jpg" alt="평평한 종이 다리">
+      <img class="mph" id="phFold" src="img/exp_fold.jpg" alt="병풍 접은 종이 다리">
       <div class="cnt">동전 <b id="mCnt">0</b>개</div>
       <div class="tag" id="mTag">같은 종이 한 장</div>
-      <svg viewBox="0 0 1000 560" id="mSvg">
-        <!-- 책 두 무더기 -->
-        <g fill="#6b8fd6"><rect x="80" y="300" width="220" height="40" rx="6"/><rect x="90" y="340" width="210" height="40" rx="6" fill="#e3523f"/><rect x="80" y="380" width="220" height="40" rx="6" fill="#4fd1ae"/></g>
-        <g fill="#6b8fd6"><rect x="700" y="300" width="220" height="40" rx="6"/><rect x="700" y="340" width="210" height="40" rx="6" fill="#e3523f"/><rect x="700" y="380" width="220" height="40" rx="6" fill="#4fd1ae"/></g>
-        <g id="bridge"><path id="bPath" d="M240 298 L500 298 L760 298" fill="none" stroke="#c9a96b" stroke-width="10" stroke-linejoin="round"/></g>
-        <g id="coins"></g>
-      </svg>
+      <div class="cover" id="mCover"><span>🤔</span>어떻게 될까요?</div>
       <div class="boom" id="mBoom">와르르!</div>
+      <div class="drop" id="mDrop"></div>
     </div>
     <div class="mside">
       <div class="mq">🤔 <b>예상해 봐요!</b><br>종이 한 장 위에 동전을 몇 개 올릴 수 있을까요?</div>
@@ -401,34 +405,28 @@ const SHAPE = {
   square:{n:'네모 기둥', d:'네 번 접어 네모로', svg:'<rect class="pp" x="22" y="22" width="56" height="56"/>'},
   mix:{n:'섞어서', d:'', svg:'<circle class="pp" cx="34" cy="52" r="18"/><polygon class="pp" points="70,30 90,72 50,72"/>'},
   new:{n:'새 모양', d:'', svg:'<path class="pp" d="M50 18 L60 40 L84 42 L66 58 L72 82 L50 70 L28 82 L34 58 L16 42 L40 40 Z"/>'}};
-const shapeSvg = k => `<div class="shape"><svg viewBox="0 0 100 100">${SHAPE[k].svg}</svg></div>`;
+const PHOTO = {flat:1, half:1, zig:1, roll:1, tri:1};
+const shapeSvg = k => PHOTO[k] ? `<div class="shape ph"><img src="img/shape_${k}.jpg" alt="${SHAPE[k].n}"></div>` : `<div class="shape"><svg viewBox="0 0 100 100">${SHAPE[k].svg}</svg></div>`;
 const LAB = ['flat', 'half', 'zig', 'roll', 'tri'];
 
 /* ---------- 이야기 ---------- */
 hooks.story = () => typewriter(document.getElementById('storyText'),
   '“흐흐흐, 종이는 얇고 <b class="c-coral">약하기만</b> 하지!<br>종이 한 장으로 동전을 버티거나, 종이 기둥으로 <b class="c-coral">책</b>을 받칠 수 있겠어?”<br>요원 여러분, 종이에 숨은 <b class="c-navy">놀라운 힘</b>을 보여 주세요!');
 
-/* ---------- 미션 1: 종이 마술 쇼 ---------- */
+/* ---------- 미션 1: 종이 마술 쇼 (실제 실험 사진 + 동전 떨어뜨리기) ---------- */
 let mTimer = null;
 function magic(kind){
-  clearInterval(mTimer); const coins = document.getElementById('coins'), br = document.getElementById('bridge'), path = document.getElementById('bPath');
-  coins.innerHTML = ''; br.classList.remove('fall'); document.getElementById('mBoom').classList.remove('on'); document.getElementById('mMsg').classList.remove('show');
-  const cnt = document.getElementById('mCnt'); cnt.textContent = 0;
-  const fold = kind === 'fold';
+  clearInterval(mTimer); const fold = kind === 'fold', cnt = document.getElementById('mCnt'), drop = document.getElementById('mDrop');
+  document.getElementById('mBoom').classList.remove('on'); document.getElementById('mMsg').classList.remove('show');
+  document.getElementById('phFlat').classList.toggle('on', !fold); document.getElementById('phFold').classList.toggle('on', fold);
+  document.getElementById('mCover').classList.add('off'); cnt.textContent = 0;
   document.getElementById('mTag').textContent = fold ? '〰️ 병풍 접은 종이' : '📄 평평한 종이';
-  path.setAttribute('d', fold ? 'M240 298 ' + [...Array(26)].map((_, i) => `L${260 + i * 19.2} ${i % 2 ? 272 : 298}`).join(' ') + ' L760 298' : 'M240 298 Q500 298 760 298');
-  path.setAttribute('stroke-width', fold ? 7 : 10);
-  let n = 0; const max = fold ? 18 : 2;
-  mTimer = setInterval(() => {
-    n++; const y = fold ? 262 - (n - 1) * 13 : 288 + n * 18;
-    coins.insertAdjacentHTML('beforeend', `<g class="coin"><ellipse cx="500" cy="${y}" rx="44" ry="11" fill="#c9a227"/><ellipse cx="500" cy="${y - 5}" rx="44" ry="11" fill="#f2cf4a" stroke="#c9a227" stroke-width="2"/></g>`);
-    cnt.textContent = n; S.tick();
-    if(!fold){ path.setAttribute('d', `M240 298 Q500 ${298 + n * 40} 760 298`); }
+  let n = 0; const max = fold ? 15 : 2;
+  mTimer = setInterval(() => { n++; drop.classList.remove('go'); void drop.offsetWidth; drop.classList.add('go'); cnt.textContent = n; S.tick();
     if(n >= max){ clearInterval(mTimer);
-      if(!fold){ setTimeout(() => { br.classList.add('fall'); coins.querySelectorAll('.coin').forEach(c => c.style.transform = 'translateY(260px)'); document.getElementById('mBoom').classList.add('on'); S.poof(); }, 500); }
-      else { setTimeout(() => { S.win(); document.getElementById('mMsg').classList.add('show'); }, 400); } }
-  }, fold ? 260 : 700);
+      setTimeout(() => { if(fold){ S.win(); document.getElementById('mMsg').classList.add('show'); } else { document.getElementById('mBoom').classList.add('on'); S.poof(); } }, 600); } }, fold ? 330 : 800);
 }
+hooks.magic = () => { clearInterval(mTimer); document.getElementById('mCover').classList.remove('off'); document.getElementById('mCnt').textContent = 0; document.getElementById('mBoom').classList.remove('on'); document.getElementById('mMsg').classList.remove('show'); };
 
 /* ---------- 미션 2: 접기 실험실 ---------- */
 document.getElementById('shapes5').innerHTML = LAB.map(k => `<div class="sc5">${shapeSvg(k)}<h3>${SHAPE[k].n}</h3><p>${SHAPE[k].d}</p></div>`).join('');
