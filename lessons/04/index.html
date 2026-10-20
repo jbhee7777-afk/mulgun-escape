@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="../fonts/gowun-dodum.css">
 <link rel="stylesheet" href="../shared/base.css">
 <style>
-/* 물건 그림 (사진이 없는 물건은 그림 문자) */
+/* 물건 그림: 그림 파일 또는 실제 사진(../shared/photos, 출처는 CREDITS.md) */
+.ph{border-radius:22%;object-fit:cover !important;box-shadow:0 0 0 3px #fff,0 4px 10px rgba(61,43,31,.22)}
 .emo{display:flex;align-items:center;justify-content:center;line-height:1;font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif}
 
 /* 지난 시간 */
@@ -20,12 +21,13 @@
 /* 이야기: 타임머신 */
 .tm{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:20px}
 .tm .emo{font-size:84px}
+.tm img{width:100px;height:100px;object-fit:contain}
 .tm .arr{font-family:var(--head);font-size:30px;color:var(--gold2);display:flex;flex-direction:column;align-items:center}
 .tm .arr b{font-size:56px;color:var(--coral);line-height:1}
 
 /* 옛날 느낌 카드 */
 .old{background:#f6e7c8 !important;border-color:#d9b98a !important;box-shadow:0 5px 0 #c9a46e !important}
-.old img,.old .emo{filter:sepia(.55) saturate(.8)}
+.old img:not(.ph),.old .emo{filter:sepia(.55) saturate(.8)}
 
 /* 미션 1: 시간 여행 짝 찾기 */
 .mhead{display:flex;align-items:center;gap:18px;margin-bottom:10px}
@@ -173,8 +175,8 @@
     <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px">
       <div class="bubble" id="storyText" style="min-height:300px;font-size:31px;line-height:1.65;padding:34px 40px"></div>
       <div class="tm">
-        <span class="emo">🪔</span><div class="arr">옛날<b>⇄</b>오늘</div><span class="emo">💡</span>
-        <span class="emo" style="margin-left:30px">☎️</span><div class="arr">옛날<b>⇄</b>오늘</div><span class="emo">📱</span>
+        <img class="ph" src="../shared/photos/oillamp.jpg" alt=""><div class="arr">옛날<b>⇄</b>오늘</div><img src="../01/img/obj_bulb.png" alt="">
+        <img class="ph" src="../shared/photos/phone.jpg" alt="" style="margin-left:30px"><div class="arr">옛날<b>⇄</b>오늘</div><img class="ph" src="../shared/photos/smart.jpg" alt="">
       </div>
     </div>
   </div>
@@ -264,6 +266,7 @@
       <div class="s"><span>3</span>어떤 불편함 때문에 바뀌었는지 써요</div>
       <div class="s"><span>4</span>미래에는 어떻게 바뀔지 상상해서 그려요</div>
       <div class="s bonus"><span>★</span>다 하면 짝에게 미래의 물건을 소개해요</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
     </div>
   </div>
 </section>
@@ -359,7 +362,7 @@
 
 <div id="notes"></div>
 <div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
-<div id="tools"><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
 </div></div>
 
 <script>window.LESSON = {room:1, lesson:4, keyPieces:4};</script>
@@ -367,17 +370,17 @@
 <script>
 /* ---------- 물건 그림: img가 있으면 그림 파일, 없으면 그림 문자 ---------- */
 const OBJ = {
-  oillamp:{n:'등잔불', e:'🪔'}, bulb:{n:'전등', img:'../01/img/obj_bulb.png'}, fire:{n:'모닥불', e:'🔥'},
-  brush:{n:'붓', e:'🖌️'}, pencil:{n:'연필', img:'../01/img/obj_pencil.png'}, pen:{n:'볼펜', e:'🖊️'},
-  phone:{n:'옛날 전화기', e:'☎️'}, smart:{n:'스마트폰', e:'📱'}, letter:{n:'편지', e:'✉️'},
-  hourglass:{n:'모래시계', e:'⌛'}, watch:{n:'손목시계', e:'⌚'}, sundial:{n:'해시계', e:'☀️'}, clock:{n:'벽시계', img:'../01/img/obj_clock.png'},
-  bucket:{n:'두레박', e:'🪣'}, tap:{n:'수도꼭지', e:'🚰'},
-  oldtv:{n:'볼록 텔레비전', e:'📺'}, flattv:{n:'납작한 텔레비전', e:'🖥️'},
-  oxcart:{n:'소달구지', e:'🐂'}, car:{n:'자동차', e:'🚗'}, horse:{n:'말', e:'🐎'}, steam:{n:'증기 기관차', e:'🚂'}, ktx:{n:'고속 열차', e:'🚄'},
-  radio:{n:'라디오', e:'📻'}, tape:{n:'카세트테이프', e:'📼'}, cd:{n:'CD', e:'💿'}, earphone:{n:'스마트폰 음악', e:'🎧'},
-  paint:{n:'그림으로 그리기', e:'🎨'}, camera:{n:'필름 카메라', e:'📷'}
+  oillamp:{n:'등잔불', ph:1}, bulb:{n:'전등', img:'../01/img/obj_bulb.png'}, fire:{n:'모닥불', ph:1},
+  brush:{n:'붓', ph:1}, pencil:{n:'연필', img:'../01/img/obj_pencil.png'}, pen:{n:'볼펜', ph:1},
+  phone:{n:'다이얼 전화기', ph:1}, smart:{n:'스마트폰', ph:1}, letter:{n:'편지', ph:1},
+  hourglass:{n:'모래시계', ph:1}, watch:{n:'손목시계', ph:1}, sundial:{n:'해시계', ph:1}, clock:{n:'벽시계', img:'../01/img/obj_clock.png'},
+  bucket:{n:'두레박', ph:1}, tap:{n:'수도꼭지', ph:1},
+  oldtv:{n:'볼록 텔레비전', ph:1}, flattv:{n:'납작한 텔레비전', ph:1},
+  oxcart:{n:'소달구지', ph:1}, car:{n:'자동차', ph:1}, horse:{n:'말', ph:1}, steam:{n:'증기 기관차', ph:1}, ktx:{n:'고속 열차', ph:1},
+  radio:{n:'라디오', ph:1}, tape:{n:'카세트테이프', ph:1}, cd:{n:'CD', ph:1}, earphone:{n:'스마트폰 음악', ph:1},
+  paint:{n:'그림으로 그리기', ph:1}, camera:{n:'필름 카메라', ph:1}
 };
-const art = k => OBJ[k].img ? `<img src="${OBJ[k].img}" alt="">` : `<span class="emo">${OBJ[k].e}</span>`;
+const art = k => OBJ[k].img ? `<img src="${OBJ[k].img}" alt="">` : OBJ[k].ph ? `<img class="ph" src="../shared/photos/${k}.jpg" alt="">` : `<span class="emo">${OBJ[k].e}</span>`;
 const shuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- 이야기 ---------- */
@@ -408,7 +411,7 @@ const ROWS = [['🔷', '생김새'], ['✋', '쓰는 방법']];
 const CMP = [
   {a:'oillamp', b:'bulb', same:'어두운 곳을 밝혀요', d:[['작은 그릇에 기름과 심지', '둥근 유리 속에서 빛이 나요'], ['성냥으로 심지에 불을 붙여요', '스위치를 딸깍 눌러요']],
    w:'😣 불빛이 어둡고, 불이 날까 봐 위험했어요 → 💡 <b>전기로 밝고 안전하게</b> 바뀌었어요!'},
-  {a:'phone', b:'smart', same:'멀리 있는 사람과 이야기해요', d:[['선이 달린 크고 무거운 전화기', '주머니에 쏙 들어가는 납작한 화면'], ['선이 닿는 집 안에서만 걸어요', '화면을 눌러 걸고, 얼굴을 보며 이야기해요']],
+  {a:'phone', b:'smart', same:'멀리 있는 사람과 이야기해요', d:[['선이 달린 크고 무거운 전화기', '주머니에 쏙 들어가는 납작한 화면'], ['번호판을 드르륵 돌려 걸어요', '화면을 눌러 걸고, 얼굴을 보며 이야기해요']],
    w:'😣 집 안 전화기 앞에서만 걸 수 있었어요 → 💡 <b>어디서나 들고 다니며</b> 걸 수 있게 바뀌었어요!'},
   {a:'bucket', b:'tap', same:'물을 얻어요', d:[['줄이 달린 통이나 바가지', '손잡이가 달린 쇠꼭지'], ['우물에 내려 줄을 당겨 길어요', '손잡이를 돌리면 물이 콸콸']],
    w:'😣 물을 길어 집까지 나르기 무겁고 힘들었어요 → 💡 <b>집 안에서 바로</b> 물을 쓸 수 있게 바뀌었어요!'},
@@ -467,5 +470,6 @@ hooks.escape = () => setTimeout(confetti, 300);
 window.onEsc = () => {};
 newMatch(); setCmp(0); drawTeams(); setOrder(0); startDeck();
 </script>
+<script src="../shared/print-sheet.js"></script>
 </body>
 </html>

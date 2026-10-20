@@ -391,6 +391,7 @@ b{font-family:var(--head);font-weight:400}
       <div class="s"><span>3</span>그 물건이 없으면 불편한 점을 써요</div>
       <div class="s"><span>4</span>그 물건이 필요한 까닭을 써요</div>
       <div class="s bonus"><span>★</span>보너스! 나를 행복하게 하는 물건</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
     </div>
   </div>
 </section>
@@ -455,7 +456,7 @@ b{font-family:var(--head);font-weight:400}
 
 <div id="notes"></div>
 <div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
-<div id="tools"><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="printSheet('cards.html')">🖨️ 상황 카드</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
 </div></div>
 
 <script>
@@ -613,5 +614,6 @@ function complete(){S.win();try{parent.postMessage({type:'lesson-complete',room:
 
 const startAt=parseInt(location.hash.slice(1))-1;go(isNaN(startAt)?0:Math.min(Math.max(startAt,0),slides.length-1));
 </script>
+<script src="../shared/print-sheet.js"></script>
 </body>
 </html>

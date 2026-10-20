@@ -344,6 +344,7 @@
       <div class="s"><span>3</span>탄생 이야기 3컷을 그려요<em>😣→💡→🎁</em></div>
       <div class="s"><span>4</span>문 조각을 오려 정답 칸에 붙여요<em>✂️ 만들기</em></div>
       <div class="tools"><div>✂️ 가위</div><div>🧴 풀</div><div>🖍️ 색연필</div></div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
     </div>
   </div>
 </section>
@@ -421,7 +422,7 @@
 
 <div id="notes"></div>
 <div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
-<div id="tools"><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
 </div></div>
 
 <script>window.LESSON = {room:1, lesson:2, keyPieces:2};</script>
@@ -555,5 +556,6 @@ function flipMemo(el){ if(lock || el.classList.contains('flip') || el.classList.
 window.onEsc = () => {};
 drawTeams(); setDetect(0); newMemo(); startDeck();
 </script>
+<script src="../shared/print-sheet.js"></script>
 </body>
 </html>

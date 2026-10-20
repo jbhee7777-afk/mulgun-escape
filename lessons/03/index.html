@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="../fonts/gowun-dodum.css">
 <link rel="stylesheet" href="../shared/base.css">
 <style>
-/* 물건 그림 (사진이 없는 물건은 그림 문자) */
+/* 물건 그림: 그림 파일 또는 실제 사진(../shared/photos, 출처는 CREDITS.md) */
+.ph{border-radius:22%;object-fit:cover !important;box-shadow:0 0 0 3px #fff,0 4px 10px rgba(61,43,31,.22)}
 .emo{display:flex;align-items:center;justify-content:center;line-height:1;font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif}
 
 /* 지난 시간 */
@@ -173,7 +174,7 @@
         <div class="say">“나는 지울 수 있다고!”</div>
         <div class="vs">VS</div>
         <div class="say">“나는 깎을 필요 없어!”</div>
-        <div class="who"><span class="emo">🖊️</span><span>볼펜</span></div>
+        <div class="who"><img class="ph" src="../shared/photos/pen.jpg" alt=""><span>볼펜</span></div>
       </div>
     </div>
   </div>
@@ -276,6 +277,7 @@
       <div class="s"><span>3</span>다른 점 두 가지를 찾아 써요</div>
       <div class="s"><span>4</span>“이럴 땐 ○○이 좋아요” 상황을 그려요</div>
       <div class="s bonus"><span>★</span>다 하면 짝에게 상황 퀴즈를 내요</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
     </div>
   </div>
 </section>
@@ -353,7 +355,7 @@
 
 <div id="notes"></div>
 <div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
-<div id="tools"><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
 </div></div>
 
 <script>window.LESSON = {room:1, lesson:3, keyPieces:3};</script>
@@ -361,15 +363,15 @@
 <script>
 /* ---------- 물건 그림: img가 있으면 그림 파일, 없으면 그림 문자 ---------- */
 const OBJ = {
-  pencil:{n:'연필', img:'../01/img/obj_pencil.png'}, pen:{n:'볼펜', e:'🖊️'}, crayon:{n:'크레파스', e:'🖍️'},
-  bulb:{n:'전등', img:'../01/img/obj_bulb.png'}, flashlight:{n:'손전등', img:'../02/img/obj_flashlight.png'}, candle:{n:'촛불', e:'🕯️'},
-  umbrella:{n:'우산', img:'../01/img/obj_umbrella.png'}, raincoat:{n:'우비', e:'🧥'}, boots:{n:'장화', e:'👢'},
-  backpack:{n:'책가방', img:'../01/img/obj_backpack.png'}, suitcase:{n:'바퀴 달린 가방', img:'../02/img/obj_suitcase.png'}, handbag:{n:'손가방', e:'👜'},
-  clock:{n:'벽시계', img:'../01/img/obj_clock.png'}, watch:{n:'손목시계', e:'⌚'}, alarm:{n:'자명종', e:'⏰'},
-  spoon:{n:'숟가락', e:'🥄'}, chopsticks:{n:'젓가락', e:'🥢'}, fork:{n:'포크', e:'🍴'},
-  sneakers:{n:'운동화', img:'../01/img/obj_sneakers.png'}, slippers:{n:'실내화', e:'🥿'}
+  pencil:{n:'연필', img:'../01/img/obj_pencil.png'}, pen:{n:'볼펜', ph:1}, crayon:{n:'크레파스', ph:1},
+  bulb:{n:'전등', img:'../01/img/obj_bulb.png'}, flashlight:{n:'손전등', img:'../02/img/obj_flashlight.png'}, candle:{n:'촛불', ph:1},
+  umbrella:{n:'우산', img:'../01/img/obj_umbrella.png'}, raincoat:{n:'우비', ph:1}, boots:{n:'장화', ph:1},
+  backpack:{n:'책가방', img:'../01/img/obj_backpack.png'}, suitcase:{n:'바퀴 달린 가방', img:'../02/img/obj_suitcase.png'}, handbag:{n:'손가방', ph:1},
+  clock:{n:'벽시계', img:'../01/img/obj_clock.png'}, watch:{n:'손목시계', ph:1}, alarm:{n:'자명종', ph:1},
+  spoon:{n:'숟가락', ph:1}, chopsticks:{n:'젓가락', ph:1}, fork:{n:'포크', ph:1},
+  sneakers:{n:'운동화', img:'../01/img/obj_sneakers.png'}, slippers:{n:'실내화', ph:1}
 };
-const art = k => OBJ[k].img ? `<img src="${OBJ[k].img}" alt="">` : `<span class="emo">${OBJ[k].e}</span>`;
+const art = k => OBJ[k].img ? `<img src="${OBJ[k].img}" alt="">` : OBJ[k].ph ? `<img class="ph" src="../shared/photos/${k}.jpg" alt="">` : `<span class="emo">${OBJ[k].e}</span>`;
 const shuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- 이야기 ---------- */
@@ -451,5 +453,6 @@ function nextChoose(){ setChoose((chIdx + 1) % CHOOSE.length); }
 window.onEsc = () => {};
 newSort(); setCmp(0); drawTeams(); setChoose(0); startDeck();
 </script>
+<script src="../shared/print-sheet.js"></script>
 </body>
 </html>

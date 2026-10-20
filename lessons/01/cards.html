@@ -28,4 +28,4 @@ const C=[['chair','의자가 사라졌어요!','계속 서서 공부하는 모�
 ['sneakers','신발이 사라졌어요!','맨발로 운동장을 조심조심 걷는 모습'],['cup','컵이 사라졌어요!','목이 마른데 물을 마실 수 없는 모습'],
 ['bulb','전등이 사라졌어요!','깜깜해서 책이 안 보이는 모습'],['backpack','가방이 사라졌어요!','책과 준비물을 품에 한가득 안고 오는 모습']];
 document.getElementById('g').innerHTML=C.map((c,i)=>`<div class="c"><div class="in"><span class="no">${i+1}</span><span class="sh">🤫 우리 모둠만 보기</span><img src="img/obj_${c[0]}.png" alt=""><div class="tx"><h3>${c[1]}</h3><p>이렇게 표현해요 👉 <b>${c[2]}</b></p></div></div></div>`).join('');
-</script></body></html>
+</script><script src="../shared/print.js"></script></body></html>
