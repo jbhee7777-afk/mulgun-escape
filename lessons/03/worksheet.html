@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>3차시 활동지 · 이럴 땐 이 물건!</title>
+<link rel="stylesheet" href="../fonts/jua.css"><link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;color:#4a3426;background:#ddd;word-break:keep-all}
+.page{width:210mm;height:297mm;margin:0 auto;position:relative;overflow:hidden;background:#fffaf0;
+  background-image:radial-gradient(#f6e3c2 1.1px,transparent 1.1px);background-size:5mm 5mm;padding:9mm 11mm}
+.page::before{content:"";position:absolute;inset:4.5mm;border:1.2mm dashed #b9d7ff;border-radius:7mm;pointer-events:none}
+.h{font-family:'Jua','Malgun Gothic',sans-serif;font-weight:400}
+.top{position:relative;height:31mm;display:flex;align-items:center;padding:0 4mm}
+.banner{flex:1;position:relative;background:#2d3a7c;border-radius:8mm;color:#fff;padding:4mm 7mm 4mm 31mm;box-shadow:0 1.6mm 0 #1c2557}
+.banner .room{display:inline-block;background:#ffc53d;color:#5a3d00;border-radius:3mm;padding:.8mm 3mm;font-size:10.5pt}
+.banner h1{font-size:26pt;line-height:1.15;margin-top:1.2mm}
+.banner h1 em{font-style:normal;color:#ffe39a}
+.banner .ic{position:absolute;left:4mm;bottom:-1mm;width:24mm}
+.agent{position:absolute;right:0;top:-2mm;width:25mm;transform:rotate(6deg)}
+.who{display:flex;gap:4mm;margin:2mm 31mm 0 4mm}
+.who div{flex:1;background:#fff;border:.5mm solid #f0d9b5;border-radius:4mm;padding:2mm 4mm;font-family:'Jua',sans-serif;font-size:12pt;color:#9a7b5f}
+.sec{position:relative;margin:3mm 4mm 0;background:#fff;border-radius:5mm;padding:2.6mm 4.5mm 3mm;border:.5mm solid #f0d9b5;box-shadow:0 1mm 0 #f3e2c4}
+.sec .t{display:flex;align-items:center;gap:2.5mm;font-size:13.5pt;margin-bottom:2mm}
+.sec .n{width:8mm;height:8mm;border-radius:50%;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12pt;flex:none}
+.c1 .n{background:#7cc4ff}.c1{background:#f2f8ff}
+.c2 .n{background:#ff7b6b}.c2{background:#fff5f2}
+.c3 .n{background:#b39ddb}.c3{background:#f7f3fd}
+/* 1. 두 물건 */
+.pair{display:flex;align-items:stretch;gap:3mm}
+.obox{flex:1;height:40mm;background:#fff;border:.7mm solid #a9cbe8;border-radius:5mm;position:relative}
+.obox .lb{position:absolute;left:3mm;top:2mm;font-size:9pt;color:#7fa3c9}
+.obox .nm{position:absolute;left:3mm;right:3mm;bottom:2.5mm;border-bottom:.5mm dotted #a9cbe8;height:8mm;font-family:'Jua',sans-serif;font-size:10.5pt;color:#7fa3c9;display:flex;align-items:flex-end}
+.job{width:44mm;flex:none;background:#ffe39a;border-radius:5mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2mm}
+.job .jt{font-family:'Jua',sans-serif;font-size:11.5pt;color:#8a6200}
+.job .jl{width:100%;border-bottom:.5mm dotted #c9a35a;height:9mm}
+.job .js{font-size:10.5pt;color:#8a6200;margin-top:1.5mm}
+/* 2. 다른 점 표 */
+table{width:100%;border-collapse:separate;border-spacing:2mm 1.6mm;margin:-1.6mm -2mm}
+th{font-family:'Jua',sans-serif;font-weight:400;font-size:11pt;color:#d24634;background:#ffe1dc;border-radius:3mm;padding:1.5mm}
+td{background:#fff;border:.5mm solid #ffc9bd;border-radius:3mm;height:12mm;font-size:10.5pt;color:#c98a7e;vertical-align:top;padding:1.5mm 2.5mm}
+td.lab{width:30mm;background:#2d3a7c;border-color:#2d3a7c;color:#fff;font-family:'Jua',sans-serif;font-size:11.5pt;text-align:center;vertical-align:middle}
+/* 3. 상황 */
+.sits{display:flex;gap:3mm}
+.sit{flex:1;background:#fff;border:.6mm solid #c2b0e0;border-radius:4mm;padding:2mm 3mm;display:flex;flex-direction:column}
+.sit .pd{height:25mm;border:.4mm dashed #d8cbee;border-radius:3mm;margin:1.5mm 0;position:relative}
+.sit .pd::after{content:"🖍️ 상황 그림";position:absolute;left:2mm;top:1mm;font-size:8.5pt;color:#b9a6dc}
+.sit .ln{font-size:11pt;color:#8a6fb8;display:flex;align-items:flex-end;gap:1mm;height:8.5mm}
+.sit .ln .bl{border-bottom:.5mm dotted #c2b0e0;flex:1;height:7mm}
+.sit .ln.end{justify-content:flex-end}
+.bottom{display:flex;gap:4mm;margin:3mm 4mm 0;align-items:stretch}
+.self{flex:1;display:flex;flex-direction:column;gap:2mm}
+.self div{background:#fff;border:.5mm solid #f0d9b5;border-radius:4mm;padding:2mm 3mm;font-size:10.5pt;display:flex;justify-content:space-between;align-items:center}
+.self div b{font-family:'Jua',sans-serif;font-weight:400;color:#ffc53d;font-size:14pt;letter-spacing:.8mm}
+.tip{width:62mm;flex:none;background:#fff6d6;border:.5mm solid #ffd76b;border-radius:4mm;padding:2.5mm 3mm;font-size:10pt;line-height:1.55;color:#8a6200}
+.tip b{font-family:'Jua',sans-serif;font-weight:400;font-size:11pt}
+.foot{position:absolute;left:12mm;right:12mm;bottom:6.5mm;display:flex;justify-content:space-between;align-items:center;font-family:'Jua',sans-serif;font-size:10pt;color:#c4a27e}
+.foot .key{display:flex;gap:1.5mm;align-items:center}
+.foot .key i{width:5mm;height:5mm;border-radius:50%;border:.4mm dashed #e3b55a;display:inline-block}
+.foot .key i.on{background:#ffc53d;border:none}
+@media print{body{background:none}.page{margin:0}}
+</style></head>
+<body><div class="page">
+  <div class="top">
+    <div class="banner">
+      <img class="ic" src="../01/img/ic_search.png" alt="">
+      <span class="room h">🔐 1번 방 · 3차시 미션 4</span>
+      <h1 class="h">이럴 땐 <em>이 물건!</em> 비교 카드</h1>
+    </div>
+    <img class="agent" src="../01/img/agent.png" alt="">
+  </div>
+  <div class="who"><div>요원 번호 :</div><div style="flex:1.6">요원 이름 :</div></div>
+
+  <div class="sec c1"><div class="t h"><span class="n">1</span>같은 일을 하는 물건 두 개를 그리고, 하는 일을 써요.</div>
+    <div class="pair">
+      <div class="obox"><span class="lb">🖍️ 물건 ㉮</span><div class="nm">이름 :</div></div>
+      <div class="job"><div class="jt">🤝 둘 다 하는 일</div><div class="jl"></div><div class="js">일을 해요.</div></div>
+      <div class="obox"><span class="lb">🖍️ 물건 ㉯</span><div class="nm">이름 :</div></div>
+    </div>
+  </div>
+
+  <div class="sec c2"><div class="t h"><span class="n">2</span>두 물건의 다른 점을 찾아 써요.</div>
+    <table>
+      <tr><th></th><th>물건 ㉮</th><th>물건 ㉯</th></tr>
+      <tr><td class="lab">🔷 생김새</td><td></td><td></td></tr>
+      <tr><td class="lab">✋ 쓰는 방법</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="sec c3"><div class="t h"><span class="n">3</span>어떤 물건이 더 좋은 상황일까요? 그리고 써요.</div>
+    <div class="sits">
+      <div class="sit"><div class="h" style="font-size:11.5pt;color:#6b4fa0">👍 ㉮가 더 좋은 상황</div><div class="pd"></div>
+        <div class="ln"><span class="bl"></span>할 때는</div><div class="ln"><span class="bl"></span>이(가) 좋아요.</div></div>
+      <div class="sit"><div class="h" style="font-size:11.5pt;color:#6b4fa0">👍 ㉯가 더 좋은 상황</div><div class="pd"></div>
+        <div class="ln"><span class="bl"></span>할 때는</div><div class="ln"><span class="bl"></span>이(가) 좋아요.</div></div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="self">
+      <div>하는 일이 같은 물건 짝을 찾았어요.<b>☆☆☆</b></div>
+      <div>같은 점과 다른 점을 비교했어요.<b>☆☆☆</b></div>
+      <div>상황에 알맞은 물건을 골랐어요.<b>☆☆☆</b></div>
+    </div>
+    <div class="tip"><b>💡 짝이 생각나지 않으면?</b><br>연필 ↔ 볼펜 · 우산 ↔ 우비<br>숟가락 ↔ 젓가락 · 벽시계 ↔ 손목시계<br>책가방 ↔ 바퀴 달린 가방</div>
+  </div>
+
+  <div class="foot"><span>물건 교과서 · 물건의 비밀 발견하기</span><span class="key">🗝️ 열쇠 조각 <i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+</div></body></html>
