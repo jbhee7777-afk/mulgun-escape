@@ -68,23 +68,28 @@
 .lab.show .lmsg{display:block;animation:enter .5s}
 .lmsg b{color:#0f8a6e}
 
-/* 미션 2: 엉터리 물건 가게 */
+/* 미션 2: 신기한 물건 가게 */
 .store{flex:1;display:flex;gap:24px;min-height:0;margin-top:6px}
 .counter{width:560px;flex:none;display:flex;flex-direction:column;gap:12px;align-items:center}
 .counter .stage{width:520px;background:#fff;border-radius:34px;box-shadow:0 0 0 8px #ffe39a,0 16px 30px rgba(61,43,31,.2);padding:20px;position:relative}
 .counter .price{position:absolute;top:-22px;right:-18px;background:#e3523f;color:#fff;font-family:var(--head);font-size:30px;padding:10px 20px;border-radius:18px;transform:rotate(8deg);box-shadow:0 6px 0 #b03a2b;z-index:2}
-.counter .verdict{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-size:250px;z-index:3;font-family:'Segoe UI Emoji',sans-serif;opacity:.88}
-.store.rev .verdict{display:flex;animation:enter .4s}
-.sinfo{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.counter .real{position:absolute;left:-16px;bottom:-18px;background:var(--mint);color:#04392b;font-family:var(--head);font-size:30px;padding:10px 20px;border-radius:18px;transform:rotate(-6deg);box-shadow:0 6px 0 #22a283;z-index:2;display:none}
+.counter .real.show{display:block;animation:enter .4s}
+.sinfo{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
 .sname{font-family:var(--head);font-size:52px;color:var(--navy);line-height:1.2}
 .sname small{display:block;font-size:24px;color:var(--ink2)}
 .sname .mt{color:#e3523f}
-.sq{background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 22px;font-size:29px;line-height:1.55}
-.sans{border-radius:22px;padding:16px 22px;font-size:28px;line-height:1.55;display:none;gap:16px;align-items:center}
-.store.rev .sans{display:flex;animation:enter .5s}
-.sans.bad{background:#fff5f2;border:3px solid #ffc0b5}.sans.good{background:var(--mint2);border:3px solid var(--mint)}
-.sans .sw{width:110px;height:110px;flex:none}
-.sans b{color:#e3523f}.sans.good b{color:#0f8a6e}
+.sq{background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:12px 22px;font-size:27px;line-height:1.55}
+.pc{display:flex;flex-direction:column;gap:10px}
+.pcb{border-radius:20px;padding:12px 20px;font-size:27px;line-height:1.5;display:flex;gap:14px;align-items:flex-start;border:3px dashed var(--line);background:#fff;color:#c9b38e;cursor:pointer;min-height:70px}
+.pcb .lb{font-family:var(--head);flex:none;white-space:nowrap}
+.pcb .tx{opacity:0;transition:opacity .4s;color:var(--ink)}
+.pcb.open{border-style:solid;cursor:default}
+.pcb.open .tx{opacity:1}
+.pcb.good.open{background:#eefbf6;border-color:var(--mint);color:#0f8a6e}
+.pcb.worry.open{background:#fff5f2;border-color:#ffc0b5;color:#d24634}
+.pcb.idea.open{background:#fff6d6;border-color:var(--gold);color:#9a6a00}
+.pcb b{color:inherit}
 .sbtns{display:flex;gap:12px;margin-top:auto;flex-wrap:wrap}
 .sbtns .btn{font-size:23px;padding:12px 18px}
 .dside{width:220px;display:flex;flex-direction:column;gap:10px}
@@ -92,9 +97,8 @@
 .rounds button{height:48px;border-radius:14px;background:#fff;border:3px solid var(--line);font-size:21px;color:var(--navy)}
 .rounds button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
 .rounds button.done{background:var(--mint2);border-color:var(--mint);color:#0f8a6e}
-.tally{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:12px;text-align:center;font-family:var(--head);font-size:21px;color:var(--ink2)}
-.tally b{display:block;font-size:52px;color:#e3523f;line-height:1.1}
-.tally button{width:44px;height:40px;border-radius:12px;background:var(--gold2);font-size:22px;color:#5a3d00;margin:3px}
+.many{background:var(--mint2);border-radius:20px;padding:14px;font-family:var(--head);font-size:23px;color:#0f6b56;text-align:center;line-height:1.45}
+.many small{display:block;font-family:var(--body);font-size:18px;color:var(--ink2);margin-top:4px}
 
 /* 미션 3: 꼬마 우산 실험 */
 .ubox{flex:1;display:flex;gap:22px;min-height:0;margin-top:6px}
@@ -169,8 +173,8 @@
 
 <!-- 3 이야기 -->
 <section class="slide dark" data-phase="도입 · 5분" data-hook="story"
- data-notes="<b>이야기</b> — 말풍선을 누르면 글자가 한 번에 나와요. 아래 물건들을 보며 “사고 싶은 물건이 있나요?” 물어보세요(종이 우산, 유리 운동화, 쇠 장갑).">
-  <div class="alarm">🚨 싹쓸이 마법사의 엉터리 물건 가게!</div>
+ data-notes="<b>이야기</b> — 말풍선을 누르면 글자가 한 번에 나와요. 아래 물건들을 보며 “이 물건, 정말 쓸 수 없을까?” 물어보세요(종이 의자, 쇠 장갑, 종이 우산). 정답을 말하지 말고 궁금증만 모아 두세요 — 셋 다 실제로 있어요!">
+  <div class="alarm">🚨 싹쓸이 마법사의 신기한 물건 가게!</div>
   <div class="storywrap">
     <img class="wizard" src="../01/img/wizard.jpg" alt="싹쓸이 마법사">
     <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px">
@@ -187,12 +191,12 @@
   <h2 class="title" style="font-size:60px">오늘의 미션 네 가지</h2>
   <div class="missions" style="gap:20px">
     <div class="mcard"><span class="tag">미션 1</span><div class="ic emo" style="font-size:96px">🧪</div><h3>재료 실험실</h3><p>예상하고 실험해요</p></div>
-    <div class="mcard"><span class="tag">미션 2</span><div class="ic emo" style="font-size:96px">🏪</div><h3>엉터리 물건 가게</h3><p>살까, 말까?</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><div class="ic emo" style="font-size:96px">🏪</div><h3>신기한 물건 가게</h3><p>이 재료로 만들면 어떨까?</p></div>
     <div class="mcard"><span class="tag">미션 3</span><div class="ic emo" style="font-size:96px">☂️</div><h3>꼬마 우산 실험</h3><p>비를 막는 재료는?</p></div>
     <div class="mcard"><span class="tag">미션 4</span><img class="ic" src="../01/img/ic_mail.png" alt=""><h3>재료 탐정 보고서</h3><p>알게 된 것 정리</p></div>
     <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 3</h3><p>2번 방 세 번째!</p></div>
   </div>
-  <div class="goal"><b>🎯 학습 목표</b> 여러 재료의 특징을 비교하고, 쓰임새에 알맞은 재료를 고를 수 있어요.</div>
+  <div class="goal"><b>🎯 학습 목표</b> 여러 재료의 특징을 비교하고, 재료마다 좋은 점과 아쉬운 점을 생각하며 쓰임새에 맞는 재료를 고를 수 있어요.</div>
 </section>
 
 <!-- 5 재료 소개 -->
@@ -225,32 +229,36 @@
 
 <!-- 7 미션 2 규칙 -->
 <section class="slide" data-phase="미션 2 · 8분"
- data-notes="<b>엉터리 물건 가게 안내</b> — 마법사가 이상한 재료로 만든 물건을 팔아요. 진짜 쓸 만한 물건도 섞여 있어요! 물건이 나오면 “하나, 둘, 셋!”에 👍(살래요) 또는 👎(안 살래요)를 들어요. 안 살 물건이면 “어떤 재료로 바꿀까?”까지 말해요.">
+ data-notes="<b>신기한 물건 가게 안내</b> — 마법사가 재료를 바꾼 물건을 팔아요. ‘살까, 말까’로 맞히고 틀리는 놀이가 아니에요. 물건마다 😀 좋은 점, 😟 걱정되는 점, 💡 이렇게 하면 쓸 수 있겠다는 아이디어를 함께 말해요. 종이 의자·쇠 장갑처럼 이상해 보여도 실제로 있는 물건이 많아요. ‘이 재료는 안 돼’라는 생각보다 ‘어떻게 하면 될까?’를 이끌어 주세요.">
   <div class="kicker">MISSION 2</div>
-  <h2 class="title">🏪 엉터리 물건 가게</h2>
-  <div class="rules" style="max-width:1120px">
-    <div class="rule"><span>1</span><div>마법사가 <b class="hl">이상한 재료</b>로 만든 물건을 팔아요.</div></div>
-    <div class="rule"><span>2</span><div>“하나, 둘, 셋!” 👍 <b class="c-mint">살래요</b> 또는 👎 <b class="c-coral">안 살래요</b>를 들어요.</div></div>
-    <div class="rule"><span>3</span><div>안 살 물건이면 <b class="c-navy">어떤 재료로 바꿀지</b> 말해요.</div></div>
-    <div class="rule"><span>4</span><div>조심! 진짜 <b class="hl">쓸 만한 물건</b>도 섞여 있어요.</div></div>
+  <h2 class="title">🏪 신기한 물건 가게</h2>
+  <div class="rules" style="max-width:1160px">
+    <div class="rule"><span>1</span><div>마법사가 <b class="hl">재료를 바꾼 물건</b>을 팔아요.</div></div>
+    <div class="rule"><span>2</span><div>이 재료라서 <b class="c-mint">😀 좋은 점</b>은 무엇일까요?</div></div>
+    <div class="rule"><span>3</span><div>이 재료라서 <b class="c-coral">😟 걱정되는 점</b>은 무엇일까요?</div></div>
+    <div class="rule"><span>4</span><div><b class="c-navy">💡 어떻게 하면</b> 이 재료로도 쓸 수 있을까요? 생각은 여러 가지예요!</div></div>
   </div>
   <img class="mascot bob" src="../01/img/wizard.jpg" alt="" style="right:80px;bottom:100px;width:280px;border-radius:50%">
 </section>
 
 <!-- 8 미션 2 가게 -->
 <section class="slide" data-phase="미션 2 · 8분" style="padding-top:78px"
- data-notes="<b>진행</b> — 오른쪽 번호로 물건을 골라요(16개, 그중 5개는 쓸 만한 물건). 👍/👎를 들게 한 뒤 ‘판정!’. 맞힌 학생 수를 오른쪽 ‘정답 손님’에 더하면 반 전체 기록이 돼요. 모둠마다 한 명씩 ‘바꿀 재료’를 말하게 하면 두 바퀴를 돌 수 있어요.">
+ data-notes="<b>진행</b> — 오른쪽 번호로 물건을 골라요(15개 중 5~6개면 충분해요). ① 짝과 30초 이야기 ② 상자를 하나씩 눌러 😀 → 😟 → 💡 순서로 열며 학생 생각을 먼저 들어요. 실제로 있는 물건이면 ‘🌍 실제로 있어요!’ 표시가 붙어요. “이 재료는 절대 안 돼!”보다 “이렇게 하면 될 수도 있겠다!”를 칭찬해 주세요.">
   <div class="store" id="store">
-    <div class="counter"><div class="stage"><span class="price" id="sPrice"></span><div class="dress" id="sDress"></div><div class="verdict" id="sVerdict"></div></div></div>
+    <div class="counter"><div class="stage"><span class="price" id="sPrice"></span><div class="dress" id="sDress"></div><div class="real" id="sReal">🌍 실제로 있어요!</div></div></div>
     <div class="sinfo">
       <div class="sname" id="sName"></div>
-      <div class="sq">🤔 이 물건, <b>살까요? 말까요?</b><br>👍 살래요 &nbsp;/&nbsp; 👎 안 살래요 — 왜 그렇게 생각해요?</div>
-      <div class="sans" id="sAns"></div>
-      <div class="sbtns"><button class="btn coral" onclick="judge()">⚖️ 판정!</button><button class="btn ghost" onclick="setItem((iIdx + 1) % ITEMS.length)">다음 물건 ▶</button></div>
+      <div class="sq">🤔 이 재료로 만들면 어떨까요? 짝과 이야기해 봐요!</div>
+      <div class="pc">
+        <div class="pcb good" id="pGood" onclick="openPc(this)"><span class="lb">😀 좋은 점</span><span class="tx"></span></div>
+        <div class="pcb worry" id="pWorry" onclick="openPc(this)"><span class="lb">😟 걱정되는 점</span><span class="tx"></span></div>
+        <div class="pcb idea" id="pIdea" onclick="openPc(this)"><span class="lb">💡 이렇게 하면?</span><span class="tx"></span></div>
+      </div>
+      <div class="sbtns"><button class="btn mint" onclick="openAll()">👀 한 번에 열기</button><button class="btn ghost" onclick="setItem((iIdx + 1) % ITEMS.length)">다음 물건 ▶</button></div>
     </div>
     <div class="dside">
       <div class="rounds" id="sRounds"></div>
-      <div class="tally">정답 손님<b id="tally">0</b>명<br><button onclick="addTally(-1)">−</button><button onclick="addTally(1)">＋</button><button onclick="addTally(5)">＋5</button></div>
+      <div class="many">🌈 어떤 재료든<br>좋은 점과 아쉬운 점이 있어요<small>쓰임새에 맞게 고르고, 다듬고, 섞으면 새로운 물건이 돼요.</small></div>
     </div>
   </div>
 </section>
@@ -280,7 +288,7 @@
       <div class="spray" id="spray"></div>
       <button class="btn ghost" onclick="sprayOne()">💦 분무기 한 번</button>
       <button class="btn coral" onclick="uConclude()">💡 결론 보기</button>
-      <div class="uconc" id="uconc">☀️ 보송보송했던 재료는 <b>물이 스며들지 않는</b> 비닐과 포일이에요.<br>그래서 진짜 우산은 <b>비닐</b>이나 <b>물이 스며들지 않게 만든 천</b>으로 만들어요!</div>
+      <div class="uconc" id="uconc">☀️ 오늘 보송보송했던 재료는 <b>물이 스며들지 않는</b> 비닐과 포일이에요.<br>그런데 종이·천도 <b>기름을 먹이거나 코팅하면</b> 비를 막을 수 있어요. 재료를 <b>다듬으면</b> 쓰임새가 달라져요!</div>
     </div>
   </div>
 </section>
@@ -320,7 +328,7 @@
       <div class="s">① “<b>○○</b>을(를) 만들 때는”</div>
       <div class="s">② “<b>△△</b>(으)로 만드는 게 좋아요.”</div>
       <div class="s">③ “왜냐하면 <b>~하기 때문이에요</b>.”</div>
-      <div class="s">④ 친구들은 👍 또는 다른 재료를 추천해요.</div>
+      <div class="s">④ 친구들은 “다른 재료라면 이렇게!” 하고 또 다른 생각을 보태요.</div>
     </div>
     <div class="qpick">
       <div class="pickball" id="picker">?</div>
@@ -336,8 +344,8 @@
  data-notes="<b>배움 정리</b> — 빈칸에 들어갈 말을 먼저 말하게 한 뒤 눌러 공개해요.">
   <div class="kicker">SECRET CODE</div>
   <h2 class="title" style="font-size:54px">🔐 2번 방 세 번째 비밀 문장</h2>
-  <div class="cipher">재료마다 <span class="blank" onclick="openBlank(this)">특징</span>이 달라서<br>쓰임새에 알맞은 <span class="blank" onclick="openBlank(this)">재료</span>를 골라 만들어요.</div>
-  <div class="chips"><span class="chip">재료</span><span class="chip">이름</span><span class="chip">특징</span><span class="chip">가격</span></div>
+  <div class="cipher">재료마다 좋은 점과 아쉬운 <span class="blank" onclick="openBlank(this)">점</span>이 있어요.<br>쓰임새에 맞게 고르고 <span class="blank" onclick="openBlank(this)">다듬으면</span> 새로운 물건이 돼요.</div>
+  <div class="chips"><span class="chip">점</span><span class="chip">이름</span><span class="chip">다듬으면</span><span class="chip">버리면</span></div>
 </section>
 
 <!-- 15 열쇠 -->
@@ -395,8 +403,8 @@ const dress = (o, m) => `<img src="${OBJ[o][1]}" alt=""><div class="skin tx-${m}
 
 /* ---------- 이야기 ---------- */
 hooks.story = () => { typewriter(document.getElementById('storyText'),
-  '“어서 오세요, 마법사의 물건 가게예요! 흐흐흐.”<br>마법사가 물건의 <b class="c-coral">재료</b>를 몽땅 바꿔 버렸어요.<br>종이 우산, 유리 운동화, 쇠 장갑…<br>요원 여러분, <b class="c-navy">재료의 비밀</b>을 밝혀 주세요!');
-  document.getElementById('shop').innerHTML = [['umbrella', 'paper'], ['sneakers', 'glass'], ['mittens', 'metal']].map(([o, m]) => `<div class="it"><div class="dress">${dress(o, m)}</div>${MAT[m]} ${OBJ[o][0]}</div>`).join(''); };
+  '“어서 오세요, 마법사의 신기한 물건 가게예요! 흐흐흐.”<br>마법사가 물건의 <b class="c-coral">재료</b>를 몽땅 바꿔 버렸어요.<br>종이 의자, 쇠 장갑, 종이 우산… 이런 물건, 정말 쓸 수 없을까요?<br>요원 여러분, 재료마다 숨은 <b class="c-navy">좋은 점과 아쉬운 점</b>을 찾아 주세요!');
+  document.getElementById('shop').innerHTML = [['chair', 'paper'], ['mittens', 'metal'], ['umbrella', 'paper']].map(([o, m]) => `<div class="it"><div class="dress">${dress(o, m)}</div>${MAT[m]} ${OBJ[o][0]}</div>`).join(''); };
 
 /* ---------- 미션 1: 재료 실험실 (a: 선생님 실험 결과, o ⭕ / t △ / x ❌) ---------- */
 const LMAT = ['paper', 'cloth', 'vinyl', 'foil'];
@@ -413,37 +421,33 @@ function labShow(){ document.getElementById('lab').classList.add('show'); S.win(
   document.getElementById('lmsg').innerHTML = `오른쪽 아래 작은 기호가 선생님 실험 결과예요. 우리 결과와 <b>${same}칸</b>이 같아요!<br>💡 <b>비닐·포일</b>은 물이 스며들지 않고, <b>천</b>은 잘 찢어지지 않아요.`; }
 function labReset(){ lab = TESTS.map(() => LMAT.map(() => '')); document.getElementById('lab').classList.remove('show'); S.flip(); drawLab(); }
 
-/* ---------- 미션 2: 엉터리 물건 가게 (ok: 쓸 만한 물건, w: 판정 까닭, b: 알맞은 재료) ---------- */
+/* ---------- 미션 2: 신기한 물건 가게 (g: 좋은 점 / w: 걱정되는 점 / i: 이렇게 하면? / real: 실제로 있는 물건) ---------- */
 const ITEMS = [
-  {o:'umbrella', m:'paper', p:'100원', w:'비에 젖으면 <b>흐물흐물 찢어져요</b>.', b:'vinyl', bn:'비닐이나 물이 스며들지 않는 천'},
-  {o:'sneakers', m:'glass', p:'500원', w:'딱딱하고 <b>깨지면 다쳐요</b>. 발도 아파요.', b:'cloth', bn:'천과 고무'},
-  {o:'mittens', m:'metal', p:'300원', w:'<b>차갑고</b> 손가락을 구부릴 수 없어요.', b:'wool', bn:'털실'},
-  {o:'cup', m:'tissue', p:'50원', w:'물을 부으면 <b>줄줄 새요</b>.', b:'glass', bn:'유리나 도자기'},
-  {o:'backpack', m:'cloth', p:'1000원', ok:1, w:'천은 <b>가볍고 튼튼하고</b> 잘 찢어지지 않아요.', b:'cloth', bn:'천'},
-  {o:'chair', m:'paper', p:'200원', w:'앉으면 <b>찌그러져요</b>.', b:'wood', bn:'나무나 쇠'},
-  {o:'suitcase', m:'box', p:'300원', w:'비에 젖고 <b>쉽게 찢어져요</b>.', b:'vinyl', bn:'단단한 플라스틱'},
-  {o:'glasses', m:'wood', p:'400원', w:'렌즈가 나무라서 <b>앞이 안 보여요</b>.', b:'glass', bn:'투명한 유리나 플라스틱'},
-  {o:'umbrella', m:'vinyl', p:'800원', ok:1, w:'비닐은 <b>물이 스며들지 않아요</b>. 비닐우산은 진짜 있어요!', b:'vinyl', bn:'비닐'},
-  {o:'flashlight', m:'ice', p:'100원', w:'손에 쥐면 <b>녹아서 물이 돼요</b>.', b:'metal', bn:'플라스틱이나 쇠'},
-  {o:'pencil', m:'rubber', p:'50원', w:'흐물흐물 휘어서 <b>글씨를 쓸 수 없어요</b>.', b:'wood', bn:'나무'},
-  {o:'scissors', m:'metal', p:'700원', ok:1, w:'쇠는 <b>단단하고 날카로워서</b> 종이가 잘 잘려요.', b:'metal', bn:'쇠'},
-  {o:'straw', m:'wool', p:'30원', w:'구멍 사이로 <b>물이 새서</b> 빨아 마실 수 없어요.', b:'vinyl', bn:'플라스틱이나 종이'},
-  {o:'clothespin', m:'choco', p:'200원', w:'손에서 <b>녹고 쉽게 부러져요</b>. 빨래에 초콜릿이 묻어요!', b:'wood', bn:'나무나 플라스틱'},
-  {o:'cup', m:'glass', p:'900원', ok:1, w:'유리는 <b>물이 새지 않고</b> 속이 보여요.', b:'glass', bn:'유리'},
-  {o:'chair', m:'wood', p:'1500원', ok:1, w:'나무는 <b>단단하고 튼튼해서</b> 앉아도 괜찮아요.', b:'wood', bn:'나무'}];
-let iIdx = 0, tally = 0; const iDone = {};
-function setItem(i){ iIdx = i; const it = ITEMS[i]; S.flip(); const st = document.getElementById('store'); st.classList.remove('rev');
+  {o:'chair', m:'paper', p:'200원', real:1, g:'아주 <b>가볍고</b> 옮기기 쉬워요. 다 쓰면 재활용할 수 있어요.', w:'얇은 종이 한 장이면 앉자마자 <b>찌그러질 수 있어요</b>.', i:'종이를 <b>여러 겹 겹치고 접고 말면</b> 튼튼해져요. <b>골판지 의자</b>는 실제로 있어요! (8차시에 종이의 힘을 실험해요)'},
+  {o:'mittens', m:'metal', p:'300원', real:1, g:'아주 <b>튼튼해서</b> 날카로운 것에도 손이 베이지 않아요.', w:'<b>무겁고 차가워서</b> 겨울에 끼기는 힘들어요.', i:'쇠를 <b>작은 고리로 엮으면</b> 구부러져요. 고기를 손질하는 요리사는 <b>쇠사슬 장갑</b>을 껴요!'},
+  {o:'umbrella', m:'paper', p:'100원', real:1, g:'<b>가볍고</b> 예쁜 그림을 그리기 좋아요.', w:'그냥 종이는 비에 젖으면 <b>찢어질 수 있어요</b>.', i:'종이에 <b>기름을 먹이면</b> 물이 스며들지 않아요. 옛날 우리나라 <b>지우산</b>이 바로 종이 우산이에요!'},
+  {o:'cup', m:'tissue', p:'50원', real:1, g:'<b>가볍고</b> 한 번 쓰고 버리기 쉬워요.', w:'휴지처럼 얇으면 물을 부을 때 <b>줄줄 샐 수 있어요</b>.', i:'종이를 <b>두껍게 하고 안쪽에 얇은 막</b>을 입히면 물이 안 새요. 그게 바로 <b>종이컵</b>이에요!'},
+  {o:'sneakers', m:'glass', p:'500원', g:'<b>반짝반짝</b> 보석처럼 예뻐요. 동화 속 유리 구두 같아요!', w:'딱딱해서 발이 아프고, 깨지면 <b>다칠 수 있어요</b>.', i:'구경하는 <b>장식품</b>으로 쓰거나, 유리처럼 투명하지만 <b>말랑한 플라스틱</b>으로 바꾸면 투명 신발이 돼요.'},
+  {o:'glasses', m:'wood', p:'400원', real:1, g:'<b>가볍고</b> 나뭇결이 따뜻하고 멋져요.', w:'렌즈까지 나무면 <b>앞이 안 보여요</b>.', i:'<b>안경테만 나무</b>로, 렌즈는 투명한 재료로! <b>나무 안경테</b>는 실제로 있어요.'},
+  {o:'cup', m:'ice', p:'100원', real:1, g:'음료가 <b>아주 시원해요</b>.', w:'금방 <b>녹아서</b> 오래 쓸 수 없어요.', i:'시원한 음료를 <b>금방 마실 때</b>만 쓰면 돼요. <b>얼음 컵</b>은 실제로 있어요!'},
+  {o:'pencil', m:'rubber', p:'50원', real:1, g:'떨어뜨려도 <b>부러지지 않고</b> 말랑하게 휘어져요.', w:'너무 흐물흐물하면 <b>글씨를 쓰기 어려워요</b>.', i:'심은 그대로 두고 몸통만 <b>말랑하게</b>! <b>휘어지는 연필</b>은 실제로 있어요.'},
+  {o:'straw', m:'wool', p:'30원', g:'<b>폭신하고</b> 알록달록 예뻐요.', w:'털실 사이 구멍으로 <b>물이 새서</b> 빨아 마시기 어려워요.', i:'빨대 겉에 <b>털실 옷만 입히면</b> 예쁘게 꾸밀 수 있어요. 빨대는 종이·대나무·유리·쇠 등 여러 재료로 만들어요!'},
+  {o:'suitcase', m:'box', p:'300원', real:1, g:'<b>가볍고</b> 그림을 그려 꾸미기 쉬워요.', w:'비에 젖거나 세게 부딪치면 <b>약해질 수 있어요</b>.', i:'골판지를 <b>겹치고 겉에 비닐</b>을 씌우면 튼튼해져요. 이사할 때 쓰는 <b>종이 상자</b>도 짐을 나르는 가방이에요!'},
+  {o:'backpack', m:'cloth', p:'1000원', real:1, g:'<b>가볍고 튼튼하고</b>, 접어서 넣을 수도 있어요.', w:'비가 오면 <b>젖을 수 있어요</b>.', i:'물이 스며들지 않게 <b>코팅한 천</b>을 쓰면 비 오는 날에도 좋아요.'},
+  {o:'umbrella', m:'vinyl', p:'800원', real:1, g:'<b>물이 스며들지 않고</b> 앞이 훤히 보여요.', w:'바람이 세면 <b>뒤집히거나 찢어질 수 있어요</b>.', i:'<b>뼈대를 튼튼하게</b> 하고 두꺼운 비닐을 쓰면 바람에도 잘 견뎌요.'},
+  {o:'scissors', m:'metal', p:'700원', real:1, g:'<b>단단하고 날카로워서</b> 잘 잘려요.', w:'<b>무겁고</b> 손잡이가 딱딱하면 손이 아파요.', i:'날은 쇠로, <b>손잡이는 말랑한 플라스틱</b>으로! 재료를 <b>섞어서</b> 만들면 좋은 점만 모을 수 있어요.'},
+  {o:'cup', m:'glass', p:'900원', real:1, g:'<b>물이 새지 않고</b> 속이 훤히 보여요.', w:'떨어뜨리면 <b>깨질 수 있어요</b>.', i:'어린이용은 잘 안 깨지는 <b>플라스틱이나 스테인리스</b>로 만들기도 해요.'},
+  {o:'chair', m:'wood', p:'1500원', real:1, g:'<b>단단하고 튼튼해서</b> 오래 써요.', w:'<b>무겁고 딱딱해서</b> 오래 앉으면 엉덩이가 아파요.', i:'<b>폭신한 방석</b>을 더하거나, 가벼운 재료와 섞어 만들어요.'}];
+let iIdx = 0; const iDone = {};
+function setItem(i){ iIdx = i; const it = ITEMS[i]; S.flip();
   const d = document.getElementById('sDress'); d.className = 'dress'; d.innerHTML = dress(it.o, it.m);
-  document.getElementById('sPrice').textContent = '단돈 ' + it.p + '!';
+  document.getElementById('sPrice').textContent = '단돈 ' + it.p + '!'; document.getElementById('sReal').classList.remove('show');
   document.getElementById('sName').innerHTML = `<small>물건 ${i + 1} / ${ITEMS.length}</small><span class="mt">${ro(MAT[it.m])}</span> 만든 ${OBJ[it.o][0]}`;
+  [['pGood', it.g], ['pWorry', it.w], ['pIdea', it.i]].forEach(([id, t]) => { const el = document.getElementById(id); el.classList.remove('open'); el.querySelector('.tx').innerHTML = t; });
   document.getElementById('sRounds').innerHTML = ITEMS.map((_, n) => `<button class="${n === i ? 'on' : iDone[n] ? 'done' : ''}" onclick="setItem(${n})">${n + 1}</button>`).join(''); }
-function judge(){ const it = ITEMS[iIdx], a = document.getElementById('sAns');
-  document.getElementById('sVerdict').textContent = it.ok ? '⭕' : '❌';
-  a.className = 'sans ' + (it.ok ? 'good' : 'bad');
-  a.innerHTML = it.ok ? `<div class="sw tx-${it.b}"></div><div>👍 <b>살래요!</b> ${it.w}</div>` : `<div class="sw tx-${it.b}"></div><div>👎 <b>안 살래요!</b> ${it.w}<br>👉 <b>${ro(it.bn)}</b> 바꿔요.</div>`;
-  document.getElementById('store').classList.add('rev'); iDone[iIdx] = 1; it.ok ? S.win() : S.no();
-  document.querySelectorAll('#sRounds button')[iIdx].className = 'on'; }
-function addTally(d){ tally = Math.max(0, tally + d); if(d > 0) S.ok(); document.getElementById('tally').textContent = tally; }
+function openPc(el){ if(el.classList.contains('open')) return; el.classList.add('open'); S.ok();
+  if(el.id === 'pIdea'){ iDone[iIdx] = 1; if(ITEMS[iIdx].real){ document.getElementById('sReal').classList.add('show'); S.win(); } document.querySelectorAll('#sRounds button')[iIdx].className = 'on'; } }
+function openAll(){ ['pGood', 'pWorry', 'pIdea'].forEach(id => openPc(document.getElementById(id))); }
 
 /* ---------- 미션 3: 꼬마 우산 실험 ---------- */
 const UMAT = ['paper', 'cloth', 'vinyl', 'foil'], UEXPECT = {paper:'wet', cloth:'wet', vinyl:'dry', foil:'dry'};
