@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>3차시 모퉁이 표지판</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<style>
+@page{size:A4 landscape;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Jua','Malgun Gothic',sans-serif;background:#ddd}
+.page{width:297mm;height:210mm;margin:0 auto 6mm;position:relative;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;gap:16mm;page-break-after:always}
+.page::before{content:"";position:absolute;inset:8mm;border:3mm solid var(--c);border-radius:14mm}
+.num{width:120mm;height:120mm;border-radius:50%;background:var(--c);color:#fff;font-size:110mm;line-height:1;display:flex;align-items:center;justify-content:center;padding-bottom:6mm}
+.txt{font-size:34mm;color:var(--c);line-height:1.2}
+.txt small{display:block;font-size:12mm;color:#7a6352;margin-top:6mm}
+div.page:last-of-type{page-break-after:auto}
+@media print{body{background:none}.page{margin:0}}
+</style></head>
+<body>
+<div class="page" style="--c:#ff7b6b"><div class="num">1</div><div class="txt">1번<br>모퉁이<small>🚶 걸어서 이동해요</small></div></div>
+<div class="page" style="--c:#4f7fe0"><div class="num">2</div><div class="txt">2번<br>모퉁이<small>🚶 걸어서 이동해요</small></div></div>
+<div class="page" style="--c:#f2b51c"><div class="num">3</div><div class="txt">3번<br>모퉁이<small>🚶 걸어서 이동해요</small></div></div>
+<script src="../shared/print.js"></script>
+</body></html>

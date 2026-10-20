@@ -29,24 +29,27 @@
 .old{background:#f6e7c8 !important;border-color:#d9b98a !important;box-shadow:0 5px 0 #c9a46e !important}
 .old img:not(.ph),.old .emo{filter:sepia(.55) saturate(.8)}
 
-/* 미션 1: 시간 여행 짝 찾기 */
-.mhead{display:flex;align-items:center;gap:18px;margin-bottom:10px}
-.mhead .msg{margin-left:auto;font-family:var(--head);font-size:26px;color:var(--ink2);background:var(--paper);border:3px solid var(--line);border-radius:18px;padding:8px 18px}
-.mhead .msg b{color:#0f8a6e}
-.era{display:flex;align-items:center;gap:14px}
-.era .tag{width:120px;flex:none;text-align:center;font-family:var(--head);font-size:28px;color:#fff;border-radius:20px;padding:14px 0;line-height:1.2}
-.era .tag.o{background:#a77b4a}.era .tag.n{background:var(--navy)}
-.era .row{flex:1;display:flex;gap:12px}
-.tc{flex:1;min-width:0;height:210px;background:#fff;border:3px solid var(--line);border-radius:22px;box-shadow:0 5px 0 var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;position:relative;transition:transform .15s}
-.tc img,.tc .emo{width:110px;height:110px;object-fit:contain;font-size:92px}
-.tc span{font-family:var(--head);font-size:24px;color:var(--navy);text-align:center;line-height:1.15}
-.tc.sel{border-color:var(--coral) !important;transform:translateY(-8px);box-shadow:0 5px 0 #d44f40 !important}
-.tc.bad{animation:shake .12s 4}
-.tc.got{border-color:var(--mint) !important;background:var(--mint2) !important;box-shadow:0 5px 0 #22a283 !important;cursor:default}
-.tc .pn{position:absolute;top:8px;left:10px;width:38px;height:38px;border-radius:50%;background:var(--mint);color:#04392b;font-family:var(--head);font-size:22px;display:none;align-items:center;justify-content:center}
-.tc.got .pn{display:flex}
-.tline{height:90px;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:26px;color:var(--ink2);gap:12px}
-.tline::before,.tline::after{content:"";flex:1;max-width:420px;height:6px;border-radius:3px;background:repeating-linear-gradient(90deg,var(--gold) 0 18px,transparent 18px 30px)}
+/* 미션 1: 옛날 물건 몸짓 퀴즈 */
+.mime{flex:1;display:flex;gap:24px;min-height:0;margin-top:6px}
+.mcardx{flex:1;border-radius:34px;background:#f6e7c8;border:5px solid #d9b98a;box-shadow:0 10px 0 #c9a46e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative;padding:20px 30px;text-align:center}
+.mcardx img{width:260px;height:260px;object-fit:contain}
+.mcardx h3{font-size:64px;color:#5a3b1c}
+.mcardx p{font-size:30px;color:#7a5a3a;line-height:1.45}
+.mcardx .hide{position:absolute;inset:0;border-radius:30px;background:repeating-linear-gradient(45deg,#2d3a7c 0 30px,#34438c 30px 60px);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;font-family:var(--head);font-size:44px;gap:10px;cursor:pointer}
+.mcardx .hide small{font-size:26px;color:var(--gold2)}
+.mcardx .cnt{position:absolute;top:16px;left:22px;font-family:var(--head);font-size:24px;color:#a77b4a}
+.mside2{width:330px;display:flex;flex-direction:column;gap:12px}
+.mclock{background:var(--navy);color:#fff;border-radius:26px;padding:14px;text-align:center;font-family:var(--head)}
+.mclock .tn{font-size:28px;color:var(--gold2)}
+.mclock b{display:block;font-size:84px;line-height:1.05;font-weight:400}
+.mclock b.low{color:#ff9a8a}
+.mside2 .btn{font-size:24px;padding:12px 10px}
+.mside2 .row{display:flex;gap:10px}.mside2 .row .btn{flex:1}
+.tteams{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tteams button{border-radius:16px;background:#fff;border:3px solid var(--line);padding:6px 0;font-family:var(--head);font-size:20px;color:var(--ink2);line-height:1.2}
+.tteams button b{display:block;font-size:30px;color:#e3523f;font-weight:400}
+.tteams button.on{background:var(--gold2);border-color:var(--gold);color:#5a3d00}
+.old{background:#f6e7c8 !important;border-color:#d9b98a !important;box-shadow:0 5px 0 #c9a46e !important}
 
 /* 미션 2: 변신 돋보기 */
 .cmp{flex:1;display:flex;flex-direction:column;gap:12px;min-height:0}
@@ -77,40 +80,31 @@
 .cell.wide.open{background:var(--mint2);border-color:var(--mint)}
 .cell.wide .t b{color:#0f8a6e}
 
-/* 미션 3: 시간 순서 줄 세우기 */
-.order{flex:1;display:flex;gap:26px;min-height:0;margin-top:6px}
-.omain{flex:1;display:flex;flex-direction:column;gap:16px}
-.otitle{display:flex;align-items:center;gap:16px;background:var(--navy);color:#fff;border-radius:26px;padding:14px 26px;box-shadow:0 8px 0 #1c2557}
-.otitle .emo{font-size:60px}
-.otitle .st{font-family:var(--head);font-size:36px}
-.otitle .st small{display:block;font-size:22px;color:var(--gold2)}
-.pool{display:flex;gap:14px;justify-content:center;min-height:190px}
-.pool .tc{flex:none;width:200px}
-.pool .tc.used{visibility:hidden}
-.slots{display:flex;align-items:center;gap:8px}
-.slot{flex:1;min-width:0;height:210px;border:4px dashed #d9b98a;border-radius:24px;background:rgba(255,255,255,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;position:relative}
-.slot .sn{position:absolute;top:8px;left:12px;font-family:var(--head);font-size:22px;color:#a77b4a}
-.slot img,.slot .emo{width:96px;height:96px;object-fit:contain;font-size:80px;animation:enter .4s}
-.slot span{font-family:var(--head);font-size:24px;color:var(--navy)}
-.slot.fill{border-style:solid;border-color:var(--mint);background:var(--mint2)}
-.slots .ar{font-family:var(--head);font-size:40px;color:var(--coral)}
-.slots .end{flex:none;font-family:var(--head);font-size:22px;color:var(--ink2);width:56px;text-align:center;line-height:1.2}
-.opoint{background:var(--mint2);border-radius:22px;padding:12px 22px;font-size:28px;line-height:1.5;display:none}
+/* 미션 3: 사람 줄서기 */
+.lineq{flex:1;display:flex;flex-direction:column;gap:16px;min-height:0;margin-top:6px}
+.lhead{display:flex;align-items:center;gap:16px;background:var(--navy);color:#fff;border-radius:26px;padding:12px 24px;box-shadow:0 8px 0 #1c2557}
+.lhead .st{font-family:var(--head);font-size:34px}
+.lhead .st small{display:block;font-size:22px;color:var(--gold2)}
+.lhead .sets{margin-left:auto;display:flex;gap:8px}
+.lhead .sets button{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.12);color:#fff;font-size:22px;border:2px solid rgba(255,255,255,.3)}
+.lhead .sets button.on{background:var(--gold);color:#5a3d00;border-color:var(--gold)}
+.lhead .sets button.done{background:var(--mint);color:#04392b;border-color:var(--mint)}
+.cardsx{display:flex;gap:18px;justify-content:center}
+.lc{flex:1;max-width:300px;height:260px;background:#fff;border:4px solid var(--line);border-radius:28px;box-shadow:0 8px 0 var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative}
+.lc img{width:140px;height:140px;object-fit:contain}
+.lc span{font-family:var(--head);font-size:28px;color:var(--navy)}
+.lc .lt{position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:62px;height:62px;border-radius:50%;background:var(--coral);color:#fff;font-family:var(--head);font-size:36px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 #d44f40}
+.answer{display:flex;align-items:center;gap:10px;justify-content:center;min-height:120px}
+.answer .end{font-family:var(--head);font-size:24px;color:var(--ink2)}
+.answer .ab{width:190px;height:120px;border-radius:22px;border:4px dashed #d9b98a;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--head);font-size:52px;line-height:1.1;color:#d9b98a;transition:.4s}
+.answer .ab small{font-size:22px;color:var(--navy)}
+.answer .ab.fill{border-style:solid;border-color:var(--mint);background:var(--mint2);color:#0f8a6e;animation:enter .4s}
+.answer .ar{font-family:var(--head);font-size:38px;color:var(--coral)}
+.opoint{background:var(--mint2);border-radius:22px;padding:12px 22px;font-size:28px;line-height:1.5;display:none;text-align:center}
 .opoint.show{display:block;animation:enter .5s}
 .opoint b{color:#0f8a6e}
-.dside{width:250px;display:flex;flex-direction:column;gap:10px}
-.rounds{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.rounds button{height:52px;border-radius:14px;background:#fff;border:3px solid var(--line);font-size:24px;color:var(--navy)}
-.rounds button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
-.rounds button.done{background:var(--mint2);border-color:var(--mint);color:#0f8a6e}
-.score{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:10px 12px}
-.score h4{font-family:var(--head);font-weight:400;font-size:22px;color:var(--ink2);text-align:center;margin-bottom:6px}
-.team{display:flex;align-items:center;gap:8px;padding:5px 4px;font-family:var(--head);font-size:22px}
-.team .tn{flex:1}
-.team .pt{width:46px;text-align:center;font-size:28px;color:#e3523f}
-.team button{width:36px;height:36px;border-radius:10px;background:var(--gold2);font-size:22px;color:#5a3d00}
-.team button.m{background:#f1e6d4;color:var(--ink2)}
-.ptguide{font-size:19px;color:var(--ink2);text-align:center;line-height:1.4}
+.lbtns{display:flex;gap:12px;justify-content:center}
+.lbtns .btn{font-size:24px;padding:12px 22px}
 
 /* 퀴즈 쇼 */
 .quizshow{display:flex;gap:50px;align-items:center;flex:1}
@@ -188,26 +182,46 @@
   <div class="kicker">MISSION BRIEFING</div>
   <h2 class="title" style="font-size:60px">마지막 미션 네 가지</h2>
   <div class="missions" style="gap:20px">
-    <div class="mcard"><span class="tag">미션 1</span><div class="ic emo" style="font-size:96px">⏳</div><h3>시간 여행 짝 찾기</h3><p>옛날 물건 ↔ 오늘날 물건</p></div>
+    <div class="mcard"><span class="tag">미션 1</span><div class="ic emo" style="font-size:96px">🙆</div><h3>옛날 물건 몸짓 퀴즈</h3><p>몸으로 보여 주고 맞혀요</p></div>
     <div class="mcard"><span class="tag">미션 2</span><img class="ic" src="../01/img/ic_search.png" alt=""><h3>변신 돋보기</h3><p>무엇이, 왜 바뀌었을까?</p></div>
-    <div class="mcard"><span class="tag">미션 3</span><img class="ic" src="../01/img/ic_cards.png" alt=""><h3>시간 순서 줄 세우기</h3><p>옛날부터 차례대로</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><div class="ic emo" style="font-size:96px">🧍</div><h3>사람 줄서기</h3><p>우리가 시간 순서대로 서요</p></div>
     <div class="mcard"><span class="tag">미션 4</span><img class="ic" src="../01/img/ic_mail.png" alt=""><h3>물건 변신 카드</h3><p>미래의 물건 상상하기</p></div>
     <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>마지막 열쇠 조각</h3><p>1번 방 탈출!</p></div>
   </div>
   <div class="goal"><b>🎯 학습 목표</b> 옛날과 오늘날의 물건을 비교하여 달라진 모습과 바뀐 이유를 말할 수 있어요.</div>
 </section>
 
-<!-- 5 미션 1 -->
-<section class="slide" data-phase="미션 1 · 6분" style="padding-top:78px"
- data-notes="<b>시간 여행 짝 찾기</b> — 학생을 한 명씩 불러 위의 ‘옛날 물건’ 하나와 아래의 ‘오늘날 물건’ 하나를 차례로 누르게 해요. 하는 일이 같은 짝이면 초록색으로 바뀌고 같은 번호가 붙어요. 맞힐 때마다 “○○이 오늘날 △△이 되었어요” 하고 말하게 해요.">
-  <div class="mhead"><h2 class="title" style="font-size:42px">⏳ 옛날 물건의 오늘날 짝을 찾아요!</h2><div class="msg" id="mMsg">옛날 물건 → 오늘날 물건 순서로 눌러요</div><button class="btn ghost" style="font-size:22px;padding:10px 16px" onclick="newMatch()">🔀 다시</button></div>
-  <div class="era"><div class="tag o">옛날</div><div class="row" id="rowOld"></div></div>
-  <div class="tline">시간이 흘러 흘러…</div>
-  <div class="era"><div class="tag n">오늘날</div><div class="row" id="rowNew"></div></div>
+<!-- 5 미션 1 규칙 -->
+<section class="slide" data-phase="미션 1 · 8분"
+ data-notes="<b>옛날 물건 몸짓 퀴즈 안내</b> — 모둠 차례가 되면 그 모둠의 ‘맞히는 사람’들은 화면을 등지고 앉고, ‘몸짓하는 사람’ 1명이 화면의 카드를 보고 말없이 몸으로 보여 줘요. 1분 동안 많이 맞힐수록 점수! 몸짓하는 사람은 카드마다 바꿔도 좋아요.">
+  <div class="kicker">MISSION 1</div>
+  <h2 class="title">🙆 옛날 물건 몸짓 퀴즈</h2>
+  <div class="rules" style="max-width:1120px">
+    <div class="rule"><span>1</span><div>우리 모둠 차례! 맞히는 친구들은 <b class="hl">화면을 등지고</b> 앉아요.</div></div>
+    <div class="rule"><span>2</span><div>몸짓하는 친구 1명이 카드를 보고 <b class="c-coral">말없이</b> 몸으로 보여 줘요.</div></div>
+    <div class="rule"><span>3</span><div>“○○이에요!” 맞히면 다음 카드! <b class="c-navy">1분</b> 동안 몇 개나 맞힐까요?</div></div>
+    <div class="rule"><span>4</span><div>어려운 카드는 “통과!”를 외쳐 넘길 수 있어요.</div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:320px">
+</section>
+
+<!-- 6 미션 1 게임 -->
+<section class="slide" data-phase="미션 1 · 8분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽에서 모둠을 고르고 ‘1분 시작’. 카드는 ‘가림막’이 덮인 채 시작해요(몸짓하는 친구만 보고 가림막을 눌러 열어요). 맞히면 ⭕, 넘기면 ⏭. 1분이 끝나면 다음 모둠으로. 카드는 16장이라 모둠마다 다른 물건이 나와요. 끝나면 ‘어떤 몸짓이 가장 옛날 같았나요?’ 이야기해요.">
+  <div class="mime">
+    <div class="mcardx old" id="mCard"></div>
+    <div class="mside2">
+      <div class="mclock"><div class="tn" id="mTurn">1모둠 차례</div><b id="mClock">60</b></div>
+      <button class="btn mint" id="mGo" onclick="mimeStart()">▶ 1분 시작</button>
+      <div class="row"><button class="btn coral" onclick="mimeHit()">⭕ 맞혔어요</button><button class="btn ghost" onclick="mimeSkip()">⏭ 통과</button></div>
+      <div class="tteams" id="mTeams"></div>
+      <div style="text-align:center;font-size:18px;color:var(--ink2)">모둠 수 <button class="btn ghost" style="font-size:16px;padding:2px 10px" onclick="mimeTeams(-1)">−</button> <span id="mTeamN">6</span> <button class="btn ghost" style="font-size:16px;padding:2px 10px" onclick="mimeTeams(1)">＋</button></div>
+    </div>
+  </div>
 </section>
 
 <!-- 6 미션 2 -->
-<section class="slide" data-phase="미션 2 · 8분" style="padding-top:78px"
+<section class="slide" data-phase="미션 2 · 7분" style="padding-top:78px"
  data-notes="<b>변신 돋보기</b> — 오른쪽 위 버튼으로 짝을 골라요. 생김새와 쓰는 방법 칸은 학생이 먼저 말한 뒤 눌러 공개해요. 마지막 노란 칸 ‘왜 바뀌었을까?’가 오늘의 핵심이에요. 2차시에 배운 ‘불편함 → 생각 → 새 물건’과 연결해 주세요.">
   <div class="cmp">
     <div class="cmphead"><h2 class="title" style="font-size:42px">🔎 변신 돋보기</h2><div class="ptabs" id="ptabs"></div></div>
@@ -220,41 +234,34 @@
   </div>
 </section>
 
-<!-- 7 미션 3 규칙 -->
+<!-- 8 미션 3 규칙 -->
 <section class="slide" data-phase="미션 3 · 7분"
- data-notes="<b>모둠 게임 안내</b> — 모둠이 차례로 나와 물건을 ‘옛날부터’ 순서대로 눌러요. 순서가 맞으면 칸에 들어가고, 틀리면 흔들리며 다음 모둠 차례. 완성한 모둠이 1점, ‘점점 어떻게 바뀌었는지’ 말하면 1점 더.">
+ data-notes="<b>사람 줄서기 안내</b> — 문제마다 3~4명이 앞으로 나와요. 화면의 ⓐⓑⓒⓓ 카드 중 하나씩 맡아서, ‘가장 옛날 물건’부터 교실 앞에 한 줄로 서요(왼쪽이 옛날). 다른 친구들은 맞는지 손을 들어 판정! 정답을 공개한 뒤 ‘어떻게 바뀌어 왔는지’ 이야기해요.">
   <div class="kicker">MISSION 3</div>
-  <h2 class="title">🧭 시간 순서 줄 세우기</h2>
+  <h2 class="title">🧍 사람 줄서기</h2>
   <div class="rules" style="max-width:1120px">
-    <div class="rule"><span>1</span><div>섞여 있는 물건들을 <b class="hl">가장 옛날 것부터</b> 차례로 눌러요.</div></div>
-    <div class="rule"><span>2</span><div>순서가 맞으면 칸에 쏙! 틀리면 <b class="c-coral">다음 모둠</b> 차례예요.</div></div>
-    <div class="rule"><span>3</span><div>줄을 완성하면 <b class="c-coral">1점</b>, 어떻게 바뀌었는지 말하면 <b class="c-coral">1점 더</b>!</div></div>
-    <div class="rule"><span>4</span><div>힌트: 물건은 점점 <b class="c-navy">편하고, 빠르고, 안전하게</b>바뀌어 왔어요.</div></div>
+    <div class="rule"><span>1</span><div>3~4명이 나와서 화면의 <b class="hl">ⓐ ⓑ ⓒ ⓓ 물건</b>을 하나씩 맡아요.</div></div>
+    <div class="rule"><span>2</span><div>가장 <b class="c-coral">옛날 물건</b>을 맡은 친구부터 왼쪽에서 한 줄로 서요.</div></div>
+    <div class="rule"><span>3</span><div>앉아 있는 친구들은 👍 맞아요 / 👎 바꿔요! 로 판정해요.</div></div>
+    <div class="rule"><span>4</span><div>정답 공개! 물건이 <b class="c-navy">어떻게 바뀌어 왔는지</b> 말해요.</div></div>
   </div>
   <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:320px">
 </section>
 
-<!-- 8 미션 3 게임 -->
+<!-- 9 미션 3 게임 -->
 <section class="slide" data-phase="미션 3 · 7분" style="padding-top:78px"
- data-notes="<b>진행</b> — 오른쪽 번호로 문제를 골라요(1~6). 다 맞히면 ‘변신 포인트’가 나와요. 맞힌 모둠에 ＋1, 이유까지 말하면 ＋1 더. 시간이 부족하면 3~4문제만 해도 돼요.">
-  <div class="order">
-    <div class="omain">
-      <div class="otitle" id="oTitle"></div>
-      <div class="pool" id="oPool"></div>
-      <div class="slots" id="oSlots"></div>
-      <div class="opoint" id="oPoint"></div>
-    </div>
-    <div class="dside">
-      <div class="rounds" id="rounds"></div>
-      <div class="score"><h4>🏆 모둠 점수</h4><div id="teams1"></div></div>
-      <div class="ptguide">줄을 완성하면 1점<br>바뀐 점을 말하면 1점 더</div>
-      <button class="btn ghost" style="font-size:22px;padding:11px 10px" onclick="setOrder(oIdx)">↺ 이 문제 다시</button>
-    </div>
+ data-notes="<b>진행</b> — 위쪽 번호로 문제를 골라요(8개). 학생들이 줄을 서고 판정이 끝나면 ‘정답 줄 보기’를 누르면 옛날부터 차례대로 글자가 채워져요. 시간이 부족하면 4~5문제만 해도 돼요.">
+  <div class="lineq">
+    <div class="lhead"><div class="st" id="lTitle"></div><div class="sets" id="lSets"></div></div>
+    <div class="cardsx" id="lCards"></div>
+    <div class="answer" id="lAns"></div>
+    <div class="opoint" id="oPoint"></div>
+    <div class="lbtns"><button class="btn mint" onclick="showLine()">🎉 정답 줄 보기</button><button class="btn ghost" onclick="setLine(lIdx)">🔀 다시 섞기</button><button class="btn ghost" onclick="setLine((lIdx + 1) % LINE.length)">다음 문제 ▶</button></div>
   </div>
 </section>
 
 <!-- 9 활동지 안내 -->
-<section class="slide" data-phase="미션 4 · 9분"
+<section class="slide" data-phase="미션 4 · 8분"
  data-notes="<b>물건 변신 카드</b> — 활동지 배부(worksheet.html을 A4로 인쇄). 숙제로 여쭤본 물건이나 오늘 본 물건 하나를 골라요. ① 옛날 모습 ② 오늘날 모습을 그리고 바뀐 이유 쓰기 ③ 앞으로 어떻게 바뀔지 ‘미래의 모습’을 상상해서 그리기.">
   <div class="kicker">MISSION 4 · 활동지</div>
   <div class="ws">
@@ -272,7 +279,7 @@
 </section>
 
 <!-- 10 타이머 -->
-<section class="slide center" data-phase="미션 4 · 9분"
+<section class="slide center" data-phase="미션 4 · 8분"
  data-notes="<b>활동 시간</b> — 기본 8분. 미래 칸은 정답이 없어요. “지금 이 물건을 쓸 때 아직도 불편한 점이 있나요?”라고 물으면 상상하기 쉬워져요.">
   <div class="kicker">MISSION 4 · 활동 시간</div>
   <h2 class="title" style="font-size:56px;margin-bottom:36px">물건 변신 카드를 만들어요!</h2>
@@ -378,7 +385,7 @@ const OBJ = {
   oldtv:{n:'볼록 텔레비전', ph:1}, flattv:{n:'납작한 텔레비전', ph:1},
   oxcart:{n:'소달구지', ph:1}, car:{n:'자동차', ph:1}, horse:{n:'말', ph:1}, steam:{n:'증기 기관차', ph:1}, ktx:{n:'고속 열차', ph:1},
   radio:{n:'라디오', ph:1}, tape:{n:'카세트테이프', ph:1}, cd:{n:'CD', ph:1}, earphone:{n:'스마트폰 음악', ph:1},
-  paint:{n:'그림으로 그리기', ph:1}, camera:{n:'필름 카메라', ph:1}
+  paint:{n:'그림으로 그리기', ph:1}, camera:{n:'필름 카메라', ph:1}, candle:{n:'촛불', ph:1}
 };
 const art = k => OBJ[k].img ? `<img src="${OBJ[k].img}" alt="">` : OBJ[k].ph ? `<img class="ph" src="../shared/photos/${k}.jpg" alt="">` : `<span class="emo">${OBJ[k].e}</span>`;
 const shuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -387,24 +394,31 @@ const shuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.flo
 hooks.story = () => typewriter(document.getElementById('storyText'),
   '“흐흐흐, 마지막 장난이다! <b class="c-coral">타임머신</b>을 타고 물건들을 뒤죽박죽 섞어 버렸지!”<br>옛날 물건과 오늘날 물건이 서로 자기 짝을 못 찾고 있어요.<br>물건 요원 여러분, 물건이 <b class="c-navy">어떻게 변신</b>해 왔는지 밝혀서<br>마지막 열쇠 조각을 찾아 주세요!');
 
-/* ---------- 미션 1: 시간 여행 짝 찾기 ---------- */
-const PAIRS = [['oillamp', 'bulb', '밝혀 줘요'], ['brush', 'pencil', '글씨를 써요'], ['phone', 'smart', '전화를 걸어요'], ['hourglass', 'watch', '시간을 알려 줘요'],
-  ['bucket', 'tap', '물을 얻어요'], ['oldtv', 'flattv', '방송을 봐요'], ['oxcart', 'car', '사람과 짐을 날라요']];
-let mSel = null, mFound = 0;
-function newMatch(){
-  const card = (k, i, cls) => `<div class="tc ${cls}" data-i="${i}" onclick="pickMatch(this)"><span class="pn"></span>${art(k)}<span>${OBJ[k].n}</span></div>`;
-  document.getElementById('rowOld').innerHTML = shuffle(PAIRS.map((p, i) => i)).map(i => card(PAIRS[i][0], i, 'old')).join('');
-  document.getElementById('rowNew').innerHTML = shuffle(PAIRS.map((p, i) => i)).map(i => card(PAIRS[i][1], i, 'nw')).join('');
-  mSel = null; mFound = 0; document.getElementById('mMsg').innerHTML = '옛날 물건 → 오늘날 물건 순서로 눌러요'; }
-function pickMatch(el){ if(el.classList.contains('got')) return;
-  if(!mSel || mSel.classList.contains('old') === el.classList.contains('old')){ if(mSel) mSel.classList.remove('sel'); mSel = el === mSel ? null : el; if(mSel){ mSel.classList.add('sel'); S.flip(); } return; }
-  const a = mSel, b = el; a.classList.remove('sel'); mSel = null;
-  if(a.dataset.i !== b.dataset.i){ a.classList.add('bad'); b.classList.add('bad'); S.no(); document.getElementById('mMsg').innerHTML = '음… 하는 일이 같은 짝일까요?';
-    setTimeout(() => { a.classList.remove('bad'); b.classList.remove('bad'); }, 500); return; }
-  const p = PAIRS[+a.dataset.i]; mFound++;
-  [a, b].forEach(x => { x.classList.add('got'); x.querySelector('.pn').textContent = mFound; }); S.ok();
-  document.getElementById('mMsg').innerHTML = mFound < PAIRS.length ? `딩동댕! <b>${OBJ[p[0]].n}</b> → <b>${OBJ[p[1]].n}</b> (${p[2]})` : '🏆 짝을 모두 찾았어요! 무엇이 달라졌을까요?';
-  if(mFound === PAIRS.length) S.win(); }
+/* ---------- 미션 1: 옛날 물건 몸짓 퀴즈 (h: 몸짓 힌트) ---------- */
+const MIME = [
+  ['bucket', '줄을 우물에 내렸다가 영차영차 끌어올려요.'], ['phone', '번호판에 손가락을 넣고 드르륵 돌려요.'], ['brush', '먹을 갈고, 붓을 꼿꼿이 세워 글씨를 써요.'],
+  ['camera', '한쪽 눈을 감고 찰칵! 필름을 드르륵 감아요.'], ['tape', '연필을 구멍에 끼워 빙글빙글 감아요.'], ['oillamp', '성냥을 그어 심지에 불을 붙여요.'],
+  ['oxcart', '고삐를 잡고 “이랴!” 소를 몰아요.'], ['hourglass', '휙 뒤집고, 모래가 떨어지는 걸 지켜봐요.'], ['oldtv', '채널 손잡이를 드르륵 돌리고 안테나를 맞춰요.'],
+  ['letter', '편지를 쓰고, 접어서 봉투에 넣고, 우표를 붙여요.'], ['radio', '귀를 대고 손잡이를 살살 돌려 소리를 맞춰요.'], ['horse', '말 등에 올라타 달려요. 다그닥 다그닥!'],
+  ['candle', '불을 붙이고, 손으로 가리며 조심조심 걸어요.'], ['steam', '팔을 바퀴처럼 돌리며 칙칙폭폭!'], ['paint', '붓을 들고 친구 얼굴을 보며 그림을 그려요.'],
+  ['sundial', '해를 올려다보고, 그림자가 가리키는 곳을 봐요.']];
+let mDeck = [], mPos = 0, mTeam = 0, mTeamN = 6, mLeft = 60, mTimer = null, mOpen = false; const mScore = Array(8).fill(0);
+function drawMime(){ const k = mDeck[mPos], [ok, h] = MIME[k];
+  document.getElementById('mCard').innerHTML = `<span class="cnt">카드 ${mPos + 1} / ${MIME.length}</span>${art(ok)}<h3>${OBJ[ok].n}</h3><p>🙆 ${h}</p>` + (mOpen ? '' : '<div class="hide" onclick="mimeOpen()">🙈 가림막<small>몸짓하는 친구만 보고 눌러요</small></div>');
+  document.getElementById('mTurn').textContent = `${mTeam + 1}모둠 차례`; const c = document.getElementById('mClock'); c.textContent = mLeft; c.classList.toggle('low', mLeft <= 10);
+  document.getElementById('mTeams').innerHTML = [...Array(mTeamN)].map((_, t) => `<button class="${t === mTeam ? 'on' : ''}" onclick="mimeSetTeam(${t})">${t + 1}모둠<b>${mScore[t]}</b></button>`).join('');
+  document.getElementById('mTeamN').textContent = mTeamN; }
+function mimeOpen(){ mOpen = true; S.flip(); drawMime(); }
+function mimeNext(){ mPos = (mPos + 1) % MIME.length; mOpen = false; drawMime(); }
+function mimeHit(){ mScore[mTeam]++; S.ok(); mimeNext(); }
+function mimeSkip(){ S.no(); mimeNext(); }
+function mimeStop(){ clearInterval(mTimer); mTimer = null; document.getElementById('mGo').textContent = '▶ 1분 시작'; }
+function mimeStart(){ if(mTimer){ mimeStop(); return; } mLeft = 60; document.getElementById('mGo').textContent = '⏸ 멈추기'; S.tick(); drawMime();
+  mTimer = setInterval(() => { mLeft--; if(mLeft <= 0){ mimeStop(); S.end(); mLeft = 60; mTeam = (mTeam + 1) % mTeamN; mimeNext(); return; } drawMime(); }, 1000); }
+function mimeSetTeam(t){ mimeStop(); mTeam = t; mLeft = 60; S.flip(); drawMime(); }
+function mimeTeams(d){ mTeamN = Math.min(8, Math.max(2, mTeamN + d)); if(mTeam >= mTeamN) mTeam = 0; drawMime(); }
+function newMime(){ mDeck = shuffle(MIME.map((_, i) => i)); mPos = 0; mOpen = false; drawMime(); }
+hooks.leave = i => { if(slides[i] && slides[i].querySelector('#mClock')) mimeStop(); };
 
 /* ---------- 미션 2: 변신 돋보기 ---------- */
 const ROWS = [['🔷', '생김새'], ['✋', '쓰는 방법']];
@@ -431,34 +445,29 @@ function setCmp(i){ cIdx = i; const c = CMP[i]; S.flip();
 function openCell(el){ if(el.classList.contains('open')) return; el.classList.add('open'); el.classList.contains('wide') ? S.ok() : S.tick();
   if(document.querySelectorAll('#cRows .cell:not(.open)').length === 0){ cDone[cIdx] = 1; S.win(); drawTabs(); } }
 
-/* ---------- 모둠 점수 ---------- */
-let TEAMS = 6; const score = Array(8).fill(0);
-function drawTeams(){ const el = document.getElementById('teams1');
-  el.innerHTML = [...Array(TEAMS)].map((_, t) => `<div class="team"><span class="tn">${t + 1}모둠</span><button class="m" onclick="addPt(${t},-1)">−</button><span class="pt">${score[t]}</span><button onclick="addPt(${t},1)">＋</button></div>`).join('')
-    + `<div style="text-align:center;margin-top:6px;font-size:18px;color:var(--ink2)">모둠 수 <button class="m" style="width:30px;height:30px;border-radius:8px;background:#f1e6d4" onclick="setTeams(-1)">−</button> ${TEAMS} <button style="width:30px;height:30px;border-radius:8px;background:var(--gold2)" onclick="setTeams(1)">＋</button></div>`; }
-function addPt(t, d){ score[t] = Math.max(0, score[t] + d); if(d > 0) S.ok(); drawTeams(); }
-function setTeams(d){ TEAMS = Math.min(8, Math.max(2, TEAMS + d)); drawTeams(); }
-
-/* ---------- 미션 3: 시간 순서 줄 세우기 (seq는 옛날 → 오늘 순서) ---------- */
-const ORDER = [
-  {e:'💡', job:'어두운 곳을 밝혀요', seq:['fire', 'oillamp', 'bulb'], p:'불을 피우다가 → 기름불 → 전기불로! 점점 <b>밝고 안전하게</b> 바뀌었어요.'},
-  {e:'💌', job:'소식을 전해요', seq:['letter', 'phone', 'smart'], p:'며칠 걸리던 편지에서 → 바로 목소리를 듣고 → 얼굴까지 보게! 점점 <b>빠르게</b> 바뀌었어요.'},
-  {e:'⏰', job:'시간을 알려 줘요', seq:['sundial', 'hourglass', 'clock', 'watch'], p:'해가 있어야 보던 시계에서 → 언제든, 어디서든 보는 시계로! 점점 <b>편하게</b> 바뀌었어요.'},
-  {e:'🧳', job:'멀리 이동해요', seq:['horse', 'steam', 'ktx'], p:'말을 타다가 → 기차를 타고 → 아주 빠른 열차로! 점점 <b>빠르게</b> 바뀌었어요.'},
-  {e:'🎵', job:'음악을 들어요', seq:['radio', 'tape', 'cd', 'earphone'], p:'정해진 방송만 듣다가 → 듣고 싶은 노래를 골라 → 언제 어디서나! 점점 <b>작고 편하게</b> 바뀌었어요.'},
-  {e:'🖼️', job:'모습을 남겨요', seq:['paint', 'camera', 'smart'], p:'오래 그려야 했던 그림에서 → 찰칵 사진으로 → 바로 보는 사진으로! 점점 <b>빠르고 쉽게</b> 바뀌었어요.'}];
-let oIdx = 0, oStep = 0, oTurn = 0; const oDone = {};
-function drawRounds(){ document.getElementById('rounds').innerHTML = ORDER.map((o, i) => `<button class="${i === oIdx ? 'on' : oDone[i] ? 'done' : ''}" onclick="setOrder(${i})">${i + 1}</button>`).join(''); }
-function setOrder(i){ oIdx = i; oStep = 0; const o = ORDER[i]; S.flip();
-  document.getElementById('oTitle').innerHTML = `<span class="emo">${o.e}</span><div class="st"><small>문제 ${i + 1} · ${oTurn + 1}모둠 차례</small>${o.job} — 옛날부터 순서대로!</div>`;
-  document.getElementById('oPool').innerHTML = shuffle(o.seq.map((k, n) => n)).map(n => `<div class="tc" data-n="${n}" onclick="pickOrder(this)">${art(o.seq[n])}<span>${OBJ[o.seq[n]].n}</span></div>`).join('');
-  document.getElementById('oSlots').innerHTML = '<div class="end">옛날</div>' + o.seq.map((k, n) => `<div class="slot" id="sl${n}"><span class="sn">${n + 1}</span></div>`).join('<div class="ar">➜</div>') + '<div class="end">오늘</div>';
-  document.getElementById('oPoint').classList.remove('show'); drawRounds(); }
-function pickOrder(el){ const o = ORDER[oIdx]; if(oStep >= o.seq.length) return;
-  if(+el.dataset.n !== oStep){ el.classList.add('bad'); S.no(); setTimeout(() => el.classList.remove('bad'), 500);
-    oTurn = (oTurn + 1) % TEAMS; document.querySelector('#oTitle small').textContent = `문제 ${oIdx + 1} · 아쉬워요! ${oTurn + 1}모둠 차례`; return; }
-  const k = o.seq[oStep], s = document.getElementById('sl' + oStep); s.insertAdjacentHTML('beforeend', `${art(k)}<span>${OBJ[k].n}</span>`); s.classList.add('fill'); el.classList.add('used'); oStep++; S.ok();
-  if(oStep === o.seq.length){ const p = document.getElementById('oPoint'); p.innerHTML = `🏆 ${oTurn + 1}모둠 성공! 변신 포인트: ${o.p}`; p.classList.add('show'); oDone[oIdx] = 1; S.win(); drawRounds(); } }
+/* ---------- 미션 3: 사람 줄서기 (seq는 옛날 → 오늘 순서) ---------- */
+const LINE = [
+  {job:'어두운 곳을 밝혀요', seq:['fire', 'oillamp', 'bulb'], p:'불을 피우다가 → 기름불 → 전기불로! 점점 <b>밝고 안전하게</b> 바뀌었어요.'},
+  {job:'소식을 전해요', seq:['letter', 'phone', 'smart'], p:'며칠 걸리던 편지에서 → 목소리를 바로 듣고 → 얼굴까지 보게! 점점 <b>빠르게</b> 바뀌었어요.'},
+  {job:'시간을 알려 줘요', seq:['sundial', 'hourglass', 'clock', 'watch'], p:'해가 있어야 보던 시계에서 → 언제 어디서든 보는 시계로! 점점 <b>편하게</b> 바뀌었어요.'},
+  {job:'멀리 이동해요', seq:['horse', 'steam', 'ktx'], p:'말을 타다가 → 기차를 타고 → 아주 빠른 열차로! 점점 <b>빠르게</b> 바뀌었어요.'},
+  {job:'음악을 들어요', seq:['radio', 'tape', 'cd', 'earphone'], p:'정해진 방송만 듣다가 → 듣고 싶은 노래를 골라 → 언제 어디서나! 점점 <b>작고 편하게</b> 바뀌었어요.'},
+  {job:'모습을 남겨요', seq:['paint', 'camera', 'smart'], p:'오래 그려야 했던 그림에서 → 찰칵 사진으로 → 바로 보는 사진으로! 점점 <b>빠르고 쉽게</b> 바뀌었어요.'},
+  {job:'글씨를 써요', seq:['brush', 'pencil', 'pen'], p:'먹을 갈아 쓰던 붓에서 → 바로 쓰는 연필 → 깎지 않는 볼펜으로! 점점 <b>간편하게</b> 바뀌었어요.'},
+  {job:'방송을 보고 들어요', seq:['radio', 'oldtv', 'flattv'], p:'소리만 듣던 라디오에서 → 그림이 나오는 텔레비전 → 크고 얇은 텔레비전으로! 점점 <b>또렷하고 얇게</b> 바뀌었어요.'}];
+const LET = ['ⓐ', 'ⓑ', 'ⓒ', 'ⓓ'];
+let lIdx = 0, lOrder = [], lTimer = null; const lDone = {};
+function setLine(i){ lIdx = i; clearInterval(lTimer); const L = LINE[i]; S.flip();
+  lOrder = shuffle(L.seq.map((_, n) => n)); /* lOrder[화면 위치] = 옛날 순서 */
+  document.getElementById('lTitle').innerHTML = `<small>문제 ${i + 1} · ${L.seq.length}명이 나와요</small>${L.job} — 옛날부터 줄을 서요!`;
+  document.getElementById('lSets').innerHTML = LINE.map((_, n) => `<button class="${n === i ? 'on' : lDone[n] ? 'done' : ''}" onclick="setLine(${n})">${n + 1}</button>`).join('');
+  document.getElementById('lCards').innerHTML = lOrder.map((o, pos) => `<div class="lc"><span class="lt">${LET[pos]}</span>${art(L.seq[o])}<span>${OBJ[L.seq[o]].n}</span></div>`).join('');
+  document.getElementById('lAns').innerHTML = '<span class="end">옛날</span>' + L.seq.map((_, n) => `<div class="ab" id="ab${n}">?</div>`).join('<span class="ar">➜</span>') + '<span class="end">오늘</span>';
+  document.getElementById('oPoint').classList.remove('show'); }
+function showLine(){ const L = LINE[lIdx]; let n = 0; clearInterval(lTimer);
+  lTimer = setInterval(() => { const b = document.getElementById('ab' + n); b.innerHTML = LET[lOrder.indexOf(n)] + '<small>' + OBJ[L.seq[n]].n + '</small>'; b.classList.add('fill'); S.ok(); n++;
+    if(n >= L.seq.length){ clearInterval(lTimer); const p = document.getElementById('oPoint'); p.innerHTML = '🏆 변신 포인트: ' + L.p; p.classList.add('show'); lDone[lIdx] = 1; S.win();
+      document.querySelectorAll('#lSets button')[lIdx].className = 'on'; } }, 600); }
 
 /* ---------- 1번 방 탈출 ---------- */
 function confetti(){ const st = document.getElementById('stage'), cols = ['#ffc53d', '#ff7b6b', '#4fd1ae', '#8fb8ff', '#ff8fc8', '#fff'];
@@ -468,7 +477,7 @@ function confetti(){ const st = document.getElementById('stage'), cols = ['#ffc5
 hooks.escape = () => setTimeout(confetti, 300);
 
 window.onEsc = () => {};
-newMatch(); setCmp(0); drawTeams(); setOrder(0); startDeck();
+newMime(); setCmp(0); setLine(0); startDeck();
 </script>
 <script src="../shared/print-sheet.js"></script>
 </body>

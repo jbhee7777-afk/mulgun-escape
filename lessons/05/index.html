@@ -15,13 +15,6 @@
 /* 물건 그림: 그림 파일 또는 실제 사진(../shared/photos, 출처는 CREDITS.md) */
 .ph{border-radius:22%;object-fit:cover !important;box-shadow:0 0 0 3px #fff,0 4px 10px rgba(61,43,31,.22)}
 
-/* 2번 방 문(표지) */
-.door2{width:560px;height:560px;flex:none;border-radius:44px;background:radial-gradient(circle at 50% 38%,#e9fffb 0%,#7eeadf 45%,#139c8f 100%);position:relative;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(255,255,255,.9),0 18px 40px rgba(0,0,0,.3);overflow:hidden}
-.door2 .lens{width:330px;height:330px;border-radius:50%;background:radial-gradient(circle at 38% 34%,#ffffff 0%,#c9f6ff 30%,#7fd3ec 70%,#4aa7cf 100%);border:26px solid #5b3f8c;box-shadow:inset 0 0 30px rgba(0,0,0,.15),0 10px 0 rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:190px;color:#2d3a7c;position:relative;z-index:1}
-.door2 .handle{position:absolute;width:70px;height:210px;border-radius:35px;background:linear-gradient(90deg,#7d5bb8,#5b3f8c);right:96px;bottom:20px;transform:rotate(-45deg)}
-.door2 .lock{position:absolute;right:46px;top:46px;font-size:70px}
-.door2.sm{width:430px;height:430px}.door2.sm .lens{width:250px;height:250px;font-size:140px;border-width:20px}.door2.sm .handle{width:56px;height:160px;right:70px;bottom:14px}
-
 /* 지난 시간 */
 .recap{display:flex;gap:40px;flex:1;align-items:center}
 .recap .box{flex:1;display:flex;flex-direction:column;gap:18px}
@@ -82,47 +75,56 @@
 .safety{margin-top:30px;display:flex;gap:16px}
 .safety div{flex:1;background:var(--coral2);border-radius:20px;padding:14px 20px;font-size:27px;color:#9a3b2c;display:flex;gap:12px;align-items:center}
 
-/* 관찰 기록판 */
-.board{flex:1;display:flex;gap:22px;min-height:0;margin-top:6px}
-.chipsx{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+/* 미션 2: 미스터리 촉감 상자 */
+.touch{flex:1;display:flex;gap:24px;min-height:0;margin-top:6px}
+.boxcol{width:470px;flex:none;display:flex;flex-direction:column;align-items:center;gap:14px}
+.mbox{width:420px;height:330px;position:relative;margin-top:30px}
+.mbox .lid{position:absolute;left:-14px;right:-14px;top:0;height:70px;background:#c0392b;border-radius:16px;box-shadow:0 8px 0 #962d22;z-index:2}
+.mbox .body{position:absolute;left:0;right:0;top:50px;bottom:0;background:repeating-linear-gradient(90deg,#e74c3c 0 60px,#f1c40f 60px 120px);border-radius:0 0 22px 22px;box-shadow:0 12px 0 rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center}
+.mbox .hole{width:170px;height:120px;border-radius:50%;background:radial-gradient(#1c1208 55%,#3a2614);box-shadow:inset 0 10px 18px rgba(0,0,0,.6)}
+.mbox .qm{position:absolute;top:-40px;left:50%;transform:translateX(-50%);font-family:var(--head);font-size:90px;color:var(--gold);text-shadow:0 4px 0 #b97c00;z-index:3;animation:bob 2s ease-in-out infinite}
+.mbox .hand{position:absolute;left:50%;top:160px;font-size:110px;transform:translateX(-50%) rotate(180deg);transition:top .6s;z-index:1}
+.mbox.in .hand{top:110px}
+.tclock{display:flex;gap:12px;align-items:center}
+.tclock b{font-family:var(--head);font-size:60px;color:var(--navy);width:90px;text-align:center}
+.tclock .btn{font-size:22px;padding:11px 16px}
+.reveal{display:flex;gap:10px;align-items:center;width:100%}
+.reveal input{flex:1;min-width:0;font-family:var(--head);font-size:26px;border:3px solid var(--line);border-radius:16px;padding:8px 14px;color:var(--navy)}
+.reveal .btn{font-size:22px;padding:10px 14px}
+.found{font-family:var(--head);font-size:46px;color:#e3523f;min-height:56px;text-align:center}
+.tcol{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.steps4 div{background:var(--paper);border:3px solid var(--line);border-radius:18px;padding:10px;text-align:center;font-size:22px;line-height:1.35}
+.steps4 div b{display:block;font-size:30px}
 .sgroup{background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
 .sgroup h4{font-family:var(--head);font-weight:400;font-size:26px;color:var(--navy);display:flex;align-items:center;gap:8px}
-.sgroup h4 .emo{font-size:32px}
 .sgroup .cs{display:flex;flex-wrap:wrap;gap:8px}
 .wchip{font-family:var(--head);font-size:23px;background:#fff;border:3px solid var(--line);border-radius:22px;padding:6px 14px;color:var(--ink);cursor:pointer;transition:.15s}
 .wchip.on{background:var(--teal);border-color:var(--tealdk);color:#04392b;transform:scale(1.05)}
-.note{width:470px;flex:none;background:#fffef5;border-radius:24px;padding:20px 24px;box-shadow:0 0 0 4px #fff,0 12px 28px rgba(61,43,31,.18);background-image:repeating-linear-gradient(transparent 0 46px,#e7dcc0 46px 48px);display:flex;flex-direction:column;gap:10px;position:relative}
-.note::before{content:"";position:absolute;left:40px;top:0;bottom:0;width:3px;background:#ffb3a5}
-.note h3{font-size:32px;color:var(--navy);padding-left:30px}
-.note .obj{display:flex;align-items:center;gap:10px;padding-left:30px;font-family:var(--head);font-size:24px;color:var(--ink2)}
-.note .obj input{flex:1;font-family:var(--head);font-size:26px;border:none;border-bottom:3px dashed var(--line);background:transparent;color:var(--navy);padding:2px 6px;min-width:0}
-.note .line{padding-left:30px;font-size:25px;line-height:1.5;min-height:40px}
-.note .line .emo{display:inline-flex;font-size:26px;margin-right:6px}
-.note .line b{color:var(--tealdk)}
-.note .line i{font-style:normal;color:#c9b38e}
-.note .btn{align-self:flex-end;margin-top:auto;font-size:22px;padding:10px 18px}
+.said{background:#fffef5;border-radius:22px;padding:14px 20px;box-shadow:0 0 0 4px #fff,0 10px 24px rgba(61,43,31,.15);font-size:28px;line-height:1.5;min-height:96px}
+.said b{color:var(--tealdk)}
+.said i{font-style:normal;color:#c9b38e}
 
-/* 미션 3: 단서 탐정 */
-.lineup{flex:1;display:flex;gap:26px;min-height:0;margin-top:6px}
-.lmain{flex:1;display:flex;flex-direction:column;gap:14px}
-.clues{display:flex;flex-direction:column;gap:10px}
-.clue{display:flex;align-items:center;gap:16px;background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:10px 20px;font-size:30px;min-height:72px}
-.clue .sn{flex:none;font-size:40px;width:52px}
-.clue .tx{opacity:0;transition:.4s}
-.clue.open .tx{opacity:1}
-.clue.open{border-color:var(--teal);background:#f0fffc}
-.clue .lk{margin-left:auto;color:var(--ink2);font-size:22px}
-.clue.open .lk{display:none}
-.suspects{display:flex;gap:16px}
-.sus{flex:1;height:250px;background:#fff;border:4px solid var(--line);border-radius:26px;box-shadow:0 8px 0 var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;transition:.4s}
-.sus img{width:150px;height:150px;object-fit:contain}
-.sus span{font-family:var(--head);font-size:30px;color:var(--navy)}
-.sus .no{position:absolute;top:10px;left:14px;width:50px;height:50px;border-radius:50%;background:var(--gold);color:#5a3d00;font-family:var(--head);font-size:30px;display:flex;align-items:center;justify-content:center}
-.suspects.rev .sus{opacity:.3;transform:scale(.95)}
-.suspects.rev .sus.ok{opacity:1;transform:scale(1.04);border-color:var(--teal);background:var(--teal2);box-shadow:0 8px 0 #7fd8cf}
-.suspects.rev .sus.ok::after{content:"🔍 찾았다!";position:absolute;top:10px;right:14px;font-family:var(--head);font-size:24px;color:var(--tealdk)}
-.lbtns{display:flex;gap:12px;margin-top:auto}
-.lbtns .btn{font-size:23px;padding:12px 18px}
+/* 미션 3: 교실 관찰 빙고 */
+.bingo{flex:1;display:flex;gap:26px;min-height:0;margin-top:6px}
+.bgrid{width:690px;flex:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bc{background:#fff;border:4px solid var(--line);border-radius:24px;box-shadow:0 6px 0 var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;position:relative;transition:.3s;padding:6px}
+.bc .emo{font-size:58px}
+.bc span{font-family:var(--head);font-size:28px;color:var(--navy);line-height:1.2}
+.bc.called{background:var(--teal2);border-color:var(--teal);box-shadow:0 6px 0 #7fd8cf}
+.bc.called::after{content:"";position:absolute;inset:10px;border:8px solid rgba(227,82,63,.75);border-radius:50%}
+.bc.now{transform:scale(1.06);box-shadow:0 0 0 8px var(--gold)}
+.bside{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.btabs{display:flex;gap:10px}
+.btabs button{flex:1;height:54px;border-radius:16px;background:#fff;border:3px solid var(--line);font-size:24px;color:var(--navy)}
+.btabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.bstep{background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 18px;display:flex;flex-direction:column;gap:10px}
+.bstep h4{font-family:var(--head);font-weight:400;font-size:28px;color:var(--navy)}
+.bstep .row{display:flex;gap:12px;align-items:center}
+.bstep .row b{font-family:var(--head);font-size:56px;color:var(--navy);min-width:150px;text-align:center}
+.bstep .btn{font-size:23px;padding:11px 18px}
+.callnow{font-family:var(--head);font-size:40px;color:#e3523f;min-height:52px}
+.hist{font-size:22px;color:var(--ink2);line-height:1.5}
 
 /* 퀴즈 쇼 */
 .quizshow{display:flex;gap:50px;align-items:center;flex:1}
@@ -143,7 +145,7 @@
 <section class="slide dark" data-phase="도입 · 5분"
  data-notes="<b>시작</b> — “1번 방을 탈출했어요! 오늘부터 두 번째 방, ‘돋보기 탐정의 방’에 들어가요. 이 방은 열쇠 조각이 5개예요.”">
   <div class="cover">
-    <div class="door2 bob"><div class="handle"></div><div class="lens">2</div><span class="lock emo">🔒</span></div>
+    <img class="doorimg bob" src="img/door2.jpg" alt="2번 방 문">
     <div>
       <div class="kicker">물건 교과서 · 방 탈출 미션</div>
       <span class="pill mint">2번 방 · 5차시</span>
@@ -188,8 +190,8 @@
   <h2 class="title" style="font-size:60px">오늘의 미션 네 가지</h2>
   <div class="missions" style="gap:20px">
     <div class="mcard"><span class="tag">미션 1</span><img class="ic" src="../01/img/ic_search.png" alt=""><h3>확대 사진 퀴즈</h3><p>무엇의 일부일까?</p></div>
-    <div class="mcard"><span class="tag">미션 2</span><div class="ic emo" style="font-size:96px">🖐️</div><h3>오감 관찰</h3><p>보고, 만지고, 듣고, 맡고</p></div>
-    <div class="mcard"><span class="tag">미션 3</span><img class="ic" src="../01/img/ic_cards.png" alt=""><h3>단서 탐정</h3><p>관찰 단서로 물건 찾기</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><div class="ic emo" style="font-size:96px">📦</div><h3>미스터리 촉감 상자</h3><p>손끝으로만 맞혀요</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><div class="ic emo" style="font-size:96px">🎯</div><h3>교실 관찰 빙고</h3><p>교실을 돌며 찾아요</p></div>
     <div class="mcard"><span class="tag">미션 4</span><img class="ic" src="../01/img/ic_mail.png" alt=""><h3>탐정 관찰 기록지</h3><p>내 물건 자세히 기록</p></div>
     <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 1</h3><p>2번 방은 5조각!</p></div>
   </div>
@@ -197,7 +199,7 @@
 </section>
 
 <!-- 5 미션 1 규칙 -->
-<section class="slide" data-phase="미션 1 · 8분"
+<section class="slide" data-phase="미션 1 · 7분"
  data-notes="<b>모둠 게임 안내</b> — 사진이 아주 가까이(흐릿하게) 보였다가 점점 멀어져요. 모둠이 의논해 보드에 물건 이름을 써서 들어요. 1단계에서 맞히면 3점, 2단계 2점, 3단계 1점. 정답 뒤에는 ‘어디를 보고 알았는지’ 꼭 말하게 해요.">
   <div class="kicker">MISSION 1</div>
   <h2 class="title">🔍 확대 사진 퀴즈</h2>
@@ -211,8 +213,8 @@
 </section>
 
 <!-- 6 미션 1 게임 -->
-<section class="slide" data-phase="미션 1 · 8분" style="padding-top:78px"
- data-notes="<b>진행</b> — 오른쪽 번호로 문제를 골라요(1~8). ‘조금 멀리 보기’를 누를 때마다 사진이 멀어지고, ‘정답 공개’를 누르면 전체 모습과 단서가 된 특징이 나와요. 맞힌 모둠에 점수를 더해 주세요.">
+<section class="slide" data-phase="미션 1 · 7분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 문제를 골라요(1~14). 모둠마다 2문제 이상 돌아가요. ‘조금 멀리 보기’를 누를 때마다 사진이 멀어지고, ‘정답 공개’를 누르면 전체 모습과 단서가 된 특징이 나와요. 맞힌 모둠에 점수를 더해 주세요.">
   <div class="zoomq">
     <div class="zmain">
       <div class="zbox" id="zBox"><img id="zImg" src="../shared/photos/phone.jpg" alt=""><div class="zl" id="zLabel"></div></div>
@@ -245,53 +247,56 @@
   <div class="safety"><div><span class="emo">🚫</span>물건은 입에 넣거나 맛보지 않아요.</div><div><span class="emo">☀️</span>돋보기로 해를 보지 않아요.</div></div>
 </section>
 
-<!-- 8 관찰 기록판 -->
+<!-- 8 미스터리 촉감 상자 -->
 <section class="slide" data-phase="미션 2 · 9분" style="padding-top:78px"
- data-notes="<b>함께 관찰하기</b> — 선생님이 물건 하나를 들고(또는 학생 숙제 물건) 위 칸에 이름을 써요. 학생들이 오감으로 관찰한 말을 하면 낱말을 눌러 탐정 수첩에 모아요. 낱말에 없는 말은 칠판에 함께 적어 주세요. ‘지우기’로 다른 물건을 새로 관찰해요.">
-  <div class="board">
-    <div class="chipsx" id="chipsx"></div>
-    <div class="note">
-      <h3>📒 탐정 수첩</h3>
-      <div class="obj">관찰한 물건 : <input id="obsName" placeholder="물건 이름을 써요"></div>
-      <div id="noteLines"></div>
-      <button class="btn ghost" onclick="clearObs()">🧽 지우기</button>
+ data-notes="<b>미스터리 촉감 상자</b> — 준비: 상자(또는 불투명한 주머니)에 물건 6~8개(지우개, 솔방울, 클립, 스펀지, 숟가락, 방울, 털실 뭉치 등). 학생 숙제 물건을 몰래 넣어도 좋아요. 탐정 1명이 나와 눈을 감고 손만 넣어 20초 동안 만지며 ‘느낌 낱말’로 말해요(선생님은 그 낱말을 눌러 화면에 모아요). 친구들은 무엇인지 맞혀요. 꺼낸 물건 이름을 아래 칸에 쓰고 ‘꺼내 보기!’. 모둠마다 2명씩 나오면 12번이에요.">
+  <div class="touch">
+    <div class="boxcol">
+      <div class="mbox" id="mBox"><div class="lid"></div><div class="body"><div class="hole"></div></div><div class="qm">?</div><div class="hand emo">✋</div></div>
+      <div class="tclock"><b id="tLeft">20</b><button class="btn navy" id="tGo" onclick="touchGo()">✋ 손 넣기 (20초)</button><button class="btn ghost" onclick="touchReset()">↺ 다음 탐정</button></div>
+      <div class="reveal"><input id="tName" placeholder="꺼낸 물건 이름"><button class="btn mint" onclick="touchReveal()">🎁 꺼내 보기!</button></div>
+      <div class="found" id="tFound"></div>
+    </div>
+    <div class="tcol">
+      <div class="steps4"><div><b>🙈</b>눈을 감고</div><div><b>✋</b>손만 넣어</div><div><b>💬</b>느낌을 말해요</div><div><b>🤔</b>친구들이 맞혀요</div></div>
+      <div class="sgroup"><h4><span class="emo">✋</span>손끝 느낌</h4><div class="cs" id="tWords1"></div></div>
+      <div class="sgroup"><h4><span class="emo">📏</span>모양과 무게</h4><div class="cs" id="tWords2"></div></div>
+      <div class="said" id="tSaid"></div>
+      <div style="font-family:var(--head);font-size:24px;color:var(--ink2)">🕵️ 지금까지 꺼낸 물건: <span id="tList">—</span></div>
     </div>
   </div>
 </section>
 
 <!-- 9 미션 3 규칙 -->
-<section class="slide" data-phase="미션 3 · 7분"
- data-notes="<b>단서 탐정 안내</b> — 용의자(물건) 4개 중 하나가 정답이에요. 오감 단서가 하나씩 열려요. 모둠은 의논해서 손가락 1~4를 들어요. 단서 1개에서 맞히면 3점, 2개 2점, 3개 1점.">
+<section class="slide" data-phase="미션 3 · 8분"
+ data-notes="<b>교실 관찰 빙고 안내</b> — ‘관찰 빙고판’(오른쪽 아래 🖨️)을 모둠마다 1장씩 나눠 줘요. 4분 동안 교실을 돌아다니며 칸에 맞는 물건을 찾아 직접 만져 보고 이름을 써요. 그다음 선생님이 칸을 하나씩 불러요. 그 칸에 물건을 쓴 모둠만 ○를 쳐요. 한 줄이 먼저 완성되면 “빙고!” — 그 줄의 물건을 실제로 보여 주며 확인해요.">
   <div class="kicker">MISSION 3</div>
-  <h2 class="title">🕵️ 단서 탐정</h2>
+  <h2 class="title">🎯 교실 관찰 빙고</h2>
   <div class="rules" style="max-width:1120px">
-    <div class="rule"><span>1</span><div>탐정이 관찰한 <b class="hl">오감 단서</b>가 하나씩 열려요.</div></div>
-    <div class="rule"><span>2</span><div>용의자 물건 4개 중 단서에 맞는 물건을 찾아 <b class="c-navy">1~4</b> 손가락을 들어요.</div></div>
-    <div class="rule"><span>3</span><div>단서 1개에서 맞히면 <b class="c-coral">3점</b>, 2개 <b class="c-coral">2점</b>, 3개 <b class="c-coral">1점</b>!</div></div>
-    <div class="rule"><span>4</span><div>왜 그 물건인지 <b class="hl">단서를 들어</b> 말해요.</div></div>
+    <div class="rule"><span>1</span><div>모둠마다 <b class="hl">관찰 빙고판</b>을 받아요.</div></div>
+    <div class="rule"><span>2</span><div><b class="c-navy">4분</b> 동안 교실을 돌며 칸에 맞는 물건을 찾아 <b class="c-coral">직접 만져 보고</b> 이름을 써요.</div></div>
+    <div class="rule"><span>3</span><div>선생님이 칸을 부르면, 그 칸에 쓴 물건이 있는 모둠만 ○!</div></div>
+    <div class="rule"><span>4</span><div>한 줄이 완성되면 “빙고!” 그 물건을 보여 주며 확인해요.</div></div>
   </div>
   <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:320px">
 </section>
 
-<!-- 10 미션 3 게임 -->
-<section class="slide" data-phase="미션 3 · 7분" style="padding-top:78px"
- data-notes="<b>진행</b> — 오른쪽 번호로 사건을 골라요(1~6). ‘단서 열기’를 누를 때마다 단서가 하나씩 열려요. 모둠이 손가락을 들면 ‘범인 공개’!">
-  <div class="lineup">
-    <div class="lmain">
-      <div class="clues" id="clues"></div>
-      <div class="suspects" id="sus"></div>
-      <div class="lbtns"><button class="btn navy" onclick="openClue()">🔓 단서 열기</button><button class="btn mint" onclick="revealSus()">🎉 범인 공개</button><button class="btn ghost" onclick="nextCase()">다음 사건 ▶</button></div>
-    </div>
-    <div class="dside">
-      <div class="rounds" id="rounds3" style="grid-template-columns:repeat(3,1fr)"></div>
-      <div class="score"><h4>🏆 모둠 점수</h4><div id="teams3"></div></div>
-      <div class="ptguide">단서 1개 3점 · 2개 2점<br>3개 1점</div>
+<!-- 10 미션 3 빙고 -->
+<section class="slide" data-phase="미션 3 · 8분" style="padding-top:78px"
+ data-notes="<b>진행</b> — ① ‘찾기 4분’을 누르고 모둠이 교실을 돌아요. ② 다 모이면 ‘칸 부르기’를 누를 때마다 칸이 하나씩 골라져요. 빙고판이 A판·B판 두 개라서 두 판을 할 수 있어요(빙고판 인쇄물에도 두 장이 들어 있어요).">
+  <div class="bingo">
+    <div class="bgrid" id="bGrid"></div>
+    <div class="bside">
+      <div class="btabs"><button id="bt0" onclick="setBoard(0)">🅰️ A판</button><button id="bt1" onclick="setBoard(1)">🅱️ B판</button></div>
+      <div class="bstep"><h4>① 교실 돌며 찾기</h4><div class="row"><b id="bClock">4:00</b><button class="btn mint" id="bGo" onclick="bingoSearch()">▶ 찾기 4분</button></div></div>
+      <div class="bstep"><h4>② 칸 부르기</h4><div class="row"><button class="btn coral" onclick="bingoCall()">🎲 칸 부르기</button><button class="btn ghost" onclick="setBoard(bIdx)">↺ 처음부터</button></div>
+        <div class="callnow" id="bNow"></div><div class="hist" id="bHist"></div></div>
     </div>
   </div>
 </section>
 
 <!-- 11 활동지 안내 -->
-<section class="slide" data-phase="미션 4 · 9분"
+<section class="slide" data-phase="미션 4 · 7분"
  data-notes="<b>탐정 관찰 기록지</b> — ‘활동지 바로 인쇄’로 인쇄해 나눠 줘요. 숙제로 가져온 물건(없으면 필통 속 물건)을 관찰해요. ① 물건 크게 그리기 ② 돋보기 동그라미에 가장 자세히 본 부분 그리기 ③ 오감 관찰표 ④ 특별한 점과 수수께끼 쓰기.">
   <div class="kicker">MISSION 4 · 활동지</div>
   <div class="ws">
@@ -308,11 +313,11 @@
 </section>
 
 <!-- 12 타이머 -->
-<section class="slide center" data-phase="미션 4 · 9분"
- data-notes="<b>활동 시간</b> — 기본 8분. 돋보기가 있으면 모둠마다 나눠 주세요. “눈으로만 보지 말고, 손·귀·코도 써 봐요!” 일찍 끝난 학생은 짝에게 수수께끼 내기.">
+<section class="slide center" data-phase="미션 4 · 7분"
+ data-notes="<b>활동 시간</b> — 기본 7분. 돋보기가 있으면 모둠마다 나눠 주세요. “눈으로만 보지 말고, 손·귀·코도 써 봐요!” 일찍 끝난 학생은 짝에게 수수께끼 내기.">
   <div class="kicker">MISSION 4 · 활동 시간</div>
   <h2 class="title" style="font-size:56px;margin-bottom:36px">탐정처럼 자세히 관찰해요!</h2>
-  <div class="timer" data-sec="480"></div>
+  <div class="timer" data-sec="420"></div>
   <img class="mascot bob" src="../01/img/agent.png" alt="" style="left:90px;bottom:96px;width:250px">
 </section>
 
@@ -369,7 +374,7 @@
  data-notes="<b>다음 차시 예고</b> — 집에서 손잡이·눈금·빗살처럼 ‘특별한 생김새’가 있는 물건을 하나 찾아보기(가져올 수 있으면 가져오기).">
   <div class="kicker">NEXT MISSION</div>
   <div class="next">
-    <div class="door2 sm"><div class="handle"></div><div class="lens">2</div><span class="lock emo">🔒</span></div>
+    <img class="doorimg" src="img/door2.jpg" alt="">
     <div>
       <span class="pill mint">6차시 예고</span>
       <h2 class="title" style="font-size:80px">생김새에는<br>비밀이 있다</h2>
@@ -381,7 +386,7 @@
 
 <div id="notes"></div>
 <div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
-<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="printSheet('bingo.html')">🖨️ 관찰 빙고판</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
 </div></div>
 
 <script>window.LESSON = {room:2, lesson:5, keyPieces:1};</script>
@@ -394,7 +399,8 @@ const OBJ = {
   pen:{n:'볼펜', ph:1}, brush:{n:'붓', ph:1}, slippers:{n:'실내화', ph:1}, raincoat:{n:'우비', ph:1}, tap:{n:'수도꼭지', ph:1}, bucket:{n:'두레박', ph:1},
   spoon:{n:'숟가락', ph:1}, fork:{n:'포크', ph:1}, candle:{n:'촛불', ph:1}, oillamp:{n:'등잔불', ph:1},
   pencil:{n:'연필', img:'../01/img/obj_pencil.png'}, sneakers:{n:'운동화', img:'../01/img/obj_sneakers.png'}, clock:{n:'벽시계', img:'../01/img/obj_clock.png'},
-  bulb:{n:'전구', img:'../01/img/obj_bulb.png'}, flashlight:{n:'손전등', img:'../02/img/obj_flashlight.png'}
+  bulb:{n:'전구', img:'../01/img/obj_bulb.png'}, flashlight:{n:'손전등', img:'../02/img/obj_flashlight.png'},
+  ktx:{n:'고속 열차', ph:1}, steam:{n:'증기 기관차', ph:1}, sundial:{n:'해시계(앙부일구)', ph:1}, horse:{n:'말', ph:1}, earphone:{n:'헤드폰', ph:1}, smart:{n:'스마트폰', ph:1}
 };
 const src = k => OBJ[k].img || `../shared/photos/${k}.jpg`;
 const art = k => OBJ[k].img ? `<img src="${OBJ[k].img}" alt="">` : `<img class="ph" src="${src(k)}" alt="">`;
@@ -404,9 +410,9 @@ hooks.story = () => { typewriter(document.getElementById('storyText'),
   '“흐흐흐, 2번 방에는 <b class="c-coral">흐릿 안개</b>를 뿌려 두었지!”<br>안개 때문에 물건들이 조각조각, 흐릿하게만 보여요.<br>돋보기 탐정 여러분, <b class="c-navy">아주 자세히</b> 관찰해서<br>물건의 정체를 밝혀 주세요!');
   document.getElementById('fog').innerHTML = ['phone', 'cd', 'boots', 'tape', 'camera'].map(k => `<div><img src="${src(k)}" alt=""></div>`).join(''); };
 
-/* ---------- 모둠 점수 (두 게임이 함께 써요) ---------- */
+/* ---------- 모둠 점수 ---------- */
 let TEAMS = 6; const score = Array(8).fill(0);
-function drawTeams(){ ['teams1', 'teams3'].forEach(id => { const el = document.getElementById(id);
+function drawTeams(){ ['teams1'].forEach(id => { const el = document.getElementById(id);
   el.innerHTML = [...Array(TEAMS)].map((_, t) => `<div class="team"><span class="tn">${t + 1}모둠</span><button class="m" onclick="addPt(${t},-1)">−</button><span class="pt">${score[t]}</span><button onclick="addPt(${t},1)">＋</button></div>`).join('')
     + `<div style="text-align:center;margin-top:6px;font-size:18px;color:var(--ink2)">모둠 수 <button class="m" style="width:30px;height:30px;border-radius:8px;background:#f1e6d4" onclick="setTeams(-1)">−</button> ${TEAMS} <button style="width:30px;height:30px;border-radius:8px;background:var(--gold2)" onclick="setTeams(1)">＋</button></div>`; }); }
 function addPt(t, d){ score[t] = Math.max(0, score[t] + d); if(d > 0) S.ok(); drawTeams(); }
@@ -421,7 +427,13 @@ const ZOOM = [
   {k:'cd', o:'55% 30%', z:[4.5, 2.2], f:'빛을 받으면 <b>무지갯빛</b>이 나는 얇은 원판이에요.'},
   {k:'alarm', o:'48% 30%', z:[4.5, 2.2], f:'머리에 <b>종 두 개</b>가 있어 따르릉 울려요.'},
   {k:'tape', o:'40% 62%', z:[4.5, 2.2], f:'<b>톱니 구멍 두 개</b>와 갈색 줄(테이프)이 있어요.'},
-  {k:'radio', o:'45% 35%', z:[4.5, 2.2], f:'소리가 나오는 곳에 <b>촘촘한 천</b>이 덮여 있어요.'}];
+  {k:'radio', o:'45% 35%', z:[4.5, 2.2], f:'소리가 나오는 곳에 <b>촘촘한 천</b>이 덮여 있어요.'},
+  {k:'watch', o:'45% 50%', z:[4.5, 2.2], f:'숫자가 빙 둘러싼 판 위에 <b>바늘</b>이 있고, <b>가죽 끈</b>이 달렸어요.'},
+  {k:'ktx', o:'50% 62%', z:[4.5, 2.2], f:'<b>뾰족한 앞머리</b>와 반짝이는 <b>불빛</b>이 있어요.'},
+  {k:'steam', o:'40% 78%', z:[4.5, 2.2], f:'커다란 <b>쇠바퀴</b>가 여러 개 줄지어 있어요.'},
+  {k:'hourglass', o:'50% 50%', z:[4.5, 2.2], f:'<b>잘록한 허리</b>로 모래가 조르르 떨어져요.'},
+  {k:'sundial', o:'50% 42%', z:[4, 2], f:'오목한 그릇 안에 <b>가는 줄</b>이 그어져 있고, 그림자로 시간을 봐요.'},
+  {k:'earphone', o:'30% 62%', z:[4.5, 2.2], f:'귀에 닿는 곳이 <b>푹신한 쿠션</b>이에요.'}];
 let zIdx = 0, zLv = 0; const zDone = {};
 function drawZRounds(){ document.getElementById('rounds1').innerHTML = ZOOM.map((z, i) => `<button class="${i === zIdx ? 'on' : zDone[i] ? 'done' : ''}" onclick="setZoom(${i})">${i + 1}</button>`).join(''); }
 function drawZoom(){ const z = ZOOM[zIdx], im = document.getElementById('zImg');
@@ -429,46 +441,50 @@ function drawZoom(){ const z = ZOOM[zIdx], im = document.getElementById('zImg');
   im.style.transformOrigin = z.o; im.style.transform = `scale(${sc})`; im.style.filter = `blur(${bl}px)`;
   [...document.getElementById('zStep').children].forEach((d, i) => d.classList.toggle('on', i === Math.min(zLv, 2)));
   document.getElementById('zLabel').textContent = zLv < 3 ? `🔍 ${Math.min(zLv, 2) + 1}단계` : ''; }
-function setZoom(i){ zIdx = i; zLv = 0; S.flip(); document.getElementById('zImg').src = src(ZOOM[i].k);
+function setZoom(i){ zIdx = i; zLv = 0; S.flip(); const im = document.getElementById('zImg');
+  /* 다음 문제로 넘어갈 때 전체 사진이 비치지 않게: 숨긴 채 확대해 두고, 새 사진이 다 뜬 뒤에 보여요 */
+  im.style.transition = 'none'; im.style.opacity = 0; im.onload = () => { void im.offsetWidth; im.style.opacity = 1; requestAnimationFrame(() => requestAnimationFrame(() => { im.style.transition = ''; })); };
+  const next = new URL(src(ZOOM[i].k), location.href).href; if(im.src === next && im.complete) setTimeout(im.onload, 30); else im.src = next;
   document.getElementById('zAns').innerHTML = '<div class="wait">🤔 무엇의 일부일까요?<br>모둠끼리 의논해서 보드에 써요!</div>'; drawZoom(); drawZRounds(); }
 function zoomOut(){ if(zLv >= 2) return; zLv++; S.tick(); drawZoom(); }
 function zoomReveal(){ const z = ZOOM[zIdx]; zLv = 3; drawZoom(); zDone[zIdx] = 1; S.win();
   document.getElementById('zAns').innerHTML = `<div class="nm">${OBJ[z.k].n}</div><div class="ft">🔎 단서가 된 특징: ${z.f}</div>`; drawZRounds(); }
 function nextZoom(){ setZoom((zIdx + 1) % ZOOM.length); }
 
-/* ---------- 미션 2: 관찰 기록판 ---------- */
-const WORDS = [
-  ['👀', '눈으로', ['동그래요', '길쭉해요', '네모나요', '반짝반짝해요', '투명해요', '알록달록해요', '구멍이 있어요', '무늬가 있어요']],
-  ['✋', '손으로', ['매끈매끈해요', '울퉁불퉁해요', '딱딱해요', '말랑말랑해요', '가벼워요', '무거워요', '차가워요', '까칠까칠해요']],
-  ['👂', '귀로', ['딸깍 소리가 나요', '바스락거려요', '째깍째깍해요', '통통 울려요', '찰랑거려요', '소리가 안 나요']],
-  ['👃', '코로', ['냄새가 안 나요', '고무 냄새가 나요', '나무 냄새가 나요', '향긋해요', '종이 냄새가 나요']]];
-const picked2 = WORDS.map(() => new Set());
-function drawChips(){ document.getElementById('chipsx').innerHTML = WORDS.map((w, g) => `<div class="sgroup"><h4><span class="emo">${w[0]}</span>${w[1]}</h4><div class="cs">${w[2].map(x => `<span class="wchip ${picked2[g].has(x) ? 'on' : ''}" onclick="toggleWord(${g},'${x}')">${x}</span>`).join('')}</div></div>`).join('');
-  document.getElementById('noteLines').innerHTML = WORDS.map((w, g) => `<div class="line"><span class="emo">${w[0]}</span>${picked2[g].size ? [...picked2[g]].map(x => `<b>${x}</b>`).join(', ') : '<i>…</i>'}</div>`).join(''); }
-function toggleWord(g, x){ picked2[g].has(x) ? picked2[g].delete(x) : picked2[g].add(x); S.tick(); drawChips(); }
-function clearObs(){ picked2.forEach(s => s.clear()); document.getElementById('obsName').value = ''; S.flip(); drawChips(); }
+/* ---------- 미션 2: 미스터리 촉감 상자 ---------- */
+const TW = [['매끈매끈해요', '울퉁불퉁해요', '까칠까칠해요', '보들보들해요', '딱딱해요', '말랑말랑해요', '폭신폭신해요', '차가워요', '끈적끈적해요'],
+  ['동그래요', '길쭉해요', '네모나요', '뾰족해요', '구멍이 있어요', '가벼워요', '무거워요', '흔들면 소리가 나요']];
+let tLeft = 20, tTimer = null; const tSaid = new Set(), tFound = [];
+function drawTouch(){ TW.forEach((ws, g) => { document.getElementById('tWords' + (g + 1)).innerHTML = ws.map(w => `<span class="wchip ${tSaid.has(w) ? 'on' : ''}" onclick="touchWord('${w}')">${w}</span>`).join(''); });
+  document.getElementById('tSaid').innerHTML = '💬 탐정의 말: ' + (tSaid.size ? [...tSaid].map(w => `<b>${w}</b>`).join(', ') : '<i>만진 느낌을 낱말로 말해 주세요…</i>');
+  document.getElementById('tLeft').textContent = tLeft; document.getElementById('tList').textContent = tFound.length ? tFound.join(', ') : '—'; }
+function touchWord(w){ tSaid.has(w) ? tSaid.delete(w) : tSaid.add(w); S.tick(); drawTouch(); }
+function touchStop(){ clearInterval(tTimer); tTimer = null; document.getElementById('tGo').textContent = '✋ 손 넣기 (20초)'; document.getElementById('mBox').classList.remove('in'); }
+function touchGo(){ if(tTimer){ touchStop(); return; } tLeft = 20; document.getElementById('mBox').classList.add('in'); document.getElementById('tGo').textContent = '⏸ 멈추기'; S.flip(); drawTouch();
+  tTimer = setInterval(() => { tLeft--; if(tLeft <= 0){ touchStop(); S.end(); } drawTouch(); }, 1000); }
+function touchReveal(){ touchStop(); const n = document.getElementById('tName').value.trim() || '무엇일까요?'; document.getElementById('tFound').textContent = '🎁 ' + n + '!';
+  if(document.getElementById('tName').value.trim()) tFound.push(n); S.win(); drawTouch(); }
+function touchReset(){ touchStop(); tLeft = 20; tSaid.clear(); document.getElementById('tName').value = ''; document.getElementById('tFound').textContent = ''; S.flip(); drawTouch(); }
 
-/* ---------- 미션 3: 단서 탐정 (o: 용의자 4개, a: 정답 번호(0부터), c: [감각, 단서] 어려운 것부터) ---------- */
-const CASES = [
-  {o:['alarm', 'cd', 'watch', 'tape'], a:1, c:[['✋', '아주 얇고 매끈매끈해요.'], ['👀', '동그랗고 가운데에 구멍이 있어요.'], ['👀', '빛에 비추면 무지갯빛이 나요.']]},
-  {o:['crayon', 'brush', 'pen', 'pencil'], a:2, c:[['👀', '길쭉하고, 투명한 몸 속에 잉크가 보여요.'], ['✋', '뚜껑을 빼면 끝에 아주 작은 쇠구슬이 있어요.'], ['✋', '깎지 않아도 되고, 지우개로 지워지지 않아요.']]},
-  {o:['sneakers', 'slippers', 'boots', 'raincoat'], a:2, c:[['✋', '말랑하고 물이 스며들지 않아요.'], ['👃', '코를 가까이 대면 고무 냄새가 나요.'], ['👀', '무릎 아래까지 올라올 만큼 길어요.']]},
-  {o:['clock', 'hourglass', 'alarm', 'watch'], a:3, c:[['👂', '귀를 대면 째깍째깍 소리가 나요.'], ['👀', '숫자와 바늘이 있어요.'], ['✋', '가죽 끈이 있어서 손목에 찰 수 있어요.']]},
-  {o:['spoon', 'bucket', 'tap', 'fork'], a:2, c:[['✋', '차갑고 딱딱한 쇠로 되어 있어요.'], ['👀', '손잡이를 돌릴 수 있게 생겼어요.'], ['👂', '돌리면 물소리가 콸콸 나요.']]},
-  {o:['bulb', 'candle', 'flashlight', 'oillamp'], a:1, c:[['✋', '미끌미끌하고 손톱으로 누르면 자국이 나요.'], ['👀', '가운데에 실(심지)이 꽂혀 있어요.'], ['👃', '불을 붙였다 끄면 매캐한 냄새가 나요.']]}];
-let cIdx = 0, cOpen = 0; const cDone = {};
-function drawCRounds(){ document.getElementById('rounds3').innerHTML = CASES.map((c, i) => `<button class="${i === cIdx ? 'on' : cDone[i] ? 'done' : ''}" onclick="setCase(${i})">${i + 1}</button>`).join(''); }
-function setCase(i){ cIdx = i; cOpen = 0; const c = CASES[i]; S.flip();
-  document.getElementById('clues').innerHTML = c.c.map((x, n) => `<div class="clue" id="cl${n}"><span class="sn emo">${x[0]}</span><span class="tx">단서 ${n + 1} · ${x[1]}</span><span class="lk">🔒 단서 ${n + 1}</span></div>`).join('');
-  const s = document.getElementById('sus'); s.classList.remove('rev');
-  s.innerHTML = c.o.map((k, n) => `<div class="sus ${n === c.a ? 'ok' : ''}"><span class="no">${n + 1}</span>${art(k)}<span>${OBJ[k].n}</span></div>`).join(''); drawCRounds(); }
-function openClue(){ if(cOpen >= 3) return; document.getElementById('cl' + cOpen).classList.add('open'); cOpen++; S.tick(); }
-function revealSus(){ for(let n = 0; n < 3; n++) document.getElementById('cl' + n).classList.add('open'); cOpen = 3;
-  document.getElementById('sus').classList.add('rev'); cDone[cIdx] = 1; S.win(); drawCRounds(); }
-function nextCase(){ setCase((cIdx + 1) % CASES.length); }
+/* ---------- 미션 3: 교실 관찰 빙고 (A판·B판, 칸 순서는 bingo.html 과 같아요) ---------- */
+const BOARDS = [
+  [['🪨', '울퉁불퉁해요'], ['🪞', '매끈매끈해요'], ['🔍', '투명해요'], ['🕳️', '구멍이 있어요'], ['🧽', '말랑말랑해요'], ['✨', '반짝반짝해요'], ['⚪', '동그래요'], ['🔔', '두드리면 소리가 나요'], ['🧊', '만지면 차가워요']],
+  [['🦓', '줄무늬가 있어요'], ['🪶', '아주 가벼워요'], ['🏋️', '꽤 무거워요'], ['🌵', '까칠까칠해요'], ['🟦', '네모나요'], ['📏', '길쭉해요'], ['🪵', '나무로 되어 있어요'], ['🔢', '숫자나 글자가 있어요'], ['📄', '접을 수 있어요']]];
+let bIdx = 0, bLeft = 240, bTimer = null; let bCalled = [];
+function drawBoard(){ const B = BOARDS[bIdx]; document.getElementById('bGrid').innerHTML = B.map((c, i) => `<div class="bc ${bCalled.includes(i) ? 'called' : ''} ${bCalled[bCalled.length - 1] === i ? 'now' : ''}"><span class="emo">${c[0]}</span><span>${c[1]}</span></div>`).join('');
+  [0, 1].forEach(n => document.getElementById('bt' + n).className = n === bIdx ? 'on' : '');
+  document.getElementById('bClock').textContent = `${Math.floor(bLeft / 60)}:${String(bLeft % 60).padStart(2, '0')}`;
+  document.getElementById('bHist').textContent = bCalled.length ? '부른 칸: ' + bCalled.map(i => B[i][1]).join(' · ') : ''; }
+function setBoard(n){ bIdx = n; bCalled = []; bingoStop(); bLeft = 240; document.getElementById('bNow').textContent = ''; S.flip(); drawBoard(); }
+function bingoStop(){ clearInterval(bTimer); bTimer = null; const g = document.getElementById('bGo'); if(g) g.textContent = '▶ 찾기 4분'; }
+function bingoSearch(){ if(bTimer){ bingoStop(); return; } document.getElementById('bGo').textContent = '⏸ 멈추기'; S.tick();
+  bTimer = setInterval(() => { bLeft--; if(bLeft <= 0){ bingoStop(); bLeft = 0; S.end(); } drawBoard(); }, 1000); }
+function bingoCall(){ const B = BOARDS[bIdx], left = B.map((_, i) => i).filter(i => !bCalled.includes(i)); if(!left.length) return;
+  const i = left[Math.floor(Math.random() * left.length)]; bCalled.push(i); S.ok(); document.getElementById('bNow').textContent = `📣 “${B[i][1]}” 칸!`; drawBoard(); }
+hooks.leave = i => { if(slides[i] && slides[i].querySelector('#tLeft')) touchStop(); if(slides[i] && slides[i].querySelector('#bGrid')) bingoStop(); };
 
 window.onEsc = () => {};
-drawTeams(); setZoom(0); drawChips(); setCase(0); startDeck();
+drawTeams(); setZoom(0); drawTouch(); setBoard(0); startDeck();
 </script>
 <script src="../shared/print-sheet.js"></script>
 </body>
