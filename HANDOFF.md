@@ -12,11 +12,8 @@
   Canva 디자인 "2번 방 스토리북 문 배경"(DAHYgmVzrIA)에 문 그림 페이지가 모여 있어요.
 
 ## 남은 일
-1. **이모티콘 그림을 Canva 그림으로 바꾸기 (진행 중)** — 아이콘은 `lessons/shared/icons/이름.png`(Canva 스티커 시트를 잘라 만듦).
-   - 끝: 3·5·6·7·8·9·20·21차시 전부, 4·10·16차시 일부 (flask, scale, wand, sneaker, basket, oxpad, mannequin, target, box, pencil, umbrella, shop, tophat, column, robot, trophy)
-   - Canva에 만들어 둔 시트(아직 못 받음): MAHYpHyqzTI → mic, masks, gacha, ballot, gloves, fingertip, glasses, map
-   - 더 만들 시트: scissors, notepad, stopwatch, chart, toolbox, vest, star, cycle / triangle, bridge, wrench, lineup(줄 선 아이들) + 9차시 딱풀 단계 그림 4장
-   - 바꾸는 스크립트: 아이콘 파일을 넣은 뒤 각 차시의 `<div class="ic emo" style="font-size:96px">이모지</div>` 를 `<img class="ic" src="../shared/icons/이름.png" alt="">` 로.
+1. **미션 카드 아이콘 → Canva 그림: 끝 (2026-10-22)** — 3~24차시 `class="ic emo"` 모두 `lessons/shared/icons/이름.png` 로 바뀜. Canva 시트는 "2번 방 스토리북 문 배경"(DAHYgmVzrIA) 5~7쪽.
+   - 아직 남은 작은 것: 글 사이에 들어간 작은 이모티콘(예: 5차시 감각 👀👂, 17~19차시 목록 앞 기호)과 9차시 딱풀 단계 그림 4장. 필요하면 같은 방식으로 바꿀 수 있어요.
 2. 전체 학생 입장 점검(불가능하거나 이해 안 되는 부분 없는지).
 
 ## 만드는 방식 (9차시부터)
