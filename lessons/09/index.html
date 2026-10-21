@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2번 방 · 9차시 물건 사용 설명서</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/kit.css">
+<style>
+/* 미션 1: 로봇 선생님 */
+.robot{flex:1;display:flex;gap:24px;min-height:0;margin-top:4px}
+.task{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.task .head{display:flex;align-items:center;gap:22px;background:var(--navy);color:#fff;border-radius:28px;padding:16px 26px;box-shadow:0 8px 0 #1c2557}
+.task .head img{width:120px;height:120px;flex:none}
+.task .head .t{font-family:var(--head);font-size:44px;line-height:1.3}
+.task .head .t small{display:block;font-size:24px;color:var(--gold2)}
+.say{background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 22px;font-size:28px;line-height:1.6}
+.say b{color:#e3523f}
+.good{display:none;background:var(--mint2);border:3px solid var(--mint);border-radius:22px;padding:14px 22px;font-size:27px;line-height:1.6}
+.good.show{display:block;animation:enter .5s}
+.good ol{margin-left:34px}
+.good h4{font-family:var(--head);font-weight:400;font-size:28px;color:#0f8a6e;margin-bottom:4px}
+
+/* 미션 2: 순서 퍼즐 릴레이 */
+.puz{flex:1;display:flex;gap:22px;min-height:0;margin-top:4px}
+.pz{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.pzh{display:flex;align-items:center;gap:18px}
+.pzh img{width:110px;height:110px;flex:none}
+.pzh .t{font-family:var(--head);font-size:42px;color:var(--navy);line-height:1.2}
+.pzh .t small{display:block;font-size:22px;color:var(--ink2)}
+.pzh .turn{margin-left:auto;background:var(--gold);color:#5a3d00;font-family:var(--head);font-size:30px;border-radius:20px;padding:10px 22px;box-shadow:0 5px 0 #d79e12}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.slot{height:150px;border:4px dashed #d9b98a;border-radius:22px;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:60px;color:#e6cfa5;background:rgba(255,255,255,.5);text-align:center;padding:10px;position:relative}
+.slot.fill{border-style:solid;border-color:var(--mint);background:var(--mint2);color:#0f6b56;font-size:27px;line-height:1.4;font-family:var(--body);animation:enter .4s}
+.slot .n{position:absolute;left:10px;top:6px;font-family:var(--head);font-size:24px;color:#a77b4a}
+.pool{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pc{min-height:130px;background:#fff;border:4px solid var(--line);border-radius:22px;box-shadow:0 6px 0 var(--line);display:flex;align-items:center;justify-content:center;text-align:center;padding:12px 14px;font-size:27px;line-height:1.4;cursor:pointer;transition:transform .15s}
+.pc:hover{transform:translateY(-3px)}
+.pc.used{visibility:hidden}
+.pc.bad{animation:shake .12s 4;border-color:#ffc0b5;background:#fff5f2}
+.pmsg{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:12px 18px;font-size:25px;line-height:1.5;min-height:62px}
+.pmsg b{color:#0f8a6e}.pmsg i{font-style:normal;color:#e3523f;font-family:var(--head)}
+
+/* 미션 3: 설명서 만들기 예시 */
+.ex4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.ex4 .p{background:#fff;border:3px solid var(--line);border-radius:20px;padding:10px;display:flex;flex-direction:column;gap:6px;position:relative}
+.ex4 .p .n{position:absolute;left:-10px;top:-12px;width:46px;height:46px;border-radius:50%;background:var(--room);color:#fff;font-family:var(--head);font-size:26px;display:flex;align-items:center;justify-content:center}
+.ex4 .p .pic{height:150px;border-radius:14px;background:#f7f3ea;display:flex;align-items:center;justify-content:center}
+.ex4 .p .pic img{max-height:130px;max-width:90%}
+.ex4 .p .w{font-size:24px;line-height:1.4;text-align:center}
+.warn{margin-top:14px;background:#fff5f2;border:3px solid #ffc0b5;border-radius:20px;padding:12px 20px;font-size:26px;color:#9a3b2c}
+.check3{display:flex;gap:14px;margin-top:14px}
+.check3 div{flex:1;background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:12px 16px;font-size:24px;line-height:1.45;text-align:center}
+.check3 b{display:block;font-family:var(--head);font-size:30px;color:var(--gold)}
+
+/* 2번 방 탈출 */
+.escape{display:flex;align-items:center;gap:60px;flex:1}
+.escape .doorimg{width:440px;height:440px}
+.escape .title{font-size:88px}
+.sents{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.sents div{background:rgba(255,255,255,.1);border-radius:14px;padding:7px 16px;font-size:22px;color:#e6eaff;line-height:1.45}
+.sents div b{color:var(--gold)}
+.confetti{position:absolute;width:14px;height:22px;top:-30px;pointer-events:none;animation:fall linear forwards;z-index:5}
+@keyframes fall{to{transform:translateY(980px) rotate(720deg)}}
+</style>
+</head>
+<body data-room="2">
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 2번 방 · 물건을 자세히 탐구하기</span><span class="ls">9차시 / 5~9</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 5분"
+ data-notes="<b>시작</b> — “2번 방 열쇠 조각을 4개 모았어요. 오늘 마지막 조각을 찾으면 2번 방을 탈출해요!”">
+  <div class="cover">
+    <img class="doorimg bob" src="../05/img/door2.jpg" alt="2번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill mint">2번 방 · 9차시 · 마지막 조각</span>
+      <h1 class="title">물건<br>사용 설명서</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">누구나 보고 따라 할 수 있게 알려 줄 수 있을까?</p>
+      <button class="btn mint" style="margin-top:34px" onclick="go(1)">🚪 2번 방 다시 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 + 숙제 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>지난 시간 떠올리기 + 숙제 확인</b> — ① 8차시 비밀 문장 함께 읽기 ② 집에서 찾은 그림 설명서(장난감 조립, 약 먹는 법, 라면 끓이는 법 등) 이야기 2~3명. “그림 설명서에는 무엇이 있었나요?” → 번호(순서), 그림, 짧은 글, 조심할 점.">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">8차시 비밀 문장, 기억나요?</h2>
+  <div class="recap">
+    <div class="box">
+      <div class="cipher" style="font-size:44px;margin-top:10px;padding:24px 40px">얇은 종이도 <span class="blank" onclick="openBlank(this)">접거나</span> 말아서<br><span class="blank" onclick="openBlank(this)">모양</span>을 바꾸면 훨씬 튼튼해져요.</div>
+      <div class="homework">🕵️ <b>숙제 확인!</b> 집에서 <b>그림 설명서</b>를 찾았나요?<br>설명서에는 무엇이 들어 있었나요?</div>
+    </div>
+    <img src="../01/img/agent.png" alt="" style="width:300px" class="bob">
+  </div>
+</section>
+
+<!-- 3 이야기 -->
+<section class="slide dark" data-phase="도입 · 5분" data-hook="story"
+ data-notes="<b>이야기</b> — 말풍선을 누르면 글자가 한 번에 나와요. “설명서가 뒤죽박죽이면 어떤 일이 생길까요?” 짧게 이야기 나누고 미션으로 넘어가요.">
+  <div class="alarm">🚨 싹쓸이 마법사의 뒤죽박죽 설명서!</div>
+  <div class="storywrap">
+    <img class="wizard" src="../01/img/wizard.jpg" alt="싹쓸이 마법사">
+    <div class="bubble" id="storyText"></div>
+  </div>
+</section>
+
+<!-- 4 미션 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>학습 목표 함께 읽기</b> — 미션 3개를 해결하면 2번 방 마지막 열쇠 조각이에요.">
+  <div class="kicker">MISSION BRIEFING</div>
+  <h2 class="title" style="font-size:60px">마지막 미션 세 가지</h2>
+  <div class="missions" style="gap:20px">
+    <div class="mcard"><span class="tag">미션 1</span><div class="ic emo" style="font-size:96px">🤖</div><h3>로봇 선생님</h3><p>순서대로 말해야 움직여요</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><img class="ic" src="../01/img/ic_cards.png" alt=""><h3>순서 퍼즐 릴레이</h3><p>뒤섞인 순서 맞추기</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><img class="ic" src="../01/img/ic_mail.png" alt=""><h3>우리 반 그림 설명서</h3><p>만들고 짝이 따라 해요</p></div>
+    <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>마지막 열쇠 조각</h3><p>2번 방 탈출!</p></div>
+  </div>
+  <div class="goal"><b>🎯 학습 목표</b> 물건을 쓰는 순서를 차례대로 정리해서, 누구나 알아보기 쉬운 그림 설명서를 만들 수 있어요.</div>
+</section>
+
+<!-- 5 미션 1 규칙 -->
+<section class="slide" data-phase="미션 1 · 7분"
+ data-notes="<b>로봇 선생님 놀이 안내</b> — 선생님이 로봇이 되어요. 로봇은 들은 말만 그대로 해요. 학생들이 순서를 빠뜨리면 로봇이 엉뚱하게 움직여서 웃음이 나요(예: ‘물 마셔!’ → 뚜껑이 닫힌 물병을 입에 대고 멈춤). 다음 화면의 나쁜 예·좋은 예를 먼저 보여 주세요.">
+  <div class="kicker">MISSION 1</div>
+  <h2 class="title">🤖 로봇 선생님</h2>
+  <div class="rules" style="max-width:1160px">
+    <div class="rule"><span>1</span><div>선생님은 지금부터 <b class="hl">로봇</b>이에요. 로봇은 <b class="c-coral">들은 말만</b> 그대로 해요.</div></div>
+    <div class="rule"><span>2</span><div>모둠 차례가 되면, 한 사람씩 <b class="c-navy">한 번에 한 가지</b>만 말해요.<small>예) “물병을 잡아요.” (O) &nbsp; “물병을 잡고 열어서 마셔요.” (X, 한꺼번에 세 가지)</small></div></div>
+    <div class="rule"><span>3</span><div>로봇이 이상하게 움직이면 “<b>멈춰!</b>” 하고 고쳐서 다시 말해요.</div></div>
+    <div class="rule"><span>4</span><div>로봇이 일을 끝내면 성공! 그 모둠에 ⭐을 줘요.</div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:300px">
+</section>
+
+<!-- 6 미션 1 예시 -->
+<section class="slide" data-phase="미션 1 · 7분"
+ data-notes="<b>나쁜 예와 좋은 예</b> — 선생님이 로봇처럼 직접 해 보여 주세요. 나쁜 예에서는 필통이 닫혀 있어서 연필을 꺼낼 수 없어요.">
+  <div class="kicker">MISSION 1 · 이렇게 말해요</div>
+  <h2 class="title" style="font-size:52px">예) 필통에서 연필 꺼내기</h2>
+  <div class="how c2">
+    <div class="st dont"><div class="tx" style="font-size:30px">😵 <b>“연필 꺼내!”</b></div><div class="tx">로봇: (필통 위를 손으로 톡톡…)<br>필통이 <b>닫혀 있어서</b> 꺼낼 수 없어요!</div>
+      <div class="tx" style="color:var(--ink2)">→ 처음에 할 일을 빠뜨렸어요.</div></div>
+    <div class="st do"><div class="tx" style="font-size:30px">😀 <b style="color:#0f8a6e">이렇게 순서대로!</b></div>
+      <div class="tx">① 필통을 손으로 잡아요.<br>② 필통 지퍼를 끝까지 열어요.<br>③ 연필 한 자루를 잡아요.<br>④ 연필을 위로 꺼내요.</div></div>
+  </div>
+</section>
+
+<!-- 7 미션 1 놀이 -->
+<section class="slide" data-phase="미션 1 · 7분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 할 일을 골라요(12개 중 모둠 수만큼). 모둠이 한 줄씩 말하면 선생님 로봇이 그대로 움직여요. 끝나면 ‘이렇게 말하면 성공’을 눌러 예시 순서와 비교해요(순서가 조금 달라도 로봇이 해낼 수 있으면 성공!). 성공한 모둠에 ⭐＋.">
+  <div class="robot">
+    <div class="task">
+      <div class="head" id="rHead"></div>
+      <div class="say">🗣️ 로봇에게 <b>한 번에 한 가지씩</b>, <b>순서대로</b> 말해 주세요.<br>로봇이 이상하게 움직이면 “멈춰!” 하고 고쳐 말해요.</div>
+      <div class="good" id="rGood"></div>
+      <div class="btns" style="margin-top:auto"><button class="btn mint" onclick="robotShow()">✅ 이렇게 말하면 성공</button><button class="btn ghost" onclick="setRobot((rIdx + 1) % ROBOT.length)">다음 할 일 ▶</button></div>
+    </div>
+    <div class="side">
+      <div class="rounds" id="rRounds" style="grid-template-columns:repeat(3,1fr)"></div>
+      <div class="score"><h4>⭐ 모둠 점수</h4><div id="teams1"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 미션 2 규칙 -->
+<section class="slide" data-phase="미션 2 · 10분"
+ data-notes="<b>순서 퍼즐 릴레이 안내</b> — 모둠마다 한 명씩 차례로 나와요. 화면 아래 뒤섞인 카드 4장 중 ‘첫 번째로 할 일’을 누르고, 그다음 순서를 차례로 눌러요. 순서가 틀리면 카드가 흔들리고 다음 모둠 차례가 돼요(이미 맞힌 칸은 그대로 남아요). 4칸을 다 채운 모둠에 1점. 모둠마다 2번씩 나오면 12문제예요.">
+  <div class="kicker">MISSION 2</div>
+  <h2 class="title">🧩 순서 퍼즐 릴레이</h2>
+  <div class="rules" style="max-width:1160px">
+    <div class="rule"><span>1</span><div>화면에 물건 하나와 <b class="hl">뒤섞인 카드 4장</b>이 나와요.</div></div>
+    <div class="rule"><span>2</span><div>우리 모둠 차례면 한 명이 나와서 <b class="c-navy">첫 번째로 할 일</b> 카드를 눌러요. 그다음 차례대로 눌러요.</div></div>
+    <div class="rule"><span>3</span><div>순서가 틀리면 카드가 <b class="c-coral">흔들려요</b>. 그러면 다음 모둠 차례! (맞힌 칸은 그대로 남아요)</div></div>
+    <div class="rule"><span>4</span><div>마지막 4번째 칸을 채운 모둠이 <b class="c-coral">1점</b>! 모둠 친구들은 자리에서 조용히 도와줘요.</div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:300px">
+</section>
+
+<!-- 9 미션 2 놀이 -->
+<section class="slide" data-phase="미션 2 · 10분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 물건을 골라요(12개). 나온 학생이 카드를 눌러요. 틀리면 자동으로 다음 모둠 차례가 표시돼요. 마지막 칸을 채운 모둠에 자동으로 1점이 올라가요. 다 맞힌 뒤 “왜 이 순서여야 할까?” 한 문장으로 물어보세요.">
+  <div class="puz">
+    <div class="pz">
+      <div class="pzh" id="pHead"></div>
+      <div class="slots" id="pSlots"></div>
+      <div class="pool" id="pPool"></div>
+      <div class="pmsg" id="pMsg"></div>
+    </div>
+    <div class="side">
+      <div class="rounds" id="pRounds" style="grid-template-columns:repeat(3,1fr)"></div>
+      <div class="score"><h4>🏆 모둠 점수</h4><div id="teams2"></div></div>
+      <button class="btn ghost" onclick="setPuz(pIdx)">🔀 다시 섞기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 10 미션 3 안내 -->
+<section class="slide" data-phase="미션 3 · 13분"
+ data-notes="<b>우리 반 그림 설명서 만들기</b> — 활동지를 나눠 줘요(‘활동지 바로 인쇄’). 교실에 있는 물건 중 하나를 골라요(딱풀, 테이프, 가위, 연필깎이, 물병, 지우개 등). 다음 화면의 완성 예시를 먼저 보여 주세요.">
+  <div class="kicker">MISSION 3</div>
+  <h2 class="title" style="font-size:56px">📘 우리 반 그림 설명서 만들기</h2>
+  <div class="how c4" style="margin-top:26px">
+    <div class="st"><span class="no">1</span><div class="tx">교실에 있는 <b>물건 하나</b>를 골라요.<br><span style="color:var(--ink2)">딱풀 · 테이프 · 가위 · 연필깎이 · 물병 · 지우개</span></div></div>
+    <div class="st"><span class="no">2</span><div class="tx">물건을 <b>직접 한 번</b> 써 보면서 순서를 생각해요.</div></div>
+    <div class="st"><span class="no">3</span><div class="tx">활동지 <b>1~4칸</b>에 순서대로 <b>그림</b>을 그리고 <b>짧은 글</b>을 써요.</div></div>
+    <div class="st"><span class="no">4</span><div class="tx"><b>⚠️ 조심해요</b> 칸에 다칠 수 있는 점을 써요.</div></div>
+  </div>
+  <div class="how c2" style="margin-top:20px">
+    <div class="st do"><span class="no">5</span><div class="tx">다 쓰면 <b>짝과 설명서를 바꿔요</b>. 짝은 <b>말하지 않고</b> 설명서만 보고 그대로 해 봐요.</div></div>
+    <div class="st do"><span class="no">6</span><div class="tx">짝이 잘 따라 했다면 활동지 아래 <b>짝 도장 칸</b>에 ☆을 칠해 줘요.</div></div>
+  </div>
+</section>
+
+<!-- 11 미션 3 예시 -->
+<section class="slide" data-phase="미션 3 · 13분"
+ data-notes="<b>완성 예시</b> — ‘딱풀 쓰는 법’ 예시예요. 그림은 크고 단순하게, 글은 한 칸에 한 줄로 쓰면 돼요. 그림을 잘 그리는 것보다 ‘순서가 보이는 것’이 중요하다고 말해 주세요.">
+  <div class="kicker">MISSION 3 · 완성 예시</div>
+  <h2 class="title" style="font-size:52px">예) 딱풀 쓰는 법</h2>
+  <div class="ex4">
+    <div class="p"><span class="n">1</span><div class="pic"><img src="../shared/photos/gluestick.jpg" alt="" class="ph" style="height:120px"></div><div class="w">뚜껑을 열어요.</div></div>
+    <div class="p"><span class="n">2</span><div class="pic" style="font-size:80px" ><span class="emo">🔄</span></div><div class="w">아래를 돌려 풀을<br>조금만 올려요.</div></div>
+    <div class="p"><span class="n">3</span><div class="pic" style="font-size:80px"><span class="emo">📄</span></div><div class="w">종이에 대고<br>문질러 발라요.</div></div>
+    <div class="p"><span class="n">4</span><div class="pic" style="font-size:80px"><span class="emo">🔒</span></div><div class="w">풀을 내리고<br>뚜껑을 꼭 닫아요.</div></div>
+  </div>
+  <div class="warn">⚠️ <b>조심해요</b> — 풀을 너무 많이 올리면 부러져요. 뚜껑을 닫지 않으면 풀이 말라요.</div>
+  <div class="check3"><div>순서대로 했어요<b>☆</b></div><div>그림만 봐도 알 수 있어요<b>☆</b></div><div>조심할 점이 있어요<b>☆</b></div></div>
+</section>
+
+<!-- 12 타이머 -->
+<section class="slide center" data-phase="미션 3 · 13분"
+ data-notes="<b>활동 시간</b> — 만들기 8분 + 짝 바꿔 따라 하기 3분. 타이머가 끝나면 짝과 바꾸게 해요. 짝이 잘 못 따라 하면 ‘어느 칸을 고치면 될까?’ 함께 이야기해요.">
+  <div class="kicker">MISSION 3 · 활동 시간</div>
+  <h2 class="title" style="font-size:56px;margin-bottom:36px">설명서를 만들고 짝과 바꿔 따라 해요!</h2>
+  <div class="timer" data-sec="480"></div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="left:90px;bottom:96px;width:250px">
+</section>
+
+<!-- 13 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 5분"
+ data-notes="<b>배움 정리</b> — 빈칸에 들어갈 말을 먼저 말하게 한 뒤 눌러 공개해요.">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 2번 방 다섯 번째 비밀 문장</h2>
+  <div class="cipher">물건을 쓰는 방법을 <span class="blank" onclick="openBlank(this)">순서</span>대로 정리하면<br>누구나 쉽게 <span class="blank" onclick="openBlank(this)">따라</span> 할 수 있어요.</div>
+  <div class="chips"><span class="chip">따라</span><span class="chip">빨리</span><span class="chip">순서</span><span class="chip">크게</span></div>
+</section>
+
+<!-- 14 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 5분" data-hook="key"
+ data-notes="<b>보상</b> — 2번 방 마지막 열쇠 조각! 열쇠를 누르면 다시 반짝여요. 다음 화면에서 2번 방 문이 열려요.">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 열쇠 조각 <span class="c-gold">5</span>개, 열쇠 완성!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">5차시 ✔</div><div class="on">6차시 ✔</div><div class="on">7차시 ✔</div><div class="on">8차시 ✔</div><div class="on">9차시 ✔</div></div>
+</section>
+
+<!-- 15 탈출 -->
+<section class="slide dark" data-phase="정리 · 5분" data-hook="escape"
+ data-notes="<b>2번 방 탈출!</b> — 다섯 개의 비밀 문장을 다 같이 소리 내어 읽어요. 화면을 누르면 꽃가루가 다시 날려요.">
+  <div class="escape" onclick="confetti()">
+    <img class="doorimg" src="../05/img/door2.jpg" alt="">
+    <div>
+      <span class="pill mint">🎉 ESCAPE!</span>
+      <h2 class="title">2번 방 탈출!</h2>
+      <div class="sents">
+        <div><b>①</b> 여러 감각으로 자세히 관찰하면 물건의 특징을 찾을 수 있어요.</div>
+        <div><b>②</b> 물건의 특별한 생김새에는 저마다 하는 일이 있어요.</div>
+        <div><b>③</b> 재료마다 좋은 점과 아쉬운 점이 있어요.</div>
+        <div><b>④</b> 얇은 종이도 접거나 말아서 모양을 바꾸면 훨씬 튼튼해져요.</div>
+        <div><b>⑤</b> 물건을 쓰는 방법을 순서대로 정리하면 누구나 쉽게 따라 할 수 있어요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 다음 -->
+<section class="slide" data-phase="정리 · 5분"
+ data-notes="<b>다음 방 예고</b> — 3번 방 ‘불편함 수사 본부’. 준비물은 없어요. 숙제: 집에서 쓰는 물건 중 ‘이건 정말 편리하다!’ 싶은 물건 하나를 떠올려 오기.">
+  <div class="kicker">NEXT ROOM</div>
+  <div class="next">
+    <img class="doorimg" src="../10/img/door3.jpg" alt="">
+    <div>
+      <span class="pill">3번 방 예고 · 10차시</span>
+      <h2 class="title" style="font-size:76px">불편함 수사 본부</h2>
+      <p class="big" style="color:var(--ink2);margin-top:18px">발명은 <b class="hl">어디서</b> 시작될까?<br>🕵️ 집에서 “정말 편리하다!” 싶은 물건을 하나 떠올려 오세요.</p>
+      <button class="btn mint" id="doneBtn" style="margin-top:26px" onclick="complete()">✅ 9차시 미션 완료 · 2번 방 탈출</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:2, lesson:9, keyPieces:5};</script>
+<script src="../shared/base.js"></script>
+<script src="../shared/kit.js"></script>
+<script>
+/* ---------- 이야기 ---------- */
+hooks.story = () => typewriter(document.getElementById('storyText'),
+  '“흐흐흐, 물건 <b class="c-coral">설명서</b>를 몽땅 뒤죽박죽 섞어 버렸지!”<br>순서가 뒤섞이면 처음 써 보는 사람은 물건을 쓸 수가 없어요.<br>요원 여러분, 물건을 쓰는 <b class="c-navy">순서</b>를 바로잡고<br><b class="c-mint">누구나 알아보는 설명서</b>를 만들어 주세요!');
+
+/* ---------- 미션 1: 로봇 선생님 (p: 사진, s: 예시 순서) ---------- */
+const ROBOT = [
+  {n:'물병 뚜껑 열고 물 마시기', p:'bottle', s:['물병을 한 손으로 잡아요.', '다른 손으로 뚜껑을 잡아요.', '뚜껑을 왼쪽으로 돌려 열어요.', '물병을 입에 대고 조금 기울여 마셔요.', '뚜껑을 오른쪽으로 돌려 닫아요.']},
+  {n:'공책에 이름 쓰기', p:'pencilcase', s:['공책을 책상 위에 놓아요.', '필통을 열고 연필을 꺼내요.', '연필을 바르게 잡아요.', '공책 이름 칸에 이름을 써요.']},
+  {n:'딱풀로 종이 붙이기', p:'gluestick', s:['딱풀 뚜껑을 열어요.', '아래를 돌려 풀을 조금 올려요.', '종이 뒤에 문질러 발라요.', '붙일 곳에 대고 손으로 꾹 눌러요.', '뚜껑을 닫아요.']},
+  {n:'테이프로 종이 붙이기', p:'tape', s:['테이프 끝을 잡아요.', '필요한 만큼 당겨요.', '톱날에 대고 아래로 눌러 끊어요.', '종이 위에 붙이고 손으로 문질러요.']},
+  {n:'연필깎이로 연필 깎기', p:'sharpener', s:['연필깎이를 한 손으로 잡아요.', '연필을 구멍에 넣어요.', '연필을 한쪽 방향으로 돌려요.', '뾰족해지면 연필을 꺼내요.', '깎은 찌꺼기를 쓰레기통에 버려요.']},
+  {n:'지우개로 틀린 글씨 지우기', p:'eraser', s:['지울 글씨를 찾아요.', '한 손으로 공책을 잡아요.', '지우개로 살살 문질러요.', '지우개 가루를 모아 쓰레기통에 버려요.']},
+  {n:'의자를 책상 안으로 넣기', p:'chair', img:'../01/img/obj_chair.png', s:['의자에서 일어나요.', '의자 등받이를 두 손으로 잡아요.', '의자를 살짝 들어요.', '책상 아래로 밀어 넣어요.']},
+  {n:'우산 펴기', p:'umbrella', img:'../01/img/obj_umbrella.png', s:['우산을 묶은 끈을 풀어요.', '손잡이를 잡고 우산 끝을 앞으로 향해요.', '살대에 있는 고리를 위로 밀어 올려요.', '‘딸깍’ 소리가 날 때까지 밀어요.']},
+  {n:'스테이플러로 종이 묶기', p:'stapler', s:['종이 두 장의 모서리를 맞춰요.', '종이 모서리를 스테이플러 입에 넣어요.', '스테이플러 위를 꾹 눌러요.', '종이를 빼서 잘 박혔는지 봐요.']},
+  {n:'붙임쪽지 붙이기', p:'sticky', s:['맨 위 쪽지 한 장의 끝을 잡아요.', '옆으로 살짝 떼어 내요.', '끈적한 쪽을 붙일 곳에 대요.', '손가락으로 쓱 눌러 붙여요.']},
+  {n:'손 씻기', p:'soap', s:['수도꼭지를 틀고 손에 물을 묻혀요.', '비누를 문질러 거품을 내요.', '손바닥, 손등, 손가락 사이를 문질러요.', '물로 헹구고 수도꼭지를 잠가요.', '수건으로 손을 닦아요.']},
+  {n:'사물함에서 책 꺼내기', p:'locker', s:['내 사물함 앞에 서요.', '사물함 문을 열어요.', '필요한 책을 찾아 꺼내요.', '사물함 문을 닫아요.']}];
+let rIdx = 0; const rR = K.rounds('rRounds', ROBOT.length, i => setRobot(i));
+const pic = (o, cls = '') => o.img ? `<img src="${o.img}" alt="" style="object-fit:contain">` : K.photo(o.p, cls);
+function setRobot(i){ rIdx = i; const o = ROBOT[i]; S.flip(); rR.on(i);
+  document.getElementById('rHead').innerHTML = `${pic(o)}<div class="t"><small>할 일 ${i + 1} / ${ROBOT.length} — 로봇에게 시켜 보세요</small>${o.n}</div>`;
+  document.getElementById('rGood').classList.remove('show'); }
+function robotShow(){ const o = ROBOT[rIdx], g = document.getElementById('rGood');
+  g.innerHTML = `<h4>✅ 이렇게 말하면 로봇이 할 수 있어요 (예시)</h4><ol>${o.s.map(t => `<li>${t}</li>`).join('')}</ol>`; g.classList.add('show'); S.win(); rR.done(rIdx); }
+
+/* ---------- 미션 2: 순서 퍼즐 릴레이 (s: 바른 순서 4가지) ---------- */
+const PUZ = [
+  {n:'딱풀 쓰기', p:'gluestick', s:['뚜껑을 열어요.', '아래를 돌려 풀을 조금 올려요.', '종이에 문질러 발라요.', '풀을 내리고 뚜껑을 닫아요.']},
+  {n:'테이프 끊기', p:'tape', s:['테이프 끝을 잡아요.', '필요한 길이만큼 당겨요.', '톱날에 대고 아래로 눌러 끊어요.', '붙일 곳에 붙이고 꾹 눌러요.']},
+  {n:'연필 깎기', p:'sharpener', s:['연필을 구멍에 넣어요.', '연필을 한쪽 방향으로 돌려요.', '뾰족해지면 꺼내요.', '찌꺼기를 쓰레기통에 버려요.']},
+  {n:'스테이플러 쓰기', p:'stapler', s:['종이 모서리를 가지런히 맞춰요.', '모서리를 스테이플러 입에 넣어요.', '위를 꾹 눌러요.', '종이를 빼고 잘 박혔는지 봐요.']},
+  {n:'운동화 끈 묶기', p:'shoelace', s:['끈 두 개를 엇갈려 한 번 묶어요.', '한쪽 끈으로 고리를 만들어요.', '다른 끈으로 고리를 한 바퀴 감아요.', '감은 끈을 구멍으로 빼서 양쪽을 당겨요.']},
+  {n:'우산 펴기', p:'umbrella', img:'../01/img/obj_umbrella.png', s:['우산을 묶은 끈을 풀어요.', '손잡이를 잡고 우산 끝을 앞으로 향해요.', '살대 고리를 위로 밀어 올려요.', '딸깍 걸릴 때까지 밀어요.']},
+  {n:'물병 마시기', p:'bottle', s:['물병을 똑바로 세워 잡아요.', '뚜껑을 왼쪽으로 돌려 열어요.', '물을 마셔요.', '뚜껑을 오른쪽으로 돌려 꼭 닫아요.']},
+  {n:'비누로 손 씻기', p:'soap', s:['손에 물을 묻혀요.', '비누를 문질러 거품을 내요.', '손 구석구석을 30초 동안 문질러요.', '물로 헹구고 수건으로 닦아요.']},
+  {n:'이 닦기', p:'toothbrush', s:['칫솔에 치약을 콩알만큼 짜요.', '이를 위아래로 쓸어내리듯 닦아요.', '혀도 살살 닦아요.', '물로 입을 헹구고 칫솔을 씻어요.']},
+  {n:'가위로 종이 자르기', p:'scissors', img:'../01/img/obj_scissors_flat.png', s:['손잡이 구멍에 엄지와 다른 손가락을 넣어요.', '자를 선을 확인해요.', '가위를 벌렸다 오므리며 선을 따라 잘라요.', '다 쓰면 날을 닫아 손잡이 쪽으로 건네요.']},
+  {n:'붙임쪽지 붙이기', p:'sticky', s:['맨 위 한 장의 끝을 잡아요.', '옆으로 살짝 떼어 내요.', '끈적한 쪽을 붙일 곳에 대요.', '손가락으로 쓱 눌러 붙여요.']},
+  {n:'지우개 쓰기', p:'eraser', s:['지울 곳을 찾아요.', '공책을 한 손으로 잡아요.', '지우개로 한 방향으로 살살 문질러요.', '지우개 가루를 모아 쓰레기통에 버려요.']}];
+let pIdx = 0, pStep = 0, pTurn = 0, pOrder = [], pWon = false; const pR = K.rounds('pRounds', PUZ.length, i => setPuz(i));
+K.teams('teams1'); K.teams('teams2', {turn:() => pTurn});
+function drawPHead(){ const o = PUZ[pIdx]; document.getElementById('pHead').innerHTML = `${pic(o)}<div class="t"><small>문제 ${pIdx + 1} / ${PUZ.length}</small>${o.n}</div><div class="turn">${pTurn + 1}모둠 차례</div>`; }
+function setPuz(i){ if(pWon){ pTurn = (pTurn + 1) % K.teamN; pWon = false; } pIdx = i; pStep = 0; const o = PUZ[i]; S.flip(); pR.on(i);
+  pOrder = K.shuffle([0, 1, 2, 3]); if(pOrder.join('') === '0123') pOrder = [2, 0, 3, 1];
+  document.getElementById('pSlots').innerHTML = o.s.map((_, n) => `<div class="slot" id="sl${n}"><span class="n">${n + 1}</span>?</div>`).join('');
+  document.getElementById('pPool').innerHTML = pOrder.map(n => `<div class="pc" data-n="${n}" onclick="pickPuz(this)">${o.s[n]}</div>`).join('');
+  document.getElementById('pMsg').innerHTML = '👆 <b>첫 번째로 할 일</b>은 어느 카드일까요?'; drawPHead(); }
+function pickPuz(el){ const o = PUZ[pIdx]; if(pStep >= 4) return;
+  if(+el.dataset.n !== pStep){ el.classList.add('bad'); S.no(); setTimeout(() => el.classList.remove('bad'), 600);
+    pTurn = (pTurn + 1) % K.teamN; document.getElementById('pMsg').innerHTML = `<i>아쉬워요!</i> 그 카드는 ${pStep + 1}번째가 아니에요. 이제 <b>${pTurn + 1}모둠</b> 차례예요.`; drawPHead(); K.setN(0); return; }
+  const s = document.getElementById('sl' + pStep); s.innerHTML = `<span class="n">${pStep + 1}</span>${o.s[pStep]}`; s.classList.add('fill'); el.classList.add('used'); pStep++; S.ok();
+  if(pStep < 4){ document.getElementById('pMsg').innerHTML = `👍 맞아요! 이제 <b>${pStep + 1}번째</b>로 할 일은?`; return; }
+  K.add(pTurn, 1); S.win(); pR.done(pIdx); pWon = true; document.getElementById('pMsg').innerHTML = `🏆 <b>${pTurn + 1}모둠</b> 1점! 순서를 다 맞췄어요. “왜 이 순서여야 할까요?” 다음 문제는 <b>${(pTurn + 1) % K.teamN + 1}모둠</b> 차례예요.`; }
+
+/* ---------- 2번 방 탈출 ---------- */
+function confetti(){ const st = document.getElementById('stage'), cols = ['#ffc53d', '#ff7b6b', '#4fd1ae', '#8fb8ff', '#ff8fc8', '#fff'];
+  for(let i = 0; i < 90; i++){ const c = document.createElement('div'); c.className = 'confetti'; c.style.left = Math.random() * 1600 + 'px'; c.style.background = cols[i % cols.length];
+    c.style.animationDuration = 2.2 + Math.random() * 2 + 's'; c.style.animationDelay = Math.random() * .8 + 's'; st.appendChild(c); setTimeout(() => c.remove(), 5200); }
+  S.win(); }
+hooks.escape = () => setTimeout(confetti, 300);
+
+window.onEsc = () => {};
+setRobot(0); setPuz(0); startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>

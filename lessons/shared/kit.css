@@ -1,0 +1,88 @@
+/* 9차시부터 쓰는 공용 꾸밈 (base.css 다음에 불러요)
+   <body data-room="3"> 처럼 방 번호를 적으면 그 방 색이 돼요. */
+body[data-room="2"]{--room:#137f76;--room2:#d6fbf5;--roomdk:#0b5952}
+body[data-room="3"]{--room:#d9603f;--room2:#ffe6dc;--roomdk:#a8442a}
+body[data-room="4"]{--room:#c2457f;--room2:#ffe3ef;--roomdk:#8f2f5c}
+body[data-room="5"]{--room:#3d6fd0;--room2:#e1ebff;--roomdk:#2a4f9a}
+#topbar .room{background:var(--room,#2d3a7c);box-shadow:0 3px 0 var(--roomdk,#1c2557)}
+.emo{display:flex;align-items:center;justify-content:center;line-height:1;font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif}
+.ph{border-radius:22%;object-fit:cover;box-shadow:0 0 0 3px #fff,0 4px 10px rgba(61,43,31,.22)}
+.c-room{color:var(--room)}
+
+/* 지난 시간 */
+.recap{display:flex;gap:40px;flex:1;align-items:center}
+.recap .box{flex:1;display:flex;flex-direction:column;gap:18px}
+.homework{background:var(--paper);border:3px dashed var(--coral);border-radius:28px;padding:24px 30px;font-size:31px;line-height:1.6}
+.homework b{color:#e3523f}
+
+/* 아주 자세한 단계 안내 (번호 + 그림 + 글) */
+.how{display:grid;gap:14px;margin-top:18px}
+.how.c2{grid-template-columns:repeat(2,1fr)}.how.c3{grid-template-columns:repeat(3,1fr)}.how.c4{grid-template-columns:repeat(4,1fr)}.how.c5{grid-template-columns:repeat(5,1fr)}
+.st{background:var(--paper);border:3px solid var(--line);border-radius:24px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;box-shadow:0 7px 0 var(--line);position:relative}
+.st .no{position:absolute;left:-10px;top:-14px;width:52px;height:52px;border-radius:50%;background:var(--room,#2d3a7c);color:#fff;font-family:var(--head);font-size:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--roomdk,#1c2557)}
+.st img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px}
+.st img.fit{object-fit:contain;background:#fff}
+.st .tx{font-size:25px;line-height:1.5}
+.st .tx b{color:#e3523f}
+.st.do{border-color:var(--mint);background:var(--mint2)}
+.st.dont{border-color:#ffc0b5;background:#fff5f2}
+
+/* 규칙 줄(번호) — base.css 의 .rules 와 같이 써요 */
+.rule small{display:block;font-size:22px;color:var(--ink2);margin-top:2px}
+.need{background:#fff6d6;border:3px solid var(--gold);border-radius:22px;padding:14px 20px;font-size:24px;line-height:1.55}
+.need b{color:#9a6a00}
+
+/* 오른쪽 옆 기둥(번호·점수·타이머) */
+.side{width:250px;display:flex;flex-direction:column;gap:10px;flex:none}
+.side .btn{font-size:22px;padding:12px 10px}
+.rounds{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rounds button{height:48px;border-radius:14px;background:#fff;border:3px solid var(--line);font-size:21px;color:var(--navy)}
+.rounds button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.rounds button.done{background:var(--mint2);border-color:var(--mint);color:#0f8a6e}
+.score{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:10px 12px}
+.score h4{font-family:var(--head);font-weight:400;font-size:22px;color:var(--ink2);text-align:center;margin-bottom:6px}
+.team{display:flex;align-items:center;gap:8px;padding:4px;font-family:var(--head);font-size:22px}
+.team .tn{flex:1}
+.team .pt{width:44px;text-align:center;font-size:27px;color:#e3523f}
+.team button{width:36px;height:36px;border-radius:10px;background:var(--gold2);font-size:22px;color:#5a3d00}
+.team button.m{background:#f1e6d4;color:var(--ink2)}
+.team.turn{background:var(--gold2);border-radius:12px}
+.kclock{background:var(--navy);color:#fff;border-radius:24px;padding:12px;text-align:center;font-family:var(--head)}
+.kclock small{display:block;font-size:22px;color:var(--gold2)}
+.kclock b{display:block;font-size:68px;line-height:1.05;font-weight:400}
+.kclock b.low{color:#ff9a8a}
+.msgbox{background:var(--mint2);border-radius:20px;padding:12px 16px;font-size:23px;line-height:1.5;display:none}
+.msgbox.show{display:block;animation:enter .5s}
+.msgbox b{color:#0f8a6e}
+
+/* 큰 무대(가운데 내용) */
+.play{flex:1;display:flex;gap:22px;min-height:0;margin-top:4px}
+.pmain{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.banner{display:flex;align-items:center;gap:20px;background:var(--navy);color:#fff;border-radius:28px;padding:14px 26px;box-shadow:0 8px 0 #1c2557}
+.banner .emo{font-size:70px;width:90px;flex:none}
+.banner .t{font-family:var(--head);font-size:36px;line-height:1.4}
+.banner .t small{display:block;font-size:22px;color:var(--gold2)}
+.cards{display:grid;gap:14px}
+.card{background:#fff;border:4px solid var(--line);border-radius:24px;box-shadow:0 7px 0 var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px;text-align:center;position:relative;transition:.3s}
+.card img{width:100%;max-height:220px;object-fit:contain}
+.card img.ph{max-width:200px;aspect-ratio:1}
+.card span{font-family:var(--head);font-size:28px;color:var(--navy)}
+.reveal{border-radius:22px;padding:14px 22px;font-size:28px;line-height:1.55;display:none;background:var(--mint2);border:3px solid var(--mint)}
+.reveal.show{display:block;animation:enter .5s}
+.reveal b{color:#0f8a6e}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btns .btn{font-size:23px;padding:12px 18px}
+
+/* 발표 뽑기 */
+.quizshow{display:flex;gap:50px;align-items:center;flex:1}
+.qsteps{flex:1;display:flex;flex-direction:column;gap:14px}
+.qsteps .s{font-size:30px;background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 22px}
+.qsteps .s b{color:var(--navy)}
+.qpick{width:420px;flex:none;text-align:center}
+.qpick .pickball{width:300px;height:300px;font-size:160px;margin:0 auto 18px}
+.progress4 div{width:130px}
+
+/* 다음 시간 준비물 */
+.bring{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+.bring div{display:flex;align-items:center;gap:10px;background:#fff6d6;border:3px solid var(--gold);border-radius:20px;padding:8px 16px;font-family:var(--head);font-size:26px;color:#7a5200}
+.bring img{width:60px;height:60px}

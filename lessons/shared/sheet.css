@@ -1,0 +1,34 @@
+/* 활동지 공용 꾸밈(6·7차시와 같은 깔끔한 모양). 차시마다 필요한 칸은 그 활동지에서 더해요. */
+/* 6차시와 같은 깔끔한 꾸밈 */
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#22313a;--sub:#6b7b84;--line:#d7e3e6;--teal:#127d74;--teal2:#e8f6f4;--gold:#f2b51c}
+body{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;color:var(--ink);background:#ddd;word-break:keep-all}
+.page{width:210mm;height:297mm;margin:0 auto;position:relative;overflow:hidden;background:#fff;padding:14mm 15mm 12mm}
+.h{font-family:'Jua','Malgun Gothic',sans-serif;font-weight:400}
+.head{display:flex;align-items:flex-end;gap:5mm;padding-bottom:4mm;border-bottom:.6mm solid var(--ink)}
+.head .lt{flex:1}
+.head .tag{font-size:9.5pt;color:var(--teal);letter-spacing:.4mm;font-weight:700}
+.head h1{font-size:27pt;line-height:1.1;margin-top:1.5mm}
+.head h1 span{color:var(--teal)}
+.head .goal{font-size:10pt;color:var(--sub);margin-top:1.5mm}
+.head .agent{width:22mm;margin-bottom:-2mm}
+.who{display:flex;gap:3mm;margin-top:3.5mm}
+.who div{flex:1;border-bottom:.35mm solid var(--line);padding:1mm 0;font-size:10pt;color:var(--sub)}
+.who div:first-child{flex:.5}
+.step{margin-top:4mm}
+.step .tt{display:flex;align-items:center;gap:3mm;margin-bottom:3mm}
+.step .no{font-family:'Jua',sans-serif;font-size:11pt;color:#fff;background:var(--teal);border-radius:50%;width:7mm;height:7mm;display:flex;align-items:center;justify-content:center;flex:none}
+.step .tt h2{font-size:14pt}
+.step .tt small{font-size:9.5pt;color:var(--sub);margin-left:auto}
+.field{display:flex;flex-direction:column;gap:1mm;margin-bottom:3mm}
+.field label{font-size:9pt;color:var(--teal);font-weight:700}
+.field .ln{border-bottom:.35mm solid var(--line);min-height:8.5mm;display:flex;align-items:flex-end;padding-bottom:1mm;font-size:11pt}
+.foot{position:absolute;left:15mm;right:15mm;bottom:12mm;display:flex;align-items:center;gap:5mm;padding-top:3.5mm;border-top:.35mm solid var(--line)}
+.check{flex:1;display:flex;gap:4mm}
+.check div{flex:1;font-size:9pt;color:var(--sub);line-height:1.35}
+.check div b{display:block;font-family:'Jua',sans-serif;font-weight:400;font-size:12pt;color:var(--gold);letter-spacing:.6mm}
+.key{display:flex;align-items:center;gap:1.2mm;font-size:8.5pt;color:var(--sub)}
+.key i{width:3.6mm;height:3.6mm;border-radius:50%;border:.3mm solid var(--teal);display:inline-block}
+.key i.on{background:var(--teal)}
+@media print{body{background:none}.page{margin:0}}
