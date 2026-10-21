@@ -1,6 +1,7 @@
 # 이어서 작업하기 (2026-10-21 학교 → 집)
 
 ## 지금까지 된 것
+- 전체 점검(24차시 모든 화면 넘기기·글자 넘침·활동지 겹침) 통과. 8차시 마술 쇼 화면에서 다음으로 안 넘어가던 오류 고침.
 - 1~24차시 수업 화면·활동지·예시 답안·PDF 완료, GitHub main 에 올라가 있어요.
 - 20·24차시 사진도 넣었어요(위키미디어, CREDITS.md). 사진 받는 법: 크롬(자동 다운로드 허용됨)에서 upload.wikimedia.org 페이지를 열고 commons API(`origin=*`)로 찾아 blob 으로 내려받기 → Downloads 에서 stage.
 - 21~24차시 놀잇감 그림은 `lessons/shared/toys.js`(TOY.car/guitar/shaker/drawCar). 21차시 굴러가기 실험(비탈)·소리 실험(WebAudio 고무줄 기타·흔드는 통). 24차시는 paperbridge.js 로 8차시 다시 보기.
@@ -11,7 +12,11 @@
   Canva 디자인 "2번 방 스토리북 문 배경"(DAHYgmVzrIA)에 문 그림 페이지가 모여 있어요.
 
 ## 남은 일
-1. **이모티콘 그림을 Canva 그림으로 바꾸기** — 3~24차시 미션 카드의 `class="ic emo"` 아이콘들, 9차시 로봇·딱풀 예시 그림.
+1. **이모티콘 그림을 Canva 그림으로 바꾸기 (진행 중)** — 아이콘은 `lessons/shared/icons/이름.png`(Canva 스티커 시트를 잘라 만듦).
+   - 끝: 3·5·6·7·8·9·20·21차시 전부, 4·10·16차시 일부 (flask, scale, wand, sneaker, basket, oxpad, mannequin, target, box, pencil, umbrella, shop, tophat, column, robot, trophy)
+   - Canva에 만들어 둔 시트(아직 못 받음): MAHYpHyqzTI → mic, masks, gacha, ballot, gloves, fingertip, glasses, map
+   - 더 만들 시트: scissors, notepad, stopwatch, chart, toolbox, vest, star, cycle / triangle, bridge, wrench, lineup(줄 선 아이들) + 9차시 딱풀 단계 그림 4장
+   - 바꾸는 스크립트: 아이콘 파일을 넣은 뒤 각 차시의 `<div class="ic emo" style="font-size:96px">이모지</div>` 를 `<img class="ic" src="../shared/icons/이름.png" alt="">` 로.
 2. 전체 학생 입장 점검(불가능하거나 이해 안 되는 부분 없는지).
 
 ## 만드는 방식 (9차시부터)
