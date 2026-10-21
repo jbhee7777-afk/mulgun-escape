@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3번 방 · 10차시 발명은 어디서 시작될까?</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/kit.css">
+<style>
+/* 미션 1: 전과 후 */
+.ba{flex:1;display:flex;gap:22px;min-height:0;margin-top:4px}
+.bamain{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.pairx{display:grid;grid-template-columns:1fr 90px 1fr;gap:12px;align-items:stretch}
+.pairx .b{background:#fff;border:4px solid var(--line);border-radius:26px;box-shadow:0 7px 0 var(--line);padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative}
+.pairx .b .lb{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-family:var(--head);font-size:24px;color:#fff;padding:3px 18px;border-radius:14px;white-space:nowrap}
+.pairx .b img{width:220px;height:220px;object-fit:cover;border-radius:20px}
+.pairx .b span{font-family:var(--head);font-size:32px;color:var(--navy)}
+.pairx .arr{display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:70px;color:var(--room)}
+.pairx .b.after>img,.pairx .b.after>span:last-child{opacity:0;transition:opacity .6s}
+.pairx .b.after::after{content:"?";position:absolute;inset:40px 0 50px;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:150px;color:#f0c45a}
+.ba.show .pairx .b.after::after{content:none}
+.ba.show .pairx .b.after>img,.ba.show .pairx .b.after>span:last-child{opacity:1}
+.q3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.q3 .c{background:var(--paper);border:3px dashed var(--line);border-radius:20px;padding:12px 16px;font-size:24px;line-height:1.5;cursor:pointer;min-height:110px}
+.q3 .c .h{font-family:var(--head);font-size:24px;color:var(--ink2)}
+.q3 .c .a{opacity:0;transition:.4s;color:var(--ink)}
+.q3 .c.open{border-style:solid;border-color:var(--room);background:var(--room2)}
+.q3 .c.open .a{opacity:1}
+.q3 .c b{color:var(--roomdk)}
+
+/* 미션 2: OX */
+.ox{flex:1;display:flex;gap:22px;min-height:0;margin-top:4px}
+.oxmain{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
+.oxq{display:flex;align-items:center;gap:24px;background:#fff;border:4px solid var(--line);border-radius:30px;padding:20px 28px;box-shadow:0 8px 0 var(--line);min-height:250px}
+.oxq img{width:200px;height:200px;flex:none;border-radius:24px;object-fit:cover}
+.oxq .t{font-family:var(--head);font-size:42px;line-height:1.4;color:var(--navy)}
+.oxq .t small{display:block;font-size:24px;color:var(--ink2)}
+.oxbig{display:flex;gap:20px}
+.oxbig div{flex:1;height:150px;border-radius:30px;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:110px;color:#fff;transition:.4s}
+.oxbig .o{background:#3bbf8f;box-shadow:0 8px 0 #22906a}.oxbig .x{background:#ef6a5a;box-shadow:0 8px 0 #c04a3c}
+.ox.rev .oxbig div{opacity:.25;transform:scale(.94)}
+.ox.rev .oxbig div.ans{opacity:1;transform:scale(1.04)}
+.oxwhy{display:none;background:var(--mint2);border:3px solid var(--mint);border-radius:22px;padding:14px 22px;font-size:28px;line-height:1.55}
+.ox.rev .oxwhy{display:block;animation:enter .5s}
+.oxwhy b{color:#0f8a6e}
+.howox{display:flex;gap:30px;margin-top:20px;align-items:center}
+.howox .arm{width:360px;flex:none;background:#fff;border-radius:30px;padding:20px;text-align:center;box-shadow:0 0 0 6px #fff,0 12px 26px rgba(61,43,31,.15)}
+.howox .arm .emo{font-size:150px}
+.howox .arm p{font-family:var(--head);font-size:30px;color:var(--navy)}
+
+/* 미션 3: 인터뷰 */
+.iv{flex:1;display:flex;gap:22px;min-height:0;margin-top:4px}
+.ivcard{width:400px;flex:none;background:#fff;border-radius:30px;box-shadow:0 0 0 6px #fff,0 14px 30px rgba(61,43,31,.2);padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.ivcard img{width:220px;height:220px;border-radius:26px;object-fit:cover}
+.ivcard h3{font-size:42px;color:var(--navy)}
+.ivcard p{font-size:24px;color:var(--ink2);line-height:1.5}
+.ivq{flex:1;display:grid;grid-template-columns:1fr;gap:8px;min-width:0;align-content:start}
+.ivq .mic{display:flex;gap:14px;align-items:center;background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:8px 16px;font-size:25px;line-height:1.4;min-height:64px}
+.ivq .mic .who{flex:none;font-family:var(--head);font-size:24px;color:#fff;background:var(--navy);border-radius:14px;padding:4px 12px}
+.ivq .mic.ans{border-style:dashed;cursor:pointer;color:#c9b38e}
+.ivq .mic.ans .who{background:var(--room)}
+.ivq .mic.ans .tx{opacity:0;transition:.4s;color:var(--ink)}
+.ivq .mic.ans.open{border-style:solid;border-color:var(--room);background:var(--room2)}
+.ivq .mic.ans.open .tx{opacity:1}
+.roles{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+.role{background:var(--paper);border:3px solid var(--line);border-radius:26px;padding:18px;display:flex;gap:18px;align-items:center;box-shadow:0 7px 0 var(--line)}
+.role .emo{font-size:96px;width:120px;flex:none}
+.role h3{font-size:36px;color:var(--navy)}
+.role p{font-size:25px;line-height:1.5}
+</style>
+</head>
+<body data-room="3">
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 3번 방 · 생활 속 불편함 해결하기</span><span class="ls">10차시 / 10~14</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 5분"
+ data-notes="<b>시작</b> — “2번 방을 탈출했어요! 오늘부터 세 번째 방, ‘불편함 수사 본부’에 들어가요. 이 방도 열쇠 조각이 5개예요.”">
+  <div class="cover">
+    <img class="doorimg bob" src="img/door3.jpg" alt="3번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill">3번 방 · 10차시</span>
+      <h1 class="title">발명은 어디서<br>시작될까?</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">“불편해!” 한마디가 발명의 시작이에요.</p>
+      <button class="btn coral" style="margin-top:34px" onclick="go(1)">🚪 3번 방 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 + 숙제 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>2번 방 돌아보기 + 숙제 확인</b> — ① 2번 방에서 배운 것 한 가지씩 말하기 ② 집에서 떠올린 ‘정말 편리한 물건’ 2~3명 발표: “그 물건이 없으면 어떤 점이 불편할까요?”">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">2번 방을 탈출했어요!</h2>
+  <div class="recap">
+    <div class="box">
+      <div class="cipher" style="font-size:40px;margin-top:10px;padding:24px 40px">물건을 쓰는 방법을 <span class="blank" onclick="openBlank(this)">순서</span>대로 정리하면<br>누구나 쉽게 <span class="blank" onclick="openBlank(this)">따라</span> 할 수 있어요.</div>
+      <div class="homework">🕵️ <b>숙제 확인!</b> 집에서 <b>정말 편리한 물건</b>을 떠올렸나요?<br>“그 물건이 없으면 무엇이 <b>불편</b>할까요?”</div>
+    </div>
+    <img src="../01/img/agent.png" alt="" style="width:300px" class="bob">
+  </div>
+</section>
+
+<!-- 3 이야기 -->
+<section class="slide dark" data-phase="도입 · 5분" data-hook="story"
+ data-notes="<b>이야기</b> — 말풍선을 누르면 글자가 한 번에 나와요. 2차시에 본 ‘지우개 달린 연필’을 떠올리게 해 주세요(하이먼도 불편함에서 시작했어요).">
+  <div class="alarm">🚨 싹쓸이 마법사의 불평 쪽지!</div>
+  <div class="storywrap">
+    <img class="wizard" src="../01/img/wizard.jpg" alt="싹쓸이 마법사">
+    <div class="bubble" id="storyText"></div>
+  </div>
+</section>
+
+<!-- 4 미션 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>학습 목표 함께 읽기</b> — 3번 방 첫 번째 열쇠 조각을 찾아요.">
+  <div class="kicker">MISSION BRIEFING</div>
+  <h2 class="title" style="font-size:60px">오늘의 미션 세 가지</h2>
+  <div class="missions" style="gap:20px">
+    <div class="mcard"><span class="tag">미션 1</span><img class="ic" src="../01/img/ic_search.png" alt=""><h3>전과 후 비교</h3><p>무엇이 불편했을까?</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><div class="ic emo" style="font-size:96px">⭕</div><h3>불편함 OX 퀴즈</h3><p>몸으로 O·X를 만들어요</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><div class="ic emo" style="font-size:96px">🎤</div><h3>발명가 인터뷰</h3><p>기자와 발명가가 되어요</p></div>
+    <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 1</h3><p>3번 방 첫 조각!</p></div>
+  </div>
+  <div class="goal"><b>🎯 학습 목표</b> 발명품이 생기기 전과 후를 비교하여, 어떤 불편함을 해결했는지 말할 수 있어요.</div>
+</section>
+
+<!-- 5 미션 1 방법 -->
+<section class="slide" data-phase="미션 1 · 10분"
+ data-notes="<b>전과 후 비교 방법</b> — 화면 왼쪽은 ‘전’(예전에 쓰던 물건), 오른쪽은 ‘후’(발명된 물건)예요. 오른쪽은 처음에 흐리게 가려져 있어요. 세 칸을 하나씩 눌러 공개하기 전에 꼭 학생들에게 먼저 물어보세요.">
+  <div class="kicker">MISSION 1</div>
+  <h2 class="title">🔍 전과 후 비교</h2>
+  <div class="rules" style="max-width:1160px">
+    <div class="rule"><span>1</span><div>왼쪽 <b class="hl">‘전’</b> 물건을 보고, 쓸 때 <b class="c-coral">무엇이 불편했을지</b> 짝과 이야기해요. (30초)</div></div>
+    <div class="rule"><span>2</span><div>오른쪽 <b class="c-navy">‘후’</b> 물건은 무엇일까요? 손을 들고 맞혀요.</div></div>
+    <div class="rule"><span>3</span><div>“<b>○○이 불편해서 △△이 생겼어요.</b>” 문장으로 말해요.</div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:300px">
+</section>
+
+<!-- 6 미션 1 비교 -->
+<section class="slide" data-phase="미션 1 · 10분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 고르기(8쌍). ① 왼쪽 물건의 불편함을 묻고 ‘😣 불편했던 점’ 공개 ② ‘후 보기’로 발명품 공개 ③ ‘💡 좋아진 점’, ‘🗣️ 문장으로’ 공개. 모둠마다 한 쌍씩 맡아 발표해도 좋아요.">
+  <div class="ba" id="ba">
+    <div class="bamain">
+      <div class="pairx" id="baPair"></div>
+      <div class="q3" id="baQ"></div>
+      <div class="btns" style="margin-top:auto"><button class="btn coral" onclick="baShow()">👀 후 보기</button><button class="btn ghost" onclick="setBA((bIdx + 1) % BA.length)">다음 ▶</button></div>
+    </div>
+    <div class="side"><div class="rounds" id="baR"></div></div>
+  </div>
+</section>
+
+<!-- 7 미션 2 방법 -->
+<section class="slide" data-phase="미션 2 · 9분"
+ data-notes="<b>불편함 OX 퀴즈 방법</b> — 모두 자리에서 일어나요. 문장이 맞으면 두 팔로 머리 위에 큰 동그라미(O), 틀리면 가슴 앞에서 팔을 엇갈려 X. 틀린 사람은 앉아요. 마지막까지 서 있는 사람이 우승! 앉은 사람도 계속 맞혀 보게 해요(점수와 상관없이).">
+  <div class="kicker">MISSION 2</div>
+  <h2 class="title">⭕❌ 불편함 OX 퀴즈</h2>
+  <div class="howox">
+    <div class="rules" style="max-width:none;flex:1;margin-top:0">
+      <div class="rule"><span>1</span><div>모두 <b class="hl">자리에서 일어나요</b>.</div></div>
+      <div class="rule"><span>2</span><div>맞으면 두 팔로 머리 위에 <b style="color:#22906a">큰 동그라미 O</b>!</div></div>
+      <div class="rule"><span>3</span><div>틀리면 가슴 앞에 팔을 엇갈려 <b class="c-coral">X</b>!</div></div>
+      <div class="rule"><span>4</span><div>답이 틀린 사람은 앉아요. 앉아서도 계속 맞혀 봐요.<small>마지막까지 서 있는 사람이 오늘의 수사왕!</small></div></div>
+    </div>
+    <div class="arm"><div class="emo">🙆</div><p>O 는 이렇게!</p></div>
+    <div class="arm"><div class="emo">🙅</div><p>X 는 이렇게!</p></div>
+  </div>
+</section>
+
+<!-- 8 미션 2 퀴즈 -->
+<section class="slide" data-phase="미션 2 · 9분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 문제를 읽어 주고 ‘3초 세기’ → “하나, 둘, 셋!”에 몸으로 O·X → ‘정답!’. 14문제예요. 틀린 학생은 앉되, 계속 답해 보게 해요. 정답 뒤에 나오는 까닭을 꼭 함께 읽어요.">
+  <div class="ox" id="ox">
+    <div class="oxmain">
+      <div class="oxq" id="oxQ"></div>
+      <div class="oxbig"><div class="o" id="oxO">O</div><div class="x" id="oxX">X</div></div>
+      <div class="oxwhy" id="oxWhy"></div>
+      <div class="btns" style="margin-top:auto"><button class="btn navy" onclick="ox3()">⏱️ 3초 세기</button><button class="btn mint" onclick="oxShow()">🎉 정답!</button><button class="btn ghost" onclick="setOX((oIdx + 1) % OX.length)">다음 문제 ▶</button></div>
+    </div>
+    <div class="side"><div class="rounds" id="oxR"></div><div class="kclock"><small>생각 시간</small><b id="oxC">3</b></div></div>
+  </div>
+</section>
+
+<!-- 9 미션 3 방법 -->
+<section class="slide" data-phase="미션 3 · 11분"
+ data-notes="<b>발명가 인터뷰 놀이 방법</b> — 짝끼리 한 명은 기자, 한 명은 발명가가 돼요. 화면에서 발명품을 고르면, 기자가 화면의 질문을 차례로 읽고 발명가가 대답해요. 대답이 막히면 화면의 ‘도움 대답’을 눌러 보여 줘요. 한 번 끝나면 역할을 바꿔요. 연필이나 물병을 마이크처럼 들면 재미있어요.">
+  <div class="kicker">MISSION 3</div>
+  <h2 class="title">🎤 발명가 인터뷰</h2>
+  <div class="roles">
+    <div class="role"><span class="emo">🎙️</span><div><h3>기자</h3><p>마이크(연필)를 들고 화면의 <b>질문</b>을 차례로 읽어요.</p></div></div>
+    <div class="role"><span class="emo">💡</span><div><h3>발명가</h3><p>그 물건을 만든 사람이 되어 <b>“저는 ~가 불편해서…”</b>로 대답해요.</p></div></div>
+  </div>
+  <div class="rules" style="max-width:none;margin-top:20px">
+    <div class="rule"><span>1</span><div>짝과 <b class="hl">가위바위보</b>! 이긴 사람이 먼저 기자예요.</div></div>
+    <div class="rule"><span>2</span><div>기자가 질문 4개를 다 묻고 나면 <b class="c-coral">역할을 바꿔요</b>.</div></div>
+    <div class="rule"><span>3</span><div>마지막에 두세 짝이 앞에 나와 인터뷰를 보여 줘요.</div></div>
+  </div>
+</section>
+
+<!-- 10 미션 3 인터뷰 -->
+<section class="slide" data-phase="미션 3 · 11분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 발명품을 골라요(12개). 짝끼리 연습할 때는 화면을 그대로 두고, 앞에 나온 짝이 발표할 때 ‘도움 대답’을 하나씩 눌러 비교해 봐요. 대답이 도움 대답과 달라도, 불편함과 해결이 연결되면 훌륭한 대답이에요.">
+  <div class="iv">
+    <div class="ivcard" id="ivCard"></div>
+    <div class="ivq" id="ivQ"></div>
+    <div class="side"><div class="rounds" id="ivR" style="grid-template-columns:repeat(3,1fr)"></div><div class="kclock"><small>짝 연습</small><b id="ivC">3:00</b></div><button class="btn mint" id="ivGo" onclick="ivClock.toggle()">▶ 3분</button></div>
+  </div>
+</section>
+
+<!-- 11 활동지 안내 -->
+<section class="slide" data-phase="정리 · 5분"
+ data-notes="<b>활동지 ‘발명 수사 보고서’</b> — 시간이 부족하면 숙제로 내도 돼요. 오늘 본 발명품 하나를 골라 전·후를 그리고 불편함과 좋아진 점을 써요. 예시 답안은 📗 단추.">
+  <div class="kicker">MISSION 정리 · 활동지</div>
+  <div class="ws">
+    <img class="wsprev" src="img/worksheet_preview.png" alt="활동지 미리 보기">
+    <div class="steps">
+      <h2 class="title" style="font-size:52px;margin-bottom:4px">📮 발명 수사 보고서</h2>
+      <div class="s"><span>1</span>발명품 하나를 골라요</div>
+      <div class="s"><span>2</span>‘전’과 ‘후’를 그려요</div>
+      <div class="s"><span>3</span>불편했던 점과 좋아진 점을 써요</div>
+      <div class="s bonus"><span>★</span>요즘 나를 불편하게 하는 것은?</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
+    </div>
+  </div>
+</section>
+
+<!-- 12 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 5분"
+ data-notes="<b>배움 정리</b> — 빈칸에 들어갈 말을 먼저 말하게 한 뒤 눌러 공개해요.">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 3번 방 첫 번째 비밀 문장</h2>
+  <div class="cipher">발명은 생활 속 <span class="blank" onclick="openBlank(this)">불편함</span>을 찾는 데서<br><span class="blank" onclick="openBlank(this)">시작</span>돼요.</div>
+  <div class="chips"><span class="chip">시작</span><span class="chip">돈</span><span class="chip">불편함</span><span class="chip">끝</span></div>
+</section>
+
+<!-- 13 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 5분" data-hook="key"
+ data-notes="<b>보상</b> — 3번 방 첫 번째 열쇠 조각!">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 3번 방 열쇠 조각 <span class="c-gold">1</span>개!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">10차시 ✔</div><div>11차시</div><div>12차시</div><div>13차시</div><div>14차시</div></div>
+</section>
+
+<!-- 14 다음 -->
+<section class="slide" data-phase="정리 · 5분"
+ data-notes="<b>다음 차시 예고</b> — 준비물: 내 필통과 책가방(평소처럼 가져오면 돼요). 숙제: 필통·가방·책상을 쓰다가 ‘아, 불편해!’ 했던 순간을 하나 떠올려 오기.">
+  <div class="kicker">NEXT MISSION</div>
+  <div class="next">
+    <img class="doorimg" src="img/door3.jpg" alt="">
+    <div>
+      <span class="pill">11차시 예고</span>
+      <h2 class="title" style="font-size:80px">불편함 수사대</h2>
+      <p class="big" style="color:var(--ink2);margin-top:18px">내 물건에 숨은 <b class="hl">불편함 단서</b>를 찾아요.<br>🕵️ 필통·가방·책상이 불편했던 순간을 떠올려 오세요.</p>
+      <div class="bring"><div>✏️ 내 필통</div><div>🎒 내 책가방</div></div>
+      <button class="btn coral" id="doneBtn" style="margin-top:22px" onclick="complete()">✅ 10차시 미션 완료</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:3, lesson:10, keyPieces:1};</script>
+<script src="../shared/base.js"></script>
+<script src="../shared/kit.js"></script>
+<script>
+/* 받침에 따라 이/가 */
+const josa = (w, a, b) => { const c = w.replace(/\(.*\)/, "").trim(), k = c.charCodeAt(c.length - 1) - 0xAC00; return k >= 0 && k < 11172 && k % 28 ? a : b; };
+/* 사진: p(shared/photos) 또는 img(그림 파일) */
+const P = o => o.img ? `<img src="${o.img}" alt="" style="object-fit:contain;background:#fff">` : K.photo(o.p);
+
+/* ---------- 이야기 ---------- */
+hooks.story = () => typewriter(document.getElementById('storyText'),
+  '“흥, 사람들은 왜 이렇게 <b class="c-coral">불평</b>이 많지? 불편해, 불편해!”<br>마법사가 사람들의 불평 쪽지를 모아 버리려고 해요.<br>그런데 요원 여러분, 그 쪽지 속에 <b class="c-navy">발명의 씨앗</b>이 숨어 있대요!<br>불편함이 어떻게 발명이 되는지 수사해 주세요!');
+
+/* ---------- 미션 1: 전과 후 (a: 전, b: 후, u: 불편했던 점, g: 좋아진 점) ---------- */
+const BA = [
+  {a:{p:'washboard', n:'빨래판'}, b:{p:'washer', n:'세탁기'}, u:'빨래판에 옷을 하나하나 문질러야 해서 <b>팔이 아프고 오래 걸렸어요</b>.', g:'버튼만 누르면 기계가 빨래를 해 줘요.'},
+  {a:{p:'broom', n:'빗자루'}, b:{p:'vacuum', n:'청소기'}, u:'빗자루로 쓸면 <b>먼지가 날리고</b> 작은 먼지는 잘 안 모였어요.', g:'먼지를 빨아들여서 날리지 않아요.'},
+  {a:{p:'handfan', n:'부채'}, b:{p:'fan', n:'선풍기'}, u:'부채는 <b>계속 손으로 흔들어야</b> 해서 팔이 아팠어요.', g:'손을 쓰지 않아도 바람이 계속 나와요.'},
+  {a:{p:'bucket', n:'두레박'}, b:{p:'tap', n:'수도꼭지'}, u:'우물에서 물을 길어 <b>집까지 무겁게 날라야</b> 했어요.', g:'집 안에서 손잡이만 돌리면 물이 나와요.'},
+  {a:{img:'../01/img/obj_pencil.png', n:'연필'}, b:{img:'../02/img/obj_erpencil.png', n:'지우개 달린 연필'}, u:'틀릴 때마다 <b>지우개를 찾느라</b> 시간이 걸렸어요.', g:'연필을 돌리기만 하면 바로 지울 수 있어요.'},
+  {a:{p:'shoelace', n:'끈 운동화'}, b:{p:'velcro', n:'찍찍이(벨크로)'}, u:'끈을 묶기 어렵고 <b>자꾸 풀려서</b> 넘어질 뻔했어요.', g:'꾹 눌러 붙이기만 하면 돼서 혼자서도 쉽게 신어요.'},
+  {a:{p:'candle', n:'촛불'}, b:{p:'headlamp', n:'헤드랜턴'}, u:'촛불은 <b>바람에 꺼지고 불이 날까 봐</b> 위험했어요. 손에 들어야 했고요.', g:'머리에 쓰니까 두 손이 자유롭고 안전해요.'},
+  {a:{img:'../01/img/obj_backpack.png', n:'손에 드는 가방'}, b:{img:'../02/img/obj_suitcase.png', n:'바퀴 달린 가방'}, u:'무거운 짐을 <b>오래 들고 걸으면</b> 팔과 어깨가 아팠어요.', g:'바퀴로 끌고 다니니 힘이 덜 들어요.'}];
+let bIdx = 0; const bR = K.rounds('baR', BA.length, i => setBA(i));
+function setBA(i){ bIdx = i; const o = BA[i]; S.flip(); bR.on(i); document.getElementById('ba').classList.remove('show');
+  document.getElementById('baPair').innerHTML = `<div class="b"><span class="lb" style="background:#a77b4a">전</span>${P(o.a)}<span>${o.a.n}</span></div><div class="arr">➜</div><div class="b after"><span class="lb" style="background:var(--room)">후</span>${P(o.b)}<span>${o.b.n}</span></div>`;
+  document.getElementById('baQ').innerHTML = [['😣 불편했던 점', o.u], ['💡 좋아진 점', o.g], ['🗣️ 문장으로', `${o.a.n}${josa(o.a.n, '이', '가')} 불편해서 <b>${o.b.n}</b>${josa(o.b.n, '이', '가')} 생겼어요.`]]
+    .map(([h, a]) => `<div class="c" onclick="this.classList.add('open');S.ok()"><div class="h">${h}</div><div class="a">${a}</div></div>`).join(''); }
+function baShow(){ document.getElementById('ba').classList.add('show'); S.win(); bR.done(bIdx); }
+
+/* ---------- 미션 2: 불편함 OX 퀴즈 (a: 정답 O/X, w: 까닭) ---------- */
+const OX = [
+  {p:'washer', q:'세탁기는 손빨래가 힘들어서 만들어졌다.', a:'O', w:'빨래판으로 문지르는 일이 <b>힘들고 오래 걸려서</b> 세탁기가 생겼어요.'},
+  {p:'velcro', q:'찍찍이(벨크로)는 끈을 묶기 어려운 불편함을 해결해 준다.', a:'O', w:'꾹 눌러 붙이기만 하면 돼서 <b>끈을 묶지 못해도</b> 신을 수 있어요.'},
+  {p:'wiper2', q:'자동차 와이퍼는 차를 예쁘게 꾸미려고 만들었다.', a:'X', w:'비나 눈이 오면 <b>앞이 안 보이는 불편함</b> 때문에 만들었어요.'},
+  {img:'../02/img/obj_straw.png', q:'구부러지는 빨대는 누워 있는 사람도 마시기 편하게 해 준다.', a:'O', w:'목을 구부릴 수 있어서 <b>컵을 기울이지 않아도</b> 마실 수 있어요.'},
+  {p:'popsicle', q:'아이스바 막대는 손을 차갑지 않게, 녹은 물이 덜 묻게 해 준다.', a:'O', w:'막대를 잡으면 <b>얼음을 직접 만지지 않아도</b> 돼요.'},
+  {p:'earmuffs', q:'귀마개는 귀가 시린 불편함 때문에 생겼다.', a:'O', w:'추운 날 <b>귀가 시려서</b> 귀를 따뜻하게 감싸는 귀마개가 생겼어요.'},
+  {img:'../02/img/obj_erpencil.png', q:'지우개 달린 연필은 연필을 더 길게 만들려고 발명했다.', a:'X', w:'<b>지우개를 자꾸 찾아야 하는</b> 불편함 때문에 발명했어요.'},
+  {p:'wheelchair', q:'휠체어는 걷기 힘든 사람이 쉽게 움직이도록 도와준다.', a:'O', w:'바퀴가 있어서 <b>걷기 힘든 사람도</b> 여기저기 다닐 수 있어요.'},
+  {p:'braille', q:'점자는 눈으로만 읽을 수 있는 글자다.', a:'X', w:'점자는 <b>손끝으로 만져서</b> 읽는 글자예요. 앞이 잘 보이지 않는 사람을 위해 만들었어요.'},
+  {img:'../02/img/obj_suitcase.png', q:'바퀴 달린 가방은 무거운 짐을 들고 다니는 불편함을 줄여 준다.', a:'O', w:'바퀴로 <b>끌고 다니니까</b> 팔이 덜 아파요.'},
+  {p:'sticky', q:'붙임쪽지는 한 번 붙이면 절대 뗄 수 없다.', a:'X', w:'붙임쪽지는 <b>붙였다 뗐다</b> 할 수 있어서 잠깐 메모할 때 편리해요.'},
+  {p:'headlamp', q:'헤드랜턴은 두 손을 써야 하는 사람을 위해 머리에 쓰도록 만들었다.', a:'O', w:'머리에 쓰니까 <b>두 손이 자유로워요</b>.'},
+  {p:'swimfins', q:'오리발은 물속에서 더 빨리 나아가도록 도와준다.', a:'O', w:'넓은 오리발이 <b>물을 더 많이 밀어서</b> 빨리 나아가요.'},
+  {img:'../01/img/obj_umbrella.png', q:'발명은 아주 똑똑한 어른만 할 수 있다.', a:'X', w:'불편함을 찾고 고칠 생각을 하면 <b>누구나</b> 발명가가 될 수 있어요. 어린이 발명품도 많아요!'}];
+let oIdx = 0; const oR = K.rounds('oxR', OX.length, i => setOX(i)); let oxT = null;
+function setOX(i){ oIdx = i; const o = OX[i]; S.flip(); oR.on(i); clearInterval(oxT); document.getElementById('oxC').textContent = 3; document.getElementById('ox').classList.remove('rev');
+  document.getElementById('oxQ').innerHTML = `${P(o)}<div class="t"><small>문제 ${i + 1} / ${OX.length}</small>${o.q}</div>`; }
+function ox3(){ clearInterval(oxT); let n = 3; const c = document.getElementById('oxC'); c.textContent = n; S.tick(); oxT = setInterval(() => { n--; c.textContent = n; if(n <= 0){ clearInterval(oxT); c.textContent = '하나, 둘, 셋!'; S.end(); } else S.tick(); }, 1000); }
+function oxShow(){ const o = OX[oIdx]; clearInterval(oxT); document.getElementById('oxO').classList.toggle('ans', o.a === 'O'); document.getElementById('oxX').classList.toggle('ans', o.a === 'X');
+  document.getElementById('oxWhy').innerHTML = `💡 정답은 <b>${o.a}</b>! ${o.w}`; document.getElementById('ox').classList.add('rev'); S.win(); oR.done(oIdx); }
+K.leave(() => clearInterval(oxT));
+
+/* ---------- 미션 3: 발명가 인터뷰 (a: 도움 대답 4개) ---------- */
+const IVQ = ['어떤 점이 불편했나요?', '그래서 어떤 생각을 했나요?', '이 물건의 어떤 생김새가 불편함을 해결해 주나요?', '이 물건을 누구에게 추천하고 싶나요?'];
+const IV = [
+  {img:'../02/img/obj_erpencil.png', n:'지우개 달린 연필', a:['틀릴 때마다 지우개를 찾느라 시간이 걸렸어요.', '연필에 지우개를 붙이면 어떨까 생각했어요.', '연필 끝에 붙은 작은 지우개예요.', '받아쓰기를 하는 친구들에게 추천해요.']},
+  {p:'washer', n:'세탁기', a:['손으로 빨래하면 팔이 아프고 오래 걸렸어요.', '기계가 대신 빨래를 돌려 주면 좋겠다고 생각했어요.', '물과 옷을 넣고 빙빙 돌리는 큰 통이에요.', '집안일이 많은 우리 가족에게 추천해요.']},
+  {p:'velcro', n:'찍찍이 신발', a:['끈 묶기가 어렵고 자꾸 풀렸어요.', '눌러서 붙이는 것으로 바꾸면 쉽겠다고 생각했어요.', '까슬까슬한 쪽과 보들보들한 쪽이 붙어요.', '아직 끈을 못 묶는 동생에게 추천해요.']},
+  {img:'../02/img/obj_straw.png', n:'구부러지는 빨대', a:['곧은 빨대로는 높은 컵을 마시기 어려웠어요.', '빨대 목이 구부러지면 편하겠다고 생각했어요.', '빨대 가운데의 주름이에요.', '아파서 누워 있는 사람에게 추천해요.']},
+  {p:'headlamp', n:'헤드랜턴', a:['손전등을 들면 한 손밖에 못 썼어요.', '불빛을 머리에 쓰면 어떨까 생각했어요.', '머리에 두르는 끈이에요.', '캠핑하는 가족에게 추천해요.']},
+  {p:'wheelchair', n:'휠체어', a:['걷기 힘든 사람은 혼자 다니기 어려웠어요.', '의자에 바퀴를 달면 움직일 수 있겠다고 생각했어요.', '양쪽의 큰 바퀴예요. 손으로 밀어 굴려요.', '다리를 다친 사람에게 추천해요.']},
+  {p:'fan', n:'선풍기', a:['부채질을 계속하면 팔이 아팠어요.', '날개를 전기로 돌리면 바람이 계속 나오겠다고 생각했어요.', '빙글빙글 도는 날개예요.', '더위를 많이 타는 친구에게 추천해요.']},
+  {p:'sticky', n:'붙임쪽지', a:['종이에 메모하면 붙여 둘 곳이 없었어요.', '살짝 붙었다가 떨어지는 풀을 바르면 어떨까 생각했어요.', '종이 뒤 한쪽에 바른 약한 풀이에요.', '할 일을 자주 잊어버리는 사람에게 추천해요.']},
+  {img:'../02/img/obj_suitcase.png', n:'바퀴 달린 가방', a:['무거운 가방을 들고 오래 걸으면 힘들었어요.', '가방에 바퀴를 달아 끌면 되겠다고 생각했어요.', '아래의 바퀴와 길게 뽑는 손잡이예요.', '여행 가는 가족에게 추천해요.']},
+  {p:'popsicle', n:'막대 아이스바', a:['얼음 과자를 손으로 들면 차갑고 끈적했어요.', '막대를 꽂아서 잡으면 되겠다고 생각했어요.', '아래에 꽂힌 나무 막대예요.', '여름에 아이스크림을 좋아하는 친구에게 추천해요.']},
+  {p:'vacuum', n:'청소기', a:['빗자루로 쓸면 먼지가 날렸어요.', '먼지를 빨아들이면 날리지 않겠다고 생각했어요.', '먼지를 빨아들이는 긴 관이에요.', '먼지 알레르기가 있는 사람에게 추천해요.']},
+  {p:'earmuffs', n:'귀마개', a:['추운 날 귀가 너무 시렸어요.', '귀만 따뜻하게 덮어 주면 좋겠다고 생각했어요.', '귀를 덮는 폭신한 동그라미예요.', '겨울에 밖에서 노는 친구에게 추천해요.']}];
+let iIdx = 0; const iR = K.rounds('ivR', IV.length, i => setIV(i));
+const ivClock = K.clock({el:'ivC', btn:'ivGo', sec:180, btnLabel:'▶ 3분'});
+function setIV(i){ iIdx = i; const o = IV[i]; S.flip(); iR.on(i);
+  document.getElementById('ivCard').innerHTML = `${P(o)}<h3>${o.n}</h3><p>🎙️ 기자: 질문을 차례로 읽어요<br>💡 발명가: “저는 ~” 하고 대답해요</p>`;
+  document.getElementById('ivQ').innerHTML = IVQ.map((q, k) => `<div class="mic"><span class="who">기자 ${k + 1}</span><div>${q}</div></div><div class="mic ans" onclick="this.classList.add('open');S.ok()"><span class="who">도움 대답</span><div class="tx">${o.a[k]}</div></div>`).join(''); }
+
+window.onEsc = () => {};
+setBA(0); setOX(0); setIV(0); startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>

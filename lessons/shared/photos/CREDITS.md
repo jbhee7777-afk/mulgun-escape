@@ -68,3 +68,5 @@
 | headlamp.jpg | 헤드랜턴 | [Zebralight H600Fc Mk IV headlamp in a GITD silicone holder.jpg](https://commons.wikimedia.org/wiki/File:Zebralight_H600Fc_Mk_IV_headlamp_in_a_GITD_silicone_holder.jpg) | Siarhei Besarab | CC BY-SA 4.0 |
 | mop.jpg | 대걸레 | [Mop and bucket.jpg](https://commons.wikimedia.org/wiki/File:Mop_and_bucket.jpg) | W.carter | CC BY-SA 4.0 |
 | bandaid.jpg | 반창고 | [Plåster - Adhesive bandage - 2025.jpg](https://commons.wikimedia.org/wiki/File:Pl%C3%A5ster_-_Adhesive_bandage_-_2025.jpg) | Foto: Jonn Leffmann | CC BY 4.0 |
+| wiper2.jpg | 자동차 와이퍼 | [Car windshield wiper displayed.jpg](https://commons.wikimedia.org/wiki/File:Car_windshield_wiper_displayed.jpg) | Shixart1985 | CC BY 2.0 |
+| desk2.jpg | 책상과 의자 | [Munkegaard School - school desk (cropped).jpg](https://commons.wikimedia.org/wiki/File:Munkegaard_School_-_school_desk_(cropped).jpg) | Ramblersen | CC BY-SA 3.0 |
