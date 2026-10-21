@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4번 방 · 17차시 우리 교실 불편함 지도</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/kit.css">
+<style>
+/* 관찰 안경 */
+.glass4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px}
+.glass4 .g{background:#fff;border:4px solid var(--line);border-radius:28px;padding:16px 14px;text-align:center;box-shadow:0 8px 0 var(--line);position:relative}
+.glass4 .g .emo{font-size:84px;line-height:1.15}
+.glass4 .g h3{font-size:30px;color:var(--roomdk);line-height:1.25}
+.glass4 .g p{font-size:22px;color:var(--ink2);line-height:1.45;margin-top:4px}
+.glass4 .g::before{content:"👓";position:absolute;right:12px;top:8px;font-size:34px}
+
+/* 미션 1: 숨은 불편함 */
+.spot{flex:1;display:flex;gap:20px;min-height:0;margin-top:2px}
+.scene{position:relative;width:1040px;height:585px;flex:none;border-radius:26px;overflow:hidden;box-shadow:0 0 0 6px #fff,0 12px 28px rgba(61,43,31,.2)}
+.scene img{width:100%;height:100%;display:block}
+.scene .hs{position:absolute;border-radius:50%;cursor:pointer;transform:translate(-50%,-50%)}
+.scene .hs.found{border:6px solid #ff4f8b;box-shadow:0 0 0 4px #fff,0 0 22px rgba(255,79,139,.7);animation:pop .5s}
+.scene .hs .num{display:none;position:absolute;left:50%;top:-24px;transform:translateX(-50%);width:44px;height:44px;border-radius:50%;background:#ff4f8b;color:#fff;font-family:var(--head);font-size:26px;align-items:center;justify-content:center;border:3px solid #fff}
+.scene .hs.found .num{display:flex}
+@keyframes pop{0%{transform:translate(-50%,-50%) scale(.3)}70%{transform:translate(-50%,-50%) scale(1.15)}100%{transform:translate(-50%,-50%) scale(1)}}
+.sinfo{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0}
+.left{background:var(--navy);color:#fff;border-radius:22px;padding:10px 14px;text-align:center;font-family:var(--head);font-size:26px}
+.left b{font-size:44px;color:var(--gold)}
+.found1{background:var(--room2);border:3px solid var(--room);border-radius:22px;padding:12px 16px;font-size:22px;line-height:1.5;display:none}
+.found1.show{display:block;animation:enter .4s}
+.found1 h4{font-family:var(--head);font-weight:400;font-size:28px;color:var(--roomdk)}
+.found1 .who{font-size:30px}
+.scene .hint{position:absolute;border-radius:50%;border:5px dashed var(--gold);transform:translate(-50%,-50%);animation:pulse 1s infinite;pointer-events:none}
+
+/* 미션 2: 탐험 */
+.tm{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.tm .t{background:#fff;border:4px solid var(--line);border-radius:24px;padding:12px 16px;display:flex;gap:14px;align-items:center;box-shadow:0 6px 0 var(--line);min-height:120px}
+.tm .t .n{font-family:var(--head);font-size:30px;color:#fff;background:var(--room);border-radius:16px;padding:6px 14px;flex:none}
+.tm .t .emo{font-size:66px;flex:none;width:80px;text-align:center}
+.tm .t .tx{font-family:var(--head);font-size:28px;color:var(--navy);line-height:1.3}
+.tm .t .tx small{display:block;font-family:var(--body);font-size:20px;color:var(--ink2)}
+.tm .t.wait .emo,.tm .t.wait .tx{opacity:.2}
+
+/* 미션 3: 지도 */
+.mapw{flex:1;display:flex;gap:20px;min-height:0;margin-top:2px}
+.mapbox{position:relative;width:860px;height:602px;flex:none;cursor:crosshair;background:#fff;border-radius:26px;box-shadow:0 0 0 6px #fff,0 12px 28px rgba(61,43,31,.18)}
+.mapbox img{width:100%;height:100%;display:block;pointer-events:none}
+.pin{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;pointer-events:auto;cursor:pointer}
+.pin .hd{width:46px;height:46px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.25)}
+.pin .hd span{transform:rotate(45deg);font-family:var(--head);font-size:24px;color:#fff}
+.pin.sel .hd{outline:4px solid var(--navy)}
+.lv1 .hd{background:#f2b51c}.lv2 .hd{background:#f2803a}.lv3 .hd{background:#e03131}
+.plist{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0;overflow:auto}
+.pform{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.pform input{font-family:var(--body);font-size:22px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);width:100%}
+.lvb{display:flex;gap:6px}
+.lvb button{flex:1;border-radius:12px;padding:6px 4px;font-family:var(--head);font-size:19px;background:#fff;border:3px solid var(--line)}
+.lvb button.on{border-color:var(--navy);background:var(--gold2)}
+.pi{display:flex;align-items:center;gap:8px;background:#fff;border:3px solid var(--line);border-radius:16px;padding:6px 10px;font-size:21px;cursor:pointer}
+.pi.sel{border-color:var(--navy)}
+.pi .dot{width:32px;height:32px;border-radius:50%;color:#fff;font-family:var(--head);font-size:19px;display:flex;align-items:center;justify-content:center;flex:none}
+.pi .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pi .vt{font-family:var(--head);font-size:24px;color:#e3523f;width:34px;text-align:center}
+.pi button{width:32px;height:32px;border-radius:10px;background:var(--gold2);font-size:20px}
+.pi button.m{background:#f1e6d4}
+.legend{display:flex;gap:10px;font-size:20px;color:var(--ink2)}
+.legend i{display:inline-block;width:16px;height:16px;border-radius:50%;vertical-align:-2px;margin-right:4px}
+.top1{background:var(--room2);border:3px solid var(--room);border-radius:18px;padding:8px 12px;font-family:var(--head);font-size:22px;color:var(--roomdk);display:none}
+.top1.show{display:block}
+</style>
+</head>
+<body data-room="4">
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 4번 방 · 모두를 위한 물건 생각하기</span><span class="ls">17차시 / 15~19</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 5분"
+ data-notes="<b>시작</b> — “오늘은 우리 교실이 모두에게 편한 곳인지 탐험해요.” 준비물: 모둠마다 붙임쪽지 5~6장, 활동지(지도). 교실 안을 걸어 다니므로 통로의 가방은 미리 치워 두지 말고 그대로 두어도 좋아요(관찰거리가 돼요).">
+  <div class="cover">
+    <img class="doorimg bob" src="../15/img/door4.jpg" alt="4번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill">4번 방 · 17차시</span>
+      <h1 class="title">우리 교실<br>불편함 지도</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">다른 친구의 눈으로 교실을 살펴봐요.</p>
+      <button class="btn coral" style="margin-top:34px" onclick="go(1)">🚪 4번 방 다시 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>지난 시간 + 숙제 확인</b> — ① 16차시 비밀 문장을 함께 읽어요. ② 숙제: 교실에서 불편하다고 느낀 곳을 2~3명 발표해요. 칠판에 짧게 적어 두면 미션 2에서 확인할 수 있어요.">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">친절한 물건의 비밀을 찾았어요</h2>
+  <div class="recap">
+    <div class="box">
+      <div class="cipher" style="font-size:40px;margin-top:10px;padding:24px 40px">한 사람을 위한 <span class="blank" onclick="openBlank(this)">친절한</span> 생각이<br><span class="blank" onclick="openBlank(this)">모두</span>를 편하게 해요.</div>
+      <div class="homework">🕵️ <b>숙제 확인!</b> 우리 교실에서 <b>불편한 곳</b>을 떠올려 왔나요?</div>
+    </div>
+    <img src="../01/img/agent.png" alt="" style="width:300px" class="bob">
+  </div>
+</section>
+
+<!-- 3 이야기 -->
+<section class="slide dark" data-phase="도입 · 5분" data-hook="story"
+ data-notes="<b>이야기</b> — “정말 고칠 곳이 하나도 없을까요?” 하고 물어요. 나에게는 편해도 다른 친구에게는 불편할 수 있다는 15차시 내용을 떠올리게 해요.">
+  <div class="alarm">🚨 마법사가 우리 교실에 나타났어요!</div>
+  <div class="storywrap">
+    <img class="wizard" src="../01/img/wizard.jpg" alt="싹쓸이 마법사">
+    <div class="bubble" id="storyText"></div>
+  </div>
+</section>
+
+<!-- 4 미션 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>학습 목표 함께 읽기</b> — 4번 방 세 번째 열쇠 조각을 찾아요.">
+  <div class="kicker">MISSION BRIEFING</div>
+  <h2 class="title" style="font-size:60px">오늘의 미션 세 가지</h2>
+  <div class="missions" style="gap:20px">
+    <div class="mcard"><span class="tag">미션 1</span><img class="ic" src="../01/img/ic_search.png" alt=""><h3>숨은 불편함 찾기</h3><p>그림 속 교실을 살펴요</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><div class="ic emo" style="font-size:96px">👓</div><h3>관찰 안경 탐험대</h3><p>우리 교실을 걸으며 찾아요</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><div class="ic emo" style="font-size:96px">🗺️</div><h3>불편함 지도</h3><p>모으고 투표해요</p></div>
+    <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 3</h3><p>4번 방 세 번째!</p></div>
+  </div>
+  <div class="goal"><b>🎯 학습 목표</b> 여러 사람의 눈으로 교실을 살펴보고, 쓰기 불편하거나 고치면 좋을 곳을 찾을 수 있어요.</div>
+</section>
+
+<!-- 5 관찰 안경 -->
+<section class="slide" data-phase="미션 1 · 10분"
+ data-notes="<b>관찰 안경 소개</b> — 오늘은 네 가지 ‘관찰 안경’을 쓰고 교실을 봐요. 안경을 쓰면 그 친구가 되어 생각하는 거예요. 우리 반에 그런 친구가 없더라도, 언젠가 올 수 있는 친구·손님·가족을 떠올리게 해요. 그 사람이 ‘불쌍한 사람’이 아니라 ‘교실이 아직 맞춰 주지 못한 사람’이라는 점을 짚어 주세요.">
+  <div class="kicker">MISSION 1 · 준비</div>
+  <h2 class="title" style="font-size:56px">👓 네 가지 관찰 안경</h2>
+  <p class="big" style="margin-top:10px;color:var(--ink2)">안경을 쓰면 <b class="hl">그 친구가 되어</b> 교실을 봐요.</p>
+  <div class="glass4">
+    <div class="g"><div class="emo">🧑‍🦽</div><h3>휠체어를<br>탄 친구</h3><p>바퀴가 지나갈 수 있나?<br>앉아서 손이 닿나?</p></div>
+    <div class="g"><div class="emo">🧒</div><h3>키가 작은<br>1학년 동생</h3><p>높은 곳에<br>손이 닿나?</p></div>
+    <div class="g"><div class="emo">🩹</div><h3>팔을 다친<br>친구</h3><p>한 손으로도<br>할 수 있나?</p></div>
+    <div class="g"><div class="emo">🌏</div><h3>우리말이 서툰<br>새 친구</h3><p>글자를 몰라도<br>알 수 있나?</p></div>
+  </div>
+</section>
+
+<!-- 6 숨은 불편함 -->
+<section class="slide" data-phase="미션 1 · 10분" style="padding-top:78px"
+ data-notes="<b>숨은 불편함 찾기</b> — 그림 속 교실에 불편함이 7곳 숨어 있어요. 모둠 차례대로 한 곳씩 “○○ 안경으로 보면 □□가 불편해요” 하고 말하면, 선생님이 그 자리를 눌러요. 맞히면 점수판에 1점! 어려우면 ‘💡 힌트’로 한 곳을 깜빡여 줘요. 그림 속 물건도 학생이 다른 까닭을 대면 인정해 주세요.">
+  <div class="spot">
+    <div class="scene" id="scene"><img src="img/classroom.jpg" alt="교실 그림"></div>
+    <div class="sinfo">
+      <div class="left">남은 불편함 <b id="spLeft">7</b>곳</div>
+      <div class="found1" id="spInfo"></div>
+      <div class="btns" style="margin-top:auto;flex-wrap:wrap"><button class="btn ghost" style="font-size:22px;padding:10px 16px" onclick="spHint()">💡 힌트</button><button class="btn ghost" style="font-size:22px;padding:10px 16px" onclick="spReset()">↺ 처음부터</button></div>
+      <div class="score" style="padding:6px 8px"><div id="teams1"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 미션 2 방법 -->
+<section class="slide" data-phase="미션 2 · 10분"
+ data-notes="<b>관찰 안경 탐험대 방법</b> — ① 다음 화면에서 모둠마다 안경을 뽑아요. ② 5분 동안 모둠이 <b>함께 걸어서</b> 교실을 살펴요(뛰지 않기, 물건은 만져 보되 옮기지 않기). ③ 불편한 곳을 찾으면 붙임쪽지에 모둠 번호와 안경 그림을 그려 그 자리에 붙여요. ④ 자리로 돌아와 활동지 지도에 ★로 표시해요. 활동지는 1인 1장이지만, 모둠이 함께 찾은 곳을 써도 돼요.">
+  <div class="kicker">MISSION 2</div>
+  <h2 class="title">👓 관찰 안경 탐험대</h2>
+  <div class="how c4" style="margin-top:26px">
+    <div class="st"><span class="no">1</span><div class="tx" style="text-align:center"><span class="emo" style="font-size:66px">🎲</span><br>모둠마다 <b>안경</b>을 뽑아요.</div></div>
+    <div class="st"><span class="no">2</span><div class="tx" style="text-align:center"><span class="emo" style="font-size:66px">🚶</span><br>5분 동안 모둠이 <b>함께 걸으며</b> 살펴요.</div></div>
+    <div class="st"><span class="no">3</span><div class="tx" style="text-align:center"><span class="emo" style="font-size:66px">🗒️</span><br>불편한 곳에 <b>붙임쪽지</b>를 붙여요.</div></div>
+    <div class="st"><span class="no">4</span><div class="tx" style="text-align:center"><span class="emo" style="font-size:66px">🗺️</span><br>자리에서 활동지 <b>지도에 ★</b>!</div></div>
+  </div>
+  <div class="safe" style="margin-top:22px;background:#fff5f2;border:3px solid #ffc0b5;border-radius:22px;padding:12px 22px;font-size:26px">⚠️ <b style="color:#d24634">탐험 약속</b> 걷기만 해요 · 물건은 만져 보되 옮기지 않아요 · 다른 모둠 쪽지는 떼지 않아요</div>
+</section>
+
+<!-- 8 미션 2 뽑기 + 시간 -->
+<section class="slide" data-phase="미션 2 · 10분"
+ data-notes="<b>안경 뽑기</b> — ‘🎲 안경 뽑기’를 누르면 모둠마다 안경이 정해져요(같은 안경이 두 모둠에 나올 수 있어요). 그다음 ‘▶ 탐험 5분’. 3분쯤 지나면 “붙임쪽지를 몇 장 붙였나요?” 물어 보고, 하나도 못 찾은 모둠에는 ‘높이·통로·한 손·글자’ 중 하나를 귀띔해 주세요.">
+  <div class="kicker">MISSION 2 · 탐험 시작</div>
+  <div style="display:flex;gap:26px;align-items:flex-start;margin-top:10px">
+    <div style="flex:1"><div class="tm" id="tm"></div></div>
+    <div class="side"><button class="btn coral" onclick="drawGlass()">🎲 안경 뽑기</button><div class="kclock"><small>탐험 시간</small><b id="exC">5:00</b></div><button class="btn mint" id="exGo" onclick="exClock.toggle()">▶ 탐험 5분</button></div>
+  </div>
+</section>
+
+<!-- 9 미션 3 방법 -->
+<section class="slide" data-phase="미션 3 · 10분"
+ data-notes="<b>불편함 지도 만들기</b> — 모둠마다 찾은 곳을 한 곳씩, 두 바퀴 돌아가며 발표해요(모둠마다 2곳 이상). 선생님은 다음 화면 지도에서 그 자리를 눌러 핀을 꽂고 이름과 ‘얼마나 불편한지’ 색을 정해요. 마지막에 모두 한 번씩 손을 들어 ‘가장 먼저 바꾸고 싶은 곳’에 투표해요. 1등 장소는 다음 시간(18차시) 발명의 주제가 돼요.">
+  <div class="kicker">MISSION 3</div>
+  <h2 class="title">🗺️ 우리 반 불편함 지도</h2>
+  <div class="rules" style="max-width:1200px">
+    <div class="rule"><span>1</span><div>모둠마다 찾은 곳을 <b class="hl">한 곳씩</b> 발표해요. (두 바퀴!)<small>“○○ 안경으로 보니 □□가 불편해요. 왜냐하면 △△ 때문이에요.”</small></div></div>
+    <div class="rule"><span>2</span><div>얼마나 불편한지 함께 정해요. <b style="color:#c48a00">🟡 조금</b> · <b style="color:#e0702a">🟠 꽤</b> · <b class="c-coral">🔴 많이</b></div></div>
+    <div class="rule"><span>3</span><div><b class="c-navy">가장 먼저 바꾸고 싶은 곳</b>에 한 사람이 한 번씩 손을 들어 투표해요.</div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:60px;bottom:90px;width:240px">
+</section>
+
+<!-- 10 지도 -->
+<section class="slide" data-phase="미션 3 · 10분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 지도를 누르면 핀이 꽂혀요. 오른쪽 칸에 장소 이름(예: 뒷문 문턱)을 쓰고 색을 골라요. 핀을 누르면 다시 고칠 수 있어요. 투표는 ＋/− 단추. 만든 지도는 이 컴퓨터에 저장되어 다음 시간에 다시 볼 수 있어요. 지도가 우리 교실과 다르면 비슷한 자리에 꽂으면 돼요.">
+  <div class="mapw">
+    <div class="mapbox" id="mapbox"><img src="img/map.svg" alt="교실 지도"></div>
+    <div class="plist">
+      <div class="pform">
+        <input id="pName" placeholder="📍 장소 이름 (지도를 먼저 눌러요)" oninput="pEdit()">
+        <div class="lvb" id="pLv"><button data-l="1" onclick="pLevel(1)">🟡 조금</button><button data-l="2" onclick="pLevel(2)">🟠 꽤</button><button data-l="3" onclick="pLevel(3)">🔴 많이</button></div>
+        <div class="btns" style="gap:8px"><button class="btn ghost" style="font-size:19px;padding:6px 12px" onclick="pDel()">🗑️ 핀 지우기</button><button class="btn ghost" style="font-size:19px;padding:6px 12px" onclick="pTop()">🏆 1등 보기</button></div>
+      </div>
+      <div class="top1" id="pTop1"></div>
+      <div id="pList" style="display:flex;flex-direction:column;gap:6px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 활동지 -->
+<section class="slide" data-phase="정리 · 5분"
+ data-notes="<b>활동지 ‘우리 교실 불편함 지도’</b> — 미션 2에서 지도에 ★과 번호를 표시하고, 아래 표에 3곳까지 써요. 마지막 칸에 투표한 곳을 써요. 예시 답안은 📗 단추.">
+  <div class="kicker">MISSION 정리 · 활동지</div>
+  <div class="ws">
+    <img class="wsprev" src="img/worksheet_preview.png" alt="활동지 미리 보기">
+    <div class="steps">
+      <h2 class="title" style="font-size:52px;margin-bottom:4px">🗺️ 우리 교실 불편함 지도</h2>
+      <div class="s"><span>1</span>지도에 ★과 번호를 표시해요</div>
+      <div class="s"><span>2</span>어디가, 누구에게, 왜 불편한지 써요</div>
+      <div class="s"><span>3</span>얼마나 불편한지 색칠해요</div>
+      <div class="s bonus"><span>★</span>가장 먼저 바꾸고 싶은 곳은?</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
+    </div>
+  </div>
+</section>
+
+<!-- 12 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 5분"
+ data-notes="<b>배움 정리</b>">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 4번 방 세 번째 비밀 문장</h2>
+  <div class="cipher"><span class="blank" onclick="openBlank(this)">다른</span> 사람의 눈으로 살펴보면<br>숨은 <span class="blank" onclick="openBlank(this)">불편함</span>이 보여요.</div>
+  <div class="chips"><span class="chip">불편함</span><span class="chip">내</span><span class="chip">다른</span><span class="chip">보물</span></div>
+</section>
+
+<!-- 13 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 5분" data-hook="key"
+ data-notes="<b>보상</b> — 4번 방 세 번째 열쇠 조각!">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 4번 방 열쇠 조각 <span class="c-gold">3</span>개!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">15차시 ✔</div><div class="on">16차시 ✔</div><div class="on">17차시 ✔</div><div>18차시</div><div>19차시</div></div>
+</section>
+
+<!-- 14 다음 -->
+<section class="slide" data-phase="정리 · 5분"
+ data-notes="<b>다음 차시 예고</b> — 준비물: 집에 있는 작은 재활용품 1~2개(작은 상자, 휴지심, 종이컵, 뚜껑, 빨대 등). 다음 시간에 오늘 1등 한 불편함을 해결하는 ‘작은 발명’을 설계하고 간단한 모형을 만들어요.">
+  <div class="kicker">NEXT MISSION</div>
+  <div class="next">
+    <img class="doorimg" src="../15/img/door4.jpg" alt="">
+    <div>
+      <span class="pill" style="background:#ffe3ef;color:#8f2f5c">18차시 예고</span>
+      <h2 class="title" style="font-size:80px">모두를 위한 작은 발명</h2>
+      <p class="big" style="color:var(--ink2);margin-top:18px">오늘 찾은 불편함을 해결할 <b class="hl">작은 발명</b>을 해요.</p>
+      <div class="bring"><div>📦 작은 상자</div><div>🧻 휴지심</div><div>🥤 종이컵·뚜껑 (1~2개)</div></div>
+      <button class="btn coral" id="doneBtn" style="margin-top:22px" onclick="complete()">✅ 17차시 미션 완료</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:4, lesson:17, keyPieces:3};</script>
+<script src="../shared/base.js"></script>
+<script src="../shared/kit.js"></script>
+<script>
+/* ---------- 이야기 ---------- */
+hooks.story = () => typewriter(document.getElementById('storyText'),
+  '“흠, 이 교실은 <b class="c-coral">완벽해</b>! 나는 책상 사이로 휙휙 다니고,<br>스위치도 게시판도 다 손이 닿거든. 고칠 곳은 하나도 없어!”<br>요원 여러분, 정말 그럴까요?<br><b class="c-navy">관찰 안경</b>을 쓰고 교실을 다시 살펴봐요!');
+
+/* ---------- 미션 1: 숨은 불편함 (x,y,r: 그림 1600×899 기준) ---------- */
+const SPOT = [
+  {x:890, y:88, r:130, t:'높이 붙은 게시판', g:'🧒🧑‍🦽', w:'작품이 너무 높이 있어서 <b>가까이 보거나 직접 붙일 수 없어요</b>.'},
+  {x:1323, y:108, r:48, t:'높은 곳의 전등 스위치', g:'🧒🧑‍🦽', w:'스위치가 높아서 <b>손이 닿지 않아요</b>.'},
+  {x:1440, y:680, r:95, t:'문 아래 문턱', g:'🧑‍🦽🩹', w:'튀어나온 문턱에 <b>바퀴가 걸리고</b>, 걸려 넘어질 수 있어요.'},
+  {x:860, y:725, r:175, t:'통로의 가방', g:'🧑‍🦽🩹', w:'바닥에 가방이 있어서 <b>통로가 좁아지고</b> 걸려 넘어질 수 있어요.'},
+  {x:470, y:195, r:95, t:'맨 위 칸의 휴지와 컵', g:'🧒🩹', w:'맨 위에 있어서 <b>손이 안 닿고</b>, 꺼내다 떨어뜨릴 수 있어요.'},
+  {x:300, y:410, r:70, t:'표시 없는 정수기', g:'🌏🧒', w:'어느 쪽이 <b>뜨거운 물</b>인지 그림이나 글자 표시가 없어서 위험할 수 있어요.'},
+  {x:1410, y:415, r:52, t:'작은 문손잡이', g:'🩹🧒', w:'손잡이가 작고 문이 무거우면 <b>한 손으로 열기</b> 어려워요.'}];
+const SW = 1040 / 1600; let spFound = [];
+function spDraw(){ const sc = document.getElementById('scene'); sc.querySelectorAll('.hs,.hint').forEach(e => e.remove());
+  SPOT.forEach((o, i) => { const d = document.createElement('div'); d.className = 'hs' + (spFound.includes(i) ? ' found' : '');
+    Object.assign(d.style, {left:o.x * SW + 'px', top:o.y * SW + 'px', width:o.r * 2 * SW + 'px', height:o.r * 2 * SW + 'px'});
+    d.innerHTML = `<span class="num">${spFound.indexOf(i) + 1}</span>`; d.onclick = () => spFind(i); sc.appendChild(d); });
+  document.getElementById('spLeft').textContent = SPOT.length - spFound.length; }
+function spFind(i){ if(!spFound.includes(i)){ spFound.push(i); S.win(); } else S.ok(); const o = SPOT[i];
+  const el = document.getElementById('spInfo'); el.innerHTML = `<h4>${spFound.indexOf(i) + 1}. ${o.t}</h4><div class="who">👓 ${o.g}</div>${o.w}`; el.classList.add('show'); spDraw(); }
+function spHint(){ const rest = SPOT.map((_, i) => i).filter(i => !spFound.includes(i)); if(!rest.length) return; const o = SPOT[rest[Math.floor(Math.random() * rest.length)]];
+  const h = document.createElement('div'); h.className = 'hint'; const R = (o.r + 60) * SW; Object.assign(h.style, {left:o.x * SW + 'px', top:o.y * SW + 'px', width:R * 2 + 'px', height:R * 2 + 'px'}); document.getElementById('scene').appendChild(h); S.flip(); setTimeout(() => h.remove(), 2500); }
+function spReset(){ spFound = []; document.getElementById('spInfo').classList.remove('show'); spDraw(); }
+K.teams('teams1');
+
+/* ---------- 미션 2: 안경 뽑기 ---------- */
+const GL = [['🧑‍🦽', '휠체어를 탄 친구', '바퀴가 지나갈까? 앉아서 닿을까?'], ['🧒', '키가 작은 1학년 동생', '높은 곳에 손이 닿을까?'], ['🩹', '팔을 다친 친구', '한 손으로 할 수 있을까?'], ['🌏', '우리말이 서툰 새 친구', '글자를 몰라도 알 수 있을까?']];
+function tmDraw(pick){ document.getElementById('tm').innerHTML = [...Array(K.teamN)].map((_, t) => { const g = pick ? GL[pick[t]] : ['❔', '안경을 뽑아요', ''];
+  return `<div class="t ${pick ? '' : 'wait'}"><span class="n">${t + 1}모둠</span><span class="emo">${g[0]}</span><div class="tx">${g[1]}<small>${g[2]}</small></div></div>`; }).join(''); }
+function drawGlass(){ const base = K.shuffle([0, 1, 2, 3]); const pick = [...Array(K.teamN)].map((_, t) => t < 4 ? base[t] : Math.floor(Math.random() * 4)); S.win(); tmDraw(pick); }
+const exClock = K.clock({el:'exC', btn:'exGo', sec:300, btnLabel:'▶ 탐험 5분'});
+tmDraw(null);
+
+/* ---------- 미션 3: 불편함 지도 (이 컴퓨터에 저장) ---------- */
+const MKEY = 'mg17map'; let pins = []; let pSel = -1;
+try { pins = JSON.parse(localStorage.getItem(MKEY) || '[]'); } catch(e) { pins = []; }
+const pSave = () => { try { localStorage.setItem(MKEY, JSON.stringify(pins)); } catch(e) {} };
+const LVC = ['', '#f2b51c', '#f2803a', '#e03131'];
+function pDraw(){ const mb = document.getElementById('mapbox'); mb.querySelectorAll('.pin').forEach(e => e.remove());
+  pins.forEach((p, i) => { const d = document.createElement('div'); d.className = `pin lv${p.l}` + (i === pSel ? ' sel' : ''); d.style.left = p.x * 100 + '%'; d.style.top = p.y * 100 + '%';
+    d.innerHTML = `<div class="hd"><span>${i + 1}</span></div>`; d.onclick = e => { e.stopPropagation(); pPick(i); }; mb.appendChild(d); });
+  document.getElementById('pList').innerHTML = pins.map((p, i) => `<div class="pi ${i === pSel ? 'sel' : ''}" onclick="pPick(${i})"><span class="dot" style="background:${LVC[p.l]}">${i + 1}</span><span class="nm">${p.n || '(이름을 써요)'}</span><button class="m" onclick="event.stopPropagation();pVote(${i},-1)">−</button><span class="vt">${p.v}</span><button onclick="event.stopPropagation();pVote(${i},1)">＋</button></div>`).join('');
+  document.querySelectorAll('#pLv button').forEach(b => b.classList.toggle('on', pSel >= 0 && pins[pSel].l === +b.dataset.l));
+  const inp = document.getElementById('pName'); if(document.activeElement !== inp) inp.value = pSel >= 0 ? pins[pSel].n : ''; }
+document.getElementById('mapbox').addEventListener('click', e => { const r = e.currentTarget.getBoundingClientRect();
+  pins.push({x:(e.clientX - r.left) / r.width, y:(e.clientY - r.top) / r.height, n:'', l:2, v:0}); pSel = pins.length - 1; S.ok(); pSave(); pDraw(); document.getElementById('pName').focus(); });
+function pPick(i){ pSel = i; S.flip(); pDraw(); }
+function pEdit(){ if(pSel < 0) return; pins[pSel].n = document.getElementById('pName').value; pSave(); pDraw(); }
+function pLevel(l){ if(pSel < 0) return; pins[pSel].l = l; S.ok(); pSave(); pDraw(); }
+function pVote(i, d){ pins[i].v = Math.max(0, pins[i].v + d); if(d > 0) S.ok(); pSave(); pDraw(); }
+function pDel(){ if(pSel < 0) return; pins.splice(pSel, 1); pSel = -1; pSave(); pDraw(); }
+function pTop(){ const el = document.getElementById('pTop1'); if(!pins.length){ el.textContent = '아직 핀이 없어요.'; el.classList.add('show'); return; }
+  const m = Math.max(...pins.map(p => p.v)), t = pins.map((p, i) => [p, i]).filter(([p]) => p.v === m);
+  el.innerHTML = `🏆 가장 먼저 바꾸고 싶은 곳: ${t.map(([p, i]) => `${i + 1}번 ${p.n || ''}`).join(', ')} (${m}표)<br><small style="font-family:var(--body);font-size:18px;color:var(--ink2)">다음 시간 ‘작은 발명’의 주제가 돼요!</small>`; el.classList.add('show'); S.win(); }
+/* 지도에서 글자를 쓰는 동안 ←→ 키가 슬라이드를 넘기지 않게 */
+document.getElementById('pName').addEventListener('keydown', e => e.stopPropagation());
+
+window.onEsc = () => {};
+spDraw(); pDraw(); startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="Jua, 'Malgun Gothic', sans-serif">
+  <rect x="10" y="10" width="780" height="540" rx="26" fill="#fffaf0" stroke="#c9a77a" stroke-width="6"/>
+  <!-- 칠판 -->
+  <rect x="230" y="22" width="340" height="30" rx="8" fill="#4f8a63"/><text x="400" y="44" font-size="20" fill="#fff" text-anchor="middle">칠판</text>
+  <rect x="590" y="70" width="110" height="56" rx="10" fill="#e8c99a"/><text x="645" y="104" font-size="19" fill="#7a5530" text-anchor="middle">선생님 책상</text>
+  <!-- 창문 -->
+  <rect x="14" y="90" width="12" height="380" rx="4" fill="#bfe3ff"/><text x="58" y="285" font-size="19" fill="#3d72d0" text-anchor="middle">창문</text>
+  <!-- 문 -->
+  <rect x="774" y="64" width="12" height="80" rx="4" fill="#d69a5a"/><text x="742" y="110" font-size="19" fill="#8a5a2b" text-anchor="middle">앞문</text>
+  <rect x="774" y="420" width="12" height="80" rx="4" fill="#d69a5a"/><text x="742" y="440" font-size="19" fill="#8a5a2b" text-anchor="middle">뒷문</text>
+  <!-- 책상 -->
+  <g fill="#f2d7a6" stroke="#d3ad73" stroke-width="2">
+    <rect x="110" y="150" width="90" height="46" rx="8"/><rect x="250" y="150" width="90" height="46" rx="8"/><rect x="400" y="150" width="90" height="46" rx="8"/><rect x="550" y="150" width="90" height="46" rx="8"/>
+    <rect x="110" y="235" width="90" height="46" rx="8"/><rect x="250" y="235" width="90" height="46" rx="8"/><rect x="400" y="235" width="90" height="46" rx="8"/><rect x="550" y="235" width="90" height="46" rx="8"/>
+    <rect x="110" y="320" width="90" height="46" rx="8"/><rect x="250" y="320" width="90" height="46" rx="8"/><rect x="400" y="320" width="90" height="46" rx="8"/><rect x="550" y="320" width="90" height="46" rx="8"/>
+  </g>
+  <text x="375" y="400" font-size="19" fill="#b08a5a" text-anchor="middle">책상</text>
+  <!-- 뒤쪽 -->
+  <rect x="120" y="470" width="420" height="62" rx="10" fill="#f6c9a8" stroke="#d99a72" stroke-width="2"/><text x="330" y="508" font-size="21" fill="#8a4a2b" text-anchor="middle">사물함 (위에 게시판)</text>
+  <rect x="40" y="470" width="62" height="62" rx="10" fill="#cfe7f7" stroke="#8fb8d8" stroke-width="2"/><text x="71" y="507" font-size="17" fill="#2f6a92" text-anchor="middle">정수기</text>
+  <rect x="560" y="480" width="70" height="52" rx="10" fill="#d9f0d9" stroke="#8fc98f" stroke-width="2"/><text x="595" y="512" font-size="17" fill="#3a7a3a" text-anchor="middle">분리수거</text>
+  <rect x="660" y="480" width="80" height="52" rx="10" fill="#efe1f7" stroke="#bf9bd8" stroke-width="2"/><text x="700" y="512" font-size="17" fill="#6a3d92" text-anchor="middle">책꽂이</text>
+</svg>
