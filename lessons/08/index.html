@@ -499,7 +499,7 @@ function towerGo(){ if(tTimer){ towerStop(); return; } document.getElementById('
 function towerTop(){ drawTower(true); S.win(); const rows = tRow.slice(0, tTeams), best = Math.max(...rows.map(r => r.b));
   const w = rows.map((r, t) => r.b === best && best > 0 ? `${t + 1}모둠` : '').filter(Boolean);
   const m = document.getElementById('tmsg'); m.innerHTML = w.length ? `🏆 <b>${w.join(', ')}</b>이 책 <b>${best}권</b>을 버텼어요!<br>모양은 달라도 모두 종이의 힘을 찾았어요. 다른 모둠 기둥의 좋은 점은?` : '책 권수를 먼저 적어 주세요.'; m.classList.add('show'); }
-hooks.leave = i => { if(slides[i] && slides[i].querySelector('#lClock')) labStop(); if(slides[i] && slides[i].querySelector('#tClock')) towerStop(); if(slides[i] && slides[i].querySelector('#mStage')) clearInterval(mTimer); };
+hooks.leave = i => { if(slides[i] && slides[i].querySelector('#lClock')) labStop(); if(slides[i] && slides[i].querySelector('#tClock')) towerStop(); if(slides[i] && slides[i].querySelector('#mStage')) pb.stop(); };
 
 window.onEsc = () => {};
 drawLab8(); drawTower(); startDeck();
