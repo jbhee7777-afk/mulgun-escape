@@ -42,7 +42,7 @@
 .mstage .boom{position:absolute;left:0;right:0;top:36%;text-align:center;font-family:var(--head);font-size:110px;color:#e3523f;-webkit-text-stroke:6px #fff;paint-order:stroke fill;opacity:0;pointer-events:none}
 .mstage .boom.on{animation:boom 1.6s ease-out forwards}
 @keyframes boom{0%{opacity:0;transform:scale(.4)}20%{opacity:1;transform:scale(1.15)}70%{opacity:1;transform:scale(1)}100%{opacity:0}}
-.mstage .tag{position:absolute;right:24px;top:20px;background:var(--navy);color:#fff;border-radius:16px;padding:8px 18px;font-family:var(--head);font-size:26px}
+.mstage .tag{position:absolute;left:28px;top:112px;background:var(--navy);color:#fff;border-radius:16px;padding:8px 18px;font-family:var(--head);font-size:26px}
 .mside{width:330px;display:flex;flex-direction:column;gap:12px}
 .mside .mq{background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 18px;font-size:25px;line-height:1.5}
 .mside .mq b{color:var(--navy)}
@@ -54,6 +54,15 @@
 .mmsg b{color:#0f8a6e}
 
 /* 미션 2: 접기 실험실 */
+.sc5 .shape.ph{position:relative}
+.shape.ph img.endv{position:absolute;right:6px;top:6px;width:38% !important;height:auto !important;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.fold4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px;flex:1}
+.fd{background:var(--paper);border:3px solid var(--line);border-radius:24px;padding:14px;display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 0 var(--line)}
+.fd h3{font-size:30px;color:var(--navy);display:flex;align-items:center;gap:8px}
+.fd h3 img{width:90px;border-radius:10px;margin-left:auto}
+.fd ol{margin-left:24px;font-size:21px;line-height:1.5}
+.fd ol li{margin-bottom:4px}
+.fd ol b{color:#e3523f}
 .howto{display:flex;gap:30px;margin-top:20px;align-items:stretch}
 .howimg{width:560px;flex:none;background:#fff;border-radius:28px;box-shadow:0 0 0 6px #fff,0 12px 26px rgba(61,43,31,.18);padding:16px}
 .howimg svg{width:100%;height:100%;display:block}
@@ -200,41 +209,49 @@
 
 <!-- 5 미션 1 마술 -->
 <section class="slide" data-phase="미션 1 · 5분" data-hook="magic" style="padding-top:78px"
- data-notes="<b>종이 마술 쇼(선생님 시범 + 실제 실험 사진)</b> — 화면은 실제 실험 모습이에요. 선생님이 책 두 무더기 사이에 종이를 걸쳐 함께 보여 주면 더 좋아요. ① 평평한 종이 위에 동전을 몇 개 올릴 수 있을지 손을 들어 예상 ② ‘평평한 종이’로 동전 올리기 → 와르르! ③ 같은 종이를 병풍처럼 접으면? 다시 예상 ④ ‘병풍 접은 종이’ → 동전이 쌓여도 버텨요. “종이는 그대로인데 무엇이 달라졌을까?”">
+ data-notes="<b>종이 마술 쇼(선생님 시범 + 실험 영상)</b> — 화면은 실제 크기 비율로 계산한 실험 영상이에요(동전을 하나씩 올리면 중력 때문에 종이가 휘어요). 영상 파일은 기본 자료에도 있어요. 선생님이 책 두 무더기 사이에 종이를 걸쳐 함께 보여 주면 더 좋아요. ① 평평한 종이 위에 동전을 몇 개 올릴 수 있을지 손을 들어 예상 ② ‘평평한 종이’로 동전 올리기 → 와르르! ③ 같은 종이를 병풍처럼 접으면? 다시 예상 ④ ‘병풍 접은 종이’ → 동전이 쌓여도 버텨요. “종이는 그대로인데 무엇이 달라졌을까?”">
   <div class="magic">
     <div class="mstage" id="mStage">
-      <img class="mph on" id="phFlat" src="img/exp_flat.jpg" alt="평평한 종이 다리">
-      <img class="mph" id="phFold" src="img/exp_fold.jpg" alt="병풍 접은 종이 다리">
+      <canvas id="pbCv" width="1600" height="900" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
       <div class="cnt">동전 <b id="mCnt">0</b>개</div>
       <div class="tag" id="mTag">같은 종이 한 장</div>
       <div class="cover" id="mCover"><span>🤔</span>어떻게 될까요?</div>
       <div class="boom" id="mBoom">와르르!</div>
-      <div class="drop" id="mDrop"></div>
     </div>
     <div class="mside">
       <div class="mq">🤔 <b>예상해 봐요!</b><br>종이 한 장 위에 동전을 몇 개 올릴 수 있을까요?</div>
       <div class="votes"><div>🖐️<br>0~2개</div><div>🖐️<br>3~9개</div><div>🖐️<br>10개 이상</div></div>
       <button class="btn coral" onclick="magic('flat')">📄 평평한 종이</button>
       <button class="btn mint" onclick="magic('fold')">〰️ 병풍 접은 종이</button>
-      <div class="mmsg" id="mMsg">💡 <b>같은 종이 한 장</b>인데도 <b>접었더니</b> 훨씬 많이 버텼어요!<br>종이의 모양이 달라지면 힘도 달라져요.</div>
+      <div style="font-size:19px;color:var(--ink2);line-height:1.45">※ 병풍은 <b>접는 선이 다리 방향과 같게</b> 접어요.<br>오른쪽 위 그림은 종이 끝에서 본 모양이에요.</div>
+      <div class="mmsg" id="mMsg"></div>
     </div>
   </div>
 </section>
 
 <!-- 6 미션 2 안내 -->
 <section class="slide" data-phase="미션 2 · 12분"
- data-notes="<b>접기 실험 준비</b> — 모둠마다 같은 크기 종이 5장(A4를 4등분), 높이가 같은 책 두 무더기(간격 10cm), 100원 동전이나 바둑알 30개쯤. 모양은 다섯 가지: 평평하게 / 반으로 접기 / 병풍 접기 / 둥글게 말기(테이프 조금) / 세모 기둥(테이프 조금). 시간이 부족하면 모둠마다 2~3가지 모양을 나눠 맡아요.">
+ data-notes="<b>접기 실험 준비</b> — 모둠마다 A4를 4등분한 종이 4장(10.5cm×14.8cm), 높이가 같은 책 두 무더기(간격 10cm), 100원 동전 20개쯤(없으면 바둑알). 모양은 네 가지예요. 모두 위가 평평해서 동전이 굴러떨어지지 않아요. 둥글게 말거나 세모로 접은 종이는 동전이 굴러서 실험이 안 되므로 미션 3(세운 기둥)에서 써요. 다음 화면에서 접는 방법을 하나씩 보여 주세요.">
   <div class="kicker">MISSION 2</div>
-  <h2 class="title" style="font-size:56px">🧪 접기 실험실 — 어떤 모양이 가장 튼튼할까?</h2>
-  <div class="shapes5" id="shapes5"></div>
-  <div class="howto" style="margin-top:22px">
+  <h2 class="title" style="font-size:52px">🧪 접기 실험실 — 어떤 모양이 동전을 가장 많이 버틸까?</h2>
+  <div class="shapes5" id="shapes5" style="grid-template-columns:repeat(4,1fr)"></div>
+  <div class="howto" style="margin-top:18px">
     <div class="howsteps">
-      <div class="s"><span>1</span>같은 크기 종이를 다섯 가지 모양으로 만들어요.</div>
-      <div class="s"><span>2</span>책 두 무더기 사이(10cm)에 종이를 걸쳐요.</div>
-      <div class="s"><span>3</span>가운데에 동전을 <b class="hl">하나씩 살살</b> 올려요. 무너지기 전까지 몇 개?</div>
+      <div class="s"><span>1</span>책 두 무더기를 <b class="hl">10cm</b> 떨어뜨려 놓아요. (자로 재요)</div>
+      <div class="s"><span>2</span>종이의 <b>긴 쪽</b>이 책과 책 사이를 건너가게 걸쳐요.</div>
+      <div class="s"><span>3</span>가운데에 동전을 <b class="hl">하나씩 살며시</b> 올려요. 던지지 않아요!</div>
+      <div class="s"><span>4</span>종이가 책에서 미끄러지거나 바닥에 닿으면 끝! <b>그 전까지 올린 수</b>를 적어요.</div>
     </div>
-    <div class="need" style="width:440px;flex:none">🧺 <b>준비물</b><br>같은 크기 종이 5장, 책 두 무더기, 동전(또는 바둑알), 테이프<br>🙋 실험 전에 <b>어떤 모양이 1등일지</b> 예상해요!</div>
+    <div class="need" style="width:420px;flex:none">🧺 <b>준비물(모둠)</b><br>A4를 4등분한 종이 4장, 책 두 무더기, 동전 20개(또는 바둑알), 자<br>🙋 실험 전에 <b>어떤 모양이 1등일지</b> 예상해요!</div>
   </div>
+</section>
+
+<!-- 6-2 접는 방법 -->
+<section class="slide" data-phase="미션 2 · 12분"
+ data-notes="<b>접는 방법 보여 주기</b> — 선생님이 종이 한 장으로 하나씩 따라 접어 보여 주세요. 접는 선은 모두 종이의 긴 쪽과 나란해요(다리 방향). 가로로 접으면 아코디언처럼 눌려서 실험이 안 돼요.">
+  <div class="kicker">MISSION 2 · 이렇게 접어요</div>
+  <h2 class="title" style="font-size:50px">✂️ 네 가지 모양 접는 방법 <small style="font-size:26px;color:var(--ink2)">— 접는 선은 모두 <b class="c-coral">긴 쪽과 나란히</b>!</small></h2>
+  <div class="fold4" id="fold4"></div>
 </section>
 
 <!-- 7 미션 2 기록판 -->
@@ -255,7 +272,7 @@
 
 <!-- 8 비밀 -->
 <section class="slide" data-phase="미션 2 · 12분"
- data-notes="<b>실험 정리</b> — 카드를 눌러 하나씩 공개해요. 핵심: 종이는 그대로인데 <b>접거나 말아서 모양을 바꾸면</b> 힘을 잘 버텨요. 다음 화면에서 생활 속 물건을 찾아봐요.">
+ data-notes="<b>실험 정리</b> — 카드를 눌러 하나씩 공개해요. 핵심: 종이는 그대로인데 <b>접어서 세운 벽</b>이 있으면 힘을 잘 버텨요. 종이를 세로로 세워 쓰면 튼튼한 것과 같은 까닭이에요(미션 3 기둥). 다음 화면에서 생활 속 물건을 찾아봐요.">
   <div class="kicker">THINK TOGETHER</div>
   <h2 class="title" style="font-size:56px">🔐 종이가 튼튼해진 비밀</h2>
   <div class="secret" id="secret8"></div>
@@ -394,39 +411,40 @@
 
 <script>window.LESSON = {room:2, lesson:8, keyPieces:4};</script>
 <script src="../shared/base.js"></script>
+<script src="../shared/paperbridge.js"></script>
 <script>
-/* ---------- 접기 모양 (끝에서 본 모습) ---------- */
+/* ---------- 접기 모양 ----------
+   다리 모양(동전 실험)은 shared/paperbridge.js 로 그린 그림(img/br_*.png, 끝에서 본 모양 img/end_*.png),
+   세운 기둥(미션 3)은 img/col_*.png. 모두 실제 크기 비율로 그렸어요. */
 const SHAPE = {
-  flat:{n:'평평하게', d:'그대로 걸쳐요', svg:'<line class="pp" x1="10" y1="50" x2="90" y2="50"/>'},
-  half:{n:'반으로 접기', d:'가운데를 한 번 접어 ㅅ자로', svg:'<polyline class="pp" points="12,72 50,26 88,72"/>'},
-  zig:{n:'병풍 접기', d:'앞뒤로 여러 번 접어요', svg:'<polyline class="pp" points="8,66 22,34 36,66 50,34 64,66 78,34 92,66"/>'},
-  roll:{n:'둥글게 말기', d:'돌돌 말아 테이프로', svg:'<circle class="pp" cx="50" cy="50" r="28"/>'},
-  tri:{n:'세모 기둥', d:'세 번 접어 세모로', svg:'<polygon class="pp" points="50,20 84,76 16,76"/>'},
-  square:{n:'네모 기둥', d:'네 번 접어 네모로', svg:'<rect class="pp" x="22" y="22" width="56" height="56"/>'},
-  mix:{n:'섞어서', d:'', svg:'<circle class="pp" cx="34" cy="52" r="18"/><polygon class="pp" points="70,30 90,72 50,72"/>'},
-  new:{n:'새 모양', d:'', svg:'<path class="pp" d="M50 18 L60 40 L84 42 L66 58 L72 82 L50 70 L28 82 L34 58 L16 42 L40 40 Z"/>'}};
-const PHOTO = {flat:1, half:1, zig:1, roll:1, tri:1};
-const shapeSvg = k => PHOTO[k] ? `<div class="shape ph"><img src="img/shape_${k}.jpg" alt="${SHAPE[k].n}"></div>` : `<div class="shape"><svg viewBox="0 0 100 100">${SHAPE[k].svg}</svg></div>`;
-const LAB = ['flat', 'half', 'zig', 'roll', 'tri'];
+  flat:{n:'평평하게', d:'접지 않고 그대로 걸쳐요', img:'br_flat'},
+  channel:{n:'ㄷ자 홈통', d:'양쪽 가장자리를 위로 세워요', img:'br_channel', end:'end_channel'},
+  hat:{n:'⊓자 다리', d:'양쪽 가장자리를 아래로 접어요', img:'br_hat', end:'end_hat'},
+  pleat:{n:'병풍 접기', d:'긴 쪽과 나란히 앞뒤로 접어요', img:'br_pleat', end:'end_pleat'},
+  roll:{n:'둥근 기둥', d:'', img:'col_round'}, tri:{n:'세모 기둥', d:'', img:'col_tri'}, square:{n:'네모 기둥', d:'', img:'col_square'},
+  zig:{n:'병풍 기둥', d:'', img:'col_zig'}, mix:{n:'섞어서', d:'', img:'col_mix'}, new:{n:'새 모양', d:'', img:'col_new'}};
+const shapeSvg = k => `<div class="shape ph"><img src="img/${SHAPE[k].img}.png" alt="${SHAPE[k].n}">${SHAPE[k].end ? `<img class="endv" src="img/${SHAPE[k].end}.png" alt="">` : ''}</div>`;
+const LAB = ['flat', 'channel', 'hat', 'pleat'];
+const FOLD = [
+  ['flat', ['종이를 <b>접지 않아요</b>.', '긴 쪽이 책 사이를 건너가게 걸쳐요.', '이 모양이 <b>비교 기준</b>이에요.']],
+  ['channel', ['종이를 긴 쪽이 옆으로 오게 놓아요.', '위쪽 가장자리를 <b>손가락 한 마디(1.5cm)</b>만큼 접어요.', '아래쪽 가장자리도 똑같이 접어요.', '접은 두 쪽을 <b>위로 세워요</b>. 위에서 보면 ㄷ자를 눕힌 모양!']],
+  ['hat', ['ㄷ자 홈통과 똑같이 양쪽을 1.5cm씩 접어요.', '종이를 <b>뒤집어요</b>.', '접은 두 쪽이 <b>아래로 다리처럼</b>서요.', '동전은 평평한 <b>윗면</b>에 올려요.']],
+  ['pleat', ['종이를 긴 쪽이 옆으로 오게 놓아요.', '위 가장자리를 <b>1cm</b> 접어요.', '뒤집어서 또 1cm 접어요.', '끝까지 <b>앞뒤로 번갈아</b> 접어요(부채 접기).', '접은 선이 <b>책 사이를 건너가는 방향</b>과 같아야 해요!']]];
+document.getElementById('fold4').innerHTML = FOLD.map(([k, st]) => `<div class="fd"><h3>${SHAPE[k].n}${SHAPE[k].end ? `<img src="img/${SHAPE[k].end}.png" alt="">` : ''}</h3><img src="img/${SHAPE[k].img}.png" alt="" style="width:100%;border-radius:12px"><ol>${st.map(t => `<li>${t}</li>`).join('')}</ol></div>`).join('');
 
 /* ---------- 이야기 ---------- */
 hooks.story = () => typewriter(document.getElementById('storyText'),
   '“흐흐흐, 종이는 얇고 <b class="c-coral">약하기만</b> 하지!<br>종이 한 장으로 동전을 버티거나, 종이 기둥으로 <b class="c-coral">책</b>을 받칠 수 있겠어?”<br>요원 여러분, 종이에 숨은 <b class="c-navy">놀라운 힘</b>을 보여 주세요!');
 
-/* ---------- 미션 1: 종이 마술 쇼 (실제 실험 사진 + 동전 떨어뜨리기) ---------- */
-let mTimer = null;
-function magic(kind){
-  clearInterval(mTimer); const fold = kind === 'fold', cnt = document.getElementById('mCnt'), drop = document.getElementById('mDrop');
-  document.getElementById('mBoom').classList.remove('on'); document.getElementById('mMsg').classList.remove('show');
-  document.getElementById('phFlat').classList.toggle('on', !fold); document.getElementById('phFold').classList.toggle('on', fold);
-  document.getElementById('mCover').classList.add('off'); cnt.textContent = 0;
+/* ---------- 미션 1: 종이 마술 쇼 (shared/paperbridge.js: 동전을 하나씩 올리면 중력으로 종이가 휘어요) ---------- */
+const pb = new PaperBridge(document.getElementById('pbCv'));
+function magic(kind){ const fold = kind === 'fold', cnt = document.getElementById('mCnt'), msg = document.getElementById('mMsg');
+  document.getElementById('mBoom').classList.remove('on'); msg.classList.remove('show'); document.getElementById('mCover').classList.add('off'); cnt.textContent = 0;
   document.getElementById('mTag').textContent = fold ? '〰️ 병풍 접은 종이' : '📄 평평한 종이';
-  let n = 0; const max = fold ? 15 : 2;
-  mTimer = setInterval(() => { n++; drop.classList.remove('go'); void drop.offsetWidth; drop.classList.add('go'); cnt.textContent = n; S.tick();
-    if(n >= max){ clearInterval(mTimer);
-      setTimeout(() => { if(fold){ S.win(); document.getElementById('mMsg').classList.add('show'); } else { document.getElementById('mBoom').classList.add('on'); S.poof(); } }, 600); } }, fold ? 330 : 800);
-}
-hooks.magic = () => { clearInterval(mTimer); document.getElementById('mCover').classList.remove('off'); document.getElementById('mCnt').textContent = 0; document.getElementById('mBoom').classList.remove('on'); document.getElementById('mMsg').classList.remove('show'); };
+  pb.play(fold ? 'pleat' : 'flat', {onClink:() => S.tick(), onCount:n => { cnt.textContent = n; },
+    onFall:() => { document.getElementById('mBoom').classList.add('on'); S.poof(); },
+    onDone:(fell, n) => { msg.innerHTML = fell ? `📄 평평한 종이는 동전 <b>${n}개</b>에 크게 휘어서, 끝이 책에서 미끄러져 떨어졌어요.<br>🤔 같은 종이를 접으면 어떻게 될까요?` : `〰️ <b>같은 종이 한 장</b>인데 병풍으로 접었더니 동전 <b>${n}개</b>를 올려도 조금만 휘었어요!<br>종이의 <b>모양</b>이 달라지면 버티는 힘도 달라져요.`; msg.classList.add('show'); if(!fell) S.win(); } }); }
+hooks.magic = () => { pb.stop(); pb.reset('flat'); document.getElementById('mCover').classList.remove('off'); document.getElementById('mCnt').textContent = 0; document.getElementById('mBoom').classList.remove('on'); document.getElementById('mMsg').classList.remove('show'); };
 
 /* ---------- 미션 2: 접기 실험실 ---------- */
 document.getElementById('shapes5').innerHTML = LAB.map(k => `<div class="sc5">${shapeSvg(k)}<h3>${SHAPE[k].n}</h3><p>${SHAPE[k].d}</p></div>`).join('');
@@ -448,11 +466,11 @@ function labGo(){ if(lTimer){ labStop(); return; } document.getElementById('lGo'
 function labReset8(){ labStop(); lLeft = 480; labClock();  LAB.forEach(k => { lv[k] = 0; lp[k] = 0; }); document.getElementById('lmsg8').classList.remove('show'); S.flip(); drawLab8(); }
 
 const SECRET = [
-  ['zig', '병풍 접기는 왜 튼튼할까?', '접힌 줄 하나하나가 <b>작은 기둥</b>처럼 세워져서 무게를 나눠서 받쳐요.'],
-  ['roll', '둥글게 말면?', '둥근 기둥은 위에서 누르는 힘이 <b>둘레 전체로 고르게</b> 퍼져서 잘 찌그러지지 않아요.'],
-  ['tri', '세모 기둥은?', '세모는 눌러도 <b>모양이 잘 변하지 않는</b> 단단한 모양이에요.']];
+  ['channel', 'ㄷ자 홈통·⊓자 다리는 왜 튼튼할까?', '접어 세운 <b>작은 벽</b>이 다리를 따라 길게 서 있어요. 벽이 서 있으면 위에서 눌러도 잘 휘지 않아요.'],
+  ['pleat', '병풍 접기는 왜 더 튼튼할까?', '접는 선마다 작은 벽이 생겨요. 벽이 <b>여러 개</b>라서 동전 무게를 나눠서 받쳐요.'],
+  ['flat', '평평한 종이는 왜 약할까?', '얇은 종이가 <b>눕혀져</b> 있어서, 무게가 실리면 쉽게 휘어요. 많이 휘면 끝이 책에서 미끄러져요.']];
 document.getElementById('secret8').innerHTML = SECRET.map(([k, q, a]) => `<div class="sc" onclick="this.classList.add('open');S.ok()">${shapeSvg(k)}<div class="sq8">${q}</div><div class="a">💡 ${a}</div></div>`).join('')
-  + `<div class="sc" style="grid-column:1/-1;min-height:0" onclick="this.classList.add('open');S.win()"><div class="sq8">🔑 그래서 알게 된 것은?</div><div class="a">종이는 그대로인데 <b>접거나 말아서 모양을 바꾸면</b> 훨씬 큰 힘을 버틸 수 있어요. 겹치면 더 튼튼해져요!</div></div>`;
+  + `<div class="sc" style="grid-column:1/-1;min-height:0" onclick="this.classList.add('open');S.win()"><div class="sq8">🔑 그래서 알게 된 것은?</div><div class="a">종이는 그대로인데 <b>접어서 벽을 세우면</b> 훨씬 큰 힘을 버틸 수 있어요. 접는 방향도 중요해요!</div></div>`;
 const LIFE = [
   ['📦', '골판지 상자', '종이 사이에 <b>물결 모양 종이</b>를 끼워서 튼튼해요.'],
   ['🥤', '종이컵', '컵 입구를 <b>돌돌 말아서</b> 잘 찌그러지지 않아요.'],
