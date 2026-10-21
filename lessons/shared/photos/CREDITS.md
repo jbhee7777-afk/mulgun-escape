@@ -98,3 +98,13 @@
 | elevbtn.jpg | 엘리베이터 점자 단추 | [Elevator panel with Braille (cropped).jpg](https://commons.wikimedia.org/wiki/File:Elevator_panel_with_Braille_(cropped).jpg) | 작성자 표기 없음 | CC BY 3.0 |
 | pictogram.jpg | 화장실 그림 안내판 | [Gender neutral toilet sign gu.jpg](https://commons.wikimedia.org/wiki/File:Gender_neutral_toilet_sign_gu.jpg) | Flinga | Public domain |
 | lowbus.jpg | 저상 버스 | [Albany Transit System Gillig bus 481 with wheelchair ramp deployed - Albany, Oregon (2018).jpg](https://commons.wikimedia.org/wiki/File:Albany_Transit_System_Gillig_bus_481_with_wheelchair_ramp_deployed_-_Albany,_Oregon_(2018).jpg) | Steve Morgan | CC BY-SA 4.0 |
+| tproll.jpg | 휴지심(종이 통) | [Cardboard tube end.jpg](https://commons.wikimedia.org/wiki/File:Cardboard_tube_end.jpg) | Ahecht | CC BY-SA 4.0 |
+| papercup.jpg | 종이컵 | [Cups-disposable-paper-government-Tamil Nadu.JPG](https://commons.wikimedia.org/wiki/File:Cups-disposable-paper-government-Tamil_Nadu.JPG) | Tha-uzhavan | CC BY-SA 3.0 |
+| cardbox.jpg | 작은 상자 | [Small Cardboard Moving Box Taped Closed (47303025881).jpg](https://commons.wikimedia.org/wiki/File:Small_Cardboard_Moving_Box_Taped_Closed_(47303025881).jpg) | HireAHelper | CC BY 2.0 |
+| bottlecap.jpg | 병뚜껑 | [Bottle caps 2.jpg](https://commons.wikimedia.org/wiki/File:Bottle_caps_2.jpg) | ProjectManhattan | CC BY-SA 3.0 |
+| milkcarton.jpg | 우유갑 | [1969 - Freemans Milk Carton Ad - Dorney Park - Allentown PA.jpg](https://commons.wikimedia.org/wiki/File:1969_-_Freemans_Milk_Carton_Ad_-_Dorney_Park_-_Allentown_PA.jpg) | 작성자 표기 없음 | Public domain |
+| eggcarton.jpg | 달걀판 | [Stack of egg cartons.jpg](https://commons.wikimedia.org/wiki/File:Stack_of_egg_cartons.jpg) | Edward Betts | Public domain |
+| trussbridge.jpg | 철교 | [Ayala steel truss bridge (1).jpg](https://commons.wikimedia.org/wiki/File:Ayala_steel_truss_bridge_(1).jpg) | Higad Rail Fan | CC BY-SA 4.0 |
+| pylon.jpg | 송전탑 | [Electricity transmission pylon, Gomersal - geograph.org.uk - 7491463.jpg](https://commons.wikimedia.org/wiki/File:Electricity_transmission_pylon,_Gomersal_-_geograph.org.uk_-_7491463.jpg) | Humphrey Bolton | CC BY-SA 2.0 |
+| bikeframe.jpg | 자전거 몸통 | [Bicycle frame mtb hardtail.jpg](https://commons.wikimedia.org/wiki/File:Bicycle_frame_mtb_hardtail.jpg) | Keithonearth | CC BY-SA 3.0 |
+| cardboard.jpg | 골판지 | [Corrugated Cardboard.JPG](https://commons.wikimedia.org/wiki/File:Corrugated_Cardboard.JPG) | Richard Wheeler (Zephyris) | CC BY-SA 3.0 |
