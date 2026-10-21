@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3번 방 · 14차시 내 물건 업그레이드</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/kit.css">
+<style>
+/* 설계도 예시 */
+.bp{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px;flex:1;min-height:0}
+.bpbox{background:#eaf2ff;border:4px solid #8fb8ff;border-radius:26px;padding:16px;display:flex;flex-direction:column;gap:10px;position:relative;background-image:linear-gradient(rgba(61,114,208,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(61,114,208,.12) 1px,transparent 1px);background-size:28px 28px}
+.bpbox h3{font-size:30px;color:#2a4f9a}
+.bpbox .pic{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
+.bpbox .pic img{max-height:250px;max-width:70%}
+.callout{position:absolute;background:#fff;border:3px solid #2a4f9a;border-radius:16px;padding:6px 12px;font-family:var(--head);font-size:22px;color:#2a4f9a}
+.callout::before{content:"";position:absolute;width:40px;border-top:3px dashed #2a4f9a}
+.c1{left:2%;top:10%}.c1::before{left:100%;top:50%}
+.c2{right:2%;top:30%}.c2::before{right:100%;top:50%}
+.c3{left:4%;bottom:8%}.c3::before{left:100%;top:50%}
+.bpinfo{background:#fff;border-radius:18px;padding:12px 16px;font-size:24px;line-height:1.55}
+.bpinfo b{color:#2a4f9a}
+
+/* 단계 안내 */
+.steps6{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+
+/* 전시회 */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.gal .g{background:var(--paper);border:3px solid var(--line);border-radius:24px;padding:16px;text-align:center;box-shadow:0 7px 0 var(--line)}
+.gal .g .emo{font-size:72px}
+.gal .g h3{font-size:30px;color:var(--navy)}
+.gal .g p{font-size:23px;line-height:1.5}
+
+/* 3번 방 탈출 */
+.escape{display:flex;align-items:center;gap:60px;flex:1}
+.escape .doorimg{width:440px;height:440px}
+.escape .title{font-size:88px}
+.sents{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.sents div{background:rgba(255,255,255,.1);border-radius:14px;padding:7px 16px;font-size:22px;color:#e6eaff;line-height:1.45}
+.sents div b{color:var(--gold)}
+.confetti{position:absolute;width:14px;height:22px;top:-30px;pointer-events:none;animation:fall linear forwards;z-index:5}
+@keyframes fall{to{transform:translateY(980px) rotate(720deg)}}
+</style>
+</head>
+<body data-room="3">
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 3번 방 · 생활 속 불편함 해결하기</span><span class="ls">14차시 / 10~14</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 5분"
+ data-notes="<b>시작</b> — “3번 방 마지막 시간! 오늘은 진짜 발명가처럼 내 물건 업그레이드 설계도를 그려요.”">
+  <div class="cover">
+    <img class="doorimg bob" src="../10/img/door3.jpg" alt="3번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill">3번 방 · 14차시 · 마지막 조각</span>
+      <h1 class="title">내 물건<br>업그레이드</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">불편함을 해결하는 나만의 설계도</p>
+      <button class="btn coral" style="margin-top:34px" onclick="go(1)">🚪 3번 방 다시 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>3번 방 돌아보기</b> — 10~13차시를 한 줄씩 떠올려요: 불편함에서 시작 → 불편함 찾기 → 세 가지 마법 → 시험하고 고르기. 오늘은 이 네 가지를 모두 써서 설계도를 그려요.">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">발명가의 네 걸음</h2>
+  <div class="how c4" style="margin-top:28px">
+    <div class="st"><span class="no">1</span><div class="tx" style="text-align:center;font-size:28px"><span class="emo" style="font-size:66px">😣</span>불편함<br><b>찾기</b></div></div>
+    <div class="st"><span class="no">2</span><div class="tx" style="text-align:center;font-size:28px"><span class="emo" style="font-size:66px">✨</span>마법으로<br><b>생각하기</b></div></div>
+    <div class="st"><span class="no">3</span><div class="tx" style="text-align:center;font-size:28px"><span class="emo" style="font-size:66px">📐</span>설계도<br><b>그리기</b></div></div>
+    <div class="st"><span class="no">4</span><div class="tx" style="text-align:center;font-size:28px"><span class="emo" style="font-size:66px">🗣️</span>친구에게<br><b>소개하기</b></div></div>
+  </div>
+  <div class="goal" style="margin-top:26px"><b>🎯 학습 목표</b> 내가 쓰는 물건의 불편함을 해결할 새 물건을 생각하고, 설계도로 그려 소개할 수 있어요.</div>
+</section>
+
+<!-- 3 설계도 예시 -->
+<section class="slide" data-phase="미션 1 · 7분"
+ data-notes="<b>설계도란?</b> — 만들기 전에 그리는 그림이에요. 그림에 화살표로 ‘어느 부분이 무엇을 하는지’ 설명을 붙이는 것이 핵심이에요. 예시를 함께 읽어요(왼쪽: 원래 물건, 오른쪽: 업그레이드).">
+  <div class="kicker">MISSION 1 · 설계도 보기</div>
+  <h2 class="title" style="font-size:52px">📐 설계도는 이렇게 그려요</h2>
+  <div class="bp">
+    <div class="bpbox"><h3>원래 물건 — 책가방</h3><div class="pic"><img src="../01/img/obj_backpack.png" alt=""><span class="callout c1">무거워요 😣</span><span class="callout c3">작은 물건이 섞여요 😣</span></div>
+      <div class="bpinfo">😣 <b>불편함</b> — 책을 다 넣으면 너무 무겁고, 연필이 가방 속에서 굴러다녀요.</div></div>
+    <div class="bpbox"><h3>업그레이드 — 바퀴 정리 가방</h3><div class="pic"><img src="../02/img/obj_suitcase.png" alt=""><span class="callout c1">＋ 바퀴와 손잡이</span><span class="callout c2">＋ 칸막이 주머니</span><span class="callout c3">↻ 가벼운 천</span></div>
+      <div class="bpinfo">✨ <b>마법</b> — 바퀴 <b>더하기</b>, 칸막이 <b>더하기</b>, 천을 가볍게 <b>바꾸기</b><br>💡 <b>좋아진 점</b> — 끌고 다녀서 어깨가 안 아프고, 물건을 칸마다 넣어요.</div></div>
+  </div>
+</section>
+
+<!-- 4 순서 -->
+<section class="slide" data-phase="미션 2 · 18분"
+ data-notes="<b>설계도 그리기 순서</b> — 활동지를 나눠 주고 한 단계씩 화면을 가리키며 함께 해요. 그림 실력보다 ‘화살표 설명’이 중요하다고 꼭 말해 주세요. 막히는 학생은 11~13차시 노트를 다시 보게 해요.">
+  <div class="kicker">MISSION 2 · 설계도 그리기</div>
+  <h2 class="title" style="font-size:52px">✏️ 이 순서대로 그려요</h2>
+  <div class="steps6 how">
+    <div class="st"><span class="no">1</span><div class="tx">업그레이드할 <b>내 물건</b>을 정해요. (11차시 수사 노트를 봐요)</div></div>
+    <div class="st"><span class="no">2</span><div class="tx">그 물건의 <b>불편함</b>을 한 문장으로 써요.</div></div>
+    <div class="st"><span class="no">3</span><div class="tx"><b>마법</b>을 골라요. 두 가지를 써도 돼요! (＋ 더하기 · － 빼기 · ↻ 바꾸기)</div></div>
+    <div class="st"><span class="no">4</span><div class="tx">설계도 칸에 새 물건을 <b>크게</b> 그려요. 연필로 먼저, 다음에 색칠!</div></div>
+    <div class="st"><span class="no">5</span><div class="tx">바뀐 부분마다 <b>화살표</b>를 긋고 짧게 설명을 써요. (2개 이상)</div></div>
+    <div class="st"><span class="no">6</span><div class="tx">새 물건에 멋진 <b>이름</b>을 붙이고 좋아진 점을 써요.</div></div>
+  </div>
+</section>
+
+<!-- 5 타이머 -->
+<section class="slide center" data-phase="미션 2 · 18분"
+ data-notes="<b>활동 시간</b> — 15분. 5분마다 ‘지금 몇 번 단계인가요?’ 물어 진행을 확인해요. 일찍 끝나면 짝의 설계도에 ‘이런 마법도 어때?’ 붙임쪽지를 붙여 줘요.">
+  <div class="kicker">MISSION 2 · 활동 시간</div>
+  <h2 class="title" style="font-size:56px;margin-bottom:36px">나만의 업그레이드 설계도!</h2>
+  <div class="timer" data-sec="900"></div>
+</section>
+
+<!-- 6 전시회 -->
+<section class="slide" data-phase="미션 3 · 7분"
+ data-notes="<b>발명품 전시회</b> — 설계도를 책상 위에 펼쳐 두고, 모둠 순서대로 다른 모둠 책상을 돌며 구경해요(모둠당 1분, 선생님이 ‘이동!’ 신호). 마음에 드는 설계도에 붙임쪽지(또는 작은 스티커)로 칭찬을 남겨요. 칭찬 말 예시를 함께 읽어요.">
+  <div class="kicker">MISSION 3</div>
+  <h2 class="title">🖼️ 발명품 전시회</h2>
+  <div class="gal">
+    <div class="g"><div class="emo">🖼️</div><h3>① 펼쳐요</h3><p>내 설계도를 책상 위에 잘 보이게 펼쳐요.</p></div>
+    <div class="g"><div class="emo">🚶</div><h3>② 돌아요</h3><p>선생님이 “이동!” 하면 옆 모둠 책상으로 <b>걸어서</b> 가요. (1분씩)</p></div>
+    <div class="g"><div class="emo">💌</div><h3>③ 칭찬해요</h3><p>좋은 설계도에 붙임쪽지로 칭찬을 남겨요.</p></div>
+  </div>
+  <div class="goal" style="margin-top:22px"><b>💬 칭찬 말</b> “<b>○○ 마법</b>이 좋아요!” · “<b>화살표 설명</b>이 알기 쉬워요!” · “나도 <b>이 물건</b>을 쓰고 싶어요!”</div>
+  <div class="btns" style="margin-top:16px"><button class="btn coral" id="gGo" onclick="galClock.toggle()">▶ 1분 이동</button><div class="kclock" style="display:inline-block;padding:4px 20px"><b id="gC" style="font-size:44px">60</b></div></div>
+</section>
+
+<!-- 7 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 5분"
+ data-notes="<b>배움 정리</b>">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 3번 방 다섯 번째 비밀 문장</h2>
+  <div class="cipher">불편함을 찾고 마법을 걸면<br>누구나 <span class="blank" onclick="openBlank(this)">발명가</span>가 될 수 <span class="blank" onclick="openBlank(this)">있어요</span>.</div>
+  <div class="chips"><span class="chip">있어요</span><span class="chip">어른</span><span class="chip">발명가</span><span class="chip">없어요</span></div>
+</section>
+
+<!-- 8 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 5분" data-hook="key"
+ data-notes="<b>보상</b> — 3번 방 마지막 열쇠 조각!">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 열쇠 조각 <span class="c-gold">5</span>개, 열쇠 완성!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">10차시 ✔</div><div class="on">11차시 ✔</div><div class="on">12차시 ✔</div><div class="on">13차시 ✔</div><div class="on">14차시 ✔</div></div>
+</section>
+
+<!-- 9 탈출 -->
+<section class="slide dark" data-phase="정리 · 5분" data-hook="escape"
+ data-notes="<b>3번 방 탈출!</b> — 다섯 비밀 문장을 다 같이 읽어요.">
+  <div class="escape" onclick="confetti()">
+    <img class="doorimg" src="../10/img/door3.jpg" alt="">
+    <div>
+      <span class="pill">🎉 ESCAPE!</span>
+      <h2 class="title">3번 방 탈출!</h2>
+      <div class="sents">
+        <div><b>①</b> 발명은 생활 속 불편함을 찾는 데서 시작돼요.</div>
+        <div><b>②</b> 매일 쓰는 물건을 자세히 살펴보면 숨어 있는 불편함을 찾을 수 있어요.</div>
+        <div><b>③</b> 더하기, 빼기, 바꾸기 마법으로 불편함을 해결하는 새 물건을 만들 수 있어요.</div>
+        <div><b>④</b> 여러 해결 방법을 직접 시험하고 비교하면 가장 알맞은 방법을 고를 수 있어요.</div>
+        <div><b>⑤</b> 불편함을 찾고 마법을 걸면 누구나 발명가가 될 수 있어요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 다음 -->
+<section class="slide" data-phase="정리 · 5분"
+ data-notes="<b>다음 방 예고</b> — 4번 방 ‘모두의 마을’. 준비물: 목장갑 1켤레(집에 있으면). 없으면 선생님이 준비한 것을 써요. 숙제: 할머니·할아버지나 동생이 물건을 쓸 때 어려워하는 모습을 본 적이 있는지 떠올려 오기.">
+  <div class="kicker">NEXT ROOM</div>
+  <div class="next">
+    <img class="doorimg" src="../15/img/door4.jpg" alt="">
+    <div>
+      <span class="pill" style="background:#ffe3ef;color:#8f2f5c">4번 방 예고 · 15차시</span>
+      <h2 class="title" style="font-size:76px">모두의 마을</h2>
+      <p class="big" style="color:var(--ink2);margin-top:18px">나에게 쉬운 일이 <b class="hl">모두에게도</b> 쉬울까?<br>🕵️ 가족이 물건을 쓰며 어려워한 적이 있나요?</p>
+      <div class="bring"><div>🧤 목장갑 1켤레 (집에 있으면)</div></div>
+      <button class="btn coral" id="doneBtn" style="margin-top:22px" onclick="complete()">✅ 14차시 미션 완료 · 3번 방 탈출</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:3, lesson:14, keyPieces:5};</script>
+<script src="../shared/base.js"></script>
+<script src="../shared/kit.js"></script>
+<script>
+const galClock = K.clock({el:'gC', btn:'gGo', sec:60, btnLabel:'▶ 1분 이동'});
+function confetti(){ const st = document.getElementById('stage'), cols = ['#ffc53d', '#ff7b6b', '#4fd1ae', '#8fb8ff', '#ff8fc8', '#fff'];
+  for(let i = 0; i < 90; i++){ const c = document.createElement('div'); c.className = 'confetti'; c.style.left = Math.random() * 1600 + 'px'; c.style.background = cols[i % cols.length];
+    c.style.animationDuration = 2.2 + Math.random() * 2 + 's'; c.style.animationDelay = Math.random() * .8 + 's'; st.appendChild(c); setTimeout(() => c.remove(), 5200); }
+  S.win(); }
+hooks.escape = () => setTimeout(confetti, 300);
+window.onEsc = () => {};
+startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>
