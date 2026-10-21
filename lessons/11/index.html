@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3번 방 · 11차시 불편함 수사대</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/kit.css">
+<style>
+/* 미션 1: 30초 수사 */
+.scan{flex:1;display:flex;gap:24px;min-height:0;margin-top:4px}
+.scanmain{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.target{display:flex;align-items:center;gap:24px;background:#fff;border:4px solid var(--line);border-radius:30px;padding:16px 26px;box-shadow:0 8px 0 var(--line)}
+.target img{width:170px;height:170px;border-radius:24px;object-fit:cover;flex:none}
+.target .t{font-family:var(--head);font-size:44px;color:var(--navy);line-height:1.3}
+.target .t small{display:block;font-size:24px;color:var(--ink2)}
+.look{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.look div{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:12px 18px;font-size:26px;line-height:1.45;display:flex;gap:12px;align-items:center}
+.look .emo{font-size:40px;flex:none}
+.bigclock{flex:1;display:flex;align-items:center;justify-content:center;gap:30px}
+.bigclock b{font-family:var(--head);font-weight:400;font-size:150px;color:var(--room);line-height:1}
+.bigclock b.low{color:#e3523f}
+.bigclock .btn{font-size:30px;padding:16px 30px}
+
+/* 미션 2: 단서 분류 */
+.sort{flex:1;display:flex;gap:20px;min-height:0;margin-top:4px}
+.sortmain{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
+.clue{display:flex;align-items:center;gap:20px;background:var(--navy);color:#fff;border-radius:26px;padding:14px 24px;box-shadow:0 8px 0 #1c2557;min-height:120px}
+.clue .emo{font-size:64px;flex:none}
+.clue .t{font-family:var(--head);font-size:34px;line-height:1.4}
+.clue .t small{display:block;font-size:21px;color:var(--gold2)}
+.bins{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;flex:1}
+.bin{border:4px dashed var(--line);border-radius:24px;background:var(--paper);display:flex;flex-direction:column;gap:6px;padding:10px;cursor:pointer;transition:.25s;min-height:0;overflow:hidden}
+.bin .bh{display:flex;align-items:center;gap:10px;font-family:var(--head);font-size:26px;color:var(--navy)}
+.bin .bh .emo{font-size:40px}
+.bin .bh small{font-size:17px;color:var(--ink2);display:block;font-family:var(--body)}
+.bin .chip{background:#fff;border:2px solid var(--room);border-radius:12px;padding:4px 10px;font-size:19px;line-height:1.35;animation:enter .4s}
+.bin.ok{border-style:solid;border-color:var(--mint);background:var(--mint2)}
+.bin.bad{animation:shake .12s 4;border-color:#ffc0b5}
+.bin.ans{box-shadow:0 0 0 6px var(--gold)}
+
+/* 미션 3: 불편함 연극 */
+.skit{flex:1;display:flex;gap:22px;min-height:0;margin-top:4px}
+.skitmain{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.scene{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.scene .c{background:#fff;border:4px solid var(--line);border-radius:24px;padding:14px;text-align:center;box-shadow:0 7px 0 var(--line)}
+.scene .c .lb{font-family:var(--head);font-size:24px;color:#fff;background:var(--room);border-radius:12px;padding:2px 12px;display:inline-block}
+.scene .c .tx{font-size:27px;line-height:1.5;margin-top:8px}
+.scene .c .emo{font-size:70px;margin:6px auto}
+.roles3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.roles3 .r{background:var(--paper);border:3px solid var(--line);border-radius:24px;padding:16px;text-align:center;box-shadow:0 7px 0 var(--line)}
+.roles3 .r .emo{font-size:80px}
+.roles3 .r h3{font-size:34px;color:var(--navy)}
+.roles3 .r p{font-size:24px;line-height:1.5}
+</style>
+</head>
+<body data-room="3">
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 3번 방 · 생활 속 불편함 해결하기</span><span class="ls">11차시 / 10~14</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 4분"
+ data-notes="<b>시작</b> — “오늘 우리는 불편함 수사대예요. 수사할 곳은 바로 여러분의 필통·가방·책상!”">
+  <div class="cover">
+    <img class="doorimg bob" src="../10/img/door3.jpg" alt="3번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill">3번 방 · 11차시</span>
+      <h1 class="title">불편함<br>수사대</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">내 물건에 숨은 불편함 단서를 찾아라!</p>
+      <button class="btn coral" style="margin-top:34px" onclick="go(1)">🚪 3번 방 다시 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 -->
+<section class="slide" data-phase="도입 · 4분"
+ data-notes="<b>지난 시간 떠올리기 + 숙제 확인</b> — 10차시 비밀 문장을 읽고, 숙제로 떠올린 ‘불편했던 순간’을 2~3명 말해요. 필통과 책가방을 책상 위에 꺼내 두게 해요.">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">10차시 비밀 문장, 기억나요?</h2>
+  <div class="recap">
+    <div class="box">
+      <div class="cipher" style="font-size:44px;margin-top:10px;padding:24px 40px">발명은 생활 속 <span class="blank" onclick="openBlank(this)">불편함</span>을 찾는 데서<br><span class="blank" onclick="openBlank(this)">시작</span>돼요.</div>
+      <div class="homework">🕵️ <b>준비!</b> <b>필통</b>과 <b>책가방</b>을 책상 위에 꺼내 놓아요.<br>숙제로 떠올린 <b>불편했던 순간</b>은 무엇이었나요?</div>
+    </div>
+    <img src="../01/img/agent.png" alt="" style="width:300px" class="bob">
+  </div>
+</section>
+
+<!-- 3 미션 안내 -->
+<section class="slide" data-phase="도입 · 4분"
+ data-notes="<b>학습 목표 함께 읽기</b> — 미션 3개, 3번 방 두 번째 열쇠 조각.">
+  <div class="kicker">MISSION BRIEFING</div>
+  <h2 class="title" style="font-size:60px">오늘의 미션 세 가지</h2>
+  <div class="missions" style="gap:20px">
+    <div class="mcard"><span class="tag">미션 1</span><img class="ic" src="../01/img/ic_search.png" alt=""><h3>30초 수사</h3><p>내 물건을 샅샅이!</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><img class="ic" src="../01/img/ic_cards.png" alt=""><h3>단서 분류 본부</h3><p>어떤 불편함일까?</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><div class="ic emo" style="font-size:96px">🎭</div><h3>불편함 연극</h3><p>모둠이 장면으로 보여 줘요</p></div>
+    <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 2</h3><p>3번 방 두 번째!</p></div>
+  </div>
+  <div class="goal"><b>🎯 학습 목표</b> 매일 쓰는 물건을 살펴보며 불편했던 점을 찾고, 어떤 종류의 불편함인지 말할 수 있어요.</div>
+</section>
+
+<!-- 4 미션 1 규칙 -->
+<section class="slide" data-phase="미션 1 · 10분"
+ data-notes="<b>30초 수사 방법</b> — 화면에 나오는 물건(필통 → 책가방 → 책상 → 물병 → 신발 → 우산 …)을 30초 동안 직접 만지고 열어 보며 불편한 점을 찾아요. 찾으면 손을 들고, 선생님은 한두 명의 단서를 듣고 칠판(또는 붙임쪽지)에 적어요. 단서는 미션 2에서 분류해요.">
+  <div class="kicker">MISSION 1</div>
+  <h2 class="title">🔍 30초 수사</h2>
+  <div class="rules" style="max-width:1160px">
+    <div class="rule"><span>1</span><div>화면에 나온 물건을 <b class="hl">내 것</b>으로 꺼내요. (필통, 가방, 책상 …)</div></div>
+    <div class="rule"><span>2</span><div>⏱️ 30초 동안 <b class="c-coral">열고, 닫고, 들고, 넣어 보며</b> 불편한 점을 찾아요.</div></div>
+    <div class="rule"><span>3</span><div>찾았으면 조용히 손을 들어요. 선생님이 부르면 “<b>○○할 때 △△해서 불편해요</b>”로 말해요.</div></div>
+    <div class="rule"><span>4</span><div>찾은 단서는 칠판에 모아 두어요. 다음 미션에서 써요!</div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:300px">
+</section>
+
+<!-- 5 미션 1 수사 -->
+<section class="slide" data-phase="미션 1 · 10분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 물건을 골라요(12개 중 5~6개면 충분해요). 30초 시작 → 끝나면 한두 명 발표. 아래 ‘이렇게 살펴봐요’ 힌트를 읽어 주면 어려워하는 학생도 찾을 수 있어요.">
+  <div class="scan">
+    <div class="scanmain">
+      <div class="target" id="sT"></div>
+      <div class="look" id="sL"></div>
+      <div class="bigclock"><b id="sC">30</b><button class="btn coral" id="sGo" onclick="scanClock.toggle()">▶ 30초 수사</button></div>
+    </div>
+    <div class="side"><div class="rounds" id="sR" style="grid-template-columns:repeat(3,1fr)"></div></div>
+  </div>
+</section>
+
+<!-- 6 미션 2 규칙 -->
+<section class="slide" data-phase="미션 2 · 10분"
+ data-notes="<b>단서 분류 본부</b> — 불편함은 크게 네 종류예요. 단서 카드가 나오면 모둠이 의논해서 어느 상자에 넣을지 정하고, 대표가 나와 상자를 눌러요. 맞으면 1점. 틀려도 다시 생각해 보게 한 뒤 정답 상자가 반짝여요. 같은 단서가 두 상자에 맞을 수도 있다고 말해 주세요(가장 알맞은 곳이 정답).">
+  <div class="kicker">MISSION 2</div>
+  <h2 class="title" style="font-size:58px">🗂️ 단서 분류 본부 — 불편함 네 종류</h2>
+  <div class="how c4" style="margin-top:28px">
+    <div class="st"><div class="tx" style="text-align:center"><span class="emo" style="font-size:70px">🔎</span><b style="font-size:32px;color:var(--navy)">자꾸 잃어버려요</b><br>찾기 어렵고 없어져요</div></div>
+    <div class="st"><div class="tx" style="text-align:center"><span class="emo" style="font-size:70px">💥</span><b style="font-size:32px;color:var(--navy)">잘 망가져요</b><br>부러지고 찢어지고 새요</div></div>
+    <div class="st"><div class="tx" style="text-align:center"><span class="emo" style="font-size:70px">😫</span><b style="font-size:32px;color:var(--navy)">쓰기 힘들어요</b><br>무겁고, 열기 어렵고, 아파요</div></div>
+    <div class="st"><div class="tx" style="text-align:center"><span class="emo" style="font-size:70px">🌀</span><b style="font-size:32px;color:var(--navy)">뒤죽박죽이에요</b><br>정리가 안 되고 섞여요</div></div>
+  </div>
+  <div class="goal" style="margin-top:26px"><b>🎯 방법</b> 단서 카드를 읽고 → 모둠이 의논 → 대표가 나와 알맞은 상자를 눌러요. 맞히면 1점!</div>
+</section>
+
+<!-- 7 미션 2 분류 -->
+<section class="slide" data-phase="미션 2 · 10분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 16개 단서. 모둠 차례가 오른쪽에 표시돼요. 맞으면 자동 1점, 틀리면 정답 상자가 반짝이고 다음 모둠 차례. 상자 안에 단서가 쌓여서 어떤 불편함이 많은지 한눈에 볼 수 있어요.">
+  <div class="sort">
+    <div class="sortmain">
+      <div class="clue" id="cQ"></div>
+      <div class="bins" id="bins"></div>
+    </div>
+    <div class="side">
+      <div class="kclock"><small>지금 차례</small><b id="cTurn" style="font-size:48px">1모둠</b></div>
+      <div class="score"><h4>🏆 모둠 점수</h4><div id="teams1"></div></div>
+      <button class="btn ghost" onclick="nextClue()">다음 단서 ▶</button>
+      <button class="btn ghost" onclick="resetSort()">↺ 처음부터</button>
+    </div>
+  </div>
+</section>
+
+<!-- 8 미션 3 규칙 -->
+<section class="slide" data-phase="미션 3 · 10분"
+ data-notes="<b>불편함 연극</b> — 모둠마다 단서 하나를 골라(또는 화면 번호로 정해 줘요) 20초짜리 짧은 장면을 만들어요. 역할: 주인공 1명(불편함을 겪는 사람), 물건 역 1명(말하는 물건!), 해설 1명(장면 앞뒤로 설명). 나머지는 소리나 동작으로 도와요. 3분 연습 → 모둠별 발표. 다른 모둠은 ‘어떤 종류의 불편함인지’ 맞혀요.">
+  <div class="kicker">MISSION 3</div>
+  <h2 class="title">🎭 불편함 연극</h2>
+  <div class="roles3">
+    <div class="r"><div class="emo">😣</div><h3>주인공</h3><p>물건을 쓰다가 <b>불편해하는</b> 사람이에요.</p></div>
+    <div class="r"><div class="emo">🗣️</div><h3>물건 역</h3><p>물건이 되어 말해요.<br>“나 또 부러졌어!”</p></div>
+    <div class="r"><div class="emo">🎬</div><h3>해설</h3><p>“어느 날 아침…”으로 시작하고, 끝나면 “어떤 불편함일까요?” 물어요.</p></div>
+  </div>
+  <div class="rules" style="max-width:none;margin-top:16px">
+    <div class="rule"><span>1</span><div>모둠 단서를 정하고 <b class="hl">역할</b>을 나눠요. 남은 친구는 효과음 담당!</div></div>
+    <div class="rule"><span>2</span><div><b class="c-coral">3분</b> 연습하고, <b class="c-navy">20초</b> 동안 보여 줘요.</div></div>
+  </div>
+</section>
+
+<!-- 9 미션 3 장면 -->
+<section class="slide" data-phase="미션 3 · 10분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 모둠에 장면 카드를 나눠 줘요(12개). 각 카드에 ‘처음–가운데–끝’ 도움 장면이 있어요. 3분 연습 타이머 → 모둠별 20초 발표. 보는 친구들은 미션 2의 네 종류 중 무엇인지 손가락(1~4)으로 맞혀요.">
+  <div class="skit">
+    <div class="skitmain">
+      <div class="clue" id="kQ"></div>
+      <div class="scene" id="kS"></div>
+      <div class="btns" style="margin-top:auto"><button class="btn navy" id="kGo" onclick="skitClock.toggle()">▶ 연습 3분</button><button class="btn coral" id="kGo2" onclick="showClock.toggle()">▶ 발표 20초</button></div>
+    </div>
+    <div class="side">
+      <div class="rounds" id="kR" style="grid-template-columns:repeat(3,1fr)"></div>
+      <div class="kclock"><small>시간</small><b id="kC">3:00</b></div>
+      <div class="kclock" style="background:var(--room)"><small>발표</small><b id="kC2">20</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 활동지 -->
+<section class="slide" data-phase="정리 · 6분"
+ data-notes="<b>불편함 수사 노트</b> — 오늘 찾은 내 물건의 불편함 두 가지를 그리고 써요. 다음 시간(발명의 세 가지 마법)에 이 단서로 발명을 해요. 예시 답안은 📗.">
+  <div class="kicker">정리 · 활동지</div>
+  <div class="ws">
+    <img class="wsprev" src="img/worksheet_preview.png" alt="활동지 미리 보기">
+    <div class="steps">
+      <h2 class="title" style="font-size:52px;margin-bottom:4px">📮 불편함 수사 노트</h2>
+      <div class="s"><span>1</span>불편한 물건을 그려요</div>
+      <div class="s"><span>2</span>언제, 어떻게 불편한지 써요</div>
+      <div class="s"><span>3</span>네 종류 중 어떤 불편함인지 ○ 해요</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
+    </div>
+  </div>
+</section>
+
+<!-- 11 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 6분"
+ data-notes="<b>배움 정리</b>">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 3번 방 두 번째 비밀 문장</h2>
+  <div class="cipher">매일 쓰는 물건을 <span class="blank" onclick="openBlank(this)">자세히</span> 살펴보면<br>숨어 있는 <span class="blank" onclick="openBlank(this)">불편함</span>을 찾을 수 있어요.</div>
+  <div class="chips"><span class="chip">불편함</span><span class="chip">빨리</span><span class="chip">자세히</span><span class="chip">장난감</span></div>
+</section>
+
+<!-- 12 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 6분" data-hook="key"
+ data-notes="<b>보상</b> — 3번 방 두 번째 열쇠 조각!">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 3번 방 열쇠 조각 <span class="c-gold">2</span>개!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">10차시 ✔</div><div class="on">11차시 ✔</div><div>12차시</div><div>13차시</div><div>14차시</div></div>
+</section>
+
+<!-- 13 다음 -->
+<section class="slide" data-phase="정리 · 6분"
+ data-notes="<b>다음 차시 예고</b> — 준비물 없음. 오늘 쓴 ‘불편함 수사 노트’를 꼭 가져오게 해요(다음 시간에 써요).">
+  <div class="kicker">NEXT MISSION</div>
+  <div class="next">
+    <img class="doorimg" src="../10/img/door3.jpg" alt="">
+    <div>
+      <span class="pill">12차시 예고</span>
+      <h2 class="title" style="font-size:80px">발명의<br>세 가지 마법</h2>
+      <p class="big" style="color:var(--ink2);margin-top:18px"><b class="hl">더하기 · 빼기 · 바꾸기</b>로 불편함을 해결해요.<br>🕵️ 오늘 쓴 <b>불편함 수사 노트</b>를 꼭 가져와요!</p>
+      <div class="bring"><div>📒 불편함 수사 노트</div></div>
+      <button class="btn coral" id="doneBtn" style="margin-top:22px" onclick="complete()">✅ 11차시 미션 완료</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:3, lesson:11, keyPieces:2};</script>
+<script src="../shared/base.js"></script>
+<script src="../shared/kit.js"></script>
+<script>
+const P = o => o.img ? `<img src="${o.img}" alt="" style="object-fit:contain;background:#fff">` : K.photo(o.p);
+
+/* ---------- 미션 1: 30초 수사 (l: 살펴볼 점 4개) ---------- */
+const SCAN = [
+  {p:'pencilcase', n:'내 필통', d:'책상 위에 꺼내요!', l:[['✋', '열고 닫을 때'], ['✏️', '연필을 꺼낼 때'], ['🔊', '흔들면 어떤 소리?'], ['📏', '자·지우개는 어디에?']]},
+  {img:'../01/img/obj_backpack.png', n:'내 책가방', d:'무릎 위에 올려요!', l:[['🎒', '메고 걸을 때'], ['📚', '책을 넣고 뺄 때'], ['🔎', '작은 물건을 찾을 때'], ['💧', '물병을 넣을 때']]},
+  {p:'desk2', n:'내 책상과 의자', d:'앉은 채로 살펴봐요!', l:[['📥', '서랍을 쓸 때'], ['📝', '공책을 펼칠 때'], ['🪑', '의자를 넣고 뺄 때'], ['✏️', '연필이 굴러갈 때']]},
+  {p:'bottle', n:'내 물병', d:'책상 위에 꺼내요!', l:[['🔄', '뚜껑을 열 때'], ['💧', '물을 따를 때'], ['🎒', '가방에 넣을 때'], ['🧽', '씻을 때']]},
+  {p:'eraser', n:'내 지우개', d:'필통에서 꺼내요!', l:[['🖐️', '지울 때'], ['🔎', '찾을 때'], ['🧹', '가루를 치울 때'], ['💥', '떨어뜨렸을 때']]},
+  {img:'../01/img/obj_sneakers.png', n:'내 신발', d:'발을 내려다봐요!', l:[['👟', '신고 벗을 때'], ['🎀', '끈을 묶을 때'], ['🏃', '뛸 때'], ['🗄️', '신발장에 넣을 때']]},
+  {img:'../01/img/obj_umbrella.png', n:'우산', d:'기억을 떠올려요!', l:[['☂️', '펼 때'], ['🌬️', '바람이 불 때'], ['💧', '접은 뒤 물기'], ['🔎', '우산꽂이에서 찾을 때']]},
+  {p:'sharpener', n:'연필깎이', d:'교실 연필깎이를 봐요!', l:[['✏️', '연필을 넣을 때'], ['🔄', '돌릴 때'], ['🗑️', '찌꺼기를 버릴 때'], ['💥', '심이 부러질 때']]},
+  {p:'gluestick', n:'딱풀', d:'필통에서 꺼내요!', l:[['🔄', '풀을 올릴 때'], ['📄', '바를 때'], ['🧢', '뚜껑을 찾을 때'], ['💥', '풀이 부러질 때']]},
+  {p:'scissors', img:'../01/img/obj_scissors_flat.png', n:'가위', d:'필통에서 꺼내요!', l:[['✂️', '자를 때'], ['✋', '손가락이 아플 때'], ['🔎', '찾을 때'], ['⚠️', '건넬 때']]},
+  {p:'locker', n:'사물함', d:'내 사물함을 떠올려요!', l:[['🚪', '열고 닫을 때'], ['📚', '책을 찾을 때'], ['🧺', '정리할 때'], ['🔑', '내 칸을 찾을 때']]},
+  {p:'toothbrush', n:'칫솔', d:'양치할 때를 떠올려요!', l:[['🦷', '닦을 때'], ['🧴', '치약을 짤 때'], ['💧', '말릴 때'], ['🎒', '들고 다닐 때']]}];
+let sIdx = 0; const sR = K.rounds('sR', SCAN.length, i => setScan(i));
+const scanClock = K.clock({el:'sC', btn:'sGo', sec:30, btnLabel:'▶ 30초 수사'});
+function setScan(i){ sIdx = i; const o = SCAN[i]; S.flip(); sR.on(i); scanClock.reset();
+  document.getElementById('sT').innerHTML = `${P(o)}<div class="t"><small>수사할 물건 ${i + 1} / ${SCAN.length}</small>${o.n} — ${o.d}</div>`;
+  document.getElementById('sL').innerHTML = o.l.map(([e, t]) => `<div><span class="emo">${e}</span>${t} 불편한 점은?</div>`).join(''); }
+
+/* ---------- 미션 2: 단서 분류 (b: 정답 상자 0 잃어버려요 1 망가져요 2 쓰기 힘들어요 3 뒤죽박죽) ---------- */
+const BINS = [['🔎', '자꾸 잃어버려요', '찾기 어렵고 없어져요'], ['💥', '잘 망가져요', '부러지고 찢어지고 새요'], ['😫', '쓰기 힘들어요', '무겁고, 열기 어렵고, 아파요'], ['🌀', '뒤죽박죽이에요', '정리가 안 되고 섞여요']];
+const CLUES = [
+  ['🧽', '지우개가 책상 밑으로 굴러가서 자꾸 없어져요.', 0], ['✏️', '필통 속에서 연필심이 자꾸 부러져요.', 1], ['🎒', '책가방이 너무 무거워서 어깨가 아파요.', 2], ['📚', '사물함 안이 뒤섞여서 책을 찾기 어려워요.', 3],
+  ['🧢', '딱풀 뚜껑을 자꾸 잃어버려요.', 0], ['💧', '물병 뚜껑을 덜 닫아서 가방이 젖었어요.', 1], ['🔄', '물병 뚜껑이 너무 꽉 닫혀서 열기 힘들어요.', 2], ['📄', '가방 속 안내장이 구겨져서 섞여 있어요.', 3],
+  ['☂️', '우산꽂이에서 내 우산이 어느 건지 모르겠어요.', 0], ['✂️', '가위 손잡이가 작아서 손가락이 아파요.', 2], ['📒', '공책 모서리가 자꾸 찢어져요.', 1], ['🖍️', '크레파스가 상자 안에서 뒤섞여 있어요.', 3],
+  ['👟', '신발 끈이 자꾸 풀려서 다시 묶기 힘들어요.', 2], ['🔑', '사물함 열쇠를 자꾸 잃어버려요.', 0], ['🌂', '바람이 불면 우산이 뒤집혀서 망가져요.', 1], ['🖊️', '필통에 펜이 너무 많아서 원하는 색을 찾기 어려워요.', 3]];
+let cIdx = 0, cTurn = 0, cDone = false; const binItems = BINS.map(() => []);
+K.teams('teams1', {turn:() => cTurn});
+function drawBins(hl){ document.getElementById('bins').innerHTML = BINS.map(([e, t, s], k) => `<div class="bin ${hl === k ? 'ans' : ''}" data-k="${k}" onclick="pickBin(${k})"><div class="bh"><span class="emo">${e}</span><div>${t}<small>${s}</small></div></div>${binItems[k].map(x => `<div class="chip">${x}</div>`).join('')}</div>`).join(''); }
+function setClue(i){ cIdx = i; cDone = false; const [e, t] = CLUES[i]; S.flip();
+  document.getElementById('cQ').innerHTML = `<span class="emo">${e}</span><div class="t"><small>단서 ${i + 1} / ${CLUES.length} — 어떤 불편함일까요?</small>${t}</div>`;
+  document.getElementById('cTurn').textContent = `${cTurn + 1}모둠`; drawBins(); }
+function pickBin(k){ if(cDone) return; const [e, t, a] = CLUES[cIdx]; cDone = true;
+  binItems[a].push(t.replace(/\.$/, '')); drawBins(a);
+  const el = document.querySelector(`.bin[data-k="${k}"]`);
+  if(k === a){ K.add(cTurn, 1); S.win(); el.classList.add('ok'); } else { S.no(); el.classList.add('bad'); }
+  cTurn = (cTurn + 1) % K.teamN; document.getElementById('cTurn').textContent = `${cTurn + 1}모둠`; K.setN(0); }
+function nextClue(){ if(cIdx + 1 < CLUES.length) setClue(cIdx + 1); }
+function resetSort(){ binItems.forEach(b => b.length = 0); cTurn = 0; setClue(0); }
+
+/* ---------- 미션 3: 불편함 연극 (s: 처음·가운데·끝 도움 장면) ---------- */
+const SKIT = [
+  ['🧽', '지우개가 자꾸 없어져요', ['받아쓰기 시간, 틀린 글자를 지우려고 해요.', '지우개: “나 여기 없지롱~ 책상 밑으로 데굴데굴!”', '“또 없어졌어! 친구야, 지우개 좀 빌려줘…”']],
+  ['🎒', '책가방이 너무 무거워요', ['아침, 교과서를 전부 가방에 넣어요.', '가방: “아이고 무거워! 끈이 늘어나겠어!”', '“어깨가 너무 아파서 걸을 수가 없어요…”']],
+  ['💧', '물병에서 물이 새요', ['체육 시간 뒤, 물병을 가방에 넣어요.', '물병: “뚜껑이 덜 닫혔어! 쫄쫄쫄~”', '“앗! 공책이 다 젖었어요!”']],
+  ['✏️', '연필심이 자꾸 부러져요', ['필통을 흔들며 뛰어가요.', '연필: “앗, 부딪혔다! 뚝!”', '“연필을 꺼냈더니 심이 다 부러졌어요…”']],
+  ['👟', '신발 끈이 자꾸 풀려요', ['운동장에서 달리기를 해요.', '신발 끈: “스르륵~ 나 풀린다!”', '“끈을 밟아서 넘어질 뻔했어요!”']],
+  ['☂️', '우산이 바람에 뒤집혀요', ['비 오고 바람 부는 하굣길이에요.', '우산: “으아아! 바람이 너무 세!”', '“우산이 뒤집혀서 비를 다 맞았어요…”']],
+  ['🧢', '딱풀 뚜껑이 없어져요', ['만들기 시간, 딱풀을 써요.', '뚜껑: “난 데굴데굴 굴러간다~”', '“다음 날 딱풀이 바싹 말라 버렸어요…”']],
+  ['📚', '사물함이 뒤죽박죽이에요', ['국어책을 꺼내려고 사물함을 열어요.', '책들: “우르르! 우리 다 쏟아진다!”', '“국어책이 어디 있는지 모르겠어요…”']],
+  ['🔄', '물병 뚜껑이 안 열려요', ['점심시간, 목이 말라 물병을 꺼내요.', '뚜껑: “흥, 난 꽉 닫혀서 안 열리지!”', '“손이 아파서 물을 못 마셨어요…”']],
+  ['✂️', '가위 손잡이가 아파요', ['색종이를 오리는 시간이에요.', '가위: “내 손잡이 구멍은 아주 좁지~”', '“손가락이 빨개지고 아파요…”']],
+  ['🖍️', '크레파스가 뒤섞여요', ['그림을 그리려고 크레파스를 열어요.', '크레파스: “우리 자리 바꾸기 놀이 중이야!”', '“빨간색을 찾느라 그림을 못 그렸어요…”']],
+  ['📄', '안내장이 구겨져요', ['선생님이 안내장을 나눠 줘요.', '안내장: “가방 속에서 꾸깃꾸깃~”', '“집에 와서 보니 글씨를 못 읽겠어요…”']]];
+let kIdx = 0; const kR = K.rounds('kR', SKIT.length, i => setSkit(i));
+const skitClock = K.clock({el:'kC', btn:'kGo', sec:180, btnLabel:'▶ 연습 3분'}), showClock = K.clock({el:'kC2', btn:'kGo2', sec:20, btnLabel:'▶ 발표 20초'});
+function setSkit(i){ kIdx = i; const [e, t, s] = SKIT[i]; S.flip(); kR.on(i); skitClock.reset(); showClock.reset();
+  document.getElementById('kQ').innerHTML = `<span class="emo">${e}</span><div class="t"><small>장면 카드 ${i + 1} — ${(i % K.teamN) + 1}모둠에게</small>${t}</div>`;
+  document.getElementById('kS').innerHTML = [['처음', '🎬'], ['가운데', '🗣️'], ['끝', '😣']].map(([lb, em], k) => `<div class="c"><span class="lb">${lb}</span><div class="emo">${em}</div><div class="tx">${s[k]}</div></div>`).join(''); }
+
+window.onEsc = () => {};
+setScan(0); setClue(0); setSkit(0); startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>
