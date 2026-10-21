@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5번 방 · 21차시 놀잇감 설계 연구소</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/kit.css">
+<style>
+/* 두 가지 놀잇감 */
+.two2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px}
+.two2 .k{background:#fff;border:4px solid var(--line);border-radius:30px;padding:18px 22px;box-shadow:0 8px 0 var(--line)}
+.two2 .k h3{font-size:38px;color:var(--navy)}
+.two2 .k svg{width:100%;height:250px;display:block}
+.two2 .k p{font-size:24px;line-height:1.5;color:var(--ink2)}
+.two2 .k p b{color:var(--roomdk)}
+
+/* 굴러가기 실험실 */
+.lab{flex:1;display:flex;gap:20px;min-height:0;margin-top:2px}
+.lmain{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
+canvas.sim{width:1000px;height:470px;background:#f7fbff;border-radius:26px;box-shadow:0 0 0 6px #fff,0 12px 28px rgba(61,43,31,.16)}
+.why{display:none;background:var(--room2);border:3px solid var(--room);border-radius:22px;padding:12px 20px;font-size:26px;line-height:1.5}
+.why.show{display:block;animation:enter .5s}
+.why b{color:var(--roomdk)}
+.lg{display:flex;gap:16px;font-size:22px}
+.lg span{background:#fff;border:3px solid var(--line);border-radius:16px;padding:6px 14px}
+
+/* 소리 실험실 */
+.snd{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;margin-top:10px;flex:1;min-height:0}
+.box{background:#fff;border:4px solid var(--line);border-radius:28px;padding:14px 18px;box-shadow:0 8px 0 var(--line);display:flex;flex-direction:column;gap:10px}
+.box h3{font-size:32px;color:var(--navy)}
+.box h3 small{font-size:21px;color:var(--ink2);font-family:var(--body)}
+canvas.gt{width:100%;height:300px;background:#fff8ec;border-radius:20px;cursor:pointer}
+.bands{display:flex;gap:10px}
+.bands button{flex:1;font-family:var(--head);font-size:23px;border-radius:16px;padding:10px 6px;background:var(--room2);border:3px solid var(--room);color:var(--roomdk)}
+.shk{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.shk button{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:10px 6px;font-family:var(--head);font-size:22px;color:var(--navy);display:flex;flex-direction:column;align-items:center;gap:4px}
+.shk button .emo{font-size:58px;line-height:1.1}
+.shk button.go{animation:shake .12s 6}
+@keyframes shake{0%,100%{transform:rotate(0)}50%{transform:rotate(-12deg) translateY(-6px)}}
+.snote{font-size:23px;line-height:1.5;background:var(--room2);border-radius:18px;padding:10px 14px}
+.snote b{color:var(--roomdk)}
+
+/* 비교 퀴즈 */
+.cq{flex:1;display:flex;gap:20px;min-height:0;margin-top:2px}
+.cqm{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
+.cqq{font-family:var(--head);font-size:40px;color:var(--navy);background:#fff;border:4px solid var(--line);border-radius:26px;padding:12px 22px;box-shadow:0 7px 0 var(--line)}
+.cqq small{font-size:23px;color:var(--ink2);display:block}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ab .o{background:#fff;border:4px solid var(--line);border-radius:26px;padding:12px;text-align:center;box-shadow:0 7px 0 var(--line);position:relative;transition:.4s}
+.ab .o .lt{position:absolute;left:14px;top:10px;width:54px;height:54px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--head);font-size:32px;display:flex;align-items:center;justify-content:center}
+.ab .o svg{width:100%;height:230px}
+.ab .o span{font-family:var(--head);font-size:28px;color:var(--navy)}
+.cq.rev .ab .o{opacity:.35;transform:scale(.96)}
+.cq.rev .ab .o.ans{opacity:1;transform:scale(1.02);border-color:var(--mint);box-shadow:0 7px 0 #22906a}
+.cqw{display:none;background:var(--mint2);border:3px solid var(--mint);border-radius:22px;padding:12px 20px;font-size:27px;line-height:1.5}
+.cq.rev .cqw{display:block;animation:enter .5s}
+.cqw b{color:#0f8a6e}
+</style>
+</head>
+<body data-room="5">
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 5번 방 · 직접 만들고 개선하기</span><span class="ls">21차시 / 20~24</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 4분"
+ data-notes="<b>시작</b> — “오늘은 놀잇감 설계 연구소! 만들기 전에 ‘어떻게 움직이고 소리가 나는지’ 비밀을 먼저 알아보고 설계도를 그려요.” 소리 실험실 화면은 스피커 소리를 켜 두세요. 20차시에 모은 재료 상자를 모둠마다 꺼내 두면 설계할 때 보면서 고를 수 있어요.">
+  <div class="cover">
+    <img class="doorimg bob" src="../20/img/door5.jpg" alt="5번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill">5번 방 · 21차시</span>
+      <h1 class="title">놀잇감<br>설계 연구소</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">굴러가는 비밀, 소리 나는 비밀!</p>
+      <button class="btn coral" style="margin-top:34px" onclick="go(1)">🚪 5번 방 다시 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 -->
+<section class="slide" data-phase="도입 · 4분"
+ data-notes="<b>지난 시간 + 숙제 확인</b> — 20차시 비밀 문장을 읽어요. 숙제: 집에서 굴러가는 장난감·소리 나는 장난감이 어떻게 생겼는지 2~3명 발표(바퀴가 어디에 붙어 있었나요? 어디를 건드리면 소리가 났나요?).">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">재료 탐정이 되었어요</h2>
+  <div class="recap">
+    <div class="box" style="background:none;border:none;box-shadow:none;padding:0">
+      <div class="cipher" style="font-size:38px;margin-top:10px;padding:24px 36px">재료의 <span class="blank" onclick="openBlank(this)">특징</span>을 살펴보면<br>버려질 물건도 <span class="blank" onclick="openBlank(this)">새로운</span> 쓰임이 생겨요.</div>
+      <div class="homework">🕵️ <b>숙제 확인!</b> 장난감의 <b>바퀴</b>는 어디에 붙어 있었나요? 어디를 건드리면 <b>소리</b>가 났나요?</div>
+    </div>
+    <img src="../01/img/agent.png" alt="" style="width:300px" class="bob">
+  </div>
+</section>
+
+<!-- 3 이야기 -->
+<section class="slide dark" data-phase="도입 · 4분" data-hook="story"
+ data-notes="<b>이야기</b> — 만들기 전에 설계를 하면 실패를 줄일 수 있어요. 14·18차시에 그린 설계도를 떠올리게 해요.">
+  <div class="alarm">🚨 마법사의 엉터리 장난감!</div>
+  <div class="storywrap">
+    <img class="wizard" src="../01/img/wizard.jpg" alt="싹쓸이 마법사">
+    <div class="bubble" id="storyText"></div>
+  </div>
+</section>
+
+<!-- 4 미션 -->
+<section class="slide" data-phase="도입 · 4분"
+ data-notes="<b>학습 목표 함께 읽기</b> — 5번 방 두 번째 열쇠 조각을 찾아요.">
+  <div class="kicker">MISSION BRIEFING</div>
+  <h2 class="title" style="font-size:60px">오늘의 미션 세 가지</h2>
+  <div class="missions" style="gap:20px">
+    <div class="mcard"><span class="tag">미션 1</span><div class="ic emo" style="font-size:96px">🧪</div><h3>비밀 실험실</h3><p>굴러가기 · 소리 실험</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><img class="ic" src="../01/img/ic_search.png" alt=""><h3>어느 쪽이 더 잘 될까?</h3><p>A? B? 손가락 퀴즈</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><img class="ic" src="../01/img/ic_cards.png" alt=""><h3>나만의 설계도</h3><p>재료와 구조를 계획해요</p></div>
+    <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 2</h3><p>5번 방 두 번째!</p></div>
+  </div>
+  <div class="goal"><b>🎯 학습 목표</b> 만들고 싶은 놀잇감을 정하고, 알맞은 재료와 구조를 생각하여 설계도를 그릴 수 있어요.</div>
+</section>
+
+<!-- 5 두 가지 놀잇감 -->
+<section class="slide" data-phase="미션 1 · 12분"
+ data-notes="<b>두 가지 놀잇감</b> — 오늘은 둘 가운데 하나를 골라 설계해요. 왼쪽: 상자 몸통 아래에 빨대(축받이)를 붙이고, 그 속에 꼬치(축)를 넣고, 양 끝에 병뚜껑 바퀴. 오른쪽: 상자에 고무줄을 걸면 고무줄 기타, 통 속에 병뚜껑을 넣으면 마라카스. 다른 놀잇감도 괜찮다고 알려 주세요.">
+  <div class="kicker">MISSION 1 · 준비</div>
+  <h2 class="title" style="font-size:54px">어떤 놀잇감을 만들까요?</h2>
+  <div class="two2">
+    <div class="k"><h3>🚗 굴러가는 놀잇감</h3>
+      <svg viewBox="0 0 600 250" id="svCar"></svg>
+      <p><b>바퀴</b>가 동그랗고, <b>축</b>이 빨대 속에서 빙글빙글 돌아야 해요.</p></div>
+    <div class="k"><h3>🎸 소리 나는 놀잇감</h3>
+      <svg viewBox="0 0 600 250" id="svGt"></svg>
+      <p>소리는 <b>떨림</b>이에요. 고무줄이나 통 속 알갱이가 <b>떨리거나 부딪쳐야</b> 소리가 나요.</p></div>
+  </div>
+</section>
+
+<!-- 6 굴러가기 실험실 -->
+<section class="slide" data-phase="미션 1 · 12분" style="padding-top:78px" data-hook="roll"
+ data-notes="<b>굴러가기 실험실</b> — 똑같은 상자 자동차 두 대를 비탈에 놓아요. 1번은 바퀴가 꼬치(축)와 함께 빨대 속에서 돌 수 있고, 2번은 바퀴를 상자에 테이프로 꽉 붙였어요. ‘▶ 출발’ 전에 “어느 차가 더 멀리 갈까?” 예상해 손을 들게 해요. 결과: 1번은 바퀴가 돌며 굴러 내려가고, 2번은 바퀴가 돌지 못해 바닥과 문질러지는 힘이 커서 거의 움직이지 않아요.">
+  <div class="lab">
+    <div class="lmain">
+      <canvas class="sim" id="rollCv" width="2000" height="940"></canvas>
+      <div class="lg"><span>🚗 1번 — 축이 빨대 속에서 돌아요</span><span>🚙 2번 — 바퀴를 테이프로 꽉 붙였어요</span></div>
+      <div class="why" id="rollWhy">💡 바퀴가 <b>돌아야</b> 굴러가요! 바퀴가 몸통에 붙어 돌지 못하면 바닥에 <b>문질러지는 힘(마찰)</b>이 커서 잘 움직이지 않아요. 그래서 축은 <b>빨대 속에서 헐렁하게</b> 돌도록 만들어요.</div>
+    </div>
+    <div class="side"><div class="kclock"><small>예상해요</small><b style="font-size:40px">1번? 2번?</b></div><button class="btn mint" onclick="rollGo()">▶ 출발</button><button class="btn ghost" onclick="rollReset()">↺ 다시</button><button class="btn coral" onclick="document.getElementById('rollWhy').classList.add('show');S.win()">💡 왜 그럴까?</button></div>
+  </div>
+</section>
+
+<!-- 7 소리 실험실 -->
+<section class="slide" data-phase="미션 1 · 12분" style="padding-top:78px" data-hook="snd"
+ data-notes="<b>소리 실험실</b> — 소리를 켜 두세요. ① 고무줄 기타: 세 고무줄을 하나씩 눌러 보며 “어느 고무줄이 가장 높은 소리일까?” 예상 → 팽팽할수록 빨리 떨려 <b>높은 소리</b>, 느슨할수록 <b>낮은 소리</b>. ② 흔드는 통: 병뚜껑을 넣은 통은 딸그락, 솜을 넣은 통은 거의 소리가 안 나요(솜은 말랑해서 부딪쳐도 떨림이 작아요). 실제 고무줄을 하나 가져와 당겨 보면 더 좋아요.">
+  <div class="snd">
+    <div class="box"><h3>🎸 고무줄 기타 <small>고무줄을 눌러 튕겨 봐요</small></h3>
+      <canvas class="gt" id="gtCv" width="1200" height="600"></canvas>
+      <div class="bands"><button onclick="pluck(0)">느슨한 고무줄</button><button onclick="pluck(1)">보통 고무줄</button><button onclick="pluck(2)">팽팽한 고무줄</button></div>
+    </div>
+    <div class="box"><h3>🪇 흔드는 통 <small>무엇을 넣었을까?</small></h3>
+      <div class="shk"><button onclick="shake(this,0)"><span class="emo">🔘</span>병뚜껑</button><button onclick="shake(this,1)"><span class="emo">☁️</span>솜</button><button onclick="shake(this,2)"><span class="emo">⭕</span>빈 통</button></div>
+      <div class="snote" id="sNote">통을 눌러 흔들어 봐요. 어떤 통이 가장 큰 소리가 날까요?</div>
+      <div class="snote">💡 소리는 <b>떨림</b>이에요. <b>팽팽</b>할수록 빨리 떨려 <b>높은</b> 소리, <b>단단한</b> 것이 부딪칠수록 <b>또렷한</b> 소리가 나요.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 미션 2 방법 -->
+<section class="slide" data-phase="미션 2 · 8분"
+ data-notes="<b>어느 쪽이 더 잘 될까? 방법</b> — A와 B 그림을 보고 3초 생각 → “하나, 둘, 셋!”에 손가락 1개(A) 또는 2개(B)를 들어요. 맞힌 모둠은 점수, 그리고 까닭을 말한 사람은 1점 더! 이 퀴즈의 답이 오늘 설계도의 ‘꼭 지킬 점’이 돼요.">
+  <div class="kicker">MISSION 2</div>
+  <h2 class="title">☝️✌️ 어느 쪽이 더 잘 될까?</h2>
+  <div class="rules" style="max-width:1200px">
+    <div class="rule"><span>1</span><div>A와 B 그림을 보고 <b class="hl">3초</b> 생각해요.</div></div>
+    <div class="rule"><span>2</span><div>“하나, 둘, 셋!”에 <b class="c-coral">A는 손가락 하나 ☝️</b>, <b class="c-navy">B는 손가락 둘 ✌️</b>!</div></div>
+    <div class="rule"><span>3</span><div>맞히면 모둠 1점, <b>까닭</b>을 말하면 1점 더!<small>정답 뒤의 까닭이 내 설계도의 ‘꼭 지킬 점’이 돼요.</small></div></div>
+  </div>
+  <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:60px;bottom:90px;width:240px">
+</section>
+
+<!-- 9 미션 2 퀴즈 -->
+<section class="slide" data-phase="미션 2 · 8분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽 번호로 문제를 골라요(8개). ‘⏱️ 3초’ → 손가락 → ‘🎉 정답!’ → 까닭 읽기.">
+  <div class="cq" id="cq">
+    <div class="cqm">
+      <div class="cqq" id="cqQ"></div>
+      <div class="ab" id="cqAB"></div>
+      <div class="cqw" id="cqW"></div>
+      <div class="btns" style="margin-top:auto"><button class="btn navy" onclick="cq3()">⏱️ 3초</button><button class="btn mint" onclick="cqShow()">🎉 정답!</button><button class="btn ghost" onclick="setCQ((cIdx + 1) % CQ.length)">다음 ▶</button></div>
+    </div>
+    <div class="side"><div class="rounds" id="cqR"></div><div class="kclock"><small>생각</small><b id="cqC">3</b></div><div class="score"><h4>모둠 점수</h4><div id="teams1"></div></div></div>
+  </div>
+</section>
+
+<!-- 10 미션 3 설계 -->
+<section class="slide" data-phase="미션 3 · 12분"
+ data-notes="<b>나만의 설계도</b> — 활동지를 나눠 주고 10분. 설계는 각자 해요(22차시에 각자 만들어요). 재료 상자를 보면서 ‘있는 재료’로 설계하게 해요. 빨대·꼬치·고무줄·테이프는 선생님이 준비해 준다고 알려 주세요. 막히는 학생에게는 화면의 기본 설계(상자 자동차, 고무줄 기타)를 따라 그리게 해도 좋아요.">
+  <div class="kicker">MISSION 3</div>
+  <h2 class="title">📐 나만의 놀잇감 설계도</h2>
+  <div class="how c4" style="margin-top:22px">
+    <div class="st"><span class="no">1</span><div class="tx">만들 놀잇감을 <b>정해요</b>.<br>🚗 굴러가는? 🎸 소리 나는?</div></div>
+    <div class="st"><span class="no">2</span><div class="tx">필요한 <b>재료</b>에 ○, 개수를 써요.</div></div>
+    <div class="st"><span class="no">3</span><div class="tx">설계도를 그리고 부분마다 <b>이름표</b>를 붙여요.</div></div>
+    <div class="st"><span class="no">4</span><div class="tx">미션 2에서 배운 <b>꼭 지킬 점</b>을 써요.</div></div>
+  </div>
+  <div class="need" style="margin-top:20px">🧺 <b>선생님이 준비해 줄 것</b> 빨대 · 끝이 뭉툭한 나무 꼬치 · 고무줄 · 셀로판테이프 · (병뚜껑 구멍은 선생님이 뚫어 줘요)</div>
+  <div style="display:flex;justify-content:flex-end;margin-top:14px"><div class="kclock" style="display:flex;align-items:center;gap:16px;padding:8px 22px"><small>설계 시간</small><b id="dsC" style="font-size:54px">10:00</b><button class="btn mint" id="dsGo" style="font-size:22px;padding:10px 16px" onclick="dsClock.toggle()">▶ 10분</button></div></div>
+</section>
+
+<!-- 11 활동지 -->
+<section class="slide" data-phase="정리 · 4분"
+ data-notes="<b>활동지 ‘놀잇감 설계도’</b> — 다음 시간 만들기의 지도예요. 꼭 챙겨 두게 해요. 예시 답안은 📗 단추.">
+  <div class="kicker">MISSION 정리 · 활동지</div>
+  <div class="ws">
+    <img class="wsprev" src="img/worksheet_preview.png" alt="활동지 미리 보기">
+    <div class="steps">
+      <h2 class="title" style="font-size:52px;margin-bottom:4px">📐 놀잇감 설계도</h2>
+      <div class="s"><span>1</span>놀잇감 종류와 이름</div>
+      <div class="s"><span>2</span>재료 고르기 (○와 개수)</div>
+      <div class="s"><span>3</span>설계도 + 이름표</div>
+      <div class="s bonus"><span>★</span>꼭 지킬 점 · 걱정되는 점</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
+    </div>
+  </div>
+</section>
+
+<!-- 12 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 4분"
+ data-notes="<b>배움 정리</b>">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 5번 방 두 번째 비밀 문장</h2>
+  <div class="cipher">만들기 전에 <span class="blank" onclick="openBlank(this)">설계</span>를 하면<br>재료와 <span class="blank" onclick="openBlank(this)">구조</span>를 미리 생각할 수 있어요.</div>
+  <div class="chips"><span class="chip">구조</span><span class="chip">청소</span><span class="chip">설계</span><span class="chip">색깔</span></div>
+</section>
+
+<!-- 13 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 4분" data-hook="key"
+ data-notes="<b>보상</b> — 5번 방 두 번째 열쇠 조각!">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 5번 방 열쇠 조각 <span class="c-gold">2</span>개!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">20차시 ✔</div><div class="on">21차시 ✔</div><div>22차시</div><div>23차시</div><div>24차시</div></div>
+</section>
+
+<!-- 14 다음 -->
+<section class="slide" data-phase="정리 · 4분"
+ data-notes="<b>다음 차시 예고</b> — 준비물: 오늘 그린 설계도, 20차시 재료 상자, 설계도에 쓴 재료 가운데 집에 있는 것. 선생님 준비: 빨대, 끝이 뭉툭한 나무 꼬치(또는 가는 빨대), 고무줄, 셀로판테이프, 병뚜껑 구멍 뚫기(송곳은 선생님만).">
+  <div class="kicker">NEXT MISSION</div>
+  <div class="next">
+    <img class="doorimg" src="../20/img/door5.jpg" alt="">
+    <div>
+      <span class="pill" style="background:#e1ebff;color:#2a4f9a">22차시 예고</span>
+      <h2 class="title" style="font-size:80px">나만의 놀잇감 제작소</h2>
+      <p class="big" style="color:var(--ink2);margin-top:18px">설계도를 보며 <b class="hl">진짜로</b>만들어요!</p>
+      <div class="bring"><div>📐 오늘 설계도</div><div>📦 재료 상자</div><div>🧻 설계도에 쓴 재료</div></div>
+      <button class="btn coral" id="doneBtn" style="margin-top:22px" onclick="complete()">✅ 21차시 미션 완료</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:5, lesson:21, keyPieces:2};</script>
+<script src="../shared/base.js"></script>
+<script src="../shared/kit.js"></script>
+<script src="toys.js"></script>
+<script>
+/* ---------- 이야기 ---------- */
+hooks.story = () => typewriter(document.getElementById('storyText'),
+  '“내가 만든 자동차는 왜 안 굴러가지? 바퀴를 <b class="c-coral">테이프로 꽉</b> 붙였는데!<br>고무줄 기타는 왜 소리가 안 나지? 고무줄을 <b class="c-coral">헐렁하게</b> 걸었는데!”<br>요원 여러분, 만들기 전에 <b class="c-navy">비밀</b>을 알아내서<br>멋진 설계도를 그려 봐요!');
+
+/* ---------- 두 가지 놀잇감 그림 ---------- */
+document.getElementById('svCar').innerHTML = TOY.car({x:300, y:95, s:1.05, label:true});
+document.getElementById('svGt').innerHTML = TOY.guitar({x:170, y:120, s:1}) + TOY.shaker({x:470, y:118, s:1});
+
+/* ---------- 굴러가기 실험 (비탈 위 두 자동차) ---------- */
+const RC = document.getElementById('rollCv'), rg = RC.getContext('2d');
+const TH = 11 * Math.PI / 180, G = 9.8 * 120, MU_ROLL = .02, MU_SLIDE = .45;   /* 미끄럼 마찰 0.45 > tan11°(0.19) → 2번은 거의 서 있어요 */
+let cars, rAF = null, rT = 0;
+function rollReset(){ cancelAnimationFrame(rAF); rAF = null; cars = [{d:140, v:0, rot:0, free:true, lane:0}, {d:140, v:0, rot:0, free:false, lane:1}]; document.getElementById('rollWhy').classList.remove('show'); rollDraw(); }
+function lanePt(lane, d){ const x0 = 120, y0 = lane ? 470 : 150, L = 1500; return [x0 + d * Math.cos(TH), y0 + d * Math.sin(TH), L]; }
+function rollDraw(){ rg.clearRect(0, 0, 2000, 940); rg.save();
+  for(const lane of [0, 1]){ const [x0, y0, L] = lanePt(lane, 0), [x1, y1] = lanePt(lane, L);
+    rg.fillStyle = '#e8d3ad'; rg.beginPath(); rg.moveTo(x0 - 60, y0 + 40); rg.lineTo(x1 + 60, y1 + 40 + 60 * Math.tan(TH)); rg.lineTo(x1 + 60, y0 + 330); rg.lineTo(x0 - 60, y0 + 330); rg.closePath(); rg.fill();
+    rg.strokeStyle = '#b48a55'; rg.lineWidth = 8; rg.beginPath(); rg.moveTo(x0 - 60, y0 + 40); rg.lineTo(x1 + 60, y1 + 40 + 60 * Math.tan(TH)); rg.stroke();
+    rg.fillStyle = '#7a5530'; rg.font = '54px Jua'; rg.fillText(lane ? '2번 🚙' : '1번 🚗', 200, y0 + 200); }
+  for(const c of cars){ const [x, y] = lanePt(c.lane, c.d); rg.save(); rg.translate(x, y); rg.rotate(TH); TOY.drawCar(rg, c.rot, c.free); rg.restore(); }
+  rg.restore(); }
+function rollGo(){ if(rAF) return; rollReset(); S.tick(); let last = performance.now();
+  const step = now => { const dt = Math.min(.03, (now - last) / 1000); last = now; let moving = false;
+    for(const c of cars){ const L = 1440; if(c.d >= L) continue;
+      const a = c.free ? G * (Math.sin(TH) - MU_ROLL * Math.cos(TH)) : Math.max(0, G * (Math.sin(TH) - MU_SLIDE * Math.cos(TH)));
+      c.v += a * dt; c.d = Math.min(L, c.d + c.v * dt); if(c.free) c.rot += c.v * dt / 34; if(c.d < L && (c.v > 0 || a > 0)) moving = true; }
+    rollDraw(); if(moving) rAF = requestAnimationFrame(step); else { rAF = null; S.win(); } };
+  rAF = requestAnimationFrame(step); }
+hooks.roll = rollReset; K.leave(() => { cancelAnimationFrame(rAF); rAF = null; });
+
+/* ---------- 소리 실험 ---------- */
+let AC = null; const getAC = () => AC || (AC = new (window.AudioContext || window.webkitAudioContext)());
+const GC = document.getElementById('gtCv'), gg = GC.getContext('2d');
+const BANDS = [{f:147, w:9, c:'#e8a33c', sag:26, n:'느슨'}, {f:220, w:9, c:'#e06a5a', sag:12, n:'보통'}, {f:330, w:9, c:'#3d6fd0', sag:0, n:'팽팽'}];
+const vib = [0, 0, 0]; let gAF = null, gT0 = 0;
+function gtDraw(t){ gg.clearRect(0, 0, 1200, 600);
+  /* 상자 */ gg.fillStyle = '#d9a86c'; gg.strokeStyle = '#a77b4a'; gg.lineWidth = 6; gg.beginPath(); gg.roundRect(140, 90, 920, 420, 30); gg.fill(); gg.stroke();
+  gg.fillStyle = '#5b3a1e'; gg.beginPath(); gg.ellipse(600, 300, 150, 110, 0, 0, Math.PI * 2); gg.fill();
+  gg.fillStyle = '#fff3dc'; gg.fillRect(200, 110, 26, 380); gg.fillRect(974, 110, 26, 380);
+  BANDS.forEach((b, i) => { const y = 200 + i * 100, A = vib[i] * Math.sin(t * b.f * .06) * 30, mid = y + b.sag;
+    gg.strokeStyle = b.c; gg.lineWidth = b.w + (b.sag ? 0 : 0); gg.lineCap = 'round'; gg.beginPath(); gg.moveTo(213, y); gg.quadraticCurveTo(600, mid + A * 2, 987, y); gg.stroke();
+    gg.fillStyle = '#7a5530'; gg.font = '34px Jua'; gg.fillText(b.n, 1020, y + 12); });
+}
+function gtLoop(){ const t = (performance.now() - gT0); vib.forEach((v, i) => vib[i] = v * .965); gtDraw(t);
+  if(vib.some(v => v > .01)) gAF = requestAnimationFrame(gtLoop); else { gAF = null; gtDraw(0); } }
+function pluck(i){ const a = getAC(), t = a.currentTime, b = BANDS[i];
+  [1, 2, 3].forEach((h, k) => { const o = a.createOscillator(), g = a.createGain(); o.type = k ? 'sine' : 'triangle'; o.frequency.value = b.f * h;
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime([.35, .12, .06][k], t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + 1.6 - k * .3);
+    o.connect(g).connect(a.destination); o.start(t); o.stop(t + 1.7); });
+  vib[i] = 1; if(!gAF){ gT0 = performance.now(); gAF = requestAnimationFrame(gtLoop); } S.ok(); }
+GC.addEventListener('click', e => { const r = GC.getBoundingClientRect(), y = (e.clientY - r.top) / r.height * 600; const i = y < 250 ? 0 : y < 350 ? 1 : 2; pluck(i); });
+const SHK = [['딸그락딸그락! 단단한 병뚜껑이 통에 <b>부딪쳐</b> 큰 소리가 나요.', 1], ['사각… 솜은 말랑해서 부딪쳐도 <b>떨림이 작아</b> 거의 소리가 안 나요.', .05], ['빈 통은 <b>부딪칠 것이 없어서</b> 소리가 나지 않아요.', 0]];
+function shake(btn, k){ btn.classList.remove('go'); void btn.offsetWidth; btn.classList.add('go'); document.getElementById('sNote').innerHTML = SHK[k][0]; const vol = SHK[k][1]; if(!vol) return;
+  const a = getAC(); for(let j = 0; j < 6; j++){ const t = a.currentTime + j * .12, len = .05, buf = a.createBuffer(1, a.sampleRate * len, a.sampleRate), d = buf.getChannelData(0);
+    for(let n = 0; n < d.length; n++) d[n] = (Math.random() * 2 - 1) * Math.pow(1 - n / d.length, 3);
+    const s = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain(); s.buffer = buf; f.type = 'bandpass'; f.frequency.value = 2600; f.Q.value = 1.2; g.gain.value = .9 * vol;
+    s.connect(f).connect(g).connect(a.destination); s.start(t); } }
+hooks.snd = () => gtDraw(0);
+
+/* ---------- 미션 2: A? B? (a/b: 그림, ans: 정답, w: 까닭) ---------- */
+const CQ = [
+  {q:'어느 자동차가 더 잘 굴러갈까요?', a:TOY.car({x:300, y:82, s:1, wheel:'square'}), an:'네모 바퀴', b:TOY.car({x:300, y:82, s:1}), bn:'동그란 바퀴', ans:'B', w:'<b>동그란</b> 바퀴는 어디로 돌아도 높이가 같아서 부드럽게 굴러가요. 네모 바퀴는 모서리에서 덜컹 멈춰요.'},
+  {q:'어느 자동차가 더 잘 굴러갈까요?', a:TOY.car({x:300, y:82, s:1}), an:'축이 빨대 속에서 돌아요', b:TOY.car({x:300, y:82, s:1, taped:true}), bn:'바퀴를 테이프로 붙였어요', ans:'A', w:'바퀴가 <b>돌 수 있어야</b> 굴러가요. 축은 빨대 속에서 헐렁하게 돌게 해요.'},
+  {q:'어느 자동차가 더 잘 굴러갈까요?', a:TOY.car({x:300, y:82, s:1, tilt:true}), an:'바퀴 높이가 달라요', b:TOY.car({x:300, y:82, s:1}), bn:'바퀴 높이가 같아요', ans:'B', w:'바퀴 <b>네 개의 높이</b>가 같아야 차가 기울지 않고 곧게 굴러가요.'},
+  {q:'어느 자동차가 더 잘 굴러갈까요?', a:TOY.car({x:300, y:82, s:1, rub:true}), an:'바퀴가 몸통에 닿아요', b:TOY.car({x:300, y:82, s:1}), bn:'바퀴와 몸통 사이가 떨어져요', ans:'B', w:'바퀴가 몸통에 <b>닿으면 문질러져서</b> 멈춰요. 바퀴와 몸통 사이를 조금 띄워요.'},
+  {q:'어느 고무줄이 더 높은 소리가 날까요?', a:TOY.guitar({x:300, y:115, s:1.1, sag:26}), an:'느슨한 고무줄', b:TOY.guitar({x:300, y:115, s:1.1}), bn:'팽팽한 고무줄', ans:'B', w:'<b>팽팽한</b> 고무줄이 더 빨리 떨려서 높은 소리가 나요.'},
+  {q:'어느 통이 흔들 때 소리가 더 클까요?', a:TOY.shaker({x:300, y:112, s:1, fill:'cap'}), an:'병뚜껑을 넣었어요', b:TOY.shaker({x:300, y:112, s:1, fill:'cotton'}), bn:'솜을 넣었어요', ans:'A', w:'<b>단단한</b> 병뚜껑이 부딪쳐야 소리가 커요. 솜은 말랑해서 소리가 작아요.'},
+  {q:'어느 통이 흔들 때 소리가 더 또렷할까요?', a:TOY.shaker({x:300, y:112, s:1, fill:'full'}), an:'꽉 채웠어요', b:TOY.shaker({x:300, y:112, s:1, fill:'cap'}), bn:'조금만 넣었어요', ans:'B', w:'꽉 채우면 알갱이가 <b>움직일 자리가 없어서</b> 부딪치지 못해요. 조금 비워 둬요.'},
+  {q:'어느 자동차가 더 튼튼할까요?', a:TOY.car({x:300, y:82, s:1, tape:1}), an:'테이프를 한 번 붙였어요', b:TOY.car({x:300, y:82, s:1, tape:2}), bn:'빨대를 테이프로 감아 붙였어요', ans:'B', w:'빨대(축받이)를 <b>여러 번 감아</b> 붙이면 굴러가다 떨어지지 않아요. 24차시에 더 알아봐요!'}];
+let cIdx = 0, cT = null; const cR = K.rounds('cqR', CQ.length, i => setCQ(i)); K.teams('teams1');
+function setCQ(i){ cIdx = i; const o = CQ[i]; S.flip(); cR.on(i); clearInterval(cT); document.getElementById('cqC').textContent = 3; document.getElementById('cq').classList.remove('rev');
+  document.getElementById('cqQ').innerHTML = `<small>문제 ${i + 1} / ${CQ.length}</small>${o.q}`;
+  document.getElementById('cqAB').innerHTML = [['A', o.a, o.an], ['B', o.b, o.bn]].map(([l, s, n]) => `<div class="o ${o.ans === l ? 'ans' : ''}"><span class="lt">${l}</span><svg viewBox="0 0 600 240">${s}</svg><span>${n}</span></div>`).join(''); }
+function cq3(){ clearInterval(cT); let n = 3; const c = document.getElementById('cqC'); c.textContent = n; S.tick(); cT = setInterval(() => { n--; c.textContent = n; if(n <= 0){ clearInterval(cT); c.textContent = '셋!'; S.end(); } else S.tick(); }, 1000); }
+function cqShow(){ clearInterval(cT); document.getElementById('cqW').innerHTML = `💡 정답은 <b>${CQ[cIdx].ans}</b>! ${CQ[cIdx].w}`; document.getElementById('cq').classList.add('rev'); S.win(); cR.done(cIdx); }
+K.leave(() => clearInterval(cT));
+
+const dsClock = K.clock({el:'dsC', btn:'dsGo', sec:600, btnLabel:'▶ 10분'});
+window.onEsc = () => {};
+setCQ(0); rollReset(); gtDraw(0); startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>
