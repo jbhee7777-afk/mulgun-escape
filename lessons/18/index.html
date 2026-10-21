@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4번 방 · 18차시 모두를 위한 작은 발명</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/kit.css">
+<style>
+/* 지난 시간 1등 */
+.mytop{background:#fff;border:4px solid var(--room);border-radius:28px;padding:18px 26px;box-shadow:0 8px 0 var(--room2);font-size:30px;line-height:1.5}
+.mytop h3{font-size:34px;color:var(--roomdk)}
+.mytop ol{padding-left:36px}
+/* 해결 방법 세 종류 */
+.kinds{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+.kinds .k{background:#fff;border:4px solid var(--line);border-radius:28px;padding:16px;box-shadow:0 8px 0 var(--line);display:flex;flex-direction:column;gap:10px}
+.kinds .k .hd{display:flex;align-items:center;gap:12px}
+.kinds .k .hd .emo{font-size:62px}
+.kinds .k h3{font-size:34px;color:var(--navy);line-height:1.2}
+.kinds .k h3 small{display:block;font-size:21px;color:var(--ink2);font-family:var(--body)}
+.kinds .k .ex{background:var(--room2);border-radius:18px;padding:10px 14px;font-size:22px;line-height:1.5;cursor:pointer}
+.kinds .k .ex b{color:var(--roomdk)}
+.kinds .k .ex .a{opacity:0;transition:.4s}.kinds .k .ex.open .a{opacity:1}
+/* 브레인 릴레이 */
+.relay{flex:1;display:flex;gap:20px;min-height:0;margin-top:2px}
+.rmain{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
+.probs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.probs .p{background:#fff;border:4px solid var(--line);border-radius:22px;padding:10px 14px;display:flex;gap:12px;align-items:center;box-shadow:0 6px 0 var(--line);min-height:150px}
+.probs .p .n{font-family:var(--head);font-size:24px;color:#fff;background:var(--room);border-radius:14px;padding:4px 12px;flex:none}
+.probs .p .emo{font-size:52px;flex:none}
+.probs .p .tx{font-family:var(--head);font-size:29px;color:var(--navy);line-height:1.3}
+.probs .p .tx small{display:block;font-family:var(--body);font-size:18px;color:var(--ink2)}
+.pass{display:flex;gap:16px;align-items:center;background:var(--paper);border:3px dashed var(--line);border-radius:22px;padding:22px 24px;font-size:30px;line-height:1.5}
+.pass .emo{font-size:60px}
+/* 만들기 */
+.mkrow{display:flex;gap:30px;align-items:center;justify-content:center;margin-top:10px}
+.tips2{display:flex;flex-direction:column;gap:12px;width:620px}
+.tips2 div{background:#fff;border:3px solid var(--line);border-radius:20px;padding:10px 18px;font-size:26px;line-height:1.45}
+.tips2 div b{color:#e3523f}
+/* 질문 카드 */
+.qc{display:flex;gap:40px;align-items:center;justify-content:center;margin-top:16px}
+.qcard{width:620px;min-height:330px;border-radius:36px;background:#fff;border:6px solid var(--room);box-shadow:0 12px 0 var(--room2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center}
+.qcard .emo{font-size:110px;line-height:1.1}
+.qcard .t{font-family:var(--head);font-size:44px;color:var(--navy);line-height:1.3}
+.qcard.spin{animation:wob .5s}
+@keyframes wob{0%{transform:rotate(0)}25%{transform:rotate(-6deg) scale(.95)}60%{transform:rotate(5deg)}100%{transform:rotate(0)}}
+</style>
+</head>
+<body data-room="4">
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 4번 방 · 모두를 위한 물건 생각하기</span><span class="ls">18차시 / 15~19</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 5분"
+ data-notes="<b>시작</b> — “지난 시간 불편함 지도를 만들었죠? 오늘은 그 불편함을 해결하는 작은 발명가가 되어요.” 준비물: 학생이 가져온 재활용품(작은 상자·휴지심·종이컵·뚜껑), 모둠마다 셀로판테이프·가위·사인펜, 모둠 종이 1장. 재활용품을 못 가져온 학생을 위해 여분을 조금 준비해 두세요.">
+  <div class="cover">
+    <img class="doorimg bob" src="../15/img/door4.jpg" alt="4번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill">4번 방 · 18차시</span>
+      <h1 class="title">모두를 위한<br>작은 발명</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">교실의 불편함을 해결해 봐요.</p>
+      <button class="btn coral" style="margin-top:34px" onclick="go(1)">🚪 4번 방 다시 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 -->
+<section class="slide" data-phase="도입 · 5분" data-hook="mytop"
+ data-notes="<b>지난 시간 돌아보기</b> — 17차시 비밀 문장을 함께 읽어요. 오른쪽에는 지난 시간 이 컴퓨터에서 만든 ‘불편함 지도’의 투표 순위가 나와요(다른 컴퓨터에서 했다면 예시가 나와요). 1~3등 가운데에서 오늘 해결할 문제를 모둠이 골라요.">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">우리 반이 찾은 불편함</h2>
+  <div class="recap" style="gap:30px">
+    <div class="box">
+      <div class="cipher" style="font-size:38px;margin-top:10px;padding:22px 34px"><span class="blank" onclick="openBlank(this)">다른</span> 사람의 눈으로 살펴보면<br>숨은 <span class="blank" onclick="openBlank(this)">불편함</span>이 보여요.</div>
+    </div>
+    <div class="mytop" id="myTop" style="width:640px"></div>
+  </div>
+</section>
+
+<!-- 3 이야기 -->
+<section class="slide dark" data-phase="도입 · 5분" data-hook="story"
+ data-notes="<b>이야기</b> — 불편함은 ‘찾는 것’에서 끝나지 않고 ‘해결하는 생각’으로 이어진다는 것을 알려 줘요. 3번 방에서 배운 더하기·빼기·바꾸기 마법을 떠올리게 해요.">
+  <div class="alarm">🚨 마법사의 비웃음!</div>
+  <div class="storywrap">
+    <img class="wizard" src="../01/img/wizard.jpg" alt="싹쓸이 마법사">
+    <div class="bubble" id="storyText"></div>
+  </div>
+</section>
+
+<!-- 4 미션 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>학습 목표 함께 읽기</b> — 4번 방 네 번째 열쇠 조각을 찾아요.">
+  <div class="kicker">MISSION BRIEFING</div>
+  <h2 class="title" style="font-size:60px">오늘의 미션 세 가지</h2>
+  <div class="missions" style="gap:20px">
+    <div class="mcard"><span class="tag">미션 1</span><div class="ic emo" style="font-size:96px">📝</div><h3>브레인 릴레이</h3><p>종이를 돌리며 생각 모으기</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><img class="ic" src="../01/img/ic_cards.png" alt=""><h3>작은 발명 설계</h3><p>가장 좋은 생각을 그려요</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><div class="ic emo" style="font-size:96px">✂️</div><h3>모형 만들고 발표</h3><p>재활용품으로 뚝딱!</p></div>
+    <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 4</h3><p>4번 방 네 번째!</p></div>
+  </div>
+  <div class="goal"><b>🎯 학습 목표</b> 우리 교실의 불편함을 해결할 물건이나 방법을 여러 가지로 생각하고, 모형으로 나타낼 수 있어요.</div>
+</section>
+
+<!-- 5 해결 방법 세 종류 -->
+<section class="slide" data-phase="미션 1 · 9분"
+ data-notes="<b>해결 방법은 여러 가지</b> — 발명은 꼭 새 물건을 만드는 것만이 아니에요. 자리를 바꾸거나, 표시를 붙이는 것도 훌륭한 해결이에요. 예시 칸을 눌러 열기 전에 “이 불편함은 어떻게 해결할까?” 먼저 물어요. 학생 답이 예시와 달라도 모두 좋은 생각이에요.">
+  <div class="kicker">MISSION 1 · 준비</div>
+  <h2 class="title" style="font-size:54px">💡 해결 방법은 한 가지가 아니에요</h2>
+  <div class="kinds">
+    <div class="k"><div class="hd"><span class="emo">🛠️</span><h3>새 물건 만들기<small>도와주는 물건을 더해요</small></h3></div>
+      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 통로에 가방이 있어요<div class="a">→ <b>책상 옆 가방 고리</b>를 달아요.</div></div>
+      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 문턱에 바퀴가 걸려요<div class="a">→ 문턱 앞에 <b>작은 경사판</b>을 놓아요.</div></div></div>
+    <div class="k"><div class="hd"><span class="emo">📍</span><h3>자리 바꾸기<small>닿기 쉬운 곳으로 옮겨요</small></h3></div>
+      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 휴지가 맨 위 칸에 있어요<div class="a">→ 휴지를 <b>낮은 칸</b>으로 옮겨요.</div></div>
+      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 게시판이 너무 높아요<div class="a">→ 작품을 <b>눈높이 줄</b>에 집게로 걸어요.</div></div></div>
+    <div class="k"><div class="hd"><span class="emo">🏷️</span><h3>표시 붙이기<small>그림·색·점자로 알려요</small></h3></div>
+      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 정수기의 뜨거운 물이 헷갈려요<div class="a">→ <b>빨간 불꽃 그림</b> 스티커를 붙여요.</div></div>
+      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 분리수거 통이 헷갈려요<div class="a">→ 통마다 <b>물건 그림</b>을 붙여요.</div></div></div>
+  </div>
+</section>
+
+<!-- 6 브레인 릴레이 -->
+<section class="slide" data-phase="미션 1 · 9분" style="padding-top:78px"
+ data-notes="<b>브레인 릴레이</b> — ① ‘🎲 문제 정하기’로 모둠마다 해결할 불편함을 정해요(지난 시간 지도가 있으면 그 장소들이 먼저 나와요). ② 모둠 종이 가운데에 문제를 써요. ③ ‘▶ 릴레이 3분’: 종이를 시계 방향으로 돌리며, 받은 사람이 해결 방법을 하나 쓰고 옆 사람에게 넘겨요. 앞사람과 같은 생각은 안 돼요! ④ 끝나면 모둠 아이디어 수만큼 점수를 줘요. 엉뚱한 생각도 환영!">
+  <div class="relay">
+    <div class="rmain">
+      <div class="probs" id="probs"></div>
+      <div class="pass"><span class="emo">🔄</span><div>종이를 <b>옆 사람에게 돌리며</b> 해결 방법을 <b>하나씩</b> 써요.<br>같은 생각은 안 돼요 · 엉뚱한 생각도 좋아요 · 🛠️ 📍 🏷️ 무엇이든!</div></div>
+    </div>
+    <div class="side"><button class="btn coral" onclick="drawProb()">🎲 문제 정하기</button><div class="kclock"><small>릴레이</small><b id="rlC">3:00</b></div><button class="btn mint" id="rlGo" onclick="rlClock.toggle()">▶ 릴레이 3분</button><div class="score"><h4>아이디어 수</h4><div id="teams1"></div></div></div>
+  </div>
+</section>
+
+<!-- 7 설계 -->
+<section class="slide" data-phase="미션 2 · 7분"
+ data-notes="<b>작은 발명 설계</b> — 활동지를 나눠 줘요. 모둠 아이디어 가운데 <b>만들기 쉬우면서 많은 사람에게 좋은 것</b> 하나를 골라요(투표 또는 가위바위보). 각자 활동지에 설계도를 그리고, 모둠이 함께 만들 모형의 역할을 나눠요(재료 담당·자르기 담당·붙이기 담당·발표 담당). 14차시 설계도처럼 화살표 설명을 꼭 붙여요.">
+  <div class="kicker">MISSION 2</div>
+  <h2 class="title">📐 작은 발명 설계</h2>
+  <div class="how c3" style="margin-top:22px">
+    <div class="st"><span class="no">1</span><div class="tx">모둠 아이디어 가운데 <b>하나를 골라요</b>.<br><small style="font-size:21px;color:var(--ink2)">만들기 쉬운가? 여러 사람에게 좋은가?</small></div></div>
+    <div class="st"><span class="no">2</span><div class="tx">활동지에 <b>설계도</b>를 그리고 바뀐 곳마다 <b>화살표 설명</b>을 붙여요.</div></div>
+    <div class="st"><span class="no">3</span><div class="tx">모형을 만들 <b>역할</b>을 나눠요.<br><small style="font-size:21px;color:var(--ink2)">📦 재료 · ✂️ 자르기 · 🩹 붙이기 · 🎤 발표</small></div></div>
+  </div>
+  <div class="need" style="margin-top:22px">🧺 <b>모형 재료</b> 가져온 재활용품(상자·휴지심·종이컵·뚜껑) · 셀로판테이프 · 가위 · 사인펜 — <b>진짜 크기가 아니어도 돼요!</b> 작게 만들어 보여 주는 것이 모형이에요.</div>
+  <div style="display:flex;justify-content:flex-end;margin-top:16px"><div class="kclock" style="display:flex;align-items:center;gap:16px;padding:8px 22px"><small>설계 시간</small><b id="dsC" style="font-size:54px">5:00</b><button class="btn mint" id="dsGo" style="font-size:22px;padding:10px 16px" onclick="dsClock.toggle()">▶ 5분</button></div></div>
+</section>
+
+<!-- 8 만들기 -->
+<section class="slide center" data-phase="미션 3 · 14분"
+ data-notes="<b>모형 만들기 9분</b> — 가위 쓸 때는 자리에 앉아서. 3분마다 “지금 무엇을 만들고 있나요?” 물어 진행을 확인해요. 일찍 끝난 모둠은 발표 연습: “우리 모둠의 발명품은 ○○예요. □□가 불편해서 △△하게 만들었어요.”">
+  <div class="kicker">MISSION 3 · 만들기</div>
+  <h2 class="title" style="font-size:56px">✂️ 모형을 만들어요</h2>
+  <div class="mkrow">
+    <div class="kclock" style="width:360px"><small>만들기</small><b id="mkC" style="font-size:100px">9:00</b><button class="btn mint" id="mkGo" style="margin-top:8px" onclick="mkClock.toggle()">▶ 만들기 9분</button></div>
+    <div class="tips2">
+      <div>✂️ 가위는 <b>앉아서</b>, 날은 몸 바깥쪽으로!</div>
+      <div>🧻 휴지심은 <b>기둥·고리</b>, 상자는 <b>받침·통</b>이 돼요.</div>
+      <div>🖍️ 무엇인지 알 수 있게 <b>글자·그림</b>을 써 붙여요.</div>
+      <div>🎤 발표 문장: “<b>□□가 불편해서</b> △△하게 만들었어요.”</div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 발표 질문 카드 -->
+<section class="slide" data-phase="미션 3 · 14분"
+ data-notes="<b>1분 발표 + 질문 카드</b> — 모둠이 차례로 앞에 나와 모형을 보여 주며 1분 발표해요. 발표가 끝나면 ‘🎲 질문 카드’를 눌러 나온 질문을 다른 모둠 친구 한 명이 해요. 칭찬과 걱정을 함께 나누는 것이 목표예요. 시간이 부족하면 두세 모둠만 발표하고 나머지는 다음 시간 처음에 해요.">
+  <div class="kicker">MISSION 3 · 발표</div>
+  <h2 class="title" style="font-size:54px">🎤 1분 발표 + 질문 카드</h2>
+  <div class="qc">
+    <div class="qcard" id="qcard"><div class="emo">🎴</div><div class="t">발표가 끝나면<br>질문 카드를 뽑아요!</div></div>
+    <div class="side" style="width:300px"><button class="btn coral" onclick="drawQ()">🎲 질문 카드</button><div class="kclock"><small>발표</small><b id="prC">1:00</b></div><button class="btn mint" id="prGo" onclick="prClock.toggle()">▶ 발표 1분</button></div>
+  </div>
+</section>
+
+<!-- 10 활동지 -->
+<section class="slide" data-phase="정리 · 5분"
+ data-notes="<b>활동지 ‘모두를 위한 작은 발명 설계도’</b> — 미션 2에서 쓰고, 발표 뒤 친구들의 질문을 듣고 ‘고치고 싶은 점’을 마저 써요. 예시 답안은 📗 단추. 만든 모형은 다음 시간(19차시)에 실제로 써 볼 수 있으니 잘 보관해요.">
+  <div class="kicker">MISSION 정리 · 활동지</div>
+  <div class="ws">
+    <img class="wsprev" src="img/worksheet_preview.png" alt="활동지 미리 보기">
+    <div class="steps">
+      <h2 class="title" style="font-size:50px;margin-bottom:4px">📐 작은 발명 설계도</h2>
+      <div class="s"><span>1</span>해결할 불편함과 누구를 위한지 써요</div>
+      <div class="s"><span>2</span>브레인 릴레이에서 나온 생각을 모아요</div>
+      <div class="s"><span>3</span>고른 생각을 설계도로 그려요</div>
+      <div class="s bonus"><span>★</span>친구 질문을 듣고 고치고 싶은 점</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
+    </div>
+  </div>
+</section>
+
+<!-- 11 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 5분"
+ data-notes="<b>배움 정리</b>">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 4번 방 네 번째 비밀 문장</h2>
+  <div class="cipher">불편함을 <span class="blank" onclick="openBlank(this)">해결</span>하는 방법은<br><span class="blank" onclick="openBlank(this)">한 가지</span>가 아니에요.</div>
+  <div class="chips"><span class="chip">한 가지</span><span class="chip">비밀</span><span class="chip">해결</span><span class="chip">백 가지</span></div>
+</section>
+
+<!-- 12 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 5분" data-hook="key"
+ data-notes="<b>보상</b> — 4번 방 네 번째 열쇠 조각!">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 4번 방 열쇠 조각 <span class="c-gold">4</span>개!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">15차시 ✔</div><div class="on">16차시 ✔</div><div class="on">17차시 ✔</div><div class="on">18차시 ✔</div><div>19차시</div></div>
+</section>
+
+<!-- 13 다음 -->
+<section class="slide" data-phase="정리 · 5분"
+ data-notes="<b>다음 차시 예고</b> — 다음 시간에는 우리 생각 가운데 <b>실제로 할 수 있는 것</b>(자리 바꾸기, 표시 붙이기, 모형 써 보기)을 교실에서 진짜로 바꿔 보고, 바꾸기 전과 후를 비교해요. 선생님 준비: 마스킹테이프, 색 스티커나 색종이, (있으면) 사진 찍을 태블릿. 오늘 만든 모형은 잘 보관해요.">
+  <div class="kicker">NEXT MISSION</div>
+  <div class="next">
+    <img class="doorimg" src="../15/img/door4.jpg" alt="">
+    <div>
+      <span class="pill" style="background:#ffe3ef;color:#8f2f5c">19차시 예고 · 4번 방 마지막</span>
+      <h2 class="title" style="font-size:76px">우리의 생각을<br>실제로 바꾸기</h2>
+      <p class="big" style="color:var(--ink2);margin-top:14px">교실을 <b class="hl">진짜로</b>바꾸고, 전과 후를 비교해요.<br>📦 오늘 만든 모형을 잘 보관해요!</p>
+      <button class="btn coral" id="doneBtn" style="margin-top:20px" onclick="complete()">✅ 18차시 미션 완료</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:4, lesson:18, keyPieces:4};</script>
+<script src="../shared/base.js"></script>
+<script src="../shared/kit.js"></script>
+<script>
+/* ---------- 이야기 ---------- */
+hooks.story = () => typewriter(document.getElementById('storyText'),
+  '“흥, 불편함 지도를 만들었다고? <b class="c-coral">찾기만 하면 뭐 해</b>!<br>어린이가 교실을 바꿀 수는 없잖아!”<br>요원 여러분, 3번 방에서 배운 발명 마법을 기억하나요?<br>오늘은 <b class="c-navy">모두를 위한 작은 발명</b>으로 보여 줘요!');
+
+/* ---------- 지난 시간 지도(이 컴퓨터) ---------- */
+const PRESET = [['🚪', '문 아래 문턱', '휠체어 바퀴가 걸려요'], ['🎒', '통로의 가방', '걸려 넘어질 수 있어요'], ['📌', '높은 게시판', '작품에 손이 안 닿아요'],
+  ['🧻', '맨 위 칸의 휴지', '키 작은 친구가 못 꺼내요'], ['🚰', '표시 없는 정수기', '뜨거운 물이 헷갈려요'], ['♻️', '헷갈리는 분리수거 통', '어디에 버릴지 몰라요'], ['💡', '높은 전등 스위치', '손이 안 닿아요']];
+function mapPins(){ try { return (JSON.parse(localStorage.getItem('mg17map') || '[]') || []).filter(p => p && p.n).sort((a, b) => b.v - a.v); } catch(e) { return []; } }
+hooks.mytop = () => { const p = mapPins(), el = document.getElementById('myTop');
+  el.innerHTML = p.length ? `<h3>🗺️ 지난 시간 투표 순위</h3><ol>${p.slice(0, 5).map(x => `<li><b>${x.n}</b> <span style="color:var(--ink2);font-size:24px">(${x.v}표)</span></li>`).join('')}</ol>`
+    : `<h3>🗺️ 예를 들면 이런 불편함</h3><ol>${PRESET.slice(0, 5).map(x => `<li>${x[0]} <b>${x[1]}</b> <span style="color:var(--ink2);font-size:24px">— ${x[2]}</span></li>`).join('')}</ol>`; };
+
+/* ---------- 미션 1: 문제 정하기 + 릴레이 ---------- */
+function probList(){ const p = mapPins().map(x => ['📍', x.n, `지난 시간 ${x.v}표`]); const names = p.map(x => x[1]); return p.concat(PRESET.filter(x => !names.includes(x[1]))); }
+function probDraw(pick){ const L = probList(); document.getElementById('probs').innerHTML = [...Array(K.teamN)].map((_, t) => { const o = pick ? L[pick[t]] : ['❔', '문제를 정해요', ''];
+  return `<div class="p"><span class="n">${t + 1}모둠</span><span class="emo">${o[0]}</span><div class="tx">${o[1]}<small>${o[2]}</small></div></div>`; }).join(''); }
+function drawProb(){ const L = probList(), top = Math.min(L.length, Math.max(3, Math.ceil(K.teamN / 2)));
+  /* 위쪽(투표를 많이 받은) 문제부터 나눠 주고, 모둠이 많으면 두 모둠이 같은 문제를 해도 돼요 */
+  const order = K.shuffle([...Array(top).keys()]); const pick = [...Array(K.teamN)].map((_, t) => order[t % top]); S.win(); probDraw(pick); }
+const rlClock = K.clock({el:'rlC', btn:'rlGo', sec:180, btnLabel:'▶ 릴레이 3분'}); K.teams('teams1'); probDraw(null);
+
+/* ---------- 미션 2·3 시계 ---------- */
+const dsClock = K.clock({el:'dsC', btn:'dsGo', sec:300, btnLabel:'▶ 5분'});
+const mkClock = K.clock({el:'mkC', btn:'mkGo', sec:540, btnLabel:'▶ 만들기 9분'});
+const prClock = K.clock({el:'prC', btn:'prGo', sec:60, btnLabel:'▶ 발표 1분'});
+const QS = [['👍', '이 발명은 <b>누구에게</b><br>가장 좋을까요?'], ['🤔', '<b>걱정되는 점</b>은<br>없을까요?'], ['💡', '<b>더 좋게</b> 하려면<br>무엇을 바꿀까요?'], ['🧺', '<b>어떤 재료</b>로 만들면<br>더 튼튼할까요?'], ['🌏', '<b>글자를 모르는</b> 친구도<br>쓸 수 있을까요?'], ['⭐', '이 발명에서 가장<br><b>멋진 부분</b>은 어디예요?']];
+let lastQ = -1;
+function drawQ(){ let k; do k = Math.floor(Math.random() * QS.length); while(k === lastQ); lastQ = k; const c = document.getElementById('qcard');
+  c.innerHTML = `<div class="emo">${QS[k][0]}</div><div class="t">${QS[k][1]}</div>`; c.classList.remove('spin'); void c.offsetWidth; c.classList.add('spin'); S.win(); }
+
+window.onEsc = () => {};
+startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>

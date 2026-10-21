@@ -18,7 +18,7 @@ body[data-room="5"]{--room:#3d6fd0;--room2:#e1ebff;--roomdk:#2a4f9a}
 /* 아주 자세한 단계 안내 (번호 + 그림 + 글) */
 .how{display:grid;gap:14px;margin-top:18px}
 .how.c2{grid-template-columns:repeat(2,1fr)}.how.c3{grid-template-columns:repeat(3,1fr)}.how.c4{grid-template-columns:repeat(4,1fr)}.how.c5{grid-template-columns:repeat(5,1fr)}
-.st{background:var(--paper);border:3px solid var(--line);border-radius:24px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;box-shadow:0 7px 0 var(--line);position:relative}
+.st{background:var(--paper);border:3px solid var(--line);border-radius:24px;padding:44px 16px 14px;display:flex;flex-direction:column;gap:8px;box-shadow:0 7px 0 var(--line);position:relative}
 .st .no{position:absolute;left:-10px;top:-14px;width:52px;height:52px;border-radius:50%;background:var(--room,#2d3a7c);color:#fff;font-family:var(--head);font-size:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--roomdk,#1c2557)}
 .st img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px}
 .st img.fit{object-fit:contain;background:#fff}
