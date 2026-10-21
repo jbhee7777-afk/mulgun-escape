@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5번 방 · 22차시 나만의 놀잇감 제작소</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/kit.css">
+<style>
+/* 안전 OX */
+.ox{flex:1;display:flex;gap:22px;min-height:0;margin-top:4px}
+.oxmain{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
+.oxq{display:flex;align-items:center;gap:24px;background:#fff;border:4px solid var(--line);border-radius:30px;padding:22px 28px;box-shadow:0 8px 0 var(--line);min-height:220px}
+.oxq .emo{font-size:130px;width:170px;text-align:center;flex:none}
+.oxq .t{font-family:var(--head);font-size:44px;line-height:1.4;color:var(--navy)}
+.oxq .t small{display:block;font-size:24px;color:var(--ink2)}
+.oxbig{display:flex;gap:20px}
+.oxbig div{flex:1;height:130px;border-radius:30px;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:100px;color:#fff;transition:.4s}
+.oxbig .o{background:#3bbf8f;box-shadow:0 8px 0 #22906a}.oxbig .x{background:#ef6a5a;box-shadow:0 8px 0 #c04a3c}
+.ox.rev .oxbig div{opacity:.25;transform:scale(.94)}
+.ox.rev .oxbig div.ans{opacity:1;transform:scale(1.04)}
+.oxwhy{display:none;background:var(--mint2);border:3px solid var(--mint);border-radius:22px;padding:14px 22px;font-size:28px;line-height:1.55}
+.ox.rev .oxwhy{display:block;animation:enter .5s}
+.oxwhy b{color:#0f8a6e}
+
+/* 만들기 길잡이 */
+.guide{flex:1;display:flex;gap:20px;min-height:0;margin-top:2px}
+.gtabs{display:flex;flex-direction:column;gap:10px;width:250px;flex:none}
+.gtabs button{background:#fff;border:4px solid var(--line);border-radius:22px;padding:8px 10px;display:flex;flex-direction:column;align-items:center;font-family:var(--head);font-size:24px;color:var(--navy);box-shadow:0 5px 0 var(--line)}
+.gtabs button svg{width:200px;height:96px}
+.gtabs button.on{border-color:var(--room);background:var(--room2)}
+.gmain{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
+.gstep{flex:1;display:flex;gap:24px;align-items:center;background:#fff;border:4px solid var(--line);border-radius:30px;padding:22px 28px;box-shadow:0 8px 0 var(--line)}
+.gstep .num{width:110px;height:110px;flex:none;border-radius:50%;background:var(--room);color:#fff;font-family:var(--head);font-size:64px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 var(--roomdk)}
+.gstep .emo{font-size:120px;flex:none;width:160px;text-align:center}
+.gstep .t{font-size:36px;line-height:1.5}
+.gstep .t b{color:var(--roomdk)}
+.gstep .t small{display:block;font-size:25px;color:#d24634;margin-top:8px}
+.gdots{display:flex;gap:8px;justify-content:center}
+.gdots i{width:22px;height:22px;border-radius:50%;background:var(--line);cursor:pointer}
+.gdots i.on{background:var(--room)}
+.gdots i.done{background:var(--mint)}
+
+/* 진행 사다리 */
+.ladder{display:flex;gap:10px;margin-top:16px}
+.ladder div{flex:1;background:var(--paper);border:3px solid var(--line);border-radius:18px;padding:10px;text-align:center;font-family:var(--head);font-size:24px;color:var(--ink2);cursor:pointer;line-height:1.3}
+.ladder div.on{background:var(--mint2);border-color:var(--mint);color:#0f6a52}
+.help{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.help div{background:#fff6d6;border:3px solid var(--gold);border-radius:20px;padding:10px 16px;font-size:23px;line-height:1.45}
+.help div b{color:#9a6a00;font-family:var(--head);font-weight:400;font-size:26px;display:block}
+
+/* 첫 시험 */
+.test3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+.test3 .s{background:#fff;border:4px solid var(--line);border-radius:28px;padding:16px 18px;box-shadow:0 8px 0 var(--line)}
+.test3 .s .emo{font-size:70px}
+.test3 .s h3{font-size:30px;color:var(--navy)}
+.test3 .s p{font-size:23px;line-height:1.5;color:var(--ink2)}
+.test3 .s p b{color:var(--ink)}
+</style>
+</head>
+<body data-room="5">
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 5번 방 · 직접 만들고 개선하기</span><span class="ls">22차시 / 20~24</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 4분"
+ data-notes="<b>시작</b> — “오늘은 드디어 만드는 날!” 준비물 확인: 21차시 설계도, 재료 상자, 빨대, 끝이 뭉툭한 나무 꼬치(또는 가는 빨대), 고무줄, 셀로판테이프, 가위, 연필 2자루(기타 다리). 병뚜껑 구멍은 수업 전에 선생님이 송곳으로 미리 뚫어 두면 시간이 줄어요.">
+  <div class="cover">
+    <img class="doorimg bob" src="../20/img/door5.jpg" alt="5번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill">5번 방 · 22차시</span>
+      <h1 class="title">나만의<br>놀잇감 제작소</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">설계도를 보며 차근차근 만들어요.</p>
+      <button class="btn coral" style="margin-top:34px" onclick="go(1)">🚪 5번 방 다시 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 -->
+<section class="slide" data-phase="도입 · 4분"
+ data-notes="<b>지난 시간 + 설계도 확인</b> — 21차시 비밀 문장을 읽고, 설계도를 책상 위에 펼쳐 ‘꼭 지킬 점’에 손가락을 올려 보게 해요(축은 빨대 속에서 돌게, 바퀴 높이 같게, 고무줄은 팽팽하게, 알갱이는 조금만).">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">설계도를 펼쳐요</h2>
+  <div class="recap">
+    <div class="box">
+      <div class="cipher" style="font-size:38px;margin-top:10px;padding:24px 36px">만들기 전에 <span class="blank" onclick="openBlank(this)">설계</span>를 하면<br>재료와 <span class="blank" onclick="openBlank(this)">구조</span>를 미리 생각할 수 있어요.</div>
+      <div class="homework">📐 설계도의 <b>‘꼭 지킬 점’</b>에 손가락을 올려 봐요!</div>
+    </div>
+    <img src="../01/img/agent.png" alt="" style="width:300px" class="bob">
+  </div>
+</section>
+
+<!-- 3 이야기 -->
+<section class="slide dark" data-phase="도입 · 4분" data-hook="story"
+ data-notes="<b>이야기</b> — 서두르지 말고 한 단계씩, 확인하면서 만들자고 약속해요.">
+  <div class="alarm">🚨 마법사가 재료를 노려요!</div>
+  <div class="storywrap">
+    <img class="wizard" src="../01/img/wizard.jpg" alt="싹쓸이 마법사">
+    <div class="bubble" id="storyText"></div>
+  </div>
+</section>
+
+<!-- 4 미션 -->
+<section class="slide" data-phase="도입 · 4분"
+ data-notes="<b>학습 목표 함께 읽기</b> — 5번 방 세 번째 열쇠 조각을 찾아요.">
+  <div class="kicker">MISSION BRIEFING</div>
+  <h2 class="title" style="font-size:60px">오늘의 미션 세 가지</h2>
+  <div class="missions" style="gap:20px">
+    <div class="mcard"><span class="tag">미션 1</span><div class="ic emo" style="font-size:96px">🦺</div><h3>안전 약속 OX</h3><p>몸으로 O · X</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><div class="ic emo" style="font-size:96px">🛠️</div><h3>차근차근 만들기</h3><p>화면 길잡이를 따라요</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><img class="ic" src="../01/img/ic_search.png" alt=""><h3>첫 시험</h3><p>굴려 보고 소리 내 보고</p></div>
+    <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 3</h3><p>5번 방 세 번째!</p></div>
+  </div>
+  <div class="goal"><b>🎯 학습 목표</b> 설계도를 보며 주변 물건과 재활용품으로 놀잇감을 직접 만들 수 있어요.</div>
+</section>
+
+<!-- 5 안전 OX -->
+<section class="slide" data-phase="미션 1 · 4분" style="padding-top:78px"
+ data-notes="<b>안전 약속 OX</b> — 모두 일어나 O(머리 위 큰 동그라미)·X(가슴 앞 팔 엇갈리기)로 답해요. 5문제. 틀려도 앉지 않고, 정답 뒤 까닭을 함께 읽어요. 특히 꼬치 끝과 가위 쓰는 법을 꼭 짚어 주세요.">
+  <div class="ox" id="ox">
+    <div class="oxmain">
+      <div class="oxq" id="oxQ"></div>
+      <div class="oxbig"><div class="o" id="oxO">O</div><div class="x" id="oxX">X</div></div>
+      <div class="oxwhy" id="oxWhy"></div>
+      <div class="btns" style="margin-top:auto"><button class="btn mint" onclick="oxShow()">🎉 정답!</button><button class="btn ghost" onclick="setOX((oIdx + 1) % OX.length)">다음 ▶</button></div>
+    </div>
+    <div class="side"><div class="rounds" id="oxR" style="grid-template-columns:repeat(3,1fr)"></div></div>
+  </div>
+</section>
+
+<!-- 6 만들기 길잡이 -->
+<section class="slide" data-phase="미션 2 · 22분" style="padding-top:78px" data-hook="guide"
+ data-notes="<b>만들기 길잡이</b> — 왼쪽에서 놀잇감을 고르면 단계가 하나씩 나와요. 만드는 동안 이 화면을 켜 두고, 학생들이 ‘다음 단계’를 물으면 ▶을 눌러요(모둠마다 만드는 것이 다르면 자주 바꿔 보여 줘요). 설계도와 다른 놀잇감을 만드는 학생은 자기 설계도를 따라가요. 빨간 글씨는 ‘꼭 지킬 점’이에요.">
+  <div class="guide">
+    <div class="gtabs" id="gTabs"></div>
+    <div class="gmain">
+      <div class="gstep" id="gStep"></div>
+      <div class="gdots" id="gDots"></div>
+      <div class="btns" style="justify-content:center"><button class="btn ghost" onclick="gGo(-1)">◀ 앞 단계</button><button class="btn coral" onclick="gGo(1)">다음 단계 ▶</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 만들기 시간 -->
+<section class="slide" data-phase="미션 2 · 22분"
+ data-notes="<b>만들기 시간 18분</b> — 6분마다 진행 사다리를 눌러 반 전체가 어디까지 왔는지 확인해요(손 들기). 막힌 학생에게는 아래 세 가지 도움 방법을 먼저 해 보게 해요. 다 만든 학생은 꾸미기 → 짝 도와주기. 끝나기 3분 전 정리 신호!">
+  <div class="kicker">MISSION 2 · 만들기</div>
+  <div style="display:flex;gap:30px;align-items:center;margin-top:8px">
+    <div class="kclock" style="width:380px"><small>만들기</small><b id="mkC" style="font-size:110px">18:00</b><button class="btn mint" id="mkGo" style="margin-top:8px" onclick="mkClock.toggle()">▶ 만들기 18분</button></div>
+    <div style="flex:1">
+      <h2 class="title" style="font-size:46px">지금 어디까지 왔나요?</h2>
+      <div class="ladder" id="ladder"><div>① 재료<br>준비</div><div>② 몸통<br>만들기</div><div>③ 움직이는·소리 나는<br>부분 붙이기</div><div>④ 손으로<br>확인</div><div>⑤ 꾸미기</div></div>
+    </div>
+  </div>
+  <div class="help">
+    <div><b>🔁 길잡이 다시 보기</b>화면 단계를 다시 보고 따라 해요.</div>
+    <div><b>👀 짝에게 물어보기</b>“여기는 어떻게 했어?” 친구 것을 살펴봐요.</div>
+    <div><b>✋ 그래도 어려우면</b>선생님을 불러요. 가위·꼬치는 선생님과 함께!</div>
+  </div>
+</section>
+
+<!-- 8 첫 시험 -->
+<section class="slide" data-phase="미션 3 · 6분"
+ data-notes="<b>첫 시험</b> — 다 만들었으면 바로 시험해요. 굴러가는 놀잇감은 바닥(복도 쪽 빈 곳)에서 한 번 밀고 몇 걸음 갔는지 세요. 소리 나는 놀잇감은 짝에게 들려주고 ‘소리가 잘 들려요/작아요’를 말해 줘요. 잘 안 되어도 괜찮아요 — 다음 시간(23차시)이 바로 고치는 시간! 활동지에 ‘고칠 점’을 꼭 적게 해요.">
+  <div class="kicker">MISSION 3</div>
+  <h2 class="title">🔍 첫 시험!</h2>
+  <div class="test3">
+    <div class="s"><div class="emo">🚗</div><h3>굴러가는 놀잇감</h3><p>바닥에서 <b>한 번만</b> 살짝 밀어요.<br>몇 <b>걸음</b> 갔나요? 곧게 갔나요?</p></div>
+    <div class="s"><div class="emo">🎸</div><h3>소리 나는 놀잇감</h3><p>짝에게 들려줘요.<br>소리가 <b>잘 들리나요?</b> 높낮이가 달라요?</p></div>
+    <div class="s"><div class="emo">📝</div><h3>기록해요</h3><p>잘 된 점 😀 하나,<br><b>고칠 점</b> 🔧 하나를 써요.</p></div>
+  </div>
+  <div class="need" style="margin-top:20px">💡 잘 안 되어도 괜찮아요! 다음 시간은 <b>고치고 다시 도전하는 시간</b>이에요. 무엇이 안 되는지 찾은 것도 큰 발견이에요.</div>
+</section>
+
+<!-- 9 활동지 -->
+<section class="slide" data-phase="정리 · 4분"
+ data-notes="<b>활동지 ‘제작 일지’</b> — 만들면서 설계도와 달라진 점, 첫 시험 결과, 고칠 점을 써요. 예시 답안은 📗 단추. 만든 놀잇감에 이름표를 붙여 모둠 상자에 보관해요.">
+  <div class="kicker">MISSION 정리 · 활동지</div>
+  <div class="ws">
+    <img class="wsprev" src="img/worksheet_preview.png" alt="활동지 미리 보기">
+    <div class="steps">
+      <h2 class="title" style="font-size:52px;margin-bottom:4px">📒 제작 일지</h2>
+      <div class="s"><span>1</span>완성한 놀잇감을 그려요</div>
+      <div class="s"><span>2</span>설계도와 달라진 점</div>
+      <div class="s"><span>3</span>첫 시험 결과</div>
+      <div class="s bonus"><span>★</span>다음 시간에 고칠 점</div>
+      <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
+    </div>
+  </div>
+</section>
+
+<!-- 10 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 4분"
+ data-notes="<b>배움 정리</b>">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 5번 방 세 번째 비밀 문장</h2>
+  <div class="cipher">설계도를 보며 <span class="blank" onclick="openBlank(this)">차근차근</span> 만들면<br>생각이 <span class="blank" onclick="openBlank(this)">진짜</span> 물건이 돼요.</div>
+  <div class="chips"><span class="chip">진짜</span><span class="chip">대충</span><span class="chip">차근차근</span><span class="chip">가짜</span></div>
+</section>
+
+<!-- 11 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 4분" data-hook="key"
+ data-notes="<b>보상</b> — 5번 방 세 번째 열쇠 조각!">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 5번 방 열쇠 조각 <span class="c-gold">3</span>개!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">20차시 ✔</div><div class="on">21차시 ✔</div><div class="on">22차시 ✔</div><div>23차시</div><div>24차시</div></div>
+</section>
+
+<!-- 12 다음 -->
+<section class="slide" data-phase="정리 · 4분"
+ data-notes="<b>다음 차시 예고</b> — 오늘 만든 놀잇감과 제작 일지를 꼭 보관해요. 다음 시간에는 시험 → 문제 찾기 → 고치기 → 다시 시험을 해요. 고칠 때 쓸 재료(테이프, 여분 병뚜껑·고무줄)를 조금 더 준비해 두세요.">
+  <div class="kicker">NEXT MISSION</div>
+  <div class="next">
+    <img class="doorimg" src="../20/img/door5.jpg" alt="">
+    <div>
+      <span class="pill" style="background:#e1ebff;color:#2a4f9a">23차시 예고</span>
+      <h2 class="title" style="font-size:76px">실패해도 괜찮아,<br>다시 도전!</h2>
+      <p class="big" style="color:var(--ink2);margin-top:14px">시험하고, 고치고, <b class="hl">다시</b> 시험해요.</p>
+      <div class="bring"><div>🚗 오늘 만든 놀잇감</div><div>📒 제작 일지</div></div>
+      <button class="btn coral" id="doneBtn" style="margin-top:20px" onclick="complete()">✅ 22차시 미션 완료</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:5, lesson:22, keyPieces:3};</script>
+<script src="../shared/base.js"></script>
+<script src="../shared/kit.js"></script>
+<script src="../shared/toys.js"></script>
+<script>
+/* ---------- 이야기 ---------- */
+hooks.story = () => typewriter(document.getElementById('storyText'),
+  '“흐흐, 서둘러 대충 만들면 금방 망가질걸?<br>그러면 그 재료는 <b class="c-coral">내 쓰레기 자루</b>로!”<br>요원 여러분, 설계도를 보며 <b class="c-navy">한 단계씩, 확인하면서</b><br>튼튼하게 만들어 봐요!');
+
+/* ---------- 미션 1: 안전 OX ---------- */
+const OX = [
+  {e:'✂️', q:'가위를 들고 친구에게 걸어가도 된다.', a:'X', w:'가위는 <b>자리에 앉아서만</b> 써요. 건넬 때는 날을 쥐고 손잡이 쪽을 내밀어요.'},
+  {e:'🥢', q:'꼬치의 뾰족한 끝은 친구 쪽으로 향하게 든다.', a:'X', w:'꼬치 끝은 <b>아래나 바깥쪽</b>으로! 끝이 뾰족하면 테이프를 감아 뭉툭하게 해요.'},
+  {e:'🩹', q:'테이프는 필요한 만큼만 잘라 쓴다.', a:'O', w:'길게 늘어뜨리면 엉켜요. <b>필요한 만큼</b> 잘라 써요.'},
+  {e:'🔘', q:'병뚜껑에 구멍은 내가 송곳으로 뚫는다.', a:'X', w:'송곳은 위험해요. 구멍은 <b>선생님이</b> 뚫어 줘요.'},
+  {e:'📦', q:'남은 재료와 쓰레기는 정리 상자에 모은다.', a:'O', w:'다음 시간 고칠 때 쓸 재료는 <b>모둠 상자</b>에, 쓰레기는 분리해서 버려요.'}];
+let oIdx = 0; const oR = K.rounds('oxR', OX.length, i => setOX(i));
+function setOX(i){ oIdx = i; const o = OX[i]; S.flip(); oR.on(i); document.getElementById('ox').classList.remove('rev');
+  document.getElementById('oxQ').innerHTML = `<div class="emo">${o.e}</div><div class="t"><small>안전 약속 ${i + 1} / ${OX.length}</small>${o.q}</div>`; }
+function oxShow(){ const o = OX[oIdx]; document.getElementById('oxO').classList.toggle('ans', o.a === 'O'); document.getElementById('oxX').classList.toggle('ans', o.a === 'X');
+  document.getElementById('oxWhy').innerHTML = `💡 정답은 <b>${o.a}</b>! ${o.w}`; document.getElementById('ox').classList.add('rev'); S.win(); oR.done(oIdx); }
+
+/* ---------- 미션 2: 만들기 길잡이 ---------- */
+const GUIDE = [
+  {n:'상자 자동차', svg:TOY.car({x:300, y:82, s:1}), st:[
+    ['📦', '<b>빨대 2개</b>를 상자 <b>폭</b>만큼 잘라요.', ''],
+    ['🩹', '빨대를 상자 바닥 <b>앞쪽과 뒤쪽</b>에 <b>나란히</b> 놓고 테이프를 <b>여러 번 감아</b> 붙여요.', '두 빨대가 나란해야 곧게 굴러가요!'],
+    ['🥢', '꼬치를 빨대 속에 끼워요. 양쪽으로 <b>바퀴를 끼울 만큼</b> 나오게 해요.', '꼬치가 빨대 속에서 빙글빙글 도는지 확인!'],
+    ['🔘', '구멍 뚫린 병뚜껑을 꼬치 양 끝에 끼워요. 바퀴와 상자 사이를 <b>손가락 한 마디</b> 띄워요.', '바퀴가 상자에 닿으면 문질러져서 멈춰요.'],
+    ['🌀', '바퀴가 빠지지 않게 꼬치 끝에 <b>테이프를 감아</b> 막아요.', '테이프로 바퀴를 상자에 붙이면 안 돼요!'],
+    ['👉', '바퀴를 손으로 돌려 보고, 바닥에 놓고 <b>살짝 밀어</b> 봐요.', '']]},
+  {n:'고무줄 기타', svg:TOY.guitar({x:300, y:110, s:1}), st:[
+    ['📦', '<b>뚜껑 없는 상자</b>를 준비해요. (뚜껑이 있으면 가운데에 동그란 구멍을 — 선생님이 도와줘요)', ''],
+    ['✏️', '상자 양 끝에 <b>연필 2자루</b>를 가로로 놓고 테이프로 붙여 <b>다리</b>를 만들어요.', ''],
+    ['➰', '<b>고무줄 3개</b>를 상자 둘레에 걸어요. 연필 위로 지나가게 해요.', '굵기가 다른 고무줄이면 더 좋아요!'],
+    ['🎚️', '고무줄 하나는 <b>두 번 감아</b> 더 팽팽하게 만들어요.', '팽팽할수록 높은 소리!'],
+    ['🎵', '하나씩 튕겨 보며 소리를 들어요. 높은 소리·낮은 소리 순서로 정리해요.', '']]},
+  {n:'마라카스', svg:TOY.shaker({x:300, y:118, s:1}), st:[
+    ['🥤', '<b>종이컵 2개</b>를 준비해요. (요구르트병, 휴지심+종이도 돼요)', ''],
+    ['🔘', '한 컵에 병뚜껑 <b>3~5개</b>를 넣어요.', '꽉 채우면 부딪칠 자리가 없어요!'],
+    ['🩹', '다른 컵을 <b>입을 맞대어</b> 덮고, 테이프를 <b>빙 둘러</b> 틈 없이 감아요.', '틈이 있으면 속 재료가 쏟아져요.'],
+    ['🎨', '흔들어 소리를 듣고, 사인펜으로 <b>꾸며요</b>. 속 재료를 바꾸면 소리가 어떻게 달라질까?', '']]}];
+let gk = 0, gs = 0; const gDone = GUIDE.map(g => g.st.map(() => 0));
+function gDraw(){ document.getElementById('gTabs').innerHTML = GUIDE.map((g, k) => `<button class="${k === gk ? 'on' : ''}" onclick="gPick(${k})"><svg viewBox="0 0 600 240">${g.svg}</svg>${g.n}</button>`).join('');
+  const [e, t, w] = GUIDE[gk].st[gs];
+  document.getElementById('gStep').innerHTML = `<div class="num">${gs + 1}</div><div class="emo">${e}</div><div class="t">${t}${w ? `<small>⚠️ ${w}</small>` : ''}</div>`;
+  document.getElementById('gDots').innerHTML = GUIDE[gk].st.map((_, i) => `<i class="${i === gs ? 'on' : gDone[gk][i] ? 'done' : ''}" onclick="gs=${i};gDraw()"></i>`).join(''); }
+function gPick(k){ gk = k; gs = 0; S.flip(); gDraw(); }
+function gGo(d){ gDone[gk][gs] = 1; gs = Math.max(0, Math.min(GUIDE[gk].st.length - 1, gs + d)); S.flip(); gDraw(); }
+hooks.guide = gDraw;
+
+/* ---------- 만들기 시간 ---------- */
+const mkClock = K.clock({el:'mkC', btn:'mkGo', sec:1080, btnLabel:'▶ 만들기 18분'});
+document.querySelectorAll('#ladder div').forEach((d, i, all) => d.onclick = () => { all.forEach((x, j) => x.classList.toggle('on', j <= i)); S.ok(); });
+
+window.onEsc = () => {};
+setOX(0); gDraw(); startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>
