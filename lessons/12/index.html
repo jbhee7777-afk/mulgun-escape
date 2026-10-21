@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3번 방 · 12차시 발명의 세 가지 마법</title>
+<link rel="stylesheet" href="../fonts/jua.css">
+<link rel="stylesheet" href="../fonts/gowun-dodum.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/kit.css">
+<style>
+/* 세 가지 마법 */
+.magic3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:22px}
+.mg{border-radius:30px;padding:20px;color:#fff;display:flex;flex-direction:column;gap:10px;box-shadow:0 10px 0 rgba(0,0,0,.15)}
+.mg.add{background:linear-gradient(160deg,#ff9f6b,#e3633f)}.mg.sub{background:linear-gradient(160deg,#6fb4ff,#3d72d0)}.mg.chg{background:linear-gradient(160deg,#b98cf0,#7b54c9)}
+.mg h3{font-size:46px;display:flex;align-items:center;gap:12px}
+.mg h3 b{font-size:70px;line-height:1;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center}
+.mg p{font-size:27px;line-height:1.5}
+.mg .eg{background:rgba(255,255,255,.95);color:var(--ink);border-radius:20px;padding:10px;display:grid;grid-template-columns:90px 1fr;align-items:center;gap:12px;font-size:24px;line-height:1.45}
+.mg .eg img{width:90px;height:90px;flex:none;border-radius:16px;object-fit:cover}
+.mg .eg b{color:var(--roomdk)}
+
+/* 미션 1: 마법 맞히기 */
+.guess{flex:1;display:flex;gap:22px;min-height:0;margin-top:4px}
+.gmain{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.gq{display:flex;align-items:center;gap:26px;background:#fff;border:4px solid var(--line);border-radius:30px;padding:16px 26px;box-shadow:0 8px 0 var(--line)}
+.gq img{width:220px;height:220px;flex:none;border-radius:26px;object-fit:cover}
+.gq .t{font-family:var(--head);font-size:46px;color:var(--navy);line-height:1.3}
+.gq .t small{display:block;font-size:24px;color:var(--ink2)}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.g3 div{height:130px;border-radius:26px;display:flex;align-items:center;justify-content:center;gap:12px;font-family:var(--head);font-size:44px;color:#fff;transition:.4s}
+.g3 .add{background:#e3633f;box-shadow:0 8px 0 #b94a2b}.g3 .sub{background:#3d72d0;box-shadow:0 8px 0 #2b55a0}.g3 .chg{background:#7b54c9;box-shadow:0 8px 0 #5c3b9e}
+.g3 span{font-size:30px;background:rgba(255,255,255,.25);border-radius:14px;padding:2px 12px}
+.guess.rev .g3 div{opacity:.25;transform:scale(.95)}
+.guess.rev .g3 div.ans{opacity:1;transform:scale(1.04)}
+
+/* 미션 2: 마법 공장(돌림판) */
+.fact{flex:1;display:flex;gap:24px;min-height:0;margin-top:4px}
+.wheels{width:640px;flex:none;display:flex;flex-direction:column;gap:14px}
+.wrow{display:flex;gap:14px;align-items:stretch}
+.slot{flex:1;background:#fff;border:4px solid var(--line);border-radius:26px;box-shadow:0 8px 0 var(--line);padding:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:290px;position:relative;overflow:hidden}
+.slot .lb{position:absolute;top:10px;left:14px;font-family:var(--head);font-size:22px;color:var(--ink2)}
+.slot img{width:180px;height:180px;border-radius:22px;object-fit:cover}
+.slot span{font-family:var(--head);font-size:36px;color:var(--navy)}
+.slot .big{font-family:var(--head);font-size:90px;line-height:1}
+.slot.spin img,.slot.spin span,.slot.spin .big{animation:blur .12s linear infinite}
+@keyframes blur{50%{transform:translateY(-8px);opacity:.6}}
+.fmain{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.fhow{background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:14px 20px;font-size:26px;line-height:1.6}
+.fhow b{color:var(--roomdk)}
+.idea{background:var(--room2);border:3px dashed var(--room);border-radius:22px;padding:14px 20px;font-size:27px;line-height:1.55;display:none}
+.idea.show{display:block;animation:enter .5s}
+.idea b{color:var(--roomdk)}
+
+/* 미션 3: 내 단서에 마법 */
+.mine{display:grid;grid-template-columns:1fr 70px 1fr 70px 1fr;gap:10px;align-items:center;margin-top:20px}
+.mine .bx{background:#fff;border:4px solid var(--line);border-radius:24px;padding:14px;text-align:center;min-height:230px;display:flex;flex-direction:column;gap:8px;justify-content:center;box-shadow:0 7px 0 var(--line)}
+.mine .bx h4{font-family:var(--head);font-weight:400;font-size:28px;color:var(--navy)}
+.mine .bx p{font-size:23px;line-height:1.5}
+.mine .ar{font-family:var(--head);font-size:56px;color:var(--room);text-align:center}
+</style>
+</head>
+<body data-room="3">
+<div id="viewport"><div id="stage">
+
+<div id="topbar"><span class="room">🔐 3번 방 · 생활 속 불편함 해결하기</span><span class="ls">12차시 / 10~14</span><span class="phase" id="phase">도입</span></div>
+
+<!-- 1 표지 -->
+<section class="slide dark" data-phase="도입 · 5분"
+ data-notes="<b>시작</b> — “지난 시간에 불편함 단서를 찾았죠? 오늘은 그 불편함을 없애는 발명의 마법 세 가지를 배워요.”">
+  <div class="cover">
+    <img class="doorimg bob" src="../10/img/door3.jpg" alt="3번 방 문">
+    <div>
+      <div class="kicker">물건 교과서 · 방 탈출 미션</div>
+      <span class="pill">3번 방 · 12차시</span>
+      <h1 class="title">발명의<br>세 가지 마법</h1>
+      <p class="mid" style="color:#cdd4ff;margin-top:16px">더하기 · 빼기 · 바꾸기</p>
+      <button class="btn coral" style="margin-top:34px" onclick="go(1)">🚪 3번 방 다시 입장하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 지난 시간 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>지난 시간 떠올리기</b> — 11차시 비밀 문장 읽기. ‘불편함 수사 노트’를 책상 위에 꺼내 두게 해요(미션 3에서 써요).">
+  <div class="kicker">지난 미션 돌아보기</div>
+  <h2 class="title" style="font-size:58px">11차시 비밀 문장, 기억나요?</h2>
+  <div class="recap">
+    <div class="box">
+      <div class="cipher" style="font-size:42px;margin-top:10px;padding:24px 40px">매일 쓰는 물건을 <span class="blank" onclick="openBlank(this)">자세히</span> 살펴보면<br>숨어 있는 <span class="blank" onclick="openBlank(this)">불편함</span>을 찾을 수 있어요.</div>
+      <div class="homework">🕵️ <b>준비!</b> 지난 시간에 쓴 <b>불편함 수사 노트</b>를 꺼내 놓아요.</div>
+    </div>
+    <img src="../01/img/agent.png" alt="" style="width:300px" class="bob">
+  </div>
+</section>
+
+<!-- 3 세 가지 마법 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>발명의 세 가지 마법</b> — 하나씩 짚으며 예를 함께 읽어요. 더하기: 두 물건이나 기능을 합쳐요. 빼기: 불편한 부분을 없애요. 바꾸기: 재료·모양·크기를 바꿔요. 교과서 32~33쪽.">
+  <div class="kicker">THE 3 MAGICS</div>
+  <h2 class="title" style="font-size:56px">✨ 발명의 세 가지 마법</h2>
+  <div class="magic3">
+    <div class="mg add"><h3><b>＋</b>더하기</h3><p>두 가지를 <b>합쳐서</b><br>한 번에 쓰게 해요.</p><div class="eg"><img src="../02/img/obj_erpencil.png" alt="" style="object-fit:contain;background:#fff"><span>연필 <b>＋</b> 지우개<br>= 지우개 달린 연필</span></div></div>
+    <div class="mg sub"><h3><b>－</b>빼기</h3><p>불편한 부분을<br><b>없애요</b>.</p><div class="eg"><img src="../shared/photos/wireless.jpg" alt=""><span>이어폰 <b>－</b> 줄<br>= 무선 이어폰</span></div></div>
+    <div class="mg chg"><h3><b>↻</b>바꾸기</h3><p>재료·모양·크기를<br><b>바꿔요</b>.</p><div class="eg"><img src="../shared/photos/tapemeasure.jpg" alt=""><span>딱딱한 자 <b>↻</b><br>말리는 줄자</span></div></div>
+  </div>
+</section>
+
+<!-- 4 미션 -->
+<section class="slide" data-phase="도입 · 5분"
+ data-notes="<b>학습 목표</b> — 미션 3개, 3번 방 세 번째 열쇠 조각.">
+  <div class="kicker">MISSION BRIEFING</div>
+  <h2 class="title" style="font-size:60px">오늘의 미션 세 가지</h2>
+  <div class="missions" style="gap:20px">
+    <div class="mcard"><span class="tag">미션 1</span><img class="ic" src="../01/img/ic_search.png" alt=""><h3>어떤 마법일까?</h3><p>손가락으로 1·2·3</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><div class="ic emo" style="font-size:96px">🎰</div><h3>마법 공장</h3><p>뽑기로 새 물건 만들기</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><img class="ic" src="../01/img/ic_mail.png" alt=""><h3>내 단서에 마법!</h3><p>내 불편함을 해결해요</p></div>
+    <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 3</h3><p>3번 방 세 번째!</p></div>
+  </div>
+  <div class="goal"><b>🎯 학습 목표</b> 더하기·빼기·바꾸기 방법을 알고, 생활 속 물건에 적용해 새로운 생각을 말할 수 있어요.</div>
+</section>
+
+<!-- 5 미션 1 -->
+<section class="slide" data-phase="미션 1 · 8분" style="padding-top:78px"
+ data-notes="<b>어떤 마법일까?</b> — 발명품을 보고 어떤 마법인지 짝과 의논해요. “하나, 둘, 셋!” 하면 손가락으로 1(더하기)·2(빼기)·3(바꾸기)을 들어요. ‘정답’을 누르면 마법과 설명이 나와요. 14문제. 두 가지 마법이 함께 쓰인 물건도 있다고 알려 주세요(가장 큰 마법이 정답).">
+  <div class="guess" id="guess">
+    <div class="gmain">
+      <div class="gq" id="gQ"></div>
+      <div class="g3"><div class="add" id="gA"><span>1</span>＋ 더하기</div><div class="sub" id="gS"><span>2</span>－ 빼기</div><div class="chg" id="gC"><span>3</span>↻ 바꾸기</div></div>
+      <div class="reveal" id="gW"></div>
+      <div class="btns" style="margin-top:auto"><button class="btn mint" onclick="gShow()">🎉 정답</button><button class="btn ghost" onclick="setG((gIdx + 1) % GQ.length)">다음 ▶</button></div>
+    </div>
+    <div class="side"><div class="rounds" id="gR"></div><div class="score"><h4>🏆 모둠 점수</h4><div id="teams1"></div></div></div>
+  </div>
+</section>
+
+<!-- 6 미션 2 규칙 -->
+<section class="slide" data-phase="미션 2 · 12분"
+ data-notes="<b>마법 공장</b> — 선생님이 ‘물건 뽑기’와 ‘마법 뽑기’를 눌러요. 나온 물건에 나온 마법을 걸어서 새 물건을 모둠별로 생각해 미니 보드(또는 종이)에 그려요(2분). 모둠마다 하나씩 발표하고, 가장 재미있고 쓸모 있는 생각에 박수! 막히면 ‘도움 생각’을 눌러요. 정답은 없어요.">
+  <div class="kicker">MISSION 2</div>
+  <h2 class="title">🎰 마법 공장</h2>
+  <div class="rules" style="max-width:1160px">
+    <div class="rule"><span>1</span><div>선생님이 <b class="hl">물건</b>과 <b class="hl">마법</b>을 뽑아요.</div></div>
+    <div class="rule"><span>2</span><div>모둠이 의논해서 그 물건에 그 마법을 건 <b class="c-coral">새 물건</b>을 생각해요.<small>예) 우산 ＋ (더하기) → 손잡이에 손전등을 더한 우산!</small></div></div>
+    <div class="rule"><span>3</span><div><b class="c-navy">2분</b> 동안 모둠 보드에 그리고, 이름을 붙여요.</div></div>
+    <div class="rule"><span>4</span><div>모둠마다 발표해요. “<b>○○에 △△를 더해서/빼서/바꿔서 □□가 편해졌어요!</b>”</div></div>
+  </div>
+</section>
+
+<!-- 7 미션 2 공장 -->
+<section class="slide" data-phase="미션 2 · 12분" style="padding-top:78px"
+ data-notes="<b>진행</b> — ‘뽑기’를 누르면 물건과 마법이 빙글빙글 돌다 멈춰요. 그다음 ‘2분 그리기’. 3~4번 반복해요. 도움 생각은 학생들이 먼저 말한 뒤에 보여 주세요.">
+  <div class="fact">
+    <div class="wheels">
+      <div class="wrow"><div class="slot" id="fO"><span class="lb">물건</span></div><div class="slot" id="fM" style="max-width:240px"><span class="lb">마법</span></div></div>
+      <div class="btns"><button class="btn coral" onclick="spin()">🎰 뽑기!</button><button class="btn navy" id="fGo" onclick="fClock.toggle()">▶ 2분 그리기</button></div>
+    </div>
+    <div class="fmain">
+      <div class="kclock"><small>그리기 시간</small><b id="fC">2:00</b></div>
+      <div class="fhow">🗣️ “<b id="fSay">○○</b>에 <b id="fSay2">마법</b>을 걸면…?”<br>모둠 보드에 그림을 그리고 <b>이름</b>을 붙여요!</div>
+      <div class="idea" id="fIdea"></div>
+      <button class="btn ghost" onclick="fHelp()">💡 도움 생각 보기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 8 미션 3 안내 -->
+<section class="slide" data-phase="미션 3 · 10분"
+ data-notes="<b>내 단서에 마법!</b> — 11차시 ‘불편함 수사 노트’에서 가장 해결하고 싶었던 단서를 골라, 세 가지 마법 중 하나로 해결하는 물건을 활동지에 그려요. 아래 예시를 먼저 함께 읽어요. 예시 답안은 📗.">
+  <div class="kicker">MISSION 3</div>
+  <h2 class="title" style="font-size:56px">📮 내 단서에 마법을 걸어요</h2>
+  <div class="mine">
+    <div class="bx"><h4>😣 내 불편함 단서</h4><p>지우개가 책상 밑으로 굴러가서 자꾸 없어져요.</p></div>
+    <div class="ar">➜</div>
+    <div class="bx"><h4>✨ 고른 마법</h4><p style="font-family:var(--head);font-size:40px;color:#e3633f">＋ 더하기</p><p>지우개 ＋ 끈</p></div>
+    <div class="ar">➜</div>
+    <div class="bx"><h4>💡 새 물건</h4><p><b>“줄 달린 지우개”</b><br>필통에 끈으로 묶어서 굴러가지 않아요!</p></div>
+  </div>
+  <div class="btns" style="margin-top:24px"><button class="btn coral" style="font-size:26px;padding:13px 26px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button></div>
+</section>
+
+<!-- 9 타이머 -->
+<section class="slide center" data-phase="미션 3 · 10분"
+ data-notes="<b>활동 시간</b> — 기본 7분. 끝나면 짝과 바꿔 읽고, 짝의 마법에 이름을 지어 줘요.">
+  <div class="kicker">MISSION 3 · 활동 시간</div>
+  <h2 class="title" style="font-size:56px;margin-bottom:36px">내 불편함에 마법을 걸어요!</h2>
+  <div class="timer" data-sec="420"></div>
+</section>
+
+<!-- 10 비밀 문장 -->
+<section class="slide center" data-phase="정리 · 5분"
+ data-notes="<b>배움 정리</b>">
+  <div class="kicker">SECRET CODE</div>
+  <h2 class="title" style="font-size:54px">🔐 3번 방 세 번째 비밀 문장</h2>
+  <div class="cipher"><span class="blank" onclick="openBlank(this)">더하기</span>, 빼기, 바꾸기 마법으로<br>불편함을 <span class="blank" onclick="openBlank(this)">해결</span>하는 새 물건을 만들 수 있어요.</div>
+  <div class="chips"><span class="chip">해결</span><span class="chip">나누기</span><span class="chip">더하기</span><span class="chip">숨기기</span></div>
+</section>
+
+<!-- 11 열쇠 -->
+<section class="slide dark center" data-phase="정리 · 5분" data-hook="key"
+ data-notes="<b>보상</b> — 3번 방 세 번째 열쇠 조각!">
+  <div class="kicker">MISSION COMPLETE</div>
+  <h2 class="title" style="font-size:62px">🗝️ 3번 방 열쇠 조각 <span class="c-gold">3</span>개!</h2>
+  <div class="keybox" id="keybox" onclick="litKey()">
+    <svg viewBox="0 0 700 330">
+      <defs><linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#ffc53d"/><stop offset="1" stop-color="#e19a0c"/></linearGradient></defs>
+      <path class="piece" id="p1" fill-rule="evenodd" d="M170 35a130 130 0 1 0 .1 0Z M170 105a60 60 0 1 1 -.1 0Z"/>
+      <rect class="piece" id="p2" x="308" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p3" x="406" y="142" width="88" height="46" rx="10"/>
+      <rect class="piece" id="p4" x="504" y="142" width="90" height="46" rx="10"/>
+      <path class="piece" id="p5" d="M604 142h48a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-6v70h-42v-40h-16v34h-38v-64h54z"/>
+    </svg>
+  </div>
+  <div class="progress4"><div class="on">10차시 ✔</div><div class="on">11차시 ✔</div><div class="on">12차시 ✔</div><div>13차시</div><div>14차시</div></div>
+</section>
+
+<!-- 12 다음 -->
+<section class="slide" data-phase="정리 · 5분"
+ data-notes="<b>다음 차시 예고</b> — 준비물: 내 지우개 1개(쓰던 것). 다음 시간에 지우개를 잃어버리지 않는 방법을 직접 시험해 봐요.">
+  <div class="kicker">NEXT MISSION</div>
+  <div class="next">
+    <img class="doorimg" src="../10/img/door3.jpg" alt="">
+    <div>
+      <span class="pill">13차시 예고</span>
+      <h2 class="title" style="font-size:70px">지우개를 잃어버리지<br>않으려면?</h2>
+      <p class="big" style="color:var(--ink2);margin-top:18px">여러 방법을 <b class="hl">직접 시험</b>해 보고 골라요.</p>
+      <div class="bring"><div>🧽 내 지우개 1개</div></div>
+      <button class="btn coral" id="doneBtn" style="margin-top:22px" onclick="complete()">✅ 12차시 미션 완료</button>
+    </div>
+  </div>
+</section>
+
+<div id="notes"></div>
+<div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+</div></div>
+
+<script>window.LESSON = {room:3, lesson:12, keyPieces:3};</script>
+<script src="../shared/base.js"></script>
+<script src="../shared/kit.js"></script>
+<script>
+const P = o => o.img ? `<img src="${o.img}" alt="" style="object-fit:contain;background:#fff">` : K.photo(o.p);
+const MAG = {add:['＋', '더하기', '#e3633f'], sub:['－', '빼기', '#3d72d0'], chg:['↻', '바꾸기', '#7b54c9']};
+
+/* ---------- 미션 1: 어떤 마법일까? (m: 정답, w: 설명) ---------- */
+const GQ = [
+  {img:'../02/img/obj_erpencil.png', n:'지우개 달린 연필', m:'add', w:'연필에 지우개를 <b>더했어요</b>. 따로 찾지 않아도 돼요.'},
+  {p:'wireless', n:'무선 이어폰', m:'sub', w:'이어폰에서 꼬이는 <b>줄을 뺐어요</b>.'},
+  {p:'sporkx', n:'스포크(숟가락+포크)', m:'add', w:'숟가락과 포크를 <b>합쳤어요</b>. 하나로 떠먹고 찍어 먹어요.'},
+  {p:'folding', n:'접이식 의자', m:'chg', w:'접을 수 있게 <b>모양을 바꿨어요</b>. 들고 다니고 보관하기 쉬워요.'},
+  {p:'clipboardx', n:'클립보드', m:'add', w:'판에 집게를 <b>더했어요</b>. 서서도 종이에 쓸 수 있어요.'},
+  {p:'velcro', n:'찍찍이 신발', m:'chg', w:'끈을 붙였다 떼는 <b>찍찍이로 바꿨어요</b>.'},
+  {img:'../02/img/obj_suitcase.png', n:'바퀴 달린 가방', m:'add', w:'가방에 바퀴와 손잡이를 <b>더했어요</b>.'},
+  {p:'waterbottle2', n:'빨대 물병', m:'add', w:'물병에 빨대를 <b>더했어요</b>. 기울이지 않고 마셔요.'},
+  {p:'flipflop', n:'슬리퍼', m:'sub', w:'신발의 뒤꿈치와 끈을 <b>뺐어요</b>. 쉽게 신고 벗어요.'},
+  {p:'tapemeasure', n:'줄자', m:'chg', w:'딱딱한 자를 <b>말리는 띠로 바꿨어요</b>. 둥근 것도 재고 작게 넣어 다녀요.'},
+  {p:'scooter', n:'킥보드', m:'sub', w:'자전거에서 페달과 의자를 <b>뺐어요</b>. 가볍고 타기 쉬워요.'},
+  {p:'reflector', n:'안전 조끼', m:'chg', w:'옷의 재료를 <b>빛을 반짝 되비추는 재료로 바꿨어요</b>. 밤에도 잘 보여요.'},
+  {img:'../02/img/obj_straw.png', n:'구부러지는 빨대', m:'chg', w:'곧은 빨대의 <b>모양을 바꿔</b> 주름을 넣었어요.'},
+  {p:'headlamp', n:'헤드랜턴', m:'add', w:'손전등에 머리끈을 <b>더했어요</b>. 두 손이 자유로워요.'}];
+let gIdx = 0; const gR = K.rounds('gR', GQ.length, i => setG(i)); K.teams('teams1');
+function setG(i){ gIdx = i; const o = GQ[i]; S.flip(); gR.on(i); document.getElementById('guess').classList.remove('rev'); document.getElementById('gW').classList.remove('show');
+  document.getElementById('gQ').innerHTML = `${P(o)}<div class="t"><small>발명품 ${i + 1} / ${GQ.length} — 어떤 마법일까요?</small>${o.n}</div>`; }
+function gShow(){ const o = GQ[gIdx]; ['add', 'sub', 'chg'].forEach((m, k) => document.getElementById(['gA', 'gS', 'gC'][k]).classList.toggle('ans', m === o.m));
+  document.getElementById('guess').classList.add('rev'); const w = document.getElementById('gW'); w.innerHTML = `💡 <b>${MAG[o.m][1]}</b> 마법! ${o.w}`; w.classList.add('show'); S.win(); gR.done(gIdx); }
+
+/* ---------- 미션 2: 마법 공장 (h: 마법별 도움 생각) ---------- */
+const FO = [
+  {img:'../01/img/obj_umbrella.png', n:'우산', h:{add:'손잡이에 <b>손전등을 더한</b> 우산 — 밤길도 환해요.', sub:'펼치는 살대를 <b>뺀</b> 모자 우산 — 머리에 쓰니 두 손이 자유로워요.', chg:'천을 <b>투명한 비닐로 바꾼</b> 우산 — 앞이 잘 보여요.'}},
+  {p:'pencilcase', n:'필통', h:{add:'필통에 <b>지우개 칸과 자석을 더해</b> 지우개가 붙어 있어요.', sub:'지퍼를 <b>빼고</b> 뚜껑만 툭 여는 필통 — 열기 쉬워요.', chg:'천을 <b>딱딱한 재료로 바꿔</b> 연필심이 안 부러져요.'}},
+  {p:'bottle', n:'물병', h:{add:'물병에 <b>빨대와 손잡이를 더해요</b>.', sub:'돌리는 뚜껑을 <b>빼고</b> 누르면 열리는 뚜껑으로!', chg:'모양을 <b>납작하게 바꿔</b> 가방에 쏙 들어가요.'}},
+  {img:'../01/img/obj_backpack.png', n:'책가방', h:{add:'가방 아래에 <b>바퀴를 더해</b> 끌고 다녀요.', sub:'무거운 장식을 <b>빼서</b> 가볍게!', chg:'끈을 <b>푹신한 끈으로 바꿔</b> 어깨가 덜 아파요.'}},
+  {p:'eraser', n:'지우개', h:{add:'지우개에 <b>끈을 더해</b> 필통에 묶어 둬요.', sub:'지우개 가루가 <b>안 나오게</b> — 가루가 뭉쳐지는 지우개!', chg:'모양을 <b>네모 기둥으로 바꿔</b> 굴러가지 않아요.'}},
+  {img:'../01/img/obj_sneakers.png', n:'운동화', h:{add:'신발 뒤에 <b>고리를 더해</b> 쉽게 신어요.', sub:'끈을 <b>빼고</b> 찍찍이로 붙여요.', chg:'밑창을 <b>더 푹신한 재료로 바꿔요</b>.'}},
+  {img:'../01/img/obj_chair.png', n:'의자', h:{add:'의자 아래에 <b>바퀴를 더해요</b>.', sub:'등받이를 <b>빼서</b> 겹쳐 쌓을 수 있게!', chg:'다리를 <b>접을 수 있게 바꿔요</b>.'}},
+  {p:'sharpener', n:'연필깎이', h:{add:'연필깎이에 <b>찌꺼기 통을 더해요</b>.', sub:'날카로운 날이 <b>밖으로 안 보이게</b> — 손 다칠 걱정이 없어요.', chg:'크기를 <b>손가락만큼 작게 바꿔</b> 필통에 넣어요.'}},
+  {p:'calculator', n:'계산기', h:{add:'계산기에 <b>자를 더해요</b> — 재고 바로 계산!', sub:'어려운 단추를 <b>빼고</b> 큰 숫자만 남겨요.', chg:'단추를 <b>말하면 되는 것으로 바꿔요</b>.'}},
+  {p:'gluestick', n:'딱풀', h:{add:'뚜껑에 <b>줄을 더해</b> 잃어버리지 않아요.', sub:'뚜껑을 <b>빼고</b> 눌러서 닫히는 입구로!', chg:'풀 색을 <b>칠하면 보이는 색으로 바꿔</b> 어디 발랐는지 알아요.'}}];
+const FM = ['add', 'sub', 'chg'];
+let fo = 0, fm = 0, fT = null; const fClock = K.clock({el:'fC', btn:'fGo', sec:120, btnLabel:'▶ 2분 그리기'});
+function drawF(){ const o = FO[fo], m = MAG[FM[fm]];
+  document.getElementById('fO').innerHTML = `<span class="lb">물건</span>${P(o)}<span>${o.n}</span>`;
+  document.getElementById('fM').innerHTML = `<span class="lb">마법</span><span class="big" style="color:${m[2]}">${m[0]}</span><span style="color:${m[2]}">${m[1]}</span>`;
+  document.getElementById('fSay').textContent = o.n; document.getElementById('fSay2').textContent = m[1] + ' 마법'; }
+function spin(){ clearInterval(fT); document.getElementById('fIdea').classList.remove('show'); fClock.reset(); let k = 0; const end = 14 + Math.floor(Math.random() * 8);
+  ['fO', 'fM'].forEach(id => document.getElementById(id).classList.add('spin'));
+  fT = setInterval(() => { fo = Math.floor(Math.random() * FO.length); fm = Math.floor(Math.random() * 3); drawF(); S.tick();
+    if(++k >= end){ clearInterval(fT); ['fO', 'fM'].forEach(id => document.getElementById(id).classList.remove('spin')); S.win(); } }, 90); }
+function fHelp(){ const i = document.getElementById('fIdea'); i.innerHTML = '💡 이런 생각도 있어요: ' + FO[fo].h[FM[fm]]; i.classList.add('show'); S.ok(); }
+K.leave(() => clearInterval(fT));
+
+window.onEsc = () => {};
+setG(0); drawF(); startDeck();
+</script>
+<script src="../shared/print-sheet.js"></script>
+</body>
+</html>

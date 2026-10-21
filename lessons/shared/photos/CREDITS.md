@@ -70,3 +70,19 @@
 | bandaid.jpg | 반창고 | [Plåster - Adhesive bandage - 2025.jpg](https://commons.wikimedia.org/wiki/File:Pl%C3%A5ster_-_Adhesive_bandage_-_2025.jpg) | Foto: Jonn Leffmann | CC BY 4.0 |
 | wiper2.jpg | 자동차 와이퍼 | [Car windshield wiper displayed.jpg](https://commons.wikimedia.org/wiki/File:Car_windshield_wiper_displayed.jpg) | Shixart1985 | CC BY 2.0 |
 | desk2.jpg | 책상과 의자 | [Munkegaard School - school desk (cropped).jpg](https://commons.wikimedia.org/wiki/File:Munkegaard_School_-_school_desk_(cropped).jpg) | Ramblersen | CC BY-SA 3.0 |
+| sporkx.jpg | 스포크(숟가락+포크) | [Modern, Cutlery (FindID 992717-1093293).jpg](https://commons.wikimedia.org/wiki/File:Modern,_Cutlery_(FindID_992717-1093293).jpg) | York Museums Trust, Rebecca Griffiths, 2020-02-19 12:23:40 | CC BY 2.0 |
+| clipboardx.jpg | 클립보드 | [Wood-clipboard.jpg](https://commons.wikimedia.org/wiki/File:Wood-clipboard.jpg) | Evan-amos | Public domain |
+| reflector.jpg | 안전 조끼 | [Warnweste gelb.jpg](https://commons.wikimedia.org/wiki/File:Warnweste_gelb.jpg) | Magnus Mertens | CC BY-SA 2.0 de |
+| cupholder.jpg | 컵 홀더 | [Coffee cup lid.jpg](https://commons.wikimedia.org/wiki/File:Coffee_cup_lid.jpg) | Nirzar | CC BY-SA 4.0 |
+| crocs.jpg | 나막신(클로그) | [Clogs with wooden sole and leather upper, Mary Jane-style.jpg](https://commons.wikimedia.org/wiki/File:Clogs_with_wooden_sole_and_leather_upper,_Mary_Jane-style.jpg) | Picture taken by Kuchen. | Public domain |
+| notebook.jpg | 스프링 공책 | [Spiralbinderücken -- 2022 -- 9722.jpg](https://commons.wikimedia.org/wiki/File:Spiralbinder%C3%BCcken_--_2022_--_9722.jpg) | Dietmar Rabich | CC BY-SA 4.0 |
+| wireless.jpg | 무선 이어폰 | [Yamaha TW-E3A Earbuds Customize, Japan; April 2021 (01).jpg](https://commons.wikimedia.org/wiki/File:Yamaha_TW-E3A_Earbuds_Customize,_Japan;_April_2021_(01).jpg) | MIKI Yoshihito. (#mikiyoshihito) | CC BY 2.0 |
+| tablet.jpg | 태블릿과 키보드 | [Tablet computer.jpg](https://commons.wikimedia.org/wiki/File:Tablet_computer.jpg) | KK IN HK | CC BY-SA 4.0 |
+| waterbottle2.jpg | 빨대 물병 | [ReusableWaterBottle.jpg](https://commons.wikimedia.org/wiki/File:ReusableWaterBottle.jpg) | Bibeyjj | CC BY-SA 4.0 |
+| scooter.jpg | 킥보드 | [Алматы, самокатчица на Толе би-Розыбакиева.jpg](https://commons.wikimedia.org/wiki/File:%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B,_%D1%81%D0%B0%D0%BC%D0%BE%D0%BA%D0%B0%D1%82%D1%87%D0%B8%D1%86%D0%B0_%D0%BD%D0%B0_%D0%A2%D0%BE%D0%BB%D0%B5_%D0%B1%D0%B8-%D0%A0%D0%BE%D0%B7%D1%8B%D0%B1%D0%B0%D0%BA%D0%B8%D0%B5%D0%B2%D0%B0.jpg) | Nikolai Bulykin | CC BY-SA 4.0 |
+| rollerblade.jpg | 인라인스케이트 | [Child's Inline Skates-bg.png](https://commons.wikimedia.org/wiki/File:Child%27s_Inline_Skates-bg.png) | Jillsphone1 | CC BY-SA 4.0 |
+| folding.jpg | 접이식 의자 | [Folding Chair Lifetime.jpg](https://commons.wikimedia.org/wiki/File:Folding_Chair_Lifetime.jpg) | GreenGlass1972 | Public domain |
+| tapemeasure.jpg | 줄자 | [B&Q Tape Measure.jpg](https://commons.wikimedia.org/wiki/File:B%26Q_Tape_Measure.jpg) | 多多123 | CC BY 4.0 |
+| keyring.jpg | 열쇠고리 | [Car Keys.jpg](https://commons.wikimedia.org/wiki/File:Car_Keys.jpg) | Mpelletier1 | CC BY-SA 3.0 |
+| calculator.jpg | 계산기 | [Citizen SLD-100NR calculator.jpg](https://commons.wikimedia.org/wiki/File:Citizen_SLD-100NR_calculator.jpg) | LoMit | CC BY-SA 4.0 |
+| flipflop.jpg | 슬리퍼(쪼리) | [Rainbow flip-flops.jpg](https://commons.wikimedia.org/wiki/File:Rainbow_flip-flops.jpg) | alonis | CC BY-SA 2.0 |
