@@ -86,3 +86,15 @@
 | keyring.jpg | 열쇠고리 | [Car Keys.jpg](https://commons.wikimedia.org/wiki/File:Car_Keys.jpg) | Mpelletier1 | CC BY-SA 3.0 |
 | calculator.jpg | 계산기 | [Citizen SLD-100NR calculator.jpg](https://commons.wikimedia.org/wiki/File:Citizen_SLD-100NR_calculator.jpg) | LoMit | CC BY-SA 4.0 |
 | flipflop.jpg | 슬리퍼(쪼리) | [Rainbow flip-flops.jpg](https://commons.wikimedia.org/wiki/File:Rainbow_flip-flops.jpg) | alonis | CC BY-SA 2.0 |
+| stairs.jpg | 계단 | [Stairs to Subway from RNA Plaza, Exhibition Rail station, RNA Showgrounds, Bowen Hills P1130083.jpg](https://commons.wikimedia.org/wiki/File:Stairs_to_Subway_from_RNA_Plaza,_Exhibition_Rail_station,_RNA_Showgrounds,_Bowen_Hills_P1130083.jpg) | John Robert McPherson | CC0 |
+| ramp.jpg | 경사로 | [Hull Maritime Museum New Wheelchair Ramp, Kingston upon Hull Jun24.jpg](https://commons.wikimedia.org/wiki/File:Hull_Maritime_Museum_New_Wheelchair_Ramp,_Kingston_upon_Hull_Jun24.jpg) | Hullian111 | CC BY-SA 4.0 |
+| scissors.jpg | 가위 | [Small pair of blue scissors.jpg](https://commons.wikimedia.org/wiki/File:Small_pair_of_blue_scissors.jpg) | ZooFari | CC BY-SA 3.0 |
+| kiosk.jpg | 무인 주문기 | [Self-service kiosk in KFC restaurant on Masarykovo náměstí in Ostrava 2025-02-06.jpg](https://commons.wikimedia.org/wiki/File:Self-service_kiosk_in_KFC_restaurant_on_Masarykovo_n%C3%A1m%C4%9Bst%C3%AD_in_Ostrava_2025-02-06.jpg) | Tadeáš Bednarz | CC BY-SA 4.0 |
+| doorknob.jpg | 동그란 문손잡이 | [Door handle, Bareldonkkapel, Berlare, 2026.jpg](https://commons.wikimedia.org/wiki/File:Door_handle,_Bareldonkkapel,_Berlare,_2026.jpg) | DimiTalen | CC0 |
+| lever.jpg | 막대 문손잡이 | [Door handle.jpg](https://commons.wikimedia.org/wiki/File:Door_handle.jpg) | marya from San Luis Obispo, US | CC BY 2.0 |
+| levertap.jpg | 레버 수도꼭지 | [Single lever tap with stainless steel sink.JPG](https://commons.wikimedia.org/wiki/File:Single_lever_tap_with_stainless_steel_sink.JPG) | Benreis | CC BY 3.0 |
+| autodoor.jpg | 자동문 | [Dülmen, Stadtbücherei -- 2021 -- 5306.jpg](https://commons.wikimedia.org/wiki/File:D%C3%BClmen,_Stadtb%C3%BCcherei_--_2021_--_5306.jpg) | Dietmar Rabich | CC BY-SA 4.0 |
+| tactile.jpg | 점자 블록 | [Tactile pavers Japan yellow.jpg](https://commons.wikimedia.org/wiki/File:Tactile_pavers_Japan_yellow.jpg) | Midnightcomm | CC BY 4.0 |
+| elevbtn.jpg | 엘리베이터 점자 단추 | [Elevator panel with Braille (cropped).jpg](https://commons.wikimedia.org/wiki/File:Elevator_panel_with_Braille_(cropped).jpg) | 작성자 표기 없음 | CC BY 3.0 |
+| pictogram.jpg | 화장실 그림 안내판 | [Gender neutral toilet sign gu.jpg](https://commons.wikimedia.org/wiki/File:Gender_neutral_toilet_sign_gu.jpg) | Flinga | Public domain |
+| lowbus.jpg | 저상 버스 | [Albany Transit System Gillig bus 481 with wheelchair ramp deployed - Albany, Oregon (2018).jpg](https://commons.wikimedia.org/wiki/File:Albany_Transit_System_Gillig_bus_481_with_wheelchair_ramp_deployed_-_Albany,_Oregon_(2018).jpg) | Steve Morgan | CC BY-SA 4.0 |
