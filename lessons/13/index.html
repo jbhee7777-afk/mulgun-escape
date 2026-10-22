@@ -20,7 +20,7 @@
 
 /* 시험대 */
 .lab{flex:1;display:flex;gap:20px;min-height:0;margin-top:4px}
-.tbl{flex:1;display:grid;grid-template-columns:260px repeat(4,1fr);grid-auto-rows:1fr;gap:8px}
+.tbl{flex:1;display:grid;grid-template-columns:260px repeat(4,1fr);grid-auto-rows:1fr;gap:8px;max-height:690px}
 .tbl .h{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--navy);color:#fff;border-radius:18px;font-family:var(--head);font-size:22px;text-align:center;line-height:1.25;padding:6px}
 .tbl .h .emo{font-size:34px}
 .tbl .w{display:flex;align-items:center;gap:10px;background:var(--paper);border:3px solid var(--line);border-radius:18px;padding:6px 12px;font-family:var(--head);font-size:26px;color:var(--navy)}
@@ -73,7 +73,7 @@
   <h2 class="title" style="font-size:58px">12차시 비밀 문장, 기억나요?</h2>
   <div class="recap">
     <div class="box">
-      <div class="cipher" style="font-size:40px;margin-top:10px;padding:24px 40px"><span class="blank" onclick="openBlank(this)">더하기</span>, 빼기, 바꾸기 마법으로<br>불편함을 <span class="blank" onclick="openBlank(this)">해결</span>하는 새 물건을 만들 수 있어요.</div>
+      <div class="cipher" style="font-size:40px;margin-top:10px;padding:24px 40px"><span class="blank" onclick="openBlank(this)">더하기</span>, <span class="blank" onclick="openBlank(this)">빼기</span>, <span class="blank" onclick="openBlank(this)">바꾸기</span> 마법으로<br>불편함을 해결하는 새 물건을 만들 수 있어요.</div>
       <div class="homework">🕵️ <b>준비!</b> 내 <b>지우개</b>를 책상 위에 꺼내요.<br>지우개를 잃어버린 적이 있나요? 어디서 잃어버렸나요?</div>
     </div>
     <img src="../shared/photos/eraser.jpg" alt="" style="width:300px;border-radius:30px" class="bob">
@@ -245,5 +245,6 @@ window.onEsc = () => {};
 drawLab(); drawVote(); startDeck();
 </script>
 <script src="../shared/print-sheet.js"></script>
+<script src="../shared/emoji.js"></script>
 </body>
 </html>

@@ -191,7 +191,7 @@
   <h2 class="title" style="font-size:60px">오늘의 미션 네 가지</h2>
   <div class="missions" style="gap:20px">
     <div class="mcard"><span class="tag">미션 1</span><img class="ic" src="../shared/icons/basket.png" alt=""><h3>하는 일 가족 찾기</h3><p>같은 일을 하는 물건끼리</p></div>
-    <div class="mcard"><span class="tag">미션 2</span><img class="ic" src="../shared/icons/scale.png" alt=""><h3>물건 재판정</h3><p>물건 변호인이 되어 토론</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><img class="ic" src="../shared/icons/scale.png" alt=""><h3>물건 재판정</h3><p>물건 편이 되어 지켜 줘요</p></div>
     <div class="mcard"><span class="tag">미션 3</span><img class="ic" src="../shared/icons/sneaker.png" alt=""><h3>모퉁이로 이동!</h3><p>알맞은 물건으로 달려가요</p></div>
     <div class="mcard"><span class="tag">미션 4</span><img class="ic" src="../01/img/ic_mail.png" alt=""><h3>이럴 땐 이 물건!</h3><p>비교 카드 만들기</p></div>
     <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 조각 3</h3><p>하나만 더 모으면 돼요!</p></div>
@@ -213,10 +213,10 @@
   <div class="kicker">MISSION 2</div>
   <h2 class="title">⚖️ 물건 재판정</h2>
   <div class="rules" style="max-width:1120px">
-    <div class="rule"><span>1</span><div>마법사가 “둘 중 <b class="c-coral">하나는 없애겠다</b>!”고 고소했어요.</div></div>
-    <div class="rule"><span>2</span><div>우리 편은 물건의 <b class="hl">변호인</b>! “○○은 ~할 때 더 좋아요!”</div></div>
-    <div class="rule"><span>3</span><div>번갈아 <b class="c-navy">30초씩</b> 변론해요. 좋은 변론마다 ⭐ 1개!</div></div>
-    <div class="rule"><span>4</span><div>상대 편 말도 잘 들어요. 판결은 판사님이 내려요.</div></div>
+    <div class="rule"><span>1</span><div>마법사가 “둘 중 <b class="c-coral">하나는 없애겠다</b>!”라고 해요.</div></div>
+    <div class="rule"><span>2</span><div>우리 편은 물건을 지켜 주는 <b class="hl">변호인</b>(물건 편을 드는 사람)! “○○은 ~할 때 더 좋아요!”</div></div>
+    <div class="rule"><span>3</span><div>번갈아 <b class="c-navy">30초씩</b> 말해요. 좋은 이유를 말하면 ⭐ 1개!</div></div>
+    <div class="rule"><span>4</span><div>상대 편 말도 잘 들어요. 마지막 결정(판결)은 판사님(선생님)이 내려요.</div></div>
   </div>
   <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:320px">
 </section>
@@ -444,7 +444,7 @@ let ctIdx = 0, ctTurn = 0, ctLeft = 30, ctTimer = null; const ctPts = [0, 0], ct
 const sideEl = t => document.getElementById(t ? 'sideB' : 'sideA');
 function drawSide(t){ const c = COURT[ctIdx], k = t ? c.b : c.a, H = t ? c.B : c.A;
   sideEl(t).innerHTML = `<div class="who">${art(k)}<span>${OBJ[k].n}</span></div><div class="team">${t ? '오른쪽' : '왼쪽'} 변호인단</div><div class="pts">⭐ ${ctPts[t]}</div>
-    <div class="pbtn"><button class="btn ${t ? 'navy' : 'coral'}" onclick="courtPt(${t},1)">⭐＋ 좋은 변론</button><button class="btn ghost" onclick="courtPt(${t},-1)">−</button><button class="btn ghost" onclick="courtHint(${t})">💡 도움 카드</button></div>
+    <div class="pbtn"><button class="btn ${t ? 'navy' : 'coral'}" onclick="courtPt(${t},1)">⭐＋ 좋은 이유</button><button class="btn ghost" onclick="courtPt(${t},-1)">−</button><button class="btn ghost" onclick="courtHint(${t})">💡 도움 카드</button></div>
     <div class="hints">${H.slice(0, ctHint[t]).map(h => `<div>💬 ${h}</div>`).join('')}</div>`;
   sideEl(t).classList.toggle('turn', ctTurn === t); }
 function drawCourt(){ drawSide(0); drawSide(1); document.getElementById('jTurn').textContent = (ctTurn ? '오른쪽' : '왼쪽') + ' 변호인 차례';
@@ -458,7 +458,7 @@ function speak(){ if(ctTimer){ stopSpeak(); drawCourt(); return; } ctLeft = 30; 
   ctTimer = setInterval(() => { ctLeft--; if(ctLeft <= 0){ S.end(); stopSpeak(); ctTurn = 1 - ctTurn; } drawCourt(); }, 1000); }
 function flipTurn(){ stopSpeak(); ctTurn = 1 - ctTurn; S.flip(); drawCourt(); }
 function verdict(){ stopSpeak(); const c = COURT[ctIdx], v = document.getElementById('jVerdict');
-  v.innerHTML = `🔨 판결: 두 물건 모두 <b>무죄!</b> ${c.v}<br>하는 일은 같아도 좋은 때가 달라서 <b>둘 다 필요해요!</b>`; v.classList.add('show'); ctDone[ctIdx] = 1; S.win(); drawCourt(); }
+  v.innerHTML = `🔨 판결: 두 물건 모두 <b>없애면 안 돼요!</b> ${c.v}<br>하는 일은 같아도 좋은 때가 달라서 <b>둘 다 필요해요!</b>`; v.classList.add('show'); ctDone[ctIdx] = 1; S.win(); drawCourt(); }
 
 /* ---------- 미션 3: 모퉁이 이동 게임 (o: 1·2·3번 모퉁이 물건, a: 정답 번호(0부터)) ---------- */
 const CHOOSE = [
@@ -497,5 +497,6 @@ window.onEsc = () => {};
 newSort(); setCourt(0); setChoose(0); startDeck();
 </script>
 <script src="../shared/print-sheet.js"></script>
+<script src="../shared/emoji.js"></script>
 </body>
 </html>

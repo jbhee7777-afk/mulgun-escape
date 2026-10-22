@@ -133,7 +133,8 @@ b{font-family:var(--head);font-weight:400}
 /* secret */
 .cipher{font-size:62px;font-family:var(--head);line-height:1.9;margin-top:26px;background:var(--paper);border-radius:36px;padding:30px 60px;box-shadow:0 10px 0 var(--line);border:3px solid var(--line)}
 .blank{display:inline-block;min-width:250px;border-bottom:8px solid var(--coral);color:transparent;cursor:pointer;text-align:center;margin:0 8px;transition:color .4s;position:relative;line-height:1.2}
-.blank::after{content:"?";position:absolute;inset:0;color:var(--coral)}
+.blank::after{content:"<?>";position:absolute;inset:0;color:var(--coral);white-space:nowrap}
+.blank.sm{min-width:110px;border-bottom-width:4px;margin:0 4px}
 .blank.open{color:#15a383;border-color:var(--mint)}
 .blank.open::after{content:""}
 .chips{display:flex;gap:16px;justify-content:center;margin-top:28px}

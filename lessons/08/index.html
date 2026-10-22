@@ -55,6 +55,7 @@
 
 /* 미션 2: 접기 실험실 */
 .sc5 .shape.ph{position:relative}
+.shape.ph{position:relative}
 .shape.ph img.endv{position:absolute;right:6px;top:6px;width:38% !important;height:auto !important;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
 .fold4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px;flex:1}
 .fd{background:var(--paper);border:3px solid var(--line);border-radius:24px;padding:14px;display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 0 var(--line)}
@@ -175,7 +176,7 @@
   <h2 class="title" style="font-size:58px">7차시 비밀 문장, 기억나요?</h2>
   <div class="recap">
     <div class="box">
-      <div class="cipher" style="font-size:42px;margin-top:10px;padding:22px 36px">재료마다 좋은 점과 아쉬운 <span class="blank" onclick="openBlank(this)">점</span>이 있어요.<br>쓰임새에 맞게 고르고 <span class="blank" onclick="openBlank(this)">다듬으면</span> 새로운 물건이 돼요.</div>
+      <div class="cipher" style="font-size:42px;margin-top:10px;padding:22px 36px">물건을 만드는 <span class="blank" onclick="openBlank(this)">재료</span>마다 좋은 점과 아쉬운 점이 있어요.<br><span class="blank" onclick="openBlank(this)">쓰임새</span>에 맞는 재료를 골라야 해요.</div>
       <div class="homework">🕵️ <b>숙제 확인!</b> <b>튼튼한 종이 물건</b>을 찾아왔나요?<br>얇은 종이인데 <b>왜</b> 튼튼할까요?</div>
     </div>
     <img src="../01/img/agent.png" alt="" style="width:300px" class="bob">
@@ -223,7 +224,7 @@
       <div class="votes"><div>🖐️<br>0~2개</div><div>🖐️<br>3~9개</div><div>🖐️<br>10개 이상</div></div>
       <button class="btn coral" onclick="magic('flat')">📄 평평한 종이</button>
       <button class="btn mint" onclick="magic('fold')">〰️ 병풍 접은 종이</button>
-      <div style="font-size:19px;color:var(--ink2);line-height:1.45">※ 병풍은 <b>접는 선이 다리 방향과 같게</b> 접어요.<br>오른쪽 위 그림은 종이 끝에서 본 모양이에요.</div>
+      <div style="font-size:19px;color:var(--ink2);line-height:1.45">※ 병풍은 <b>종이의 긴 쪽과 나란히</b> 접어요.<br>오른쪽 위 그림은 종이를 옆에서 본 모양이에요.</div>
       <div class="mmsg" id="mMsg"></div>
     </div>
   </div>
@@ -505,5 +506,6 @@ window.onEsc = () => {};
 drawLab8(); drawTower(); startDeck();
 </script>
 <script src="../shared/print-sheet.js"></script>
+<script src="../shared/emoji.js"></script>
 </body>
 </html>

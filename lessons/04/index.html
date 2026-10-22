@@ -343,10 +343,10 @@
       <span class="pill">🎉 ESCAPE!</span>
       <h2 class="title">1번 방 탈출!</h2>
       <div class="sents">
-        <div><b>①</b> 물건이 없으면 생활이 불편해요. 물건은 우리의 불편함을 해결해 줘요.</div>
-        <div><b>②</b> 모든 물건에는 태어난 이유가 있어요.</div>
-        <div><b>③</b> 하는 일이 같아도 모양과 쓰는 방법은 달라요.</div>
-        <div><b>④</b> 물건은 불편함을 해결하며 점점 변신해 왔어요.</div>
+        <div><b>①</b> 물건이 없으면 생활이 <span class="blank sm" onclick="openBlank(this)">불편해요</span>. 물건은 우리의 불편함을 <span class="blank sm" onclick="openBlank(this)">해결</span>해 줘요.</div>
+        <div><b>②</b> 모든 물건에는 태어난 <span class="blank sm" onclick="openBlank(this)">이유</span>가 있어요.</div>
+        <div><b>③</b> 하는 일이 같아도 <span class="blank sm" onclick="openBlank(this)">모양</span>과 쓰는 방법은 달라요.</div>
+        <div><b>④</b> 물건은 불편함을 해결하며 점점 <span class="blank sm" onclick="openBlank(this)">변신</span>해 왔어요.</div>
       </div>
     </div>
   </div>
@@ -480,5 +480,6 @@ window.onEsc = () => {};
 newMime(); setCmp(0); setLine(0); startDeck();
 </script>
 <script src="../shared/print-sheet.js"></script>
+<script src="../shared/emoji.js"></script>
 </body>
 </html>

@@ -720,7 +720,7 @@ function keySticker(r){
     <circle r="31.5" fill="url(#${u}i)"/>
     <circle r="31.5" fill="none" stroke="url(#${u}g)" stroke-width="2.8"/>
     <circle r="27.5" fill="none" stroke="${c}" stroke-width=".6" stroke-dasharray="1.2 1.6" opacity=".8"/>
-    <text x="0" y="-12" text-anchor="middle" font-size="12.5" dominant-baseline="middle">${r.sticker}</text>
+    <image href="lessons/shared/icons/${({'💡':'bulb','🔍':'search','🛠️':'toolbox','🤝':'handshake','🚀':'rocket'})[r.sticker]||'star'}.png" x="-10" y="-22" width="20" height="20"/>
     <g transform="translate(3,4) rotate(-28)">
       <path fill-rule="evenodd" fill="url(#${u}g)" stroke="#94600f" stroke-width=".9" d="M-27 0a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z M-21.5 0a4.5 4.5 0 1 0 9 0a4.5 4.5 0 1 0 -9 0Z"/>
       <path fill="url(#${u}g)" stroke="#94600f" stroke-width=".9" stroke-linejoin="round" d="M-7.6 -2.8H24.5a1.6 1.6 0 0 1 1.6 1.6V2.8H22.6V9.5H18V2.8H14.6V7.4H10.4V2.8H-7.6Z"/>
@@ -1583,5 +1583,6 @@ addEventListener('keydown', e => {
 go('home');
 loadBuiltin();
 </script>
+<script src="lessons/shared/emoji.js"></script>
 </body>
 </html>
