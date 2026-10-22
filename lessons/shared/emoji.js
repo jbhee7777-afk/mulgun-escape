@@ -62,7 +62,7 @@
   }
   const st = document.createElement('style');
   st.textContent = "img.emi{display:inline-block!important;height:1.15em!important;width:auto!important;max-width:1.6em!important;min-width:0!important;aspect-ratio:auto!important;object-fit:contain!important;vertical-align:-.22em;margin:0 .04em!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:none!important;flex:none}" +
-    "svg.emi{width:1em!important;height:1em!important;max-width:none!important;flex:none;display:inline-block;vertical-align:-.12em}" +
+    "svg.emi{width:1em!important;height:1em!important;max-width:none!important;transform:none!important;flex:none;display:inline-block;vertical-align:-.12em}" +
     ".emo img.emi{height:1em!important;max-width:1.3em!important;vertical-align:0}";
   document.head.appendChild(st);
   const run = () => { fix(document.body); new MutationObserver(ms => { for(const m of ms){
