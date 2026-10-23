@@ -33,7 +33,7 @@
   <div class="who"><div>번호</div><div>이름</div></div>
 
   <div class="step"><div class="tt"><span class="no">1</span><h2 class="h">지도에 ★과 번호를 표시해요</h2><small>우리 교실과 다르면 고쳐 그려도 돼요</small></div>
-    <div class="mapw"><img src="img/map.svg" alt="">
+    <div class="mapw"><svg id="roomSvg" viewBox="0 0 800 560" style="width:100%;height:100%;font-family:Jua,'Malgun Gothic',sans-serif"></svg>
       <span class="star ex" style="left:97%;top:85%">★<b>1</b></span>
       <span class="star ex" style="left:42%;top:87%">★<b>2</b></span>
       <span class="star ex" style="left:40%;top:55%">★<b>3</b></span>
@@ -65,5 +65,5 @@
     </div>
     <div class="key">4번 방 열쇠 <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
   </div>
-</div><script src="../shared/print.js"></script><script src="../shared/emoji.js"></script>
+</div><script src="room.js"></script><script>document.getElementById("roomSvg").innerHTML = ROOM.svg(ROOM.items());</script><script src="../shared/print.js"></script><script src="../shared/emoji.js"></script>
 </body></html>

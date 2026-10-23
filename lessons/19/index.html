@@ -58,6 +58,46 @@
 .sents div b{color:var(--gold)}
 .confetti{position:absolute;width:14px;height:22px;top:-30px;pointer-events:none;animation:fall linear forwards;z-index:5}
 @keyframes fall{to{transform:translateY(980px) rotate(720deg)}}
+.flow5{display:flex;align-items:center;gap:8px;margin-top:26px}
+.flow5 div{flex:1;background:#fff;border:4px solid var(--line);border-radius:26px;padding:14px 10px;text-align:center;font-size:23px;line-height:1.4;color:var(--ink2);box-shadow:0 7px 0 var(--line)}
+.flow5 div img{width:96px;height:96px;object-fit:contain;display:block;margin:0 auto 4px}
+.flow5 div b{display:block;font-family:var(--head);font-weight:400;font-size:30px;color:var(--roomdk)}
+.flow5 i{font-style:normal;font-family:var(--head);font-size:40px;color:var(--room)}
+.opsel{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px}
+.opsel .o{background:#fff;border:4px solid var(--line);border-radius:26px;padding:14px;text-align:center;box-shadow:0 7px 0 var(--line);cursor:pointer;position:relative;transition:.2s}
+.opsel .o img{width:110px;height:110px;object-fit:contain}
+.opsel .o h3{font-size:28px;color:var(--navy);line-height:1.3;margin-top:4px}
+.opsel .o p{font-size:20px;color:var(--ink2);line-height:1.4;margin-top:4px}
+.opsel .o .k{display:inline-block;font-family:var(--head);font-size:18px;border-radius:10px;padding:2px 10px;background:var(--room2);color:var(--roomdk);margin-top:6px}
+.opsel .o.on{border-color:var(--room);background:var(--room2);transform:translateY(-4px)}
+.opsel .o.on::after{content:attr(data-no);position:absolute;right:-12px;top:-14px;width:52px;height:52px;border-radius:50%;background:var(--room);color:#fff;font-family:var(--head);font-size:26px;display:flex;align-items:center;justify-content:center}
+.opmsg{margin-top:20px;background:var(--paper);border:3px dashed var(--line);border-radius:20px;padding:12px 20px;font-size:26px;text-align:center}
+.opmsg b{color:var(--roomdk)}
+.run{flex:1;display:flex;flex-direction:column;gap:12px;min-height:0}
+.rtabs{display:flex;gap:10px}
+.rtabs button{font-family:var(--head);font-size:24px;border-radius:18px;padding:8px 20px;background:#fff;border:3px solid var(--line);color:var(--ink2);display:flex;align-items:center;gap:8px}
+.rtabs button img{width:40px;height:40px}
+.rtabs button.on{background:var(--room2);border-color:var(--room);color:var(--roomdk)}
+.rbody{display:grid;grid-template-columns:1fr 1.05fr;gap:16px;flex:1;min-height:0}
+.rleft{display:flex;flex-direction:column;gap:12px}
+.rcard{background:#fff;border:4px solid var(--line);border-radius:24px;padding:12px 18px;box-shadow:0 6px 0 var(--line)}
+.rcard h3{font-size:28px;color:var(--navy)}
+.rcard h3 small{font-family:var(--body);font-size:20px;color:var(--ink2)}
+.rcard p{font-size:25px;line-height:1.55;margin-top:4px}
+.rcard p b{color:#e3523f}
+.rcard.do{background:#fff6d6;border-color:var(--gold);box-shadow:0 6px 0 #f0c45a}
+.rcard ol{padding-left:30px;font-size:23px;line-height:1.55;margin-top:4px}
+.rright{display:flex;flex-direction:column;gap:12px}
+.rrow{display:flex;align-items:center;gap:14px;background:#fff;border:4px solid var(--line);border-radius:24px;padding:12px 16px}
+.rrow .lb{font-family:var(--head);font-size:23px;color:#fff;border-radius:14px;padding:6px 12px;flex:none;width:130px;text-align:center}
+.rrow .lb.b{background:#a77b4a}.rrow .lb.m{background:var(--gold);color:#5a3d00}.rrow .lb.a{background:var(--room)}
+.faces{display:flex;gap:10px;flex:1}
+.faces .f{flex:1;background:var(--paper);border:3px solid var(--line);border-radius:18px;padding:6px 4px;text-align:center;cursor:pointer;font-family:var(--head);font-size:19px;color:var(--ink2)}
+.faces .f span{display:block;font-size:44px;line-height:1.2}
+.faces .f.ok{background:var(--mint2);border-color:var(--mint)}.faces .f.no{background:#fff5f2;border-color:#ffc0b5}
+.rrow .cnt{font-family:var(--head);font-weight:400;font-size:28px;color:#0f8a6e;width:110px;text-align:center}
+.verdict{background:var(--mint2);border:3px solid var(--mint);border-radius:22px;padding:12px 18px;font-size:26px;line-height:1.5;min-height:80px}
+.verdict b{color:#0f8a6e}
 </style>
 </head>
 <body data-room="4">
@@ -67,7 +107,7 @@
 
 <!-- 1 표지 -->
 <section class="slide dark" data-phase="도입 · 4분"
- data-notes="<b>시작</b> — “4번 방 마지막 시간! 오늘은 생각만 하지 않고 교실을 <b>진짜로</b> 바꿔요.” 선생님 준비: 마스킹테이프, 색 스티커·색종이, 사인펜, 18차시 모형, 초시계(화면 초시계를 써도 돼요). 바꾸어도 되는 것과 안 되는 것(무거운 가구 옮기기, 전기 만지기는 안 돼요)을 미리 정해 두세요.">
+ data-notes="<b>시작</b> — “4번 방 마지막 시간! 오늘은 생각만 하지 않고 교실을 <b>진짜로</b> 바꿔요.” 선생님 준비: 마스킹테이프, 종이·사인펜, 셀로판테이프(그림 표시 붙이기), 책 3권(짐 대신). 오늘은 반 전체가 <b>두 곳</b>만 바꿔요. 바꾸어도 되는 것과 안 되는 것(무거운 가구 옮기기, 전기 만지기는 안 돼요)을 미리 정해 두세요.">
   <div class="cover">
     <img class="doorimg bob" src="../15/img/door4.jpg" alt="4번 방 문">
     <div>
@@ -110,89 +150,82 @@
   <div class="kicker">MISSION BRIEFING</div>
   <h2 class="title" style="font-size:60px">오늘의 미션 세 가지</h2>
   <div class="missions" style="gap:20px">
-    <div class="mcard"><span class="tag">미션 1</span><img class="ic" src="../01/img/ic_cards.png" alt=""><h3>바꾸기 작전 정하기</h3><p>오늘 바로 할 수 있는 것!</p></div>
-    <div class="mcard"><span class="tag">미션 2</span><img class="ic" src="../shared/icons/stopwatch.png" alt=""><h3>전·후 시험</h3><p>바꾸기 전과 후에 똑같이</p></div>
-    <div class="mcard"><span class="tag">미션 3</span><img class="ic" src="../shared/icons/chart.png" alt=""><h3>비교 발표</h3><p>정말 편해졌을까?</p></div>
+    <div class="mcard"><span class="tag">미션 1</span><img class="ic" src="../01/img/ic_cards.png" alt=""><h3>바꿀 곳 고르기</h3><p>반 전체가 2곳!</p></div>
+    <div class="mcard"><span class="tag">미션 2</span><img class="ic" src="../shared/icons/stopwatch.png" alt=""><h3>해 보고 · 바꾸고 · 또 해 보기</h3><p>쉬워졌는지 😀를 세요</p></div>
+    <div class="mcard"><span class="tag">미션 3</span><img class="ic" src="../shared/icons/chart.png" alt=""><h3>생각 저울</h3><p>좋은 점 · 걱정 · 이렇게 하면?</p></div>
     <div class="mcard reward"><span class="tag">보상</span><img class="ic" src="../01/img/ic_key.png" alt=""><h3>열쇠 완성</h3><p>4번 방 탈출!</p></div>
   </div>
   <div class="goal"><b>🎯 학습 목표</b> 교실의 물건 자리나 안내 표시를 실제로 바꾸고, 바꾸기 전과 후를 비교할 수 있어요.</div>
 </section>
 
-<!-- 5 작전 카드 -->
+<!-- 5 오늘의 순서 -->
 <section class="slide" data-phase="미션 1 · 6분"
- data-notes="<b>바꾸기 작전 고르기</b> — 18차시 발명 가운데 <b>오늘 바로, 안전하게</b> 할 수 있는 것을 골라요. 어려우면 아래 작전 카드에서 골라도 돼요. 세 가지 확인(바로 할 수 있나? 안전한가? 선생님이 허락했나?)을 모두 통과해야 해요. 큰 가구를 옮기는 생각은 ‘선생님께 부탁하기’ 편지로 바꾸게 해요.">
-  <div class="kicker">MISSION 1</div>
-  <h2 class="title" style="font-size:54px">🃏 바꾸기 작전 카드</h2>
-  <div class="ops">
-    <div class="o"><div class="emo">🧻</div><h3>휴지를 낮은 칸으로</h3><p>📍 자리 바꾸기</p></div>
-    <div class="o"><div class="emo">🔥</div><h3>정수기에 뜨거움 표시</h3><p>🏷️ 그림 표시</p></div>
-    <div class="o"><div class="emo">♻️</div><h3>분리수거 통에 그림</h3><p>🏷️ 그림 표시</p></div>
-    <div class="o"><div class="emo">🟨</div><h3>통로 ‘비워 두기’ 선</h3><p>🏷️ 마스킹테이프 선</p></div>
-    <div class="o"><div class="emo">🎒</div><h3>책상 옆 가방 고리</h3><p>🛠️ 18차시 모형 쓰기</p></div>
-    <div class="o"><div class="emo">🧺</div><h3>공용 학용품을 낮게</h3><p>📍 자리 바꾸기</p></div>
-    <div class="o"><div class="emo">🗓️</div><h3>시간표에 그림 붙이기</h3><p>🏷️ 글자 + 그림</p></div>
-    <div class="o"><div class="emo">💌</div><h3>선생님께 부탁 편지</h3><p>큰 것은 어른에게!</p></div>
+ data-notes="<b>오늘 하는 일 한눈에</b> — 오늘은 <b>반 전체가 함께</b> 교실을 두 군데 바꿔요. ① 바꿀 곳 2곳 고르기 → ② 바꾸기 전에 ‘다른 친구’가 되어 해 보기 → ③ 진짜로 바꾸기 → ④ 바꾼 뒤에 똑같이 해 보기 → ⑤ 쉬워졌는지 비교. 모둠마다 따로 할 필요 없어요. 1~3모둠은 첫 번째 작전, 4~6모둠은 두 번째 작전을 맡아요.">
+  <div class="kicker">MISSION 1 · 오늘 하는 일</div>
+  <h2 class="title" style="font-size:54px">교실을 진짜로 바꿔 봐요!</h2>
+  <div class="flow5">
+    <div><img src="../shared/icons/cards.png" alt=""><b>① 고르기</b>바꿀 곳<br>2곳을 골라요</div><i>➜</i>
+    <div><img src="../shared/icons/child.png" alt=""><b>② 해 보기</b>바꾸기 전에<br>다른 친구가 되어</div><i>➜</i>
+    <div><img src="../shared/icons/toolbox.png" alt=""><b>③ 바꾸기</b>모둠이 함께<br>진짜로 바꿔요</div><i>➜</i>
+    <div><img src="../shared/icons/child.png" alt=""><b>④ 또 해 보기</b>같은 친구가<br>똑같이 해 봐요</div><i>➜</i>
+    <div><img src="../shared/icons/chart.png" alt=""><b>⑤ 비교</b>쉬워졌나요?<br>😀 수를 세요</div>
   </div>
-  <div class="chk3"><div>✅ 오늘 바로 할 수 있나요?</div><div>✅ 안전한가요?</div><div>✅ 선생님이 허락했나요?</div></div>
+  <div class="need" style="margin-top:24px">👥 <b>1~3모둠</b>은 첫 번째 작전, <b>4~6모둠</b>은 두 번째 작전을 맡아요. 모둠마다 <b>체험 친구 1명</b>을 뽑아요(모두 3명).</div>
 </section>
 
-<!-- 6 모둠 작전 정하기 -->
-<section class="slide" data-phase="미션 1 · 6분" style="padding-top:78px"
- data-notes="<b>모둠 작전 정하기</b> — 모둠마다 목록에서 작전을 골라 두세요(다음 비교 화면에 이름이 나와요). 18차시에 만든 다른 발명이면 ‘우리 모둠 발명’을 골라요.">
-  <div class="kicker">MISSION 1 · 모둠 작전</div>
-  <h2 class="title" style="font-size:48px;margin-bottom:12px">우리 모둠은 무엇을 바꿀까요?</h2>
-  <div class="tops" id="tops"></div>
+<!-- 6 작전 고르기 -->
+<section class="slide" data-phase="미션 1 · 6분" style="padding-top:78px" data-hook="ops"
+ data-notes="<b>바꿀 곳 2곳 고르기</b> — 17차시 지도에서 1·2등 한 곳, 18차시 발명을 떠올리며 골라요. 카드를 누르면 고른 표시가 돼요(2개). 모두 <b>오늘 바로, 안전하게</b> 할 수 있는 것들이에요. 큰 가구 옮기기·전기 만지기는 하지 않아요. 우리 반에 맞지 않는 카드는 고르지 않으면 돼요.">
+  <div class="kicker">MISSION 1 · 바꿀 곳 2곳 고르기</div>
+  <div class="opsel" id="opSel"></div>
+  <div class="opmsg" id="opMsg">카드 2장을 눌러 골라요.</div>
 </section>
 
-<!-- 7 시험 방법 -->
-<section class="slide" data-phase="미션 2 · 18분"
- data-notes="<b>전·후 시험 방법</b> — 바꾸기 전과 후에 <b>같은 사람이, 같은 방법으로</b> 해 봐야 공정해요(13차시 공정한 시험). ① 전 시험 3분: 15차시처럼 ‘다른 친구’가 되어 해 보고 걸린 시간을 재요(예: 무릎을 꿇고 앉아 키 작은 동생처럼 휴지 꺼내기, 한 손으로 가방 걸기). 시간을 재기 어려운 작전은 ‘헷갈린 친구 수’나 ‘편해요 손 들기’로 세요. ② 바꾸기 7분 ③ 후 시험 3분. 결과는 다음 화면 표에 넣어요.">
-  <div class="kicker">MISSION 2</div>
-  <h2 class="title" style="font-size:54px">⏱️ 바꾸기 전과 후, 똑같이 시험해요</h2>
-  <div class="tests">
-    <div class="s"><div class="emo">⏱️</div><h3>걸린 시간</h3><p>다른 친구가 되어 해 보고<br><b>몇 초</b> 걸리는지 재요.<br><small>예: 무릎 꿇고 휴지 꺼내기</small></p></div>
-    <div class="s"><div class="emo">🙋</div><h3>헷갈린 친구 수</h3><p>다른 모둠 친구 5명에게 해 보게 하고<br><b>헷갈린 사람</b>을 세요.<br><small>예: 분리수거 통 고르기</small></p></div>
-    <div class="s"><div class="emo">😊</div><h3>편해요 손 들기</h3><p>써 본 친구에게 물어<br><b>편해요 😀 / 그대로 😐</b><br>손을 세요.</p></div>
-  </div>
-  <div class="flow"><span>① 전 시험 3분</span><i>➜</i><span>② 바꾸기 7분</span><i>➜</i><span>③ 후 시험 3분</span><i>➜</i><span>④ 비교!</span></div>
-</section>
-
-<!-- 8 시간 + 비교 -->
-<section class="slide" data-phase="미션 2 · 18분" style="padding-top:78px" data-hook="cmp"
- data-notes="<b>진행 + 결과 표</b> — 왼쪽 위 단추로 단계별 시계를 켜요. 초시계는 모둠이 시험할 때 함께 써요. 모둠마다 ‘전’과 ‘후’ 숫자를 넣으면 막대가 그려져요(시간·헷갈린 수는 <b>작을수록</b> 좋아졌어요, 편해요 손은 <b>클수록</b> 좋아졌어요). 결과가 좋아지지 않아도 괜찮아요! “왜 그랬을까? 어떻게 더 바꿀까?”가 더 중요해요.">
-  <div class="cmp">
-    <div class="cmain">
-      <div class="btns" style="gap:10px"><button class="btn ghost" style="font-size:21px;padding:8px 14px" onclick="setStage(0)">① 전 시험 3분</button><button class="btn ghost" style="font-size:21px;padding:8px 14px" onclick="setStage(1)">② 바꾸기 7분</button><button class="btn ghost" style="font-size:21px;padding:8px 14px" onclick="setStage(2)">③ 후 시험 3분</button><div class="kclock" style="display:flex;align-items:center;gap:12px;padding:4px 16px"><small id="stL">단계를 골라요</small><b id="stC" style="font-size:40px">-</b><button class="btn mint" id="stGo" style="font-size:20px;padding:6px 12px" onclick="stClock && stClock.toggle()">▶</button></div></div>
-      <table class="ctab" id="ctab"></table>
+<!-- 7 해 보기 · 바꾸기 · 또 해 보기 -->
+<section class="slide" data-phase="미션 2 · 20분" style="padding-top:78px" data-hook="run"
+ data-notes="<b>진행 (작전마다 같은 순서)</b> — 위쪽 단추로 작전을 바꿔요. ② <b>바꾸기 전</b>: 체험 친구 3명이 화면의 ‘해 보기’를 하고, 쉬웠으면 😀 어려웠으면 😣 를 눌러요. ③ <b>바꾸기 8분</b>: 맡은 모둠이 ‘할 일’대로 진짜로 바꿔요. ④ <b>바꾼 뒤</b>: 같은 3명이 똑같이 해 보고 다시 눌러요. 결과는 이 컴퓨터에 저장돼요. 😀가 늘지 않아도 괜찮아요 — “왜 그럴까?”를 이야기해요.">
+  <div class="run">
+    <div class="rtabs" id="rTabs"></div>
+    <div class="rbody">
+      <div class="rleft">
+        <div class="rcard"><h3>🙋 해 보기 <small>체험 친구 3명</small></h3><p id="rTry"></p></div>
+        <div class="rcard do"><h3>🛠️ 할 일 <small>맡은 모둠</small></h3><ol id="rDo"></ol></div>
+      </div>
+      <div class="rright">
+        <div class="rrow"><span class="lb b">② 바꾸기 전</span><div class="faces" id="fB"></div><b class="cnt" id="cB">😀 0명</b></div>
+        <div class="rrow mid"><span class="lb m">③ 바꾸기</span><div class="kclock" style="display:flex;align-items:center;gap:12px;padding:6px 18px"><b id="chC" style="font-size:46px">8:00</b><button class="btn mint" id="chGo" style="font-size:20px;padding:8px 14px" onclick="chClock.toggle()">▶ 8분</button></div></div>
+        <div class="rrow"><span class="lb a">④ 바꾼 뒤</span><div class="faces" id="fA"></div><b class="cnt" id="cA">😀 0명</b></div>
+        <div class="verdict" id="verdict"></div>
+      </div>
     </div>
-    <div class="side"><div class="sw"><small>초시계</small><b id="swT">0.0</b></div><button class="btn mint" id="swGo" onclick="swToggle()">▶ 시작</button><button class="btn ghost" onclick="swReset()">↺ 다시</button></div>
   </div>
 </section>
 
-<!-- 9 비교 발표 -->
-<section class="slide" data-phase="미션 3 · 7분"
- data-notes="<b>비교 발표</b> — 모둠마다 30초씩, 바꾼 곳 앞에서 발표해요. 다른 모둠은 직접 써 보고 ‘편해요 손 들기’를 해 줘요. 결과가 그대로이거나 나빠진 모둠은 ‘이렇게 더 바꾸고 싶어요’를 꼭 말하게 해요 — 23차시 ‘실패해도 괜찮아’와 이어져요.">
+<!-- 8 생각 저울 -->
+<section class="slide" data-phase="미션 3 · 6분"
+ data-notes="<b>생각 저울</b> — 바꾼 곳 앞에서 맡은 모둠이 30초 발표해요: “○○를 △△하게 바꿨어요. 바꾸기 전에는 😀가 □명, 바꾼 뒤에는 ■명이었어요.” 그다음 반 전체가 좋은 점·걱정되는 점·이렇게 하면?을 말해요. 정답은 없어요.">
   <div class="kicker">MISSION 3</div>
-  <h2 class="title">📊 정말 편해졌을까?</h2>
+  <h2 class="title">⚖️ 정말 편해졌을까?</h2>
   <div class="rules" style="max-width:1200px">
-    <div class="rule"><span>1</span><div>“우리 모둠은 <b class="hl">○○를 △△하게</b> 바꿨어요.”</div></div>
-    <div class="rule"><span>2</span><div>“바꾸기 전에는 <b class="c-coral">□초</b>, 바꾼 뒤에는 <b class="c-navy">■초</b>였어요.”<small>또는 헷갈린 친구 수, 편해요 손 수</small></div></div>
-    <div class="rule"><span>3</span><div>“<b>누가</b> 편해졌어요. 그래도 <b>아쉬운 점</b>은 ~예요.”</div></div>
+    <div class="rule"><span>1</span><div>“우리는 <b class="hl">○○를 △△하게</b> 바꿨어요.”</div></div>
+    <div class="rule"><span>2</span><div>“바꾸기 전에는 😀 <b class="c-coral">□명</b>, 바꾼 뒤에는 😀 <b class="c-navy">■명</b>이었어요.”</div></div>
+    <div class="rule"><span>3</span><div>👍 좋은 점 · 🤔 걱정되는 점 · 💡 이렇게 하면? 을 함께 말해요.</div></div>
   </div>
   <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:60px;bottom:90px;width:240px">
 </section>
 
 <!-- 10 활동지 -->
 <section class="slide" data-phase="정리 · 5분"
- data-notes="<b>활동지 ‘바꾸기 전과 후 비교 보고서’</b> — 전·후 그림, 시험 결과, 좋은 점·걱정되는 점·이렇게 하면. 예시 답안은 📗 단추. 바꾼 곳 사진을 찍어 두면 학급 게시판에 붙일 수 있어요.">
+ data-notes="<b>활동지 ‘바꾸기 전과 후 비교 보고서’</b> — 우리 모둠이 맡은 작전을 그리고, 화면에 나온 😀 수를 옮겨 써요. 예시 답안은 📗 단추. 바꾼 곳 사진을 찍어 두면 학급 게시판에 붙일 수 있어요.">
   <div class="kicker">MISSION 정리 · 활동지</div>
   <div class="ws">
     <img class="wsprev" src="img/worksheet_preview.png" alt="활동지 미리 보기">
     <div class="steps">
       <h2 class="title" style="font-size:48px;margin-bottom:4px">📊 바꾸기 전과 후 비교 보고서</h2>
-      <div class="s"><span>1</span>무엇을, 누구를 위해 바꿨나요?</div>
-      <div class="s"><span>2</span>전과 후를 그리고 시험 결과를 써요</div>
-      <div class="s"><span>3</span>좋은 점 · 걱정되는 점 · 이렇게 하면?</div>
+      <div class="s"><span>1</span>우리가 바꾼 곳에 ○</div>
+      <div class="s"><span>2</span>바꾸기 전 · 바꾼 뒤를 그려요</div>
+      <div class="s"><span>3</span>😀 몇 명이었나요?</div>
+      <div class="s bonus"><span>★</span>좋은 점 · 걱정 · 이렇게 하면?</div>
       <button class="btn coral" style="align-self:flex-start;font-size:26px;padding:13px 26px;margin-top:6px" onclick="printSheet('worksheet.html')">🖨️ 활동지 바로 인쇄</button>
     </div>
   </div>
@@ -273,36 +306,45 @@
 hooks.story = () => typewriter(document.getElementById('storyText'),
   '“흥, 모형은 그럴듯하네. 하지만 <b class="c-coral">진짜로 편해졌는지</b> 어떻게 알아?<br>증거를 보여 주면 4번 방 문을 열어 주지!”<br>요원 여러분, 바꾸기 <b class="c-navy">전과 후</b>에 똑같이 시험해서<br>증거를 모아 봐요!');
 
-/* ---------- 미션 1: 모둠 작전 (이 컴퓨터에 저장) ---------- */
-const OPS = [['🧻', '휴지를 낮은 칸으로', 't'], ['🔥', '정수기에 뜨거움 표시', 'c'], ['♻️', '분리수거 통에 그림', 'c'], ['🟨', '통로 ‘비워 두기’ 선', 'h'], ['🎒', '책상 옆 가방 고리', 't'], ['🧺', '공용 학용품을 낮게', 't'], ['🗓️', '시간표에 그림 붙이기', 'c'], ['💡', '우리 모둠 발명', 'h']];
-const UNIT = {t:['초', '작을수록 좋아요', -1], c:['명 헷갈림', '작을수록 좋아요', -1], h:['명 편해요', '클수록 좋아요', 1]};
-const OKEY = 'mg19ops'; let st = {};
-try { st = JSON.parse(localStorage.getItem(OKEY) || '{}') || {}; } catch(e) { st = {}; }
-const save = () => { try { localStorage.setItem(OKEY, JSON.stringify(st)); } catch(e) {} };
-const tm = t => st[t] || (st[t] = {o:t % OPS.length, b:'', a:''});
-function topsDraw(){ document.getElementById('tops').innerHTML = [...Array(K.teamN)].map((_, t) => { const s = tm(t);
-  return `<div class="t"><span class="n">${t + 1}모둠</span><span class="emo">${OPS[s.o][0]}</span><select onchange="tm(${t}).o=+this.value;save();topsDraw()">${OPS.map((o, i) => `<option value="${i}" ${i === s.o ? 'selected' : ''}>${o[1]}</option>`).join('')}</select></div>`; }).join(''); }
+/* ---------- 미션 1: 작전 카드 (반 전체가 2개 고르기, 이 컴퓨터에 저장) ---------- */
+const OPS = [
+  {ic:'tissue', n:'휴지·공용 학용품을 낮은 칸으로', k:'📍 자리 바꾸기', who:'키가 작은 1학년 동생',
+   t:'<b>무릎을 꿇고</b> 앉은 채로(키가 작은 동생처럼) 휴지 한 장을 꺼내요.', d:['휴지와 공용 학용품 바구니를 손이 닿는 낮은 칸으로 옮겨요.', '원래 낮은 칸의 물건은 높은 칸으로 바꿔 넣어요.', '칸 앞에 “휴지” 그림 이름표를 붙여요.']},
+  {ic:'calendar', n:'시간표에 그림 붙이기', k:'🏷️ 그림 표시', who:'우리말이 서툰 새 친구',
+   t:'시간표의 <b>글자를 손으로 가리고</b> “3교시는 무엇일까?” 맞혀 봐요.', d:['과목마다 작은 그림을 그려요. (국어 📖, 수학 🔢, 체육 ⚽ …)', '시간표의 과목 이름 옆에 그림을 붙여요.', '멀리서도 보이게 크게 그려요.']},
+  {ic:'recycle', n:'분리수거 통에 그림 붙이기', k:'🏷️ 그림 표시', who:'글을 아직 잘 못 읽는 동생',
+   t:'통에 쓰인 <b>글자를 가리고</b> 종이컵·우유갑·비닐을 맞는 통에 넣어 봐요.', d:['통마다 넣는 물건 그림을 그려요. (종이 📄, 플라스틱, 캔 …)', '통 앞에 그림을 크게 붙여요.', '자주 헷갈리는 물건은 “여기!” 화살표를 그려요.']},
+  {ic:'backpack', n:'통로에 ‘가방 두지 않기’ 선', k:'🏷️ 바닥 선', who:'두 손에 짐을 든 친구',
+   t:'<b>책 3권을 두 손에 들고</b> 책상 사이 통로를 지나가요. 걸리거나 멈췄나요?', d:['통로 바닥에 마스킹테이프로 선을 붙여요.', '선 안은 “가방 두지 않기” — 가방은 책상 고리에 걸어요.', '선 옆에 가방 그림 ✕ 표시를 붙여요.']}];
+const OKEY = 'mg19run'; let R = {pick:[], res:{}};
+try { R = Object.assign(R, JSON.parse(localStorage.getItem(OKEY) || '{}') || {}); } catch(e) {}
+const save = () => { try { localStorage.setItem(OKEY, JSON.stringify(R)); } catch(e) {} };
+const ic = k => `../shared/icons/${k}.png`;
+function opsDraw(){ document.getElementById('opSel').innerHTML = OPS.map((o, i) => { const n = R.pick.indexOf(i);
+    return `<div class="o ${n >= 0 ? 'on' : ''}" data-no="${n + 1}" onclick="opPick(${i})"><img src="${ic(o.ic)}" alt=""><h3>${o.n}</h3><span class="k">${o.k}</span><p>👓 ${o.who}를 위해</p></div>`; }).join('');
+  document.getElementById('opMsg').innerHTML = R.pick.length < 2 ? `카드를 눌러 <b>${2 - R.pick.length}곳</b> 더 골라요.` : `🎯 첫 번째 작전: <b>${OPS[R.pick[0]].n}</b> (1~3모둠) · 두 번째 작전: <b>${OPS[R.pick[1]].n}</b> (4~6모둠)`; }
+function opPick(i){ const k = R.pick.indexOf(i); if(k >= 0) R.pick.splice(k, 1); else { if(R.pick.length >= 2) R.pick.shift(); R.pick.push(i); } save(); S.ok(); opsDraw(); }
+hooks.ops = opsDraw;
 
-/* ---------- 미션 2: 단계 시계 + 초시계 + 비교 표 ---------- */
-let stClock = null; const STG = [['① 전 시험', 180], ['② 바꾸기', 420], ['③ 후 시험', 180]];
-function setStage(i){ if(stClock) stClock.stop(); document.getElementById('stL').textContent = STG[i][0]; stClock = K.clock({el:'stC', btn:'stGo', sec:STG[i][1], btnLabel:'▶'}); S.flip(); }
-let swT0 = 0, swAcc = 0, swIv = null;
-function swShow(){ const v = swAcc + (swIv ? (Date.now() - swT0) : 0); document.getElementById('swT').textContent = (v / 1000).toFixed(1); }
-function swToggle(){ if(swIv){ swAcc += Date.now() - swT0; clearInterval(swIv); swIv = null; document.getElementById('swGo').textContent = '▶ 시작'; S.end(); }
-  else { swT0 = Date.now(); swIv = setInterval(swShow, 100); document.getElementById('swGo').textContent = '⏸ 멈춤'; S.tick(); } swShow(); }
-function swReset(){ clearInterval(swIv); swIv = null; swAcc = 0; document.getElementById('swGo').textContent = '▶ 시작'; swShow(); }
-K.leave(() => { if(swIv) swToggle(); });
-function cmpDraw(){ const rows = [...Array(K.teamN)].map((_, t) => { const s = tm(t), u = UNIT[OPS[s.o][2]], b = parseFloat(s.b), a = parseFloat(s.a);
-    return {t, s, u, b, a}; });
-  const mx = Math.max(1, ...rows.flatMap(r => [r.b, r.a]).filter(v => !isNaN(v)));
-  document.getElementById('ctab').innerHTML = `<tr><th></th><th>작전</th><th>전</th><th>후</th><th>비교</th><th></th></tr>` + rows.map(({t, s, u, b, a}) => {
-    const ok = !isNaN(b) && !isNaN(a), better = ok && (a - b) * u[2] > 0, same = ok && a === b;
-    return `<tr><td>${t + 1}모둠</td><td>${OPS[s.o][0]} ${OPS[s.o][1]}<br><small style="color:var(--ink2);font-size:17px">${u[0]} · ${u[1]}</small></td>
-      <td><input inputmode="decimal" value="${s.b}" onchange="tm(${t}).b=this.value;save();cmpDraw()" onkeydown="event.stopPropagation()"></td>
-      <td><input inputmode="decimal" value="${s.a}" onchange="tm(${t}).a=this.value;save();cmpDraw()" onkeydown="event.stopPropagation()"></td>
-      <td><div class="bars"><div class="bar b" style="width:${isNaN(b) ? 0 : b / mx * 100}%"></div><div class="bar a" style="width:${isNaN(a) ? 0 : a / mx * 100}%"></div></div></td>
-      <td class="gain">${!ok ? '' : better ? '🎉 좋아졌어요' : same ? '🤔 그대로' : '💡 더 바꿔 봐요'}</td></tr>`; }).join(''); }
-hooks.cmp = cmpDraw;
+/* ---------- 미션 2: 해 보기 → 바꾸기 → 또 해 보기 ---------- */
+let rCur = 0; const chClock = K.clock({el:'chC', btn:'chGo', sec:480, btnLabel:'▶ 8분'});
+const res = i => R.res[i] || (R.res[i] = {b:[0, 0, 0], a:[0, 0, 0]});   /* 0: 아직, 1: 😀, 2: 😣 */
+function runDraw(){ const picks = R.pick.length ? R.pick : [0, 1]; if(!picks.includes(rCur)) rCur = picks[0];
+  document.getElementById('rTabs').innerHTML = picks.map((i, n) => `<button class="${i === rCur ? 'on' : ''}" onclick="rCur=${i};S.flip();runDraw()"><img src="${ic(OPS[i].ic)}" alt="">${n + 1}. ${OPS[i].n}</button>`).join('');
+  const o = OPS[rCur], r = res(rCur);
+  document.getElementById('rTry').innerHTML = `👓 <b>${o.who}</b>가 되어 — ${o.t}`;
+  document.getElementById('rDo').innerHTML = o.d.map(x => `<li>${x}</li>`).join('');
+  const faces = (k) => r[k].map((v, j) => `<div class="f ${v === 1 ? 'ok' : v === 2 ? 'no' : ''}" onclick="face('${k}',${j})"><span>${v === 1 ? '😀' : v === 2 ? '😣' : '❔'}</span>친구 ${j + 1}</div>`).join('');
+  document.getElementById('fB').innerHTML = faces('b'); document.getElementById('fA').innerHTML = faces('a');
+  const nb = r.b.filter(v => v === 1).length, na = r.a.filter(v => v === 1).length, doneB = r.b.every(v => v), doneA = r.a.every(v => v);
+  document.getElementById('cB').textContent = `😀 ${nb}명`; document.getElementById('cA').textContent = `😀 ${na}명`;
+  document.getElementById('verdict').innerHTML = !doneB ? '② 바꾸기 전에 체험 친구 3명이 해 보고 얼굴을 눌러요. (누를 때마다 😀 → 😣 → ❔)'
+    : !doneA ? '③ 이제 맡은 모둠이 진짜로 바꿔요. 다 바꾸면 ④ 같은 친구들이 똑같이 해 봐요.'
+    : na > nb ? `🎉 쉬운 친구가 <b>${nb}명 → ${na}명</b>으로 늘었어요! 바꾼 것이 도움이 되었어요.`
+    : na === nb ? `🤔 <b>${nb}명 → ${na}명</b>, 그대로예요. 왜 그럴까요? 어떻게 더 바꾸면 좋을까요?`
+    : `💡 <b>${nb}명 → ${na}명</b>. 오히려 어려워졌어요! 무엇이 불편해졌는지 이야기해 봐요.`; }
+function face(k, j){ const r = res(rCur); r[k][j] = (r[k][j] + 1) % 3; save(); S.ok(); runDraw(); }
+hooks.run = runDraw;
 
 /* ---------- 탈출 ---------- */
 function confetti(){ const sg = document.getElementById('stage'), cols = ['#ffc53d', '#ff7b6b', '#4fd1ae', '#8fb8ff', '#ff8fc8', '#fff'];
@@ -312,7 +354,7 @@ function confetti(){ const sg = document.getElementById('stage'), cols = ['#ffc5
 hooks.escape = () => setTimeout(confetti, 300);
 
 window.onEsc = () => {};
-topsDraw(); cmpDraw(); startDeck();
+opsDraw(); runDraw(); startDeck();
 </script>
 <script src="../shared/print-sheet.js"></script>
 <script src="../shared/emoji.js"></script>

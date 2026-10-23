@@ -53,6 +53,17 @@
 .pin .hd span{transform:rotate(45deg);font-family:var(--head);font-size:24px;color:#fff}
 .pin.sel .hd{outline:4px solid var(--navy)}
 .lv1 .hd{background:#f2b51c}.lv2 .hd{background:#f2803a}.lv3 .hd{background:#e03131}
+.mtabs{display:flex;gap:6px}
+.mtabs button{flex:1;font-family:var(--head);font-size:20px;border-radius:14px;padding:8px 4px;background:#fff;border:3px solid var(--line);color:var(--ink2)}
+.mtabs button.on{background:var(--room2);border-color:var(--room);color:var(--roomdk)}
+.edbox{display:none;background:#fff6d6;border:3px solid var(--gold);border-radius:20px;padding:10px 12px;flex-direction:column;gap:8px}
+.edit .edbox{display:flex}.edit #pForm,.edit #pList,.edit .top1{display:none !important}
+.edtip{font-size:18px;line-height:1.45;color:#7a5a00}
+.addk{display:flex;flex-wrap:wrap;gap:6px}
+.addk button{font-family:var(--head);font-size:17px;border-radius:10px;padding:4px 8px;border:2px solid #e7c35a;background:#fff}
+.edbox input{font-family:var(--body);font-size:20px;padding:6px 10px;border-radius:12px;border:2px solid var(--line);width:100%}
+.mapbox.editing{cursor:default}.mapbox.editing .pin{display:none}
+#roomSvg .ri{cursor:move}
 .plist{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0;overflow:auto}
 .pform{background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
 .pform input{font-family:var(--body);font-size:22px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);width:100%}
@@ -79,7 +90,7 @@
 
 <!-- 1 표지 -->
 <section class="slide dark" data-phase="도입 · 5분"
- data-notes="<b>시작</b> — “오늘은 우리 교실이 모두에게 편한 곳인지 탐험해요.” 준비물: 모둠마다 붙임쪽지 5~6장, 활동지(지도). 교실 안을 걸어 다니므로 통로의 가방은 미리 치워 두지 말고 그대로 두어도 좋아요(관찰거리가 돼요).">
+ data-notes="<b>시작</b> — “오늘은 우리 교실이 모두에게 편한 곳인지 탐험해요.” <b>수업 전 준비:</b> 미션 3 지도 화면에서 ‘✏️ 우리 교실로 고치기’로 우리 교실 모양을 맞춰 두고, 그다음 활동지를 인쇄하세요. 준비물: 모둠마다 붙임쪽지 5~6장, 활동지(지도). 교실 안을 걸어 다니므로 통로의 가방은 미리 치워 두지 말고 그대로 두어도 좋아요(관찰거리가 돼요).">
   <div class="cover">
     <img class="doorimg bob" src="../15/img/door4.jpg" alt="4번 방 문">
     <div>
@@ -197,11 +208,18 @@
 
 <!-- 10 지도 -->
 <section class="slide" data-phase="미션 3 · 10분" style="padding-top:78px"
- data-notes="<b>진행</b> — 지도를 누르면 핀이 꽂혀요. 오른쪽 칸에 장소 이름(예: 뒷문 문턱)을 쓰고 색을 골라요. 핀을 누르면 다시 고칠 수 있어요. 투표는 ＋/− 단추. 만든 지도는 이 컴퓨터에 저장되어 다음 시간에 다시 볼 수 있어요. 지도가 우리 교실과 다르면 비슷한 자리에 꽂으면 돼요.">
+ data-notes="<b>진행</b> — 지도를 누르면 핀이 꽂혀요. 오른쪽 칸에 장소 이름(예: 뒷문 문턱)을 쓰고 색을 골라요. 핀을 누르면 다시 고칠 수 있어요. 투표는 ＋/− 단추. 만든 지도는 이 컴퓨터에 저장되어 다음 시간에 다시 볼 수 있어요. <b>수업 전에</b> ‘✏️ 우리 교실로 고치기’를 눌러 지도를 우리 교실 모양으로 고쳐 두세요(칸 끌어 옮기기·크기 바꾸기·더하기·지우기·이름 바꾸기). 고친 지도는 이 컴퓨터에 저장되고, 활동지도 이 컴퓨터에서 인쇄하면 고친 지도로 나와요.">
   <div class="mapw">
-    <div class="mapbox" id="mapbox"><img src="img/map.svg" alt="교실 지도"></div>
+    <div class="mapbox" id="mapbox"><svg id="roomSvg" viewBox="0 0 800 560" style="width:100%;height:100%;display:block;font-family:Jua,'Malgun Gothic',sans-serif"></svg></div>
     <div class="plist">
-      <div class="pform">
+      <div class="mtabs"><button id="tabPin" class="on" onclick="setMode(0)">📍 불편한 곳 꽂기</button><button id="tabEd" onclick="setMode(1)">✏️ 우리 교실로 고치기</button></div>
+      <div class="edbox" id="edBox">
+        <div class="edtip">선생님용 — 칸을 <b>끌어 옮기고</b>, 오른쪽 아래 <b>■</b>를 끌어 크기를 바꿔요. 이 컴퓨터에 저장돼요. 활동지도 이 모양으로 인쇄돼요.</div>
+        <div class="addk" id="addK"></div>
+        <input id="edName" placeholder="고른 칸의 이름 (예: 뒷문, 신발장)" oninput="edRename()">
+        <div class="btns" style="gap:8px"><button class="btn ghost" style="font-size:19px;padding:6px 12px" onclick="edCopy()">📄 복사</button><button class="btn ghost" style="font-size:19px;padding:6px 12px" onclick="edDel()">🗑️ 지우기</button><button class="btn ghost" style="font-size:19px;padding:6px 12px" onclick="edReset()">↺ 처음 모양</button></div>
+      </div>
+      <div class="pform" id="pForm">
         <input id="pName" placeholder="📍 장소 이름 (지도를 먼저 눌러요)" oninput="pEdit()">
         <div class="lvb" id="pLv"><button data-l="1" onclick="pLevel(1)">🟡 조금</button><button data-l="2" onclick="pLevel(2)">🟠 꽤</button><button data-l="3" onclick="pLevel(3)">🔴 많이</button></div>
         <div class="btns" style="gap:8px"><button class="btn ghost" style="font-size:19px;padding:6px 12px" onclick="pDel()">🗑️ 핀 지우기</button><button class="btn ghost" style="font-size:19px;padding:6px 12px" onclick="pTop()">🏆 1등 보기</button></div>
@@ -280,6 +298,7 @@
 <script>window.LESSON = {room:4, lesson:17, keyPieces:3};</script>
 <script src="../shared/base.js"></script>
 <script src="../shared/kit.js"></script>
+<script src="room.js"></script>
 <script>
 /* ---------- 이야기 ---------- */
 hooks.story = () => typewriter(document.getElementById('storyText'),
@@ -292,7 +311,7 @@ const SPOT = [
   {x:1440, y:680, r:95, t:'문 아래 문턱', g:'🧑‍🦽🩹', w:'튀어나온 문턱에 <b>바퀴가 걸리고</b>, 걸려 넘어질 수 있어요.'},
   {x:860, y:725, r:175, t:'통로의 가방', g:'🧑‍🦽🩹', w:'바닥에 가방이 있어서 <b>통로가 좁아지고</b> 걸려 넘어질 수 있어요.'},
   {x:470, y:195, r:95, t:'맨 위 칸의 휴지와 컵', g:'🧒🩹', w:'맨 위에 있어서 <b>손이 안 닿고</b>, 꺼내다 떨어뜨릴 수 있어요.'},
-  {x:300, y:410, r:70, t:'표시 없는 정수기', g:'🌏🧒', w:'어느 쪽이 <b>뜨거운 물</b>인지 그림이나 글자 표시가 없어서 위험할 수 있어요.'},
+  {x:960, y:235, r:110, t:'높은 칠판 위쪽', g:'🧒🧑‍🦽', w:'칠판이 높아서 <b>위쪽에는 손이 닿지 않아</b> 글씨를 쓸 수 없어요.'},
   {x:1410, y:415, r:52, t:'작은 문손잡이', g:'🩹🧒', w:'손잡이가 작고 문이 무거우면 <b>한 손으로 열기</b> 어려워요.'}];
 const SW = 1040 / 1600; let spFound = [];
 function spDraw(){ const sc = document.getElementById('scene'); sc.querySelectorAll('.hs,.hint').forEach(e => e.remove());
@@ -316,6 +335,22 @@ const exClock = K.clock({el:'exC', btn:'exGo', sec:300, btnLabel:'▶ 탐험 5�
 tmDraw(null);
 
 /* ---------- 미션 3: 불편함 지도 (이 컴퓨터에 저장) ---------- */
+/* 교실 지도 그림 (room.js) — 선생님이 우리 교실 모양으로 고쳐요 */
+const RS = {a:ROOM.items(), sel:-1, editing:false, on(live){ roomDraw(live); }};
+function roomDraw(live){ document.getElementById('roomSvg').innerHTML = ROOM.svg(RS.a, RS.editing ? RS.sel : -1);
+  if(!live){ const inp = document.getElementById('edName'); if(document.activeElement !== inp){ const o = RS.a[RS.sel]; inp.value = o ? (o.n != null ? o.n : ROOM.KIND[o.k].n) : ''; } } }
+ROOM.edit(document.getElementById('roomSvg'), RS);
+document.getElementById('addK').innerHTML = Object.entries(ROOM.KIND).map(([k, v]) => `<button onclick="edAdd('${k}')">＋ ${v.n}</button>`).join('');
+function setMode(m){ RS.editing = !!m; RS.sel = -1; document.querySelector('.mapw').classList.toggle('edit', RS.editing); document.getElementById('mapbox').classList.toggle('editing', RS.editing);
+  document.getElementById('tabPin').classList.toggle('on', !m); document.getElementById('tabEd').classList.toggle('on', !!m); S.flip(); roomDraw(); }
+function edAdd(k){ const sz = {desk:[90, 46], door:[14, 80], window:[14, 160], board:[300, 30]}[k] || [90, 56]; RS.a.push({k, x:360, y:250, w:sz[0], h:sz[1]}); RS.sel = RS.a.length - 1; ROOM.save(RS.a); S.ok(); roomDraw(); }
+function edCopy(){ const o = RS.a[RS.sel]; if(!o) return; RS.a.push({...o, x:Math.min(794 - o.w, o.x + 20), y:Math.min(554 - o.h, o.y + 20)}); RS.sel = RS.a.length - 1; ROOM.save(RS.a); S.ok(); roomDraw(); }
+function edDel(){ if(RS.sel < 0) return; RS.a.splice(RS.sel, 1); RS.sel = -1; ROOM.save(RS.a); S.flip(); roomDraw(); }
+function edRename(){ const o = RS.a[RS.sel]; if(!o) return; o.n = document.getElementById('edName').value; ROOM.save(RS.a); roomDraw(true); }
+function edReset(){ RS.a = ROOM.reset(); RS.sel = -1; S.flip(); roomDraw(); }
+document.getElementById('edName').addEventListener('keydown', e => e.stopPropagation());
+roomDraw();
+
 const MKEY = 'mg17map'; let pins = []; let pSel = -1;
 try { pins = JSON.parse(localStorage.getItem(MKEY) || '[]'); } catch(e) { pins = []; }
 const pSave = () => { try { localStorage.setItem(MKEY, JSON.stringify(pins)); } catch(e) {} };
@@ -326,7 +361,7 @@ function pDraw(){ const mb = document.getElementById('mapbox'); mb.querySelector
   document.getElementById('pList').innerHTML = pins.map((p, i) => `<div class="pi ${i === pSel ? 'sel' : ''}" onclick="pPick(${i})"><span class="dot" style="background:${LVC[p.l]}">${i + 1}</span><span class="nm">${p.n || '(이름을 써요)'}</span><button class="m" onclick="event.stopPropagation();pVote(${i},-1)">−</button><span class="vt">${p.v}</span><button onclick="event.stopPropagation();pVote(${i},1)">＋</button></div>`).join('');
   document.querySelectorAll('#pLv button').forEach(b => b.classList.toggle('on', pSel >= 0 && pins[pSel].l === +b.dataset.l));
   const inp = document.getElementById('pName'); if(document.activeElement !== inp) inp.value = pSel >= 0 ? pins[pSel].n : ''; }
-document.getElementById('mapbox').addEventListener('click', e => { const r = e.currentTarget.getBoundingClientRect();
+document.getElementById('mapbox').addEventListener('click', e => { if(RS.editing) return; const r = e.currentTarget.getBoundingClientRect();
   pins.push({x:(e.clientX - r.left) / r.width, y:(e.clientY - r.top) / r.height, n:'', l:2, v:0}); pSel = pins.length - 1; S.ok(); pSave(); pDraw(); document.getElementById('pName').focus(); });
 function pPick(i){ pSel = i; S.flip(); pDraw(); }
 function pEdit(){ if(pSel < 0) return; pins[pSel].n = document.getElementById('pName').value; pSave(); pDraw(); }

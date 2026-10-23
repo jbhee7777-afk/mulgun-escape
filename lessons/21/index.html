@@ -58,6 +58,15 @@ canvas.gt{width:100%;height:300px;background:#fff8ec;border-radius:20px;cursor:p
 .cqw{display:none;background:var(--mint2);border:3px solid var(--mint);border-radius:22px;padding:12px 20px;font-size:27px;line-height:1.5}
 .cq.rev .cqw{display:block;animation:enter .5s}
 .cqw b{color:#0f8a6e}
+.axle{display:flex;gap:26px;align-items:center;margin-top:10px;flex:1}
+.axpic{width:820px;flex:none;background:#fff;border-radius:28px;box-shadow:0 0 0 5px #fff,0 12px 26px rgba(61,43,31,.15);padding:6px}
+.axpic svg{width:100%;height:auto;display:block}
+.axtx{flex:1;display:flex;flex-direction:column;gap:14px}
+.ax{display:flex;gap:14px;align-items:flex-start;background:#fff;border:4px solid var(--line);border-radius:22px;padding:12px 16px;font-size:24px;line-height:1.5}
+.ax span{flex:none;width:46px;height:46px;border-radius:50%;color:#fff;font-family:var(--head);font-size:26px;display:flex;align-items:center;justify-content:center}
+.ax b{display:block;font-family:var(--head);font-weight:400;font-size:30px}
+.ax em{font-style:normal;color:#e3523f;font-weight:700}
+.ax.a span{background:#d65f86}.ax.a b{color:#c2457f}.ax.b span{background:#c99a5a}.ax.b b{color:#9c6b2e}.ax.c span{background:#e5483a}.ax.c b{color:#b8322a}
 </style>
 </head>
 <body data-room="5">
@@ -120,22 +129,38 @@ canvas.gt{width:100%;height:300px;background:#fff8ec;border-radius:20px;cursor:p
 
 <!-- 5 두 가지 놀잇감 -->
 <section class="slide" data-phase="미션 1 · 12분"
- data-notes="<b>두 가지 놀잇감</b> — 오늘은 둘 가운데 하나를 골라 설계해요. 왼쪽: 상자 몸통 아래에 빨대(축받이)를 붙이고, 그 속에 꼬치(축)를 넣고, 양 끝에 병뚜껑 바퀴. 오른쪽: 상자에 고무줄을 걸면 고무줄 기타, 통 속에 병뚜껑을 넣으면 마라카스. 다른 놀잇감도 괜찮다고 알려 주세요.">
+ data-notes="<b>두 가지 놀잇감</b> — 오늘은 둘 가운데 하나를 골라 설계해요. 왼쪽: 상자 몸통 아래에 굵은 빨대(축받이)를 붙이고, 그 속에 나무젓가락(축)을 넣고, 양 끝에 병뚜껑 바퀴. 오른쪽: 상자에 고무줄을 걸면 고무줄 기타, 통 속에 병뚜껑을 넣으면 마라카스. 다른 놀잇감도 괜찮다고 알려 주세요.">
   <div class="kicker">MISSION 1 · 준비</div>
   <h2 class="title" style="font-size:54px">어떤 놀잇감을 만들까요?</h2>
   <div class="two2">
     <div class="k"><h3>🚗 굴러가는 놀잇감</h3>
       <svg viewBox="0 0 600 250" id="svCar"></svg>
-      <p><b>바퀴</b>가 동그랗고, <b>축</b>이 빨대 속에서 빙글빙글 돌아야 해요.</p></div>
+      <p><b>바퀴</b>가 동그랗고, <b>축(나무젓가락)</b>이 빨대 속에서 빙글빙글 돌아야 해요. 다음 화면에서 자세히!</p></div>
     <div class="k"><h3>🎸 소리 나는 놀잇감</h3>
       <svg viewBox="0 0 600 250" id="svGt"></svg>
       <p>소리는 <b>떨림</b>이에요. 고무줄이나 통 속 알갱이가 <b>떨리거나 부딪쳐야</b> 소리가 나요.</p></div>
   </div>
 </section>
 
+<!-- 5-2 축의 비밀 -->
+<section class="slide" data-phase="미션 1 · 12분" data-hook="axle"
+ data-notes="<b>자동차 바퀴의 비밀</b> — 자동차를 <b>앞에서</b> 본 그림이에요. ① 굵은 빨대(축받이)는 상자 바닥에 테이프로 붙어서 <b>가만히</b> 있어요. ② 나무젓가락(축)은 빨대 속을 지나가고, 빨대 속에서 <b>빙글빙글</b> 돌아요. ③ 병뚜껑(바퀴)은 젓가락 양 끝에 꼭 끼워서 젓가락과 <b>함께</b> 돌아요. ‘▶ 굴려 보기’를 누르면 바퀴와 젓가락이 돌고 빨대·상자는 그대로인 것을 볼 수 있어요. 빨대가 젓가락보다 굵어야 헐렁하게 돌아요(버블티 빨대). 실제 빨대에 젓가락을 끼워 돌려 보여 주면 더 좋아요.">
+  <div class="kicker">MISSION 1 · 자동차 바퀴의 비밀</div>
+  <h2 class="title" style="font-size:50px">🚗 앞에서 본 자동차 — 무엇이 돌까요?</h2>
+  <div class="axle">
+    <div class="axpic" id="axPic"></div>
+    <div class="axtx">
+      <div class="ax a"><span>1</span><div><b>축받이 = 굵은 빨대</b>상자 바닥에 테이프로 붙여요. <em>가만히 있어요.</em></div></div>
+      <div class="ax b"><span>2</span><div><b>축 = 나무젓가락</b>빨대 속을 지나가요. <em>빨대 속에서 빙글빙글 돌아요.</em></div></div>
+      <div class="ax c"><span>3</span><div><b>바퀴 = 병뚜껑</b>젓가락 양 끝에 꼭 끼워요. <em>젓가락과 함께 돌아요.</em></div></div>
+      <div class="btns"><button class="btn mint" onclick="axGo()">▶ 굴려 보기</button></div>
+    </div>
+  </div>
+</section>
+
 <!-- 6 굴러가기 실험실 -->
 <section class="slide" data-phase="미션 1 · 12분" style="padding-top:78px" data-hook="roll"
- data-notes="<b>굴러가기 실험실</b> — 똑같은 상자 자동차 두 대를 비탈에 놓아요. 1번은 바퀴가 꼬치(축)와 함께 빨대 속에서 돌 수 있고, 2번은 바퀴를 상자에 테이프로 꽉 붙였어요. ‘▶ 출발’ 전에 “어느 차가 더 멀리 갈까?” 예상해 손을 들게 해요. 결과: 1번은 바퀴가 돌며 굴러 내려가고, 2번은 바퀴가 돌지 못해 바닥과 문질러지는 힘이 커서 거의 움직이지 않아요.">
+ data-notes="<b>굴러가기 실험실</b> — 똑같은 상자 자동차 두 대를 비탈에 놓아요. 1번은 바퀴가 나무젓가락(축)과 함께 빨대 속에서 돌 수 있고, 2번은 바퀴를 상자에 테이프로 꽉 붙였어요. ‘▶ 출발’ 전에 “어느 차가 더 멀리 갈까?” 예상해 손을 들게 해요. 결과: 1번은 바퀴가 돌며 굴러 내려가고, 2번은 바퀴가 돌지 못해 바닥과 문질러지는 힘이 커서 거의 움직이지 않아요.">
   <div class="lab">
     <div class="lmain">
       <canvas class="sim" id="rollCv" width="2000" height="940"></canvas>
@@ -191,7 +216,7 @@ canvas.gt{width:100%;height:300px;background:#fff8ec;border-radius:20px;cursor:p
 
 <!-- 10 미션 3 설계 -->
 <section class="slide" data-phase="미션 3 · 12분"
- data-notes="<b>나만의 설계도</b> — 활동지를 나눠 주고 10분. 설계는 각자 해요(22차시에 각자 만들어요). 재료 상자를 보면서 ‘있는 재료’로 설계하게 해요. 빨대·꼬치·고무줄·테이프는 선생님이 준비해 준다고 알려 주세요. 막히는 학생에게는 화면의 기본 설계(상자 자동차, 고무줄 기타)를 따라 그리게 해도 좋아요.">
+ data-notes="<b>나만의 설계도</b> — 활동지를 나눠 주고 10분. 설계는 각자 해요(22차시에 각자 만들어요). 재료 상자를 보면서 ‘있는 재료’로 설계하게 해요. 굵은 빨대·나무젓가락·고무줄·테이프는 선생님이 준비해 준다고 알려 주세요. 막히는 학생에게는 화면의 기본 설계(상자 자동차, 고무줄 기타)를 따라 그리게 해도 좋아요.">
   <div class="kicker">MISSION 3</div>
   <h2 class="title">📐 나만의 놀잇감 설계도</h2>
   <div class="how c4" style="margin-top:22px">
@@ -200,7 +225,7 @@ canvas.gt{width:100%;height:300px;background:#fff8ec;border-radius:20px;cursor:p
     <div class="st"><span class="no">3</span><div class="tx">설계도를 그리고 부분마다 <b>이름표</b>를 붙여요.</div></div>
     <div class="st"><span class="no">4</span><div class="tx">미션 2에서 배운 <b>꼭 지킬 점</b>을 써요.</div></div>
   </div>
-  <div class="need" style="margin-top:20px">🧺 <b>선생님이 준비해 줄 것</b> 빨대 · 끝이 뭉툭한 나무 꼬치 · 고무줄 · 셀로판테이프 · (병뚜껑 구멍은 선생님이 뚫어 줘요)</div>
+  <div class="need" style="margin-top:20px">🧺 <b>선생님이 준비해 줄 것</b> 굵은 빨대(버블티 빨대) · 나무젓가락 · 고무줄 · 셀로판테이프 · (병뚜껑 구멍은 선생님이 뚫어 줘요)</div>
   <div style="display:flex;justify-content:flex-end;margin-top:14px"><div class="kclock" style="display:flex;align-items:center;gap:16px;padding:8px 22px"><small>설계 시간</small><b id="dsC" style="font-size:54px">10:00</b><button class="btn mint" id="dsGo" style="font-size:22px;padding:10px 16px" onclick="dsClock.toggle()">▶ 10분</button></div></div>
 </section>
 
@@ -250,7 +275,7 @@ canvas.gt{width:100%;height:300px;background:#fff8ec;border-radius:20px;cursor:p
 
 <!-- 14 다음 -->
 <section class="slide" data-phase="정리 · 4분"
- data-notes="<b>다음 차시 예고</b> — 준비물: 오늘 그린 설계도, 20차시 재료 상자, 설계도에 쓴 재료 가운데 집에 있는 것. 선생님 준비: 빨대, 끝이 뭉툭한 나무 꼬치(또는 가는 빨대), 고무줄, 셀로판테이프, 병뚜껑 구멍 뚫기(송곳은 선생님만).">
+ data-notes="<b>다음 차시 예고</b> — 준비물: 오늘 그린 설계도, 20차시 재료 상자, 설계도에 쓴 재료 가운데 집에 있는 것. 선생님 준비: 빨대, 나무젓가락(한 짝씩), 굵은 빨대(버블티 빨대), 고무줄, 셀로판테이프, 병뚜껑 구멍 뚫기(송곳은 선생님만).">
   <div class="kicker">NEXT MISSION</div>
   <div class="next">
     <img class="doorimg" src="../20/img/door5.jpg" alt="">
@@ -273,6 +298,7 @@ canvas.gt{width:100%;height:300px;background:#fff8ec;border-radius:20px;cursor:p
 <script src="../shared/base.js"></script>
 <script src="../shared/kit.js"></script>
 <script src="../shared/toys.js"></script>
+<script src="../shared/build.js"></script>
 <script>
 /* ---------- 이야기 ---------- */
 hooks.story = () => typewriter(document.getElementById('storyText'),
@@ -352,6 +378,12 @@ function cqShow(){ clearInterval(cT); document.getElementById('cqW').innerHTML =
 K.leave(() => clearInterval(cT));
 
 const dsClock = K.clock({el:'dsC', btn:'dsGo', sec:600, btnLabel:'▶ 10분'});
+/* ---------- 축의 비밀: 앞에서 본 자동차 ---------- */
+let axA = 0, axR = null;
+const axDraw = () => { document.getElementById('axPic').innerHTML = BUILD.front(axA); };
+function axGo(){ cancelAnimationFrame(axR); let t0 = performance.now(); S.tick(); const f = now => { axA = (now - t0) / 1000 * 4; axDraw(); if(now - t0 < 3500) axR = requestAnimationFrame(f); }; axR = requestAnimationFrame(f); }
+hooks.axle = axDraw; K.leave(() => cancelAnimationFrame(axR));
+
 window.onEsc = () => {};
 setCQ(0); rollReset(); gtDraw(0); startDeck();
 </script>

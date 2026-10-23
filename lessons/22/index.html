@@ -14,6 +14,7 @@
 .oxmain{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
 .oxq{display:flex;align-items:center;gap:24px;background:#fff;border:4px solid var(--line);border-radius:30px;padding:22px 28px;box-shadow:0 8px 0 var(--line);min-height:220px}
 .oxq .emo{font-size:130px;width:170px;text-align:center;flex:none}
+.oxq .emo svg{width:170px;height:110px}
 .oxq .t{font-family:var(--head);font-size:44px;line-height:1.4;color:var(--navy)}
 .oxq .t small{display:block;font-size:24px;color:var(--ink2)}
 .oxbig{display:flex;gap:20px}
@@ -32,12 +33,17 @@
 .gtabs button svg{width:200px;height:96px}
 .gtabs button.on{border-color:var(--room);background:var(--room2)}
 .gmain{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
-.gstep{flex:1;display:flex;gap:24px;align-items:center;background:#fff;border:4px solid var(--line);border-radius:30px;padding:22px 28px;box-shadow:0 8px 0 var(--line)}
-.gstep .num{width:110px;height:110px;flex:none;border-radius:50%;background:var(--room);color:#fff;font-family:var(--head);font-size:64px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 var(--roomdk)}
-.gstep .emo{font-size:120px;flex:none;width:160px;text-align:center}
-.gstep .t{font-size:36px;line-height:1.5}
+.gstep{flex:1;display:flex;gap:20px;align-items:center;background:#fff;border:4px solid var(--line);border-radius:30px;padding:14px 22px;box-shadow:0 8px 0 var(--line);min-height:0}
+.gstep .pic{position:relative;width:690px;flex:none}
+.gstep .pic svg{width:100%;height:auto;display:block}
+.gstep .num{position:absolute;left:-6px;top:-6px;width:74px;height:74px;border-radius:50%;background:var(--room);color:#fff;font-family:var(--head);font-size:44px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 var(--roomdk)}
+.gstep .t{font-size:31px;line-height:1.55}
 .gstep .t b{color:var(--roomdk)}
-.gstep .t small{display:block;font-size:25px;color:#d24634;margin-top:8px}
+.gstep .t small{display:block;font-size:24px;color:#d24634;margin-top:10px;line-height:1.45}
+.gmat{display:flex;gap:8px;align-items:center;background:#fff6d6;border:3px solid var(--gold);border-radius:18px;padding:4px 14px;font-size:19px}
+.gmat b{font-family:var(--head);font-weight:400;font-size:22px;color:#9a6a00;margin-right:6px}
+.gmat span{display:flex;align-items:center;gap:4px;background:#fff;border-radius:12px;padding:2px 10px 2px 4px}
+.gmat span svg{width:58px;height:34px}
 .gdots{display:flex;gap:8px;justify-content:center}
 .gdots i{width:22px;height:22px;border-radius:50%;background:var(--line);cursor:pointer}
 .gdots i.on{background:var(--room)}
@@ -67,7 +73,7 @@
 
 <!-- 1 표지 -->
 <section class="slide dark" data-phase="도입 · 4분"
- data-notes="<b>시작</b> — “오늘은 드디어 만드는 날!” 준비물 확인: 21차시 설계도, 재료 상자, 빨대, 끝이 뭉툭한 나무 꼬치(또는 가는 빨대), 고무줄, 셀로판테이프, 가위, 연필 2자루(기타 다리). 병뚜껑 구멍은 수업 전에 선생님이 송곳으로 미리 뚫어 두면 시간이 줄어요.">
+ data-notes="<b>시작</b> — “오늘은 드디어 만드는 날!” 준비물 확인: 21차시 설계도, 재료 상자, 굵은 빨대(버블티 빨대), 나무젓가락(한 짝씩 나눠서), 고무줄, 셀로판테이프, 가위, 연필 2자루(기타 다리). 병뚜껑 구멍은 수업 전에 선생님이 송곳으로 미리 뚫어 두면 시간이 줄어요.">
   <div class="cover">
     <img class="doorimg bob" src="../20/img/door5.jpg" alt="5번 방 문">
     <div>
@@ -82,7 +88,7 @@
 
 <!-- 2 지난 시간 -->
 <section class="slide" data-phase="도입 · 4분"
- data-notes="<b>지난 시간 + 설계도 확인</b> — 21차시 비밀 문장을 읽고, 설계도를 책상 위에 펼쳐 ‘꼭 지킬 점’에 손가락을 올려 보게 해요(축은 빨대 속에서 돌게, 바퀴 높이 같게, 고무줄은 팽팽하게, 알갱이는 조금만).">
+ data-notes="<b>지난 시간 + 설계도 확인</b> — 21차시 비밀 문장을 읽고, 설계도를 책상 위에 펼쳐 ‘꼭 지킬 점’에 손가락을 올려 보게 해요(나무젓가락(축)은 빨대 속에서 돌게, 바퀴 높이 같게, 고무줄은 팽팽하게, 알갱이는 조금만).">
   <div class="kicker">지난 미션 돌아보기</div>
   <h2 class="title" style="font-size:58px">설계도를 펼쳐요</h2>
   <div class="recap">
@@ -120,7 +126,7 @@
 
 <!-- 5 안전 OX -->
 <section class="slide" data-phase="미션 1 · 4분" style="padding-top:78px"
- data-notes="<b>안전 약속 OX</b> — 모두 일어나 O(머리 위 큰 동그라미)·X(가슴 앞 팔 엇갈리기)로 답해요. 5문제. 틀려도 앉지 않고, 정답 뒤 까닭을 함께 읽어요. 특히 꼬치 끝과 가위 쓰는 법을 꼭 짚어 주세요.">
+ data-notes="<b>안전 약속 OX</b> — 모두 일어나 O(머리 위 큰 동그라미)·X(가슴 앞 팔 엇갈리기)로 답해요. 5문제. 틀려도 앉지 않고, 정답 뒤 까닭을 함께 읽어요. 특히 나무젓가락 끝과 가위 쓰는 법을 꼭 짚어 주세요.">
   <div class="ox" id="ox">
     <div class="oxmain">
       <div class="oxq" id="oxQ"></div>
@@ -138,6 +144,7 @@
   <div class="guide">
     <div class="gtabs" id="gTabs"></div>
     <div class="gmain">
+      <div class="gmat" id="gMat"></div>
       <div class="gstep" id="gStep"></div>
       <div class="gdots" id="gDots"></div>
       <div class="btns" style="justify-content:center"><button class="btn ghost" onclick="gGo(-1)">◀ 앞 단계</button><button class="btn coral" onclick="gGo(1)">다음 단계 ▶</button></div>
@@ -159,7 +166,7 @@
   <div class="help">
     <div><b>🔁 길잡이 다시 보기</b>화면 단계를 다시 보고 따라 해요.</div>
     <div><b>👀 짝에게 물어보기</b>“여기는 어떻게 했어?” 친구 것을 살펴봐요.</div>
-    <div><b>✋ 그래도 어려우면</b>선생님을 불러요. 가위·꼬치는 선생님과 함께!</div>
+    <div><b>✋ 그래도 어려우면</b>선생님을 불러요. 가위·나무젓가락 쪼개기는 선생님과 함께!</div>
   </div>
 </section>
 
@@ -245,6 +252,7 @@
 <script src="../shared/base.js"></script>
 <script src="../shared/kit.js"></script>
 <script src="../shared/toys.js"></script>
+<script src="../shared/build.js"></script>
 <script>
 /* ---------- 이야기 ---------- */
 hooks.story = () => typewriter(document.getElementById('storyText'),
@@ -253,9 +261,9 @@ hooks.story = () => typewriter(document.getElementById('storyText'),
 /* ---------- 미션 1: 안전 OX ---------- */
 const OX = [
   {e:'✂️', q:'가위를 들고 친구에게 걸어가도 된다.', a:'X', w:'가위는 <b>자리에 앉아서만</b> 써요. 건넬 때는 날을 쥐고 손잡이 쪽을 내밀어요.'},
-  {e:'🥢', q:'꼬치의 뾰족한 끝은 친구 쪽으로 향하게 든다.', a:'X', w:'꼬치 끝은 <b>아래나 바깥쪽</b>으로! 끝이 뾰족하면 테이프를 감아 뭉툭하게 해요.'},
-  {e:'🩹', q:'테이프는 필요한 만큼만 잘라 쓴다.', a:'O', w:'길게 늘어뜨리면 엉켜요. <b>필요한 만큼</b> 잘라 써요.'},
-  {e:'🔘', q:'병뚜껑에 구멍은 내가 송곳으로 뚫는다.', a:'X', w:'송곳은 위험해요. 구멍은 <b>선생님이</b> 뚫어 줘요.'},
+  {e:'🥢', q:'나무젓가락을 칼싸움하듯 휘둘러도 된다.', a:'X', w:'나무젓가락은 <b>만들 때만</b> 써요. 쪼갠 자리의 <b>가시</b>에 찔리지 않게 조심해요.'},
+  {e:'<img src="../shared/icons/tape.png" style="width:130px">', q:'테이프는 필요한 만큼만 잘라 쓴다.', a:'O', w:'길게 늘어뜨리면 엉켜요. <b>필요한 만큼</b> 잘라 써요.'},
+  {e:BUILD.mat.cap1, q:'병뚜껑에 구멍은 내가 송곳으로 뚫는다.', a:'X', w:'송곳은 위험해요. 구멍은 <b>선생님이</b> 뚫어 줘요.'},
   {e:'📦', q:'남은 재료와 쓰레기는 정리 상자에 모은다.', a:'O', w:'다음 시간 고칠 때 쓸 재료는 <b>모둠 상자</b>에, 쓰레기는 분리해서 버려요.'}];
 let oIdx = 0; const oR = K.rounds('oxR', OX.length, i => setOX(i));
 function setOX(i){ oIdx = i; const o = OX[i]; S.flip(); oR.on(i); document.getElementById('ox').classList.remove('rev');
@@ -265,29 +273,30 @@ function oxShow(){ const o = OX[oIdx]; document.getElementById('oxO').classList.
 
 /* ---------- 미션 2: 만들기 길잡이 ---------- */
 const GUIDE = [
-  {n:'상자 자동차', svg:TOY.car({x:300, y:82, s:1}), st:[
-    ['📦', '<b>빨대 2개</b>를 상자 <b>폭</b>만큼 잘라요.', ''],
-    ['🩹', '빨대를 상자 바닥 <b>앞쪽과 뒤쪽</b>에 <b>나란히</b> 놓고 테이프를 <b>여러 번 감아</b> 붙여요.', '두 빨대가 나란해야 곧게 굴러가요!'],
-    ['🥢', '꼬치를 빨대 속에 끼워요. 양쪽으로 <b>바퀴를 끼울 만큼</b> 나오게 해요.', '꼬치가 빨대 속에서 빙글빙글 도는지 확인!'],
-    ['🔘', '구멍 뚫린 병뚜껑을 꼬치 양 끝에 끼워요. 바퀴와 상자 사이를 <b>손가락 한 마디</b> 띄워요.', '바퀴가 상자에 닿으면 문질러져서 멈춰요.'],
-    ['🌀', '바퀴가 빠지지 않게 꼬치 끝에 <b>테이프를 감아</b> 막아요.', '테이프로 바퀴를 상자에 붙이면 안 돼요!'],
-    ['👉', '바퀴를 손으로 돌려 보고, 바닥에 놓고 <b>살짝 밀어</b> 봐요.', '']]},
-  {n:'고무줄 기타', svg:TOY.guitar({x:300, y:110, s:1}), st:[
-    ['📦', '<b>뚜껑 없는 상자</b>를 준비해요. (뚜껑이 있으면 가운데에 동그란 구멍을 — 선생님이 도와줘요)', ''],
-    ['✏️', '상자 양 끝에 <b>연필 2자루</b>를 가로로 놓고 테이프로 붙여 <b>다리</b>를 만들어요.', ''],
-    ['➰', '<b>고무줄 3개</b>를 상자 둘레에 걸어요. 연필 위로 지나가게 해요.', '굵기가 다른 고무줄이면 더 좋아요!'],
-    ['🎚️', '고무줄 하나는 <b>두 번 감아</b> 더 팽팽하게 만들어요.', '팽팽할수록 높은 소리!'],
-    ['🎵', '하나씩 튕겨 보며 소리를 들어요. 높은 소리·낮은 소리 순서로 정리해요.', '']]},
-  {n:'마라카스', svg:TOY.shaker({x:300, y:118, s:1}), st:[
-    ['🥤', '<b>종이컵 2개</b>를 준비해요. (요구르트병, 휴지심+종이도 돼요)', ''],
-    ['🔘', '한 컵에 병뚜껑 <b>3~5개</b>를 넣어요.', '꽉 채우면 부딪칠 자리가 없어요!'],
-    ['🩹', '다른 컵을 <b>입을 맞대어</b> 덮고, 테이프를 <b>빙 둘러</b> 틈 없이 감아요.', '틈이 있으면 속 재료가 쏟아져요.'],
-    ['🎨', '흔들어 소리를 듣고, 사인펜으로 <b>꾸며요</b>. 속 재료를 바꾸면 소리가 어떻게 달라질까?', '']]}];
+  {n:'상자 자동차', key:'car', svg:TOY.car({x:300, y:82, s:1}), mat:[['box', '작은 상자 1'], ['straw', '굵은 빨대 2'], ['chop', '나무젓가락 2'], ['cap', '병뚜껑 4'], ['tape', '셀로판테이프']], st:[
+    ['<b>굵은 빨대 2개</b>를 상자 <b>폭</b>만큼 잘라요.', '나무젓가락이 빨대 속에서 헐렁하게 돌 만큼 굵은 빨대(버블티 빨대)를 써요.'],
+    ['상자를 뒤집어 바닥 <b>앞쪽과 뒤쪽</b>에 빨대를 <b>나란히</b> 놓고 테이프로 <b>여러 번</b> 붙여요.', '두 빨대가 나란해야 곧게 굴러가요!'],
+    ['나무젓가락을 빨대 속에 끼워요. 양쪽으로 <b>바퀴를 끼울 만큼</b> 똑같이 나오게 해요.', '젓가락이 빨대 속에서 빙글빙글 도는지 손으로 돌려 봐요.'],
+    ['선생님이 구멍을 뚫어 준 병뚜껑을 젓가락 <b>양 끝</b>에 꼭 끼워요. 상자와 <b>손가락 한 마디</b> 띄워요.', '바퀴가 상자에 닿으면 문질러져서 멈춰요.'],
+    ['바퀴가 빠지지 않게 젓가락 끝(바퀴 바깥쪽)에 <b>테이프를 감아요</b>.', '테이프로 바퀴를 상자에 붙이면 바퀴가 안 돌아요!'],
+    ['상자를 바로 세우고, 바퀴를 손으로 돌려 본 뒤 바닥에서 <b>살짝 밀어</b> 봐요.', '']]},
+  {n:'고무줄 기타', key:'guitar', svg:TOY.guitar({x:300, y:110, s:1}), mat:[['box', '뚜껑 없는 상자 1'], ['pencil', '연필 2'], ['band', '고무줄 3'], ['tape', '셀로판테이프']], st:[
+    ['<b>뚜껑 없는 상자</b>를 준비해요.', '뚜껑이 있으면 가운데에 동그란 구멍을 내요 — 선생님과 함께!'],
+    ['상자 양 끝에 <b>연필 2자루</b>를 놓고 테이프로 붙여 <b>다리</b>를 만들어요.', ''],
+    ['<b>고무줄 3개</b>를 상자 둘레에 걸어요. <b>연필 위로</b> 지나가게 해요.', '굵기가 다른 고무줄이면 소리가 더 달라요!'],
+    ['고무줄 하나는 <b>두 번 감아</b> 더 팽팽하게 만들어요.', '팽팽할수록 높은 소리가 나요!'],
+    ['하나씩 튕겨 보며 소리를 들어요. 낮은 소리 → 높은 소리 순서로 놓아 봐요.', '']]},
+  {n:'마라카스', key:'shaker', svg:TOY.shaker({x:300, y:118, s:1}), mat:[['cup', '종이컵 2'], ['cap', '병뚜껑 3~5'], ['tape', '셀로판테이프']], st:[
+    ['<b>종이컵 2개</b>를 준비해요.', '요구르트병이나 휴지심(양쪽을 종이로 막기)도 돼요.'],
+    ['한 컵에 병뚜껑 <b>3~5개</b>를 넣어요.', '꽉 채우면 부딪칠 자리가 없어 소리가 작아요!'],
+    ['다른 컵을 거꾸로 덮어 <b>입끼리 맞대고</b>, 테이프를 <b>빙 둘러</b> 감아요.', '틈이 있으면 속 재료가 쏟아져요.'],
+    ['흔들어 소리를 듣고 사인펜으로 <b>꾸며요</b>.', '속 재료를 바꾸면 소리가 어떻게 달라질까?']]}];
 let gk = 0, gs = 0; const gDone = GUIDE.map(g => g.st.map(() => 0));
 function gDraw(){ document.getElementById('gTabs').innerHTML = GUIDE.map((g, k) => `<button class="${k === gk ? 'on' : ''}" onclick="gPick(${k})"><svg viewBox="0 0 600 240">${g.svg}</svg>${g.n}</button>`).join('');
-  const [e, t, w] = GUIDE[gk].st[gs];
-  document.getElementById('gStep').innerHTML = `<div class="num">${gs + 1}</div><div class="emo">${e}</div><div class="t">${t}${w ? `<small>⚠️ ${w}</small>` : ''}</div>`;
-  document.getElementById('gDots').innerHTML = GUIDE[gk].st.map((_, i) => `<i class="${i === gs ? 'on' : gDone[gk][i] ? 'done' : ''}" onclick="gs=${i};gDraw()"></i>`).join(''); }
+  const G = GUIDE[gk], [t, w] = G.st[gs];
+  document.getElementById('gMat').innerHTML = '<b>준비물</b>' + G.mat.map(([k, n]) => `<span>${BUILD.mat[k]}${n}</span>`).join('');
+  document.getElementById('gStep').innerHTML = `<div class="pic"><span class="num">${gs + 1}</span>${BUILD[G.key][gs]}</div><div class="t">${t}${w ? `<small>⚠️ ${w}</small>` : ''}</div>`;
+  document.getElementById('gDots').innerHTML = G.st.map((_, i) => `<i class="${i === gs ? 'on' : gDone[gk][i] ? 'done' : ''}" onclick="gs=${i};gDraw()"></i>`).join(''); }
 function gPick(k){ gk = k; gs = 0; S.flip(); gDraw(); }
 function gGo(d){ gDone[gk][gs] = 1; gs = Math.max(0, Math.min(GUIDE[gk].st.length - 1, gs + d)); S.flip(); gDraw(); }
 hooks.guide = gDraw;

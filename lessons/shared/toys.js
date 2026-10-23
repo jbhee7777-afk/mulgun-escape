@@ -19,7 +19,7 @@ const TOY = (() => {
       const sy = by + H + 6 * s;
       under += `<rect x="${cx - 16 * s}" y="${by + H - 4 * s}" width="${32 * s}" height="${16 * s}" rx="${6 * s}" fill="#ffb3c9" stroke="#e0789a" stroke-width="3"/>`;
       if(o.tape){ for(let t = 0; t < (o.tape === 2 ? 4 : 1); t++) under += `<rect x="${cx - (o.tape === 2 ? 26 : 10) * s + t * 13 * s}" y="${by + H - 12 * s}" width="${8 * s}" height="${30 * s}" rx="2" fill="#fff" fill-opacity=".75" stroke="#9ab" stroke-width="2"/>`; }
-      /* 축(꼬치): 빨대에서 바퀴 가운데까지 */
+      /* 축(나무젓가락): 빨대에서 바퀴 가운데까지 */
       under += `<line x1="${cx}" y1="${sy}" x2="${cx}" y2="${cy}" stroke="#b07a3a" stroke-width="${6 * s}" stroke-linecap="round"/>`;
       wheels += wheelSVG(cx, cy, r, o.wheel === 'square', k ? '#3d6fd0' : '#e05a4f').replace(/#9e2f26/g, k ? '#2a4f9a' : '#9e2f26');
       if(o.taped) extra += `<rect x="${cx - 8 * s}" y="${by + H - 10 * s}" width="${16 * s}" height="${H * .2 + r * 1.2}" rx="3" fill="#fff" fill-opacity=".8" stroke="#9ab" stroke-width="2" transform="rotate(${k ? 18 : -18} ${cx} ${cy})"/>`;
@@ -29,7 +29,7 @@ const TOY = (() => {
     if(o.tilt) extra += `<path d="M${xs[1] - 10} ${gy - 4} l0 -${18 * s}" stroke="#e03131" stroke-width="3" stroke-dasharray="4 4"/><text x="${xs[1] + r + 6}" y="${gy - 8}" font-size="${20 * s}" fill="#e03131" font-family="Jua">떠 있어요</text>`;
     let lab = '';
     if(o.label){ const L = (tx, ty, ax, ay, t) => `<line x1="${tx}" y1="${ty}" x2="${ax}" y2="${ay}" stroke="#2a4f9a" stroke-width="2.5" stroke-dasharray="5 4"/><rect x="${tx - 68}" y="${ty - 20}" width="136" height="34" rx="10" fill="#fff" stroke="#2a4f9a" stroke-width="2.5"/><text x="${tx}" y="${ty + 5}" font-size="20" fill="#2a4f9a" text-anchor="middle" font-family="Jua">${t}</text>`;
-      lab = L(x - W * .62, by + 4, bx + 20, by + 20, '몸통(상자)') + L(x - W * .62, gy - 10, xs[0] - r, wy, '바퀴(병뚜껑)') + L(x + W * .66, by + H + 4, xs[1] + 16 * s, by + H + 4, '축받이(빨대)') + L(x + W * .66, gy - 6, xs[1] + 3, wy + 10, '축(꼬치)'); }
+      lab = L(x - W * .62, by + 4, bx + 20, by + 20, '몸통(상자)') + L(x - W * .62, gy - 10, xs[0] - r, wy, '바퀴(병뚜껑)') + L(x + W * .66, by + H + 4, xs[1] + 16 * s, by + H + 4, '축받이(굵은 빨대)') + L(x + W * .66, gy - 6, xs[1] + 3, wy + 10, '축(나무젓가락)'); }
     return ground + under + body + wheels + extra + lab; }
 
   /* 고무줄 기타 (위에서 본 모습) */

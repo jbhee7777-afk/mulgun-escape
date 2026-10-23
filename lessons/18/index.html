@@ -118,7 +118,7 @@
       <div class="ex" onclick="this.classList.add('open');S.ok()">😣 휴지가 맨 위 칸에 있어요<div class="a">→ 휴지를 <b>낮은 칸</b>으로 옮겨요.</div></div>
       <div class="ex" onclick="this.classList.add('open');S.ok()">😣 게시판이 너무 높아요<div class="a">→ 작품을 <b>눈높이 줄</b>에 집게로 걸어요.</div></div></div>
     <div class="k"><div class="hd"><span class="emo">🏷️</span><h3>표시 붙이기<small>그림·색·점자로 알려요</small></h3></div>
-      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 정수기의 뜨거운 물이 헷갈려요<div class="a">→ <b>빨간 불꽃 그림</b> 스티커를 붙여요.</div></div>
+      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 내 사물함 칸이 어디인지 헷갈려요<div class="a">→ 이름 옆에 <b>내 얼굴 그림</b>을 붙여요.</div></div>
       <div class="ex" onclick="this.classList.add('open');S.ok()">😣 분리수거 통이 헷갈려요<div class="a">→ 통마다 <b>물건 그림</b>을 붙여요.</div></div></div>
   </div>
 </section>
@@ -143,7 +143,7 @@
   <div class="how c3" style="margin-top:22px">
     <div class="st"><span class="no">1</span><div class="tx">모둠 아이디어 가운데 <b>하나를 골라요</b>.<br><small style="font-size:21px;color:var(--ink2)">만들기 쉬운가? 여러 사람에게 좋은가?</small></div></div>
     <div class="st"><span class="no">2</span><div class="tx">활동지에 <b>설계도</b>를 그리고 바뀐 곳마다 <b>화살표 설명</b>을 붙여요.</div></div>
-    <div class="st"><span class="no">3</span><div class="tx">모형을 만들 <b>역할</b>을 나눠요.<br><small style="font-size:21px;color:var(--ink2)">📦 재료 · ✂️ 자르기 · 🩹 붙이기 · 🎤 발표</small></div></div>
+    <div class="st"><span class="no">3</span><div class="tx">모형을 만들 <b>역할</b>을 나눠요.<br><small style="font-size:21px;color:var(--ink2)">📦 재료 · ✂️ 자르기 · 🎗 붙이기 · 🎤 발표</small></div></div>
   </div>
   <div class="need" style="margin-top:22px">🧺 <b>모형 재료</b> 가져온 재활용품(상자·휴지심·종이컵·뚜껑) · 셀로판테이프 · 가위 · 사인펜 — <b>진짜 크기가 아니어도 돼요!</b> 작게 만들어 보여 주는 것이 모형이에요.</div>
   <div style="display:flex;justify-content:flex-end;margin-top:16px"><div class="kclock" style="display:flex;align-items:center;gap:16px;padding:8px 22px"><small>설계 시간</small><b id="dsC" style="font-size:54px">5:00</b><button class="btn mint" id="dsGo" style="font-size:22px;padding:10px 16px" onclick="dsClock.toggle()">▶ 5분</button></div></div>
@@ -250,7 +250,7 @@ hooks.story = () => typewriter(document.getElementById('storyText'),
 
 /* ---------- 지난 시간 지도(이 컴퓨터) ---------- */
 const PRESET = [['🚪', '문 아래 문턱', '휠체어 바퀴가 걸려요'], ['🎒', '통로의 가방', '걸려 넘어질 수 있어요'], ['📌', '높은 게시판', '작품에 손이 안 닿아요'],
-  ['🧻', '맨 위 칸의 휴지', '키 작은 친구가 못 꺼내요'], ['🚰', '표시 없는 정수기', '뜨거운 물이 헷갈려요'], ['♻️', '헷갈리는 분리수거 통', '어디에 버릴지 몰라요'], ['💡', '높은 전등 스위치', '손이 안 닿아요']];
+  ['🧻', '맨 위 칸의 휴지', '키 작은 친구가 못 꺼내요'], ['🗓️', '글자만 있는 시간표', '글을 잘 못 읽으면 몰라요'], ['♻️', '헷갈리는 분리수거 통', '어디에 버릴지 몰라요'], ['💡', '높은 전등 스위치', '손이 안 닿아요']];
 function mapPins(){ try { return (JSON.parse(localStorage.getItem('mg17map') || '[]') || []).filter(p => p && p.n).sort((a, b) => b.v - a.v); } catch(e) { return []; } }
 hooks.mytop = () => { const p = mapPins(), el = document.getElementById('myTop');
   el.innerHTML = p.length ? `<h3>🗺️ 지난 시간 투표 순위</h3><ol>${p.slice(0, 5).map(x => `<li><b>${x.n}</b> <span style="color:var(--ink2);font-size:24px">(${x.v}표)</span></li>`).join('')}</ol>`

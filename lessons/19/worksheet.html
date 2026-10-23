@@ -7,71 +7,66 @@
 .page{background:#fffafc;background-image:radial-gradient(#f9d9e7 1.1px,transparent 1.1px);background-size:5mm 5mm;padding-top:11mm}
 .page::before{content:"";position:absolute;inset:5mm;border:1mm dashed #ffb3d4;border-radius:7mm;pointer-events:none}
 .head h1{font-size:23pt}
-.step{margin-top:3mm}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.step{margin-top:3.5mm}
+.ops{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm}
+.ops span{background:#fff;border:.5mm solid #f6c1d8;border-radius:3.5mm;padding:1.6mm 1.5mm;text-align:center;font-size:9.5pt;line-height:1.3;position:relative;display:flex;flex-direction:column;align-items:center;gap:1mm}
+.ops span img{width:11mm;height:11mm;object-fit:contain}
+.ops span .ex{position:absolute;inset:-1.2mm;border:.7mm solid #e03131;border-radius:4.5mm}
 .ba{display:grid;grid-template-columns:1fr 9mm 1fr;gap:2mm;align-items:stretch}
-.ba .b{background:#fff;border:.6mm solid #f6c1d8;border-radius:4mm;padding:2mm 3mm;display:flex;flex-direction:column;gap:1.5mm}
+.ba .b{background:#fff;border:.6mm solid #f6c1d8;border-radius:4mm;padding:2.4mm 3mm;display:flex;flex-direction:column;gap:2mm}
 .ba .b .t{font-family:'Jua',sans-serif;font-size:12pt;color:#fff;border-radius:3mm;padding:.5mm 3mm;align-self:flex-start}
-.ba .b .draw{height:56mm;border:.45mm dashed #f0a9c8;border-radius:3mm;position:relative}
+.ba .b .draw{height:62mm;border:.45mm dashed #f0a9c8;border-radius:3mm;position:relative}
 .ba .arr{display:flex;align-items:center;justify-content:center;font-family:'Jua',sans-serif;font-size:20pt;color:var(--teal)}
-.res{display:flex;align-items:flex-end;gap:2mm;font-size:10pt;color:var(--sub)}
-.res .ln2{flex:1}
-.ln2{border-bottom:.35mm dotted #d9a9bf;min-height:7mm;display:flex;align-items:flex-end;padding-bottom:.8mm;font-size:10.5pt;color:var(--ink)}
-.how3{display:flex;gap:1.6mm;flex-wrap:wrap;font-size:9.5pt}
-.how3 span{background:#fff;border:.4mm solid #e8d6de;border-radius:10mm;padding:.6mm 2.6mm;position:relative}
-.how3 span .ex{position:absolute;inset:-1.1mm;border:.6mm solid #e03131;border-radius:10mm}
-.face{display:flex;gap:2mm;justify-content:center;font-size:10pt}
-.face span{border:.4mm solid #e8d6de;border-radius:10mm;padding:.5mm 2mm;position:relative;background:#fff;white-space:nowrap;font-size:9pt}
-.face span .ex{position:absolute;inset:-1.1mm;border:.6mm solid #e03131;border-radius:10mm}
+.cnt{display:flex;align-items:center;gap:2mm;font-size:11pt;font-family:'Jua',sans-serif;color:#0f8a6e}
+.cnt .bx{width:13mm;border-bottom:.5mm solid #8fdcbd;text-align:center;font-size:13pt;min-height:7mm}
 .th3{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
 .th3 .c{border-radius:4mm;padding:2.4mm 3mm;display:flex;flex-direction:column;gap:1mm}
 .th3 .c b{font-family:'Jua',sans-serif;font-weight:400;font-size:12pt}
 .th3 .g{background:#e9faf3;border:.5mm solid #8fdcbd}.th3 .g b{color:#22906a}
 .th3 .w{background:#fff3f0;border:.5mm solid #ffc0b5}.th3 .w b{color:#d24634}
 .th3 .i{background:#fff8e1;border:.5mm solid #f2c94c}.th3 .i b{color:#9a6a00}
+.ln2{border-bottom:.35mm dotted #d9a9bf;min-height:7mm;display:flex;align-items:flex-end;padding-bottom:.8mm;font-size:10.5pt}
 </style></head>
 <body><div class="page">
   <div class="head">
-    <div class="lt"><div class="tag">4번 방 · 19차시 · 모두의 마을</div><h1 class="h">바꾸기 전과 후 <span>비교 보고서</span></h1><div class="goal">교실을 실제로 바꾸고, 전과 후를 똑같이 시험해 비교해요.</div></div>
+    <div class="lt"><div class="tag">4번 방 · 19차시 · 모두의 마을</div><h1 class="h">바꾸기 전과 후 <span>비교 보고서</span></h1><div class="goal">교실을 진짜로 바꾸고, 쉬워졌는지 비교해요.</div></div>
     <img class="agent" src="../01/img/agent.png" alt="">
   </div>
   <div class="who"><div>번호</div><div>이름</div></div>
 
-  <div class="step"><div class="tt"><span class="no">1</span><h2 class="h">무엇을, 누구를 위해 바꿨나요?</h2></div>
-    <div class="two">
-      <div class="field"><label>🃏 우리 모둠 작전</label><div class="ln"><span class="ex">휴지를 맨 위 칸에서 낮은 칸으로 옮기기</span></div></div>
-      <div class="field"><label>👓 누구를 위해?</label><div class="ln"><span class="ex">키가 작은 친구, 팔을 다친 친구</span></div></div>
+  <div class="step"><div class="tt"><span class="no">1</span><h2 class="h">우리 모둠이 바꾼 곳에 ○</h2></div>
+    <div class="ops">
+      <span><img src="../shared/icons/tissue.png" alt="">휴지·학용품을<br>낮은 칸으로<i class="ex"></i></span>
+      <span><img src="../shared/icons/calendar.png" alt="">시간표에<br>그림 붙이기</span>
+      <span><img src="../shared/icons/recycle.png" alt="">분리수거 통에<br>그림 붙이기</span>
+      <span><img src="../shared/icons/backpack.png" alt="">통로에 ‘가방<br>두지 않기’ 선</span>
     </div>
-    <div class="how3">🔧 어떻게 바꿨나요? <span>🛠️ 새 물건</span><span>📍 자리 바꾸기<i class="ex"></i></span><span>🏷️ 표시 붙이기</span></div>
   </div>
 
-  <div class="step"><div class="tt"><span class="no">2</span><h2 class="h">바꾸기 전과 후</h2><small>그림을 그리고 시험 결과를 써요</small></div>
+  <div class="step"><div class="tt"><span class="no">2</span><h2 class="h">바꾸기 전과 바꾼 뒤</h2><small>그림을 그리고, 화면의 😀 수를 옮겨 써요</small></div>
     <div class="ba">
-      <div class="b"><span class="t" style="background:#a77b4a">바꾸기 전</span><div class="draw"><div class="ex exbox"><span style="font-size:30pt">🗄️🧻⬆️</span>휴지가 맨 위 칸에 있어요</div></div>
-        <div class="res">⏱️ 시험 결과<div class="ln2"><span class="ex">무릎 꿇고 꺼내기 12초</span></div></div>
-        <div class="face"><span>😀 편해요</span><span>😐 그저 그래</span><span>😣 불편해요<i class="ex"></i></span></div></div>
+      <div class="b"><span class="t" style="background:#a77b4a">바꾸기 전</span><div class="draw"><div class="ex exbox"><span style="font-size:30pt">🗄️⬆️</span>휴지가 맨 위 칸에 있어요</div></div>
+        <div class="cnt">😀 쉬웠던 체험 친구 <div class="bx"><span class="ex">1</span></div>명 / 3명</div></div>
       <div class="arr">➜</div>
-      <div class="b"><span class="t" style="background:var(--teal)">바꾼 뒤</span><div class="draw"><div class="ex exbox"><span style="font-size:30pt">🗄️🧻⬇️</span>휴지가 손 닿는 칸에 있어요</div></div>
-        <div class="res">⏱️ 시험 결과<div class="ln2"><span class="ex">무릎 꿇고 꺼내기 3초</span></div></div>
-        <div class="face"><span>😀 편해요<i class="ex"></i></span><span>😐 그저 그래</span><span>😣 불편해요</span></div></div>
+      <div class="b"><span class="t" style="background:var(--teal)">바꾼 뒤</span><div class="draw"><div class="ex exbox"><span style="font-size:30pt">🗄️⬇️</span>휴지가 손 닿는 낮은 칸에 있어요</div></div>
+        <div class="cnt">😀 쉬웠던 체험 친구 <div class="bx"><span class="ex">3</span></div>명 / 3명</div></div>
     </div>
   </div>
 
-  <div class="step"><div class="tt"><span class="no">3</span><h2 class="h">생각 저울</h2><small>정답은 없어요!</small></div>
+  <div class="step"><div class="tt"><span class="no">★</span><h2 class="h">생각 저울</h2><small>정답은 없어요!</small></div>
     <div class="th3">
-      <div class="c g"><b>👍 좋아진 점</b><div class="ln2"><span class="ex">누구나 혼자서</span></div><div class="ln2"><span class="ex">휴지를 꺼내요.</span></div></div>
+      <div class="c g"><b>👍 좋아진 점</b><div class="ln2"><span class="ex">동생도 혼자서</span></div><div class="ln2"><span class="ex">휴지를 꺼내요.</span></div></div>
       <div class="c w"><b>🤔 걱정되는 점</b><div class="ln2"><span class="ex">낮은 칸에 있던 책이</span></div><div class="ln2"><span class="ex">갈 곳이 없어요.</span></div></div>
-      <div class="c i"><b>💡 이렇게 하면?</b><div class="ln2"><span class="ex">책은 위 칸으로 옮기고</span></div><div class="ln2"><span class="ex">칸에 그림 이름표를 붙여요.</span></div></div>
+      <div class="c i"><b>💡 이렇게 하면?</b><div class="ln2"><span class="ex">책은 위 칸에 두고</span></div><div class="ln2"><span class="ex">그림 이름표를 붙여요.</span></div></div>
     </div>
   </div>
 
   <div class="foot">
     <div class="check">
-      <div>교실을 실제로<br>바꿨어요<b>☆☆☆</b></div>
-      <div>전과 후를 똑같이<br>시험했어요<b>☆☆☆</b></div>
+      <div>교실을 진짜로<br>바꿨어요<b>☆☆☆</b></div>
+      <div>바꾸기 전과 후를<br>비교했어요<b>☆☆☆</b></div>
       <div>더 좋게 바꿀 점을<br>생각했어요<b>☆☆☆</b></div>
     </div>
     <div class="key">4번 방 열쇠 <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
   </div>
-</div><script src="../shared/print.js"></script><script src="../shared/emoji.js"></script>
-</body></html>
+</div><script src="../shared/print.js"></script><script src="../shared/emoji.js"></script></body></html>
