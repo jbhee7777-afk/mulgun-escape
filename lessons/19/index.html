@@ -63,11 +63,11 @@
 .flow5 div img{width:96px;height:96px;object-fit:contain;display:block;margin:0 auto 4px}
 .flow5 div b{display:block;font-family:var(--head);font-weight:400;font-size:30px;color:var(--roomdk)}
 .flow5 i{font-style:normal;font-family:var(--head);font-size:40px;color:var(--room)}
-.opsel{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px}
+.opsel{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:14px}
 .opsel .o{background:#fff;border:4px solid var(--line);border-radius:26px;padding:14px;text-align:center;box-shadow:0 7px 0 var(--line);cursor:pointer;position:relative;transition:.2s}
-.opsel .o img{width:110px;height:110px;object-fit:contain}
-.opsel .o h3{font-size:28px;color:var(--navy);line-height:1.3;margin-top:4px}
-.opsel .o p{font-size:20px;color:var(--ink2);line-height:1.4;margin-top:4px}
+.opsel .o img{width:92px;height:92px;object-fit:contain}
+.opsel .o h3{font-size:24px;color:var(--navy);line-height:1.3;margin-top:4px}
+.opsel .o p{font-size:18px;color:var(--ink2);line-height:1.4;margin-top:4px}
 .opsel .o .k{display:inline-block;font-family:var(--head);font-size:18px;border-radius:10px;padding:2px 10px;background:var(--room2);color:var(--roomdk);margin-top:6px}
 .opsel .o.on{border-color:var(--room);background:var(--room2);transform:translateY(-4px)}
 .opsel .o.on::after{content:attr(data-no);position:absolute;right:-12px;top:-14px;width:52px;height:52px;border-radius:50%;background:var(--room);color:#fff;font-family:var(--head);font-size:26px;display:flex;align-items:center;justify-content:center}
@@ -107,7 +107,7 @@
 
 <!-- 1 표지 -->
 <section class="slide dark" data-phase="도입 · 4분"
- data-notes="<b>시작</b> — “4번 방 마지막 시간! 오늘은 생각만 하지 않고 교실을 <b>진짜로</b> 바꿔요.” 선생님 준비: 마스킹테이프, 종이·사인펜, 셀로판테이프(그림 표시 붙이기), 책 3권(짐 대신). 오늘은 반 전체가 <b>두 곳</b>만 바꿔요. 바꾸어도 되는 것과 안 되는 것(무거운 가구 옮기기, 전기 만지기는 안 돼요)을 미리 정해 두세요.">
+ data-notes="<b>시작</b> — “4번 방 마지막 시간! 오늘은 생각만 하지 않고 교실을 <b>진짜로</b> 바꿔요.” 선생님 준비: 마스킹테이프, 종이·사인펜, 셀로판테이프(그림 표시 붙이기), 책 3권(짐 대신), 밴드를 담을 작은 통, 분리수거용 깨끗한 종이·플라스틱 병·캔 하나씩. 오늘은 반 전체가 <b>두 곳</b>만 바꿔요. 바꾸어도 되는 것과 안 되는 것(무거운 가구 옮기기, 전기 만지기는 안 돼요)을 미리 정해 두세요.">
   <div class="cover">
     <img class="doorimg bob" src="../15/img/door4.jpg" alt="4번 방 문">
     <div>
@@ -175,7 +175,7 @@
 
 <!-- 6 작전 고르기 -->
 <section class="slide" data-phase="미션 1 · 6분" style="padding-top:78px" data-hook="ops"
- data-notes="<b>바꿀 곳 2곳 고르기</b> — 17차시 지도에서 1·2등 한 곳, 18차시 발명을 떠올리며 골라요. 카드를 누르면 고른 표시가 돼요(2개). 모두 <b>오늘 바로, 안전하게</b> 할 수 있는 것들이에요. 큰 가구 옮기기·전기 만지기는 하지 않아요. 우리 반에 맞지 않는 카드는 고르지 않으면 돼요.">
+ data-notes="<b>바꿀 곳 2곳 고르기</b> — 17차시 지도에서 1·2등 한 곳, 18차시 발명을 떠올리며 골라요. 카드를 누르면 고른 표시가 돼요(2개). 모두 <b>오늘 바로, 안전하게</b> 할 수 있는 것들이에요. 큰 가구 옮기기·전기 만지기는 하지 않아요. 우리 반에 맞지 않는 카드는 고르지 않으면 돼요. <b>밴드 카드</b>는 약은 그대로 높은 곳에 두고 밴드만 옮기는 거예요. 밴드를 둘 자리는 선생님이 미리 정해 주세요.">
   <div class="kicker">MISSION 1 · 바꿀 곳 2곳 고르기</div>
   <div class="opsel" id="opSel"></div>
   <div class="opmsg" id="opMsg">카드 2장을 눌러 골라요.</div>
@@ -308,12 +308,14 @@ hooks.story = () => typewriter(document.getElementById('storyText'),
 
 /* ---------- 미션 1: 작전 카드 (반 전체가 2개 고르기, 이 컴퓨터에 저장) ---------- */
 const OPS = [
-  {ic:'tissue', n:'휴지·공용 학용품을 낮은 칸으로', k:'📍 자리 바꾸기', who:'키가 작은 1학년 동생',
-   t:'<b>무릎을 꿇고</b> 앉은 채로(키가 작은 동생처럼) 휴지 한 장을 꺼내요.', d:['휴지와 공용 학용품 바구니를 손이 닿는 낮은 칸으로 옮겨요.', '원래 낮은 칸의 물건은 높은 칸으로 바꿔 넣어요.', '칸 앞에 “휴지” 그림 이름표를 붙여요.']},
+  {ic:'recycle', n:'분리수거 통 세 개에 그림 붙이기', k:'🏷️ 그림 표시', who:'글을 아직 잘 못 읽는 동생',
+   t:'통에 쓰인 <b>글자를 가리고</b> 종이·플라스틱·캔을 하나씩 맞는 통에 넣어 봐요.', d:['세 통마다 넣는 물건 그림을 크게 그려요. (종이 📄, 플라스틱 병, 캔)', '통마다 <b>색</b>을 정해 그림 테두리를 칠해요.', '자주 섞이는 물건(우유갑, 과자 봉지)은 “여기!” 화살표를 그려요.']},
+  {ic:'bandaid', n:'밴드를 손 닿는 곳에', k:'📍 자리 바꾸기', who:'키가 작은 1학년 동생',
+   t:'<b>무릎을 꿇고</b> 앉은 채로(키가 작은 동생처럼) 구급약통에서 밴드 한 장을 꺼내요.', d:['약은 그대로 높은 곳에 두고, <b>밴드만</b> 작은 통에 몇 장 담아요.', '밴드 통을 손이 닿는 낮은 자리에 놓아요. (선생님과 자리 정하기)', '통에 밴드 그림 이름표를 붙여요.']},
+  {ic:'wetwipes', n:'숨은 물티슈 자리 알리기', k:'🏷️ 그림 표시', who:'우리 반에 처음 온 친구',
+   t:'처음 온 친구처럼 <b>아무 말도 듣지 않고</b> 교실 공용 물티슈를 찾아봐요. 몇 초 걸렸나요?', d:['칠판 옆에 “🧻 물티슈는 칠판 뒤 서랍” 그림 표시를 붙여요.', '칠판을 미는 쪽으로 화살표를 그려요.', '서랍 앞에도 물티슈 그림을 붙여요.']},
   {ic:'calendar', n:'시간표에 그림 붙이기', k:'🏷️ 그림 표시', who:'우리말이 서툰 새 친구',
    t:'시간표의 <b>글자를 손으로 가리고</b> “3교시는 무엇일까?” 맞혀 봐요.', d:['과목마다 작은 그림을 그려요. (국어 📖, 수학 🔢, 체육 ⚽ …)', '시간표의 과목 이름 옆에 그림을 붙여요.', '멀리서도 보이게 크게 그려요.']},
-  {ic:'recycle', n:'분리수거 통에 그림 붙이기', k:'🏷️ 그림 표시', who:'글을 아직 잘 못 읽는 동생',
-   t:'통에 쓰인 <b>글자를 가리고</b> 종이컵·우유갑·비닐을 맞는 통에 넣어 봐요.', d:['통마다 넣는 물건 그림을 그려요. (종이 📄, 플라스틱, 캔 …)', '통 앞에 그림을 크게 붙여요.', '자주 헷갈리는 물건은 “여기!” 화살표를 그려요.']},
   {ic:'backpack', n:'통로에 ‘가방 두지 않기’ 선', k:'🏷️ 바닥 선', who:'두 손에 짐을 든 친구',
    t:'<b>책 3권을 두 손에 들고</b> 책상 사이 통로를 지나가요. 걸리거나 멈췄나요?', d:['통로 바닥에 마스킹테이프로 선을 붙여요.', '선 안은 “가방 두지 않기” — 가방은 책상 고리에 걸어요.', '선 옆에 가방 그림 ✕ 표시를 붙여요.']}];
 const OKEY = 'mg19run'; let R = {pick:[], res:{}};

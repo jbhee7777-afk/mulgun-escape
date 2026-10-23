@@ -115,11 +115,11 @@
       <div class="ex" onclick="this.classList.add('open');S.ok()">😣 통로에 가방이 있어요<div class="a">→ <b>책상 옆 가방 고리</b>를 달아요.</div></div>
       <div class="ex" onclick="this.classList.add('open');S.ok()">😣 문턱에 바퀴가 걸려요<div class="a">→ 문턱 앞에 <b>작은 경사판</b>을 놓아요.</div></div></div>
     <div class="k"><div class="hd"><span class="emo">📍</span><h3>자리 바꾸기<small>닿기 쉬운 곳으로 옮겨요</small></h3></div>
-      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 휴지가 맨 위 칸에 있어요<div class="a">→ 휴지를 <b>낮은 칸</b>으로 옮겨요.</div></div>
+      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 밴드가 높은 구급약통에 있어요<div class="a">→ 밴드만 작은 통에 담아 <b>낮은 곳</b>에 둬요.</div></div>
       <div class="ex" onclick="this.classList.add('open');S.ok()">😣 게시판이 너무 높아요<div class="a">→ 작품을 <b>눈높이 줄</b>에 집게로 걸어요.</div></div></div>
     <div class="k"><div class="hd"><span class="emo">🏷️</span><h3>표시 붙이기<small>그림·색·점자로 알려요</small></h3></div>
       <div class="ex" onclick="this.classList.add('open');S.ok()">😣 내 사물함 칸이 어디인지 헷갈려요<div class="a">→ 이름 옆에 <b>내 얼굴 그림</b>을 붙여요.</div></div>
-      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 분리수거 통이 헷갈려요<div class="a">→ 통마다 <b>물건 그림</b>을 붙여요.</div></div></div>
+      <div class="ex" onclick="this.classList.add('open');S.ok()">😣 분리수거 통 세 개가 맨날 섞여요<div class="a">→ 통마다 <b>물건 그림</b>을 붙여요.</div></div></div>
   </div>
 </section>
 
@@ -250,7 +250,7 @@ hooks.story = () => typewriter(document.getElementById('storyText'),
 
 /* ---------- 지난 시간 지도(이 컴퓨터) ---------- */
 const PRESET = [['🚪', '문 아래 문턱', '휠체어 바퀴가 걸려요'], ['🎒', '통로의 가방', '걸려 넘어질 수 있어요'], ['📌', '높은 게시판', '작품에 손이 안 닿아요'],
-  ['🧻', '맨 위 칸의 휴지', '키 작은 친구가 못 꺼내요'], ['🗓️', '글자만 있는 시간표', '글을 잘 못 읽으면 몰라요'], ['♻️', '헷갈리는 분리수거 통', '어디에 버릴지 몰라요'], ['💡', '높은 전등 스위치', '손이 안 닿아요']];
+  ['🩹', '높은 곳의 구급약통', '키 작은 친구가 밴드를 못 꺼내요'], ['🧻', '칠판 뒤에 숨은 물티슈', '처음 온 친구는 못 찾아요'], ['🗓️', '글자만 있는 시간표', '글을 잘 못 읽으면 몰라요'], ['♻️', '헷갈리는 분리수거 통', '어디에 버릴지 몰라요'], ['💡', '높은 전등 스위치', '손이 안 닿아요']];
 function mapPins(){ try { return (JSON.parse(localStorage.getItem('mg17map') || '[]') || []).filter(p => p && p.n).sort((a, b) => b.v - a.v); } catch(e) { return []; } }
 hooks.mytop = () => { const p = mapPins(), el = document.getElementById('myTop');
   el.innerHTML = p.length ? `<h3>🗺️ 지난 시간 투표 순위</h3><ol>${p.slice(0, 5).map(x => `<li><b>${x.n}</b> <span style="color:var(--ink2);font-size:24px">(${x.v}표)</span></li>`).join('')}</ol>`
