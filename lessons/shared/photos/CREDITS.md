@@ -108,3 +108,4 @@
 | pylon.jpg | 송전탑 | [Electricity transmission pylon, Gomersal - geograph.org.uk - 7491463.jpg](https://commons.wikimedia.org/wiki/File:Electricity_transmission_pylon,_Gomersal_-_geograph.org.uk_-_7491463.jpg) | Humphrey Bolton | CC BY-SA 2.0 |
 | bikeframe.jpg | 자전거 몸통 | [Bicycle frame mtb hardtail.jpg](https://commons.wikimedia.org/wiki/File:Bicycle_frame_mtb_hardtail.jpg) | Keithonearth | CC BY-SA 3.0 |
 | cardboard.jpg | 골판지 | [Corrugated Cardboard.JPG](https://commons.wikimedia.org/wiki/File:Corrugated_Cardboard.JPG) | Richard Wheeler (Zephyris) | CC BY-SA 3.0 |
+| cassette.jpg | 카세트테이프 | [Sony Duad (Japanese market Ferri Chrome) cassette (white bg).jpg](https://commons.wikimedia.org/wiki/File:Sony_Duad_(Japanese_market_Ferri_Chrome)_cassette_(white_bg).jpg) | Wikimedia Commons | CC0 |

@@ -1554,6 +1554,7 @@ $('#editBtn').onclick = () => { editMode = !editMode; document.body.classList.to
 /* 수업 화면(lessons/…)이 '차시 미션 완료'를 알려 오면 자물쇠를 연다 — {type:'lesson-complete', lesson:차시 번호} */
 addEventListener('message', e => {
   const d = e.data || {};
+  if(e.origin === location.origin && d.type === 'go-home'){ closePresenter(); go('home'); return; }
   if(e.origin !== location.origin || d.type !== 'lesson-complete') return;
   const l = lessonOf(d.lesson); if(!l) return;
   const c = cls();
