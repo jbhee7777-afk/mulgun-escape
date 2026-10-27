@@ -34,7 +34,8 @@ addEventListener('keydown', e => { if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagN
   if(['ArrowRight', 'PageDown', ' '].includes(e.key)){ e.preventDefault(); go(cur + 1); }
   else if(['ArrowLeft', 'PageUp'].includes(e.key)){ e.preventDefault(); go(cur - 1); }
   else if(e.key === 'n' || e.key === 'N') toggleNotes(); else if(e.key === 'f' || e.key === 'F') toggleFull();
-  else if(e.key === 'Escape' && window.onEsc) window.onEsc(); });
+  else if(e.key === 'Escape'){ const n = document.getElementById('notes'); if(n.classList.contains('show')) n.classList.remove('show'); else if(window.onEsc) window.onEsc(); } });
+document.getElementById('notes').addEventListener('click', () => document.getElementById('notes').classList.remove('show'));
 function toggleNotes(){ document.getElementById('notes').classList.toggle('show'); }
 function toggleFull(){ if(!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }
 

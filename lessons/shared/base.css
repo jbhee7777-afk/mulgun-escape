@@ -30,11 +30,12 @@ img{display:block;user-select:none;-webkit-user-drag:none}
 #dots i{width:12px;height:12px;border-radius:50%;background:#ead6b8;display:block;cursor:pointer}
 #dots i.on{background:var(--coral);transform:scale(1.25)}
 #dots i.done{background:#f5b9a8}
-#tools{position:absolute;right:24px;bottom:24px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;max-width:400px;z-index:21}
+#tools{position:absolute;right:24px;bottom:24px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;max-width:400px;z-index:40}
 #tools button{background:#fff;color:var(--ink2);font-size:16px;padding:8px 12px;border-radius:12px;border:2px solid var(--line)}
-#notes{position:absolute;left:24px;right:24px;bottom:84px;background:#2b2118;border-radius:18px;padding:18px 24px;font-size:22px;line-height:1.6;color:#fbefdc;z-index:30;display:none;max-height:300px;overflow:auto;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+#notes{position:absolute;left:24px;right:24px;bottom:132px;cursor:pointer;background:#2b2118;border-radius:18px;padding:18px 24px;font-size:22px;line-height:1.6;color:#fbefdc;z-index:30;display:none;max-height:300px;overflow:auto;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 #notes b{color:var(--gold)}
 #notes.show{display:block}
+#notes::before{content:"✕ 닫기";float:right;margin:-4px -6px 6px 14px;background:#4a3a2c;color:#fbefdc;font-size:18px;padding:4px 12px;border-radius:10px}
 
 h1,h2,h3{font-family:var(--head);font-weight:400}
 .kicker{font-family:var(--head);color:var(--coral);font-size:28px;letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;gap:10px}
