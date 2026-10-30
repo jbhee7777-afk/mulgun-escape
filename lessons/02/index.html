@@ -71,9 +71,11 @@
 .dmain{flex:1;display:flex;gap:26px}
 .silbox{width:470px;flex:none;background:radial-gradient(circle at 50% 45%,#fff 0%,#fff3d9 60%,#ffe2ad 100%);border-radius:32px;position:relative;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px #fff,0 14px 30px rgba(61,43,31,.2);overflow:hidden}
 /* 그림 단서: 처음부터 확대·흐림 상태로 숨어 있다가 그대로 나타나요(전체 그림이 먼저 보이지 않게) */
-.silbox img{max-width:72%;max-height:72%;opacity:0;filter:blur(7px) saturate(.5) brightness(.95);transform:scale(3.4);transition:none}
-.silbox.zoom img{opacity:1;transition:opacity .35s}
-.silbox.show img{opacity:1;filter:none;transform:scale(1.08);transition:filter .9s,transform .9s}
+/* 그림 단서: 확대·흐림 그림(.zimg)과 정답 그림(#dImg)을 따로 둬요. 정답 공개 전에는 전체 그림이 절대 보이지 않아요. */
+.silbox .zimg{position:absolute;inset:0;width:100%;height:100%;padding:14%;box-sizing:border-box;object-fit:contain;filter:blur(7px) saturate(.5) brightness(.95);transform:scale(3.4);visibility:hidden}
+.silbox.zoom:not(.show) .zimg{visibility:visible}
+.silbox #dImg{max-width:72%;max-height:72%;visibility:hidden;opacity:0;transform:scale(1.08)}
+.silbox.show #dImg{visibility:visible;opacity:1;transition:opacity .6s}
 .silbox .mq{position:absolute;font-family:var(--head);font-size:230px;color:#f0c45a;line-height:1;animation:wob 2.4s ease-in-out infinite;transition:opacity .5s}
 .silbox.zoom .mq,.silbox.show .mq{opacity:0}
 .silbox .zl{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-family:var(--head);font-size:24px;color:var(--navy);opacity:0}
@@ -280,7 +282,7 @@
  data-notes="<b>진행</b> — 오른쪽 번호로 문제를 골라요(1~7). ‘힌트 열기’를 누를 때마다 단서가 하나씩 열려요(글 힌트 3개 → 그림 단서). 힌트 ①은 일부러 어렵게 만들었어요. 모둠이 보드를 들면 ‘정답 공개’ → 물건이 나타나고 ‘태어난 이유’가 나와요. 맞힌 모둠에 ＋점수. 시간이 부족하면 4~5문제만 해도 돼요.">
   <div class="detect">
     <div class="dmain">
-      <div class="silbox" id="silBox"><span class="rq" id="dRound">1번 문제</span><div class="mq">?</div><img id="dImg" src="img/obj_straw.png" alt=""><div class="zl">🔎 아주 가까이서 본 모습</div><div class="nm" id="dName"></div></div>
+      <div class="silbox" id="silBox"><span class="rq" id="dRound">1번 문제</span><div class="mq">?</div><img class="zimg" id="dZoom" src="img/obj_straw.png" alt=""><img id="dImg" src="img/obj_straw.png" alt=""><div class="zl">🔎 아주 가까이서 본 모습</div><div class="nm" id="dName"></div></div>
       <div class="hints">
         <div class="hint" id="h1"><span class="hn">힌트 1</span><span class="tx"></span><span class="lock">🔒</span></div>
         <div class="hint" id="h2"><span class="hn">힌트 2</span><span class="tx"></span><span class="lock">🔒</span></div>
@@ -508,7 +510,7 @@ const DETECT = [ /* h: 글 힌트 3개(점점 쉬워져요), z: 그림 단서로
 let dIdx = 0, dHint = 0; const dDone = {};
 function drawRounds(){ document.getElementById('rounds').innerHTML = DETECT.map((d, i) => `<button class="${i === dIdx ? 'on' : dDone[i] ? 'done' : ''}" onclick="setDetect(${i})">${i + 1}</button>`).join(''); }
 function setDetect(i){ dIdx = i; dHint = 0; const d = DETECT[i]; S.flip();
-  document.getElementById('silBox').classList.remove('show', 'zoom'); const im = document.getElementById('dImg'); im.src = `img/obj_${d.id}.png`; im.style.transformOrigin = d.z || '50% 50%';
+  document.getElementById('silBox').classList.remove('show', 'zoom'); const im = document.getElementById('dImg'); im.src = `img/obj_${d.id}.png`; const zm = document.getElementById('dZoom'); zm.src = im.src; zm.style.transformOrigin = d.z || '50% 50%';
   document.getElementById('dRound').textContent = `${i + 1}번 문제`; document.getElementById('dName').textContent = d.name;
   [1, 2, 3].forEach(k => { const h = document.getElementById('h' + k); h.classList.remove('open'); h.querySelector('.tx').textContent = d.h[k - 1]; }); document.getElementById('h4').classList.remove('open');
   document.getElementById('dReason').classList.remove('show'); drawRounds(); }
