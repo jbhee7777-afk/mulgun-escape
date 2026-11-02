@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>열쇠 스티커 · 폼텍 3106</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Chakra+Petch:wght@600;700&family=Jua&display=swap">
+<style>
+/* 폼텍 LS-3106 (주소용 24칸) 규격 — 폼텍 공식 FAQ의 워드 라벨 값
+   A4 210×297mm · 3칸 × 8줄 · 칸 64.0 × 33.9mm · 가로 간격 66.5mm · 세로 간격 33.9mm · 위 여백 12.5mm · 옆 여백 6.5mm */
+:root{--ink:#3d2b1f;--navy:#2d3a7c;--paper:#fff7e3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#e9e2d4;font-family:'Jua',sans-serif;color:var(--ink)}
+.panel{max-width:900px;margin:18px auto;background:#fff;border-radius:18px;padding:18px 22px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.panel h1{font-family:'Black Han Sans',sans-serif;font-weight:400;font-size:28px;color:var(--navy)}
+.panel p{font-family:sans-serif;font-size:14px;line-height:1.6;color:#6b5a4b;margin:6px 0}
+.panel .row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-top:12px}
+.panel label{display:flex;flex-direction:column;gap:4px;font-size:15px}
+.panel select,.panel input,.panel textarea{font:15px sans-serif;padding:6px 8px;border:2px solid #e6d8bf;border-radius:10px}
+.panel input[type=number]{width:80px}
+.panel textarea{width:300px;height:118px}
+.panel button{font-family:'Jua',sans-serif;font-size:18px;padding:10px 18px;border:0;border-radius:12px;background:#ffc94d;color:#5a3d00;cursor:pointer;box-shadow:0 4px 0 #d79e12}
+.panel button.ghost{background:#f1e6d4;color:#6b5a4b;box-shadow:0 4px 0 #d8c7a8}
+.panel .chk{flex-direction:row;align-items:center;gap:6px}
+#sheets{display:flex;flex-direction:column;align-items:center;gap:18px;padding:10px 0 40px}
+
+.pg{width:210mm;height:297mm;background:#fff;position:relative;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.15)}
+.lab{position:absolute;width:64mm;height:33.9mm}
+.guides .lab{outline:.2mm dashed #c8b89a}
+/* 칸 안쪽 1.2mm는 비워 둬요(인쇄가 조금 밀려도 칼선에 걸리지 않게) */
+.tag{position:absolute;inset:1.2mm;border-radius:3mm;background:var(--soft);display:flex;align-items:center;gap:1.6mm;padding:0 2mm 0 1mm;overflow:hidden}
+.tag svg{width:29mm;height:29mm;flex:none}
+.tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:.6mm}
+.tx em{font-family:'Chakra Petch',sans-serif;font-style:normal;font-weight:700;font-size:2.6mm;letter-spacing:.3mm;color:var(--dk)}
+.tx b{font-family:'Black Han Sans',sans-serif;font-weight:400;font-size:5.4mm;line-height:1.05;color:var(--navy)}
+.tx span{font-size:2.9mm;color:#7a6352;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tx i{font-style:normal;font-size:3.4mm;color:var(--ink);border-top:.3mm dashed var(--dk);padding-top:.8mm;margin-top:.4mm;white-space:nowrap;overflow:hidden}
+.tx i.blank{color:#a8957f}
+
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .panel{display:none}
+  #sheets{display:block;padding:0}
+  .pg{box-shadow:none;page-break-after:always;break-after:page}
+  .pg:last-child{page-break-after:auto;break-after:auto}
+  .guides .lab{outline:none}
+}
+</style>
+</head>
+<body>
+<div class="panel">
+  <h1>열쇠 스티커 · 폼텍 3106 라벨지용</h1>
+  <p>폼텍 <b>LS-3106 주소용 라벨(24칸, 64×34mm)</b>에 딱 맞춘 도안이에요. 한 장에 24명분, 방마다 한 장씩 모두 5장이에요.</p>
+  <p>인쇄 창에서 <b>배율 100%(실제 크기)</b>, <b>여백 없음</b>으로 인쇄하세요. 처음에는 보통 종이에 한 장 인쇄해 라벨지와 겹쳐 보고, 어긋나면 아래 '밀기'로 맞춰요. 맞춘 값은 이 컴퓨터에 기억돼요.</p>
+  <div class="row">
+    <label>인쇄할 방<select id="room"><option value="0">5개 방 모두 (5장)</option></select></label>
+    <label>학생 이름 (한 줄에 한 명, 최대 24명)<textarea id="names" placeholder="비워 두면 이름 칸이 빈칸으로 나와요"></textarea></label>
+  </div>
+  <div class="row">
+    <label>오른쪽으로 밀기 (mm)<input type="number" id="dx" step="0.5" value="0"></label>
+    <label>아래로 밀기 (mm)<input type="number" id="dy" step="0.5" value="0"></label>
+    <label class="chk"><input type="checkbox" id="guide" checked> 화면에 칸 선 보기 (인쇄에는 안 나와요)</label>
+    <button id="go">인쇄하기</button>
+  </div>
+</div>
+<div id="sheets"></div>
+<script>
+const ROOMS = [
+  {no:1, place:'사라진 물건의 방', title:'물건의 비밀 발견하기', color:'#ffc94d', icon:'bulb', lessons:'1~4차시'},
+  {no:2, place:'돋보기 탐정의 방', title:'물건을 자세히 탐구하기', color:'#4fe0d2', icon:'search', lessons:'5~9차시'},
+  {no:3, place:'불편함 수사 본부', title:'생활 속 불편함 해결하기', color:'#ff9a76', icon:'toolbox', lessons:'10~14차시'},
+  {no:4, place:'모두의 마을', title:'모두를 위한 물건 생각하기', color:'#ff8fc8', icon:'handshake', lessons:'15~19차시'},
+  {no:5, place:'꼬마 발명 제작소', title:'직접 만들고 개선하기', color:'#8fb8ff', icon:'rocket', lessons:'20~24차시'}];
+/* 폼텍 3106 칸 위치(mm) */
+const L3106 = {cols:3, rows:8, w:64, h:33.9, px:66.5, py:33.9, top:12.5, left:6.5};
+
+function shade(hex, f){ const n = parseInt(hex.slice(1), 16), t = f < 0 ? 0 : 255, p = Math.abs(f), m = v => Math.round((t - v) * p + v);
+  return `rgb(${m(n >> 16)},${m(n >> 8 & 255)},${m(n & 255)})`; }
+let seq = 0;
+/* 앱(index.html)의 열쇠 스티커와 같은 그림 */
+function keySticker(r){
+  const u = 'ks' + (seq++), c = r.color, dk = shade(c, -.5), lt = shade(c, .6), ring = `ROOM ${r.no} ★ ESCAPE CLEAR ★ ROOM ${r.no} ★ ESCAPE CLEAR ★ `;
+  return `<svg viewBox="-50 -50 100 100" aria-hidden="true"><defs>
+    <radialGradient id="${u}b" cx="35%" cy="28%" r="85%"><stop offset="0" stop-color="${lt}"/><stop offset=".5" stop-color="${c}"/><stop offset="1" stop-color="${dk}"/></radialGradient>
+    <radialGradient id="${u}i" cx="40%" cy="30%" r="80%"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="${shade(c, .82)}"/></radialGradient>
+    <linearGradient id="${u}g" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#fffbe2"/><stop offset=".4" stop-color="#ffd463"/><stop offset=".75" stop-color="#f0a92a"/><stop offset="1" stop-color="#b7730f"/></linearGradient>
+    <path id="${u}t" d="M-39 0A39 39 0 1 1 39 0A39 39 0 1 1 -39 0"/></defs>
+    <circle r="49.5" fill="#fff"/><circle r="47" fill="url(#${u}b)"/><circle r="47" fill="none" stroke="url(#${u}g)" stroke-width="1.8"/>
+    <text font-family="'Chakra Petch','Bahnschrift',sans-serif" font-weight="700" font-size="7.2" fill="#fff" letter-spacing=".6"><textPath href="#${u}t" textLength="240" lengthAdjust="spacing">${ring}</textPath></text>
+    <circle r="31.5" fill="url(#${u}i)"/><circle r="31.5" fill="none" stroke="url(#${u}g)" stroke-width="2.8"/>
+    <circle r="27.5" fill="none" stroke="${c}" stroke-width=".6" stroke-dasharray="1.2 1.6" opacity=".8"/>
+    <image href="../lessons/shared/icons/${r.icon}.png" x="-10" y="-22" width="20" height="20"/>
+    <g transform="translate(3,4) rotate(-28)">
+      <path fill-rule="evenodd" fill="url(#${u}g)" stroke="#94600f" stroke-width=".9" d="M-27 0a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z M-21.5 0a4.5 4.5 0 1 0 9 0a4.5 4.5 0 1 0 -9 0Z"/>
+      <path fill="url(#${u}g)" stroke="#94600f" stroke-width=".9" stroke-linejoin="round" d="M-7.6 -2.8H24.5a1.6 1.6 0 0 1 1.6 1.6V2.8H22.6V9.5H18V2.8H14.6V7.4H10.4V2.8H-7.6Z"/>
+      <circle cx="-21" cy="-4.6" r="1.7" fill="#fff" opacity=".9"/><rect x="-4" y="-2" width="24" height="1" rx=".5" fill="#fff" opacity=".6"/></g>
+    <path d="M22 -16l1.2 3 3 1.2-3 1.2-1.2 3-1.2-3-3-1.2 3-1.2z" fill="#ffd463"/>
+    <path d="M-23 17l.9 2.2 2.2.9-2.2.9-.9 2.2-.9-2.2-2.2-.9 2.2-.9z" fill="${c}"/>
+    <text x="0" y="27.6" text-anchor="middle" font-family="'Jua',sans-serif" font-size="5.2" fill="${dk}">${r.no}번 방 탈출</text></svg>`;
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+const store = (k, v) => { try{ if(v === undefined) return localStorage.getItem('stk3106.' + k); localStorage.setItem('stk3106.' + k, v); }catch(e){ return null; } };
+
+function render(){
+  const room = +$('room').value, dx = +$('dx').value || 0, dy = +$('dy').value || 0;
+  const names = $('names').value.split('\n').map(s => s.trim()).filter(Boolean).slice(0, 24);
+  const list = room ? [ROOMS[room - 1]] : ROOMS, g = L3106;
+  $('sheets').className = $('guide').checked ? 'guides' : '';
+  $('sheets').innerHTML = list.map(r => {
+    const vars = `--soft:${shade(r.color, .78)};--dk:${shade(r.color, -.45)}`;
+    let cells = '';
+    for(let k = 0; k < g.cols * g.rows; k++){
+      const row = Math.floor(k / g.cols), col = k % g.cols, x = g.left + col * g.px + dx, y = g.top + row * g.py + dy, nm = names[k];
+      cells += `<div class="lab" style="left:${x}mm;top:${y}mm"><div class="tag">${keySticker(r)}<div class="tx">
+        <em>ROOM ${r.no} · CLEAR</em><b>${r.no}번 방<br>탈출!</b><span>${esc(r.place)}</span>
+        <i class="${nm ? '' : 'blank'}">${nm ? esc(nm) : '이름 :'}</i></div></div></div>`;
+    }
+    return `<div class="pg" style="${vars}">${cells}</div>`;
+  }).join('');
+}
+const $ = id => document.getElementById(id);
+ROOMS.forEach(r => $('room').insertAdjacentHTML('beforeend', `<option value="${r.no}">${r.no}번 방만 (1장)</option>`));
+['names', 'dx', 'dy'].forEach(k => { const v = store(k); if(v !== null && v !== undefined) $(k).value = v; });
+['room', 'names', 'dx', 'dy', 'guide'].forEach(k => $(k).addEventListener('input', () => { if(k !== 'room' && k !== 'guide') store(k, $(k).value); render(); }));
+$('go').onclick = () => { render(); setTimeout(() => window.print(), 300); };
+render();
+</script>
+</body>
+</html>
