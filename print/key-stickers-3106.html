@@ -28,14 +28,8 @@ body{background:#e9e2d4;font-family:'Jua',sans-serif;color:var(--ink)}
 .lab{position:absolute;width:64mm;height:33.9mm}
 .guides .lab{outline:.2mm dashed #c8b89a}
 /* 칸 안쪽 1.2mm는 비워 둬요(인쇄가 조금 밀려도 칼선에 걸리지 않게) */
-.tag{position:absolute;inset:1.2mm;border-radius:3mm;background:var(--soft);display:flex;align-items:center;gap:1.6mm;padding:0 2mm 0 1mm;overflow:hidden}
-.tag svg{width:29mm;height:29mm;flex:none}
-.tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:.6mm}
-.tx em{font-family:'Chakra Petch',sans-serif;font-style:normal;font-weight:700;font-size:2.6mm;letter-spacing:.3mm;color:var(--dk)}
-.tx b{font-family:'Black Han Sans',sans-serif;font-weight:400;font-size:5.4mm;line-height:1.05;color:var(--navy)}
-.tx span{font-size:2.9mm;color:#7a6352;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tx i{font-style:normal;font-size:3.4mm;color:var(--ink);border-top:.3mm dashed var(--dk);padding-top:.8mm;margin-top:.4mm;white-space:nowrap;overflow:hidden}
-.tx i.blank{color:#a8957f}
+.tag{position:absolute;inset:1.2mm;display:flex;align-items:center;justify-content:center}
+.tag svg{width:31mm;height:31mm}
 
 @page{size:A4;margin:0}
 @media print{
@@ -51,11 +45,10 @@ body{background:#e9e2d4;font-family:'Jua',sans-serif;color:var(--ink)}
 <body>
 <div class="panel">
   <h1>열쇠 스티커 · 폼텍 3106 라벨지용</h1>
-  <p>폼텍 <b>LS-3106 주소용 라벨(24칸, 64×34mm)</b>에 딱 맞춘 도안이에요. 한 장에 24명분, 방마다 한 장씩 모두 5장이에요.</p>
+  <p>폼텍 <b>LS-3106 주소용 라벨(24칸, 64×34mm)</b>에 딱 맞춘 도안이에요. 칸마다 열쇠 스티커 하나, 한 장에 24개 · 방마다 한 장씩 모두 5장이에요.</p>
   <p>인쇄 창에서 <b>배율 100%(실제 크기)</b>, <b>여백 없음</b>으로 인쇄하세요. 처음에는 보통 종이에 한 장 인쇄해 라벨지와 겹쳐 보고, 어긋나면 아래 '밀기'로 맞춰요. 맞춘 값은 이 컴퓨터에 기억돼요.</p>
   <div class="row">
     <label>인쇄할 방<select id="room"><option value="0">5개 방 모두 (5장)</option></select></label>
-    <label>학생 이름 (한 줄에 한 명, 최대 24명)<textarea id="names" placeholder="비워 두면 이름 칸이 빈칸으로 나와요"></textarea></label>
   </div>
   <div class="row">
     <label>오른쪽으로 밀기 (mm)<input type="number" id="dx" step="0.5" value="0"></label>
@@ -99,30 +92,25 @@ function keySticker(r){
     <path d="M-23 17l.9 2.2 2.2.9-2.2.9-.9 2.2-.9-2.2-2.2-.9 2.2-.9z" fill="${c}"/>
     <text x="0" y="27.6" text-anchor="middle" font-family="'Jua',sans-serif" font-size="5.2" fill="${dk}">${r.no}번 방 탈출</text></svg>`;
 }
-const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
 const store = (k, v) => { try{ if(v === undefined) return localStorage.getItem('stk3106.' + k); localStorage.setItem('stk3106.' + k, v); }catch(e){ return null; } };
 
 function render(){
   const room = +$('room').value, dx = +$('dx').value || 0, dy = +$('dy').value || 0;
-  const names = $('names').value.split('\n').map(s => s.trim()).filter(Boolean).slice(0, 24);
   const list = room ? [ROOMS[room - 1]] : ROOMS, g = L3106;
   $('sheets').className = $('guide').checked ? 'guides' : '';
   $('sheets').innerHTML = list.map(r => {
-    const vars = `--soft:${shade(r.color, .78)};--dk:${shade(r.color, -.45)}`;
-    let cells = '';
+        let cells = '';
     for(let k = 0; k < g.cols * g.rows; k++){
-      const row = Math.floor(k / g.cols), col = k % g.cols, x = g.left + col * g.px + dx, y = g.top + row * g.py + dy, nm = names[k];
-      cells += `<div class="lab" style="left:${x}mm;top:${y}mm"><div class="tag">${keySticker(r)}<div class="tx">
-        <em>ROOM ${r.no} · CLEAR</em><b>${r.no}번 방<br>탈출!</b><span>${esc(r.place)}</span>
-        <i class="${nm ? '' : 'blank'}">${nm ? esc(nm) : '이름 :'}</i></div></div></div>`;
+      const row = Math.floor(k / g.cols), col = k % g.cols, x = g.left + col * g.px + dx, y = g.top + row * g.py + dy;
+      cells += `<div class="lab" style="left:${x}mm;top:${y}mm"><div class="tag">${keySticker(r)}</div></div>`;
     }
-    return `<div class="pg" style="${vars}">${cells}</div>`;
+    return `<div class="pg">${cells}</div>`;
   }).join('');
 }
 const $ = id => document.getElementById(id);
 ROOMS.forEach(r => $('room').insertAdjacentHTML('beforeend', `<option value="${r.no}">${r.no}번 방만 (1장)</option>`));
-['names', 'dx', 'dy'].forEach(k => { const v = store(k); if(v !== null && v !== undefined) $(k).value = v; });
-['room', 'names', 'dx', 'dy', 'guide'].forEach(k => $(k).addEventListener('input', () => { if(k !== 'room' && k !== 'guide') store(k, $(k).value); render(); }));
+['dx', 'dy'].forEach(k => { const v = store(k); if(v !== null && v !== undefined) $(k).value = v; });
+['room', 'dx', 'dy', 'guide'].forEach(k => $(k).addEventListener('input', () => { if(k !== 'room' && k !== 'guide') store(k, $(k).value); render(); }));
 $('go').onclick = () => { render(); setTimeout(() => window.print(), 300); };
 render();
 </script>
