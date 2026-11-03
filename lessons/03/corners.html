@@ -12,7 +12,8 @@ body{font-family:'Jua','Malgun Gothic',sans-serif;background:#ddd}
 .txt small{display:block;font-size:12mm;color:#7a6352;margin-top:6mm}
 div.page:last-of-type{page-break-after:auto}
 @media print{body{background:none}.page{margin:0}}
-</style></head>
+</style><style>/* 크롬 인쇄 창에서 '배경 그래픽'을 안 켜도 색·배경이 화면 예시와 똑같이 나오게 */*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}</style>
+</head>
 <body>
 <div class="page" style="--c:#ff7b6b"><div class="num">1</div><div class="txt">1번<br>모퉁이<small>🚶 걸어서 이동해요</small></div></div>
 <div class="page" style="--c:#4f7fe0"><div class="num">2</div><div class="txt">2번<br>모퉁이<small>🚶 걸어서 이동해요</small></div></div>

@@ -28,7 +28,8 @@ body{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;color:var(--ink);backg
 .found .bl{flex:1;border-bottom:.35mm solid #b9cfd2;min-height:8mm;display:flex;align-items:flex-end;padding-bottom:1mm;color:var(--ink)}
 div.page:last-of-type{page-break-after:auto}
 @media print{body{background:none}.page{margin:0}}
-</style></head>
+</style><style>/* 크롬 인쇄 창에서 '배경 그래픽'을 안 켜도 색·배경이 화면 예시와 똑같이 나오게 */*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}</style>
+</head>
 <body>
 <div id="pages"></div>
 <script>
