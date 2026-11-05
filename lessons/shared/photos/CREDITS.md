@@ -109,3 +109,17 @@
 | bikeframe.jpg | 자전거 몸통 | [Bicycle frame mtb hardtail.jpg](https://commons.wikimedia.org/wiki/File:Bicycle_frame_mtb_hardtail.jpg) | Keithonearth | CC BY-SA 3.0 |
 | cardboard.jpg | 골판지 | [Corrugated Cardboard.JPG](https://commons.wikimedia.org/wiki/File:Corrugated_Cardboard.JPG) | Richard Wheeler (Zephyris) | CC BY-SA 3.0 |
 | cassette.jpg | 카세트테이프 | [Sony Duad (Japanese market Ferri Chrome) cassette (white bg).jpg](https://commons.wikimedia.org/wiki/File:Sony_Duad_(Japanese_market_Ferri_Chrome)_cassette_(white_bg).jpg) | Wikimedia Commons | CC0 |
+| maetdol.jpg | 맷돌 | [Millstone 2.jpg](https://commons.wikimedia.org/wiki/File:Millstone_2.jpg) | GohRo | CC BY 2.0 |
+| jeolgu.jpg | 절구 | [Wooden mortar, Museu Paranaense.jpg](https://commons.wikimedia.org/wiki/File:Wooden_mortar%2C_Museu_Paranaense.jpg) | Wilfredor | CC BY-SA 4.0 |
+| dadeumi.jpg | 다듬잇돌 | [Dadeumi.jpg](https://commons.wikimedia.org/wiki/File:Dadeumi.jpg) | InSapphoWeTrust | CC BY-SA 2.0 |
+| jige.jpg | 지게 | [Jige.jpg](https://commons.wikimedia.org/wiki/File:Jige.jpg) | 국립국어원 | CC BY-SA 2.0 kr |
+| jipsin.jpg | 짚신 | [Korean jipsin, partially woven soles, 1981, rice straw - Bata Shoe Museum - DSC00385.JPG](https://commons.wikimedia.org/wiki/File:Korean_jipsin%2C_partially_woven_soles%2C_1981%2C_rice_straw_-_Bata_Shoe_Museum_-_DSC00385.JPG) | Daderot | CC0 |
+| gamasot.jpg | 가마솥 | [Sot (Korean cauldron).jpg](https://commons.wikimedia.org/wiki/File:Sot_(Korean_cauldron).jpg) | 국립국어원 | CC BY-SA 2.0 kr |
+| winnow.jpg | 키 | [Winnowing basket, Cho Ro - Vietnam Museum of Ethnology - Hanoi, Vietnam - DSC03244.JPG](https://commons.wikimedia.org/wiki/File:Winnowing_basket%2C_Cho_Ro_-_Vietnam_Museum_of_Ethnology_-_Hanoi%2C_Vietnam_-_DSC03244.JPG) | Daderot | CC0 |
+| abacus.jpg | 주판 | [ROC-era abacus at China National Museum of Women and Children (20210909140914).jpg](https://commons.wikimedia.org/wiki/File:ROC-era_abacus_at_China_National_Museum_of_Women_and_Children_(20210909140914).jpg) | N509FZ | CC BY-SA 4.0 |
+| typewriter.jpg | 타자기 | [Typewriter of Klaus Merz.jpg](https://commons.wikimedia.org/wiki/File:Typewriter_of_Klaus_Merz.jpg) | Hadi | CC0 |
+| sewing.jpg | 재봉틀 | [Gritzner Sewing Machine "R", open.jpg](https://commons.wikimedia.org/wiki/File:Gritzner_Sewing_Machine_%22R%22%2C_open.jpg) | David Krotz | CC BY-SA 4.0 |
+| iron.jpg | 숯다리미 | [Iron Box 01.jpg](https://commons.wikimedia.org/wiki/File:Iron_Box_01.jpg) | Rojypala at Malayalam Wikipedia | CC BY-SA 3.0 |
+| pump.jpg | 펌프 | [Old Pitcher pump.jpg](https://commons.wikimedia.org/wiki/File:Old_Pitcher_pump.jpg) | Dandy1022 | CC BY-SA 3.0 |
+| payphone.jpg | 공중전화 | [Radzyn-Podlaski-telephone-booth-110807-31.jpg](https://commons.wikimedia.org/wiki/File:Radzyn-Podlaski-telephone-booth-110807-31.jpg) | Grzegorz W. Tężycki | CC BY-SA 4.0 |
+| record.jpg | 전축 | [Portable HMV LP - gramophone- phonograph- record player encased in wooden box.jpg](https://commons.wikimedia.org/wiki/File:Portable_HMV_LP_-_gramophone-_phonograph-_record_player_encased_in_wooden_box.jpg) | Amitbalani | CC0 |

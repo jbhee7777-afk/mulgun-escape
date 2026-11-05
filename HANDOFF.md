@@ -21,6 +21,9 @@
 - Canva 시트는 "2번 방 스토리북 문 배경"(DAHYgmVzrIA) 5~22쪽(9차시 딱풀 그림 22쪽 → lessons/09/img/glue_1~4.png).
 - 핵심 정리 빈칸: `<span class="blank" onclick="openBlank(this)">낱말</span>` (작은 것은 `blank sm`), 화면엔 <?> 로 보이고 누르면 열려요.
 
+## 교사용 정답지 (2026-11-06~)
+- 수업 화면의 문제 자료를 읽어 만들어요: `node print/build-answers.js` → `print/answers.html`, `materials/NN/교사용 정답지_N차시.pdf`, `print/교사용 정답지_1-24차시.pdf`. 문제를 고치면 다시 돌려요. 수업 화면의 교사용 정답지 단추는 `print/answers.html#N` 을 열어요.
+
 ## 만드는 방식 (9차시부터)
 - 공용: `lessons/shared/kit.css`, `kit.js`(점수판·타이머·문제 번호), `sheet.css`(활동지), `print.js`(인쇄·예시 답안 `#answer`), `print-sheet.js`.
 - 차시 폴더: `lessons/NN/index.html`, `worksheet.html`(예시 답안은 `class="ex"`), `img/worksheet_preview.png`.

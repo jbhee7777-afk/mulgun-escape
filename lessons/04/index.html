@@ -45,6 +45,23 @@
 .mclock b.low{color:#ff9a8a}
 .mside2 .btn{font-size:24px;padding:12px 10px}
 .mside2 .row{display:flex;gap:10px}.mside2 .row .btn{flex:1}
+/* 옛날 물건 박물관 · 보기판 */
+.mu img.ph,.pick4 img.ph,.mubig img.ph{object-fit:contain;border-radius:6px;box-shadow:none;aspect-ratio:auto}
+.mugrid{flex:1;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,1fr);gap:12px;min-height:0;margin-bottom:22px}
+.mu{background:#f6e7c8;border:4px solid #d9b98a;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px;min-height:0;cursor:pointer}
+.mu img{width:100%;height:196px;object-fit:contain;border-radius:10px;box-shadow:none}
+.mu b{font-family:var(--head);font-weight:400;font-size:27px;color:#5a3b1c}
+.mubig{position:absolute;inset:70px 60px 96px;background:#fffaf0;border:6px solid #d9b98a;border-radius:24px;display:none;align-items:center;gap:40px;padding:30px 50px;z-index:12;cursor:pointer}
+.mubig.show{display:flex}
+.mubig img{width:520px;height:520px;object-fit:contain;flex:none;box-shadow:none}
+.mubig h3{font-family:var(--head);font-weight:400;font-size:78px;color:#5a3b1c}
+.mubig p{font-size:38px;line-height:1.5;margin-top:14px}
+.mubig small{display:block;font-size:28px;color:#a77b4a;margin-top:20px}
+.pick4{position:absolute;inset:0;border-radius:30px;background:#fffaf0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:10px;padding:14px 22px;z-index:3}
+.pick4 h4{grid-column:1/3;font-family:var(--head);font-weight:400;font-size:34px;color:#5a3b1c}
+.pick4 div{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0;background:#f6e7c8;border-radius:16px;padding:6px}
+.pick4 img{width:100%;height:190px;object-fit:contain;box-shadow:none}
+.pick4 b{font-family:var(--head);font-weight:400;font-size:30px;color:#5a3b1c}
 .tteams{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .tteams button{border-radius:16px;background:#fff;border:3px solid var(--line);padding:6px 0;font-family:var(--head);font-size:20px;color:var(--ink2);line-height:1.2}
 .tteams button b{display:block;font-size:30px;color:#e3523f;font-weight:400}
@@ -191,8 +208,17 @@
   <div class="goal"><b>🎯 학습 목표</b> 옛날과 오늘날의 물건을 비교하여 달라진 모습과 바뀐 이유를 말할 수 있어요.</div>
 </section>
 
+<!-- 미션 1 준비: 옛날 물건 박물관 -->
+<section class="slide" data-phase="미션 1 · 11분" style="padding-top:78px"
+ data-notes="<b>옛날 물건 박물관(3분)</b> — 몸짓 퀴즈 전에 옛날 물건을 먼저 만나요. 아이들은 이 물건들을 본 적이 거의 없어서, 이름과 쓰는 모습을 알아야 맞힐 수 있어요. 위쪽 세 칸을 차례로 열고, 사진을 누르면 크게 나와요. 이름을 다 같이 읽고 몸짓을 함께 따라 해요. 시간이 없으면 칸마다 3~4개만 눌러도 돼요. 몸짓 퀴즈 카드는 모두 이 안에 있어요.">
+  <div class="cmphead"><h2 class="title" style="font-size:42px">옛날 물건 박물관</h2><div class="ptabs" id="muTabs"></div></div>
+  <p class="big" style="font-size:26px;margin:2px 0 8px;color:var(--ink2)">사진을 눌러 크게 보고, 이름을 읽고, 쓰는 모습을 몸으로 따라 해요.</p>
+  <div class="mugrid" id="muGrid"></div>
+  <div class="mubig" id="muBig" onclick="muClose()"></div>
+</section>
+
 <!-- 5 미션 1 규칙 -->
-<section class="slide" data-phase="미션 1 · 8분"
+<section class="slide" data-phase="미션 1 · 11분"
  data-notes="<b>옛날 물건 몸짓 퀴즈 안내</b> — 모둠 차례가 되면 그 모둠의 ‘맞히는 사람’들은 화면을 등지고 앉고, ‘몸짓하는 사람’ 1명이 화면의 카드를 보고 말없이 몸으로 보여 줘요. 1분 동안 많이 맞힐수록 점수! 몸짓하는 사람은 카드마다 바꿔도 좋아요.">
   <div class="kicker">MISSION 1</div>
   <h2 class="title">🙆 옛날 물건 몸짓 퀴즈</h2>
@@ -200,20 +226,21 @@
     <div class="rule"><span>1</span><div>우리 모둠 차례! 맞히는 친구들은 <b class="hl">화면을 등지고</b> 앉아요.</div></div>
     <div class="rule"><span>2</span><div>몸짓하는 친구 1명이 카드를 보고 <b class="c-coral">말없이</b> 몸으로 보여 줘요.</div></div>
     <div class="rule"><span>3</span><div>“○○이에요!” 맞히면 다음 카드! <b class="c-navy">1분</b> 동안 몇 개나 맞힐까요?</div></div>
-    <div class="rule"><span>4</span><div>어려운 카드는 “통과!”를 외쳐 넘길 수 있어요.</div></div>
+    <div class="rule"><span>4</span><div>어려우면 “통과!” 또는 <b class="hl">보기판</b>! 돌아보고 사진 4장 중에서 골라요.</div></div>
   </div>
   <img class="mascot bob" src="../01/img/agent.png" alt="" style="right:70px;bottom:96px;width:320px">
 </section>
 
 <!-- 6 미션 1 게임 -->
-<section class="slide" data-phase="미션 1 · 8분" style="padding-top:78px"
- data-notes="<b>진행</b> — 오른쪽에서 모둠을 고르고 ‘1분 시작’. 카드는 ‘가림막’이 덮인 채 시작해요(몸짓하는 친구만 보고 가림막을 눌러 열어요). 맞히면 ⭕, 넘기면 ⏭. 1분이 끝나면 다음 모둠으로. 카드는 16장이라 모둠마다 다른 물건이 나와요. 끝나면 ‘어떤 몸짓이 가장 옛날 같았나요?’ 이야기해요.">
+<section class="slide" data-phase="미션 1 · 11분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 오른쪽에서 모둠을 고르고 ‘1분 시작’. 카드는 ‘가림막’이 덮인 채 시작해요(몸짓하는 친구만 보고 가림막을 눌러 열어요). 맞히면 ⭕, 넘기면 ⏭. 1분이 끝나면 다음 모둠으로. 카드는 30장이고 섞여서 나와요. 맞힌 카드는 30장을 다 쓸 때까지 다시 나오지 않고, 통과한 카드는 남은 카드 속에 다시 섞여요. 다 쓰면 새로 섞여요. 아이들이 어려워하면 ‘보기판 열기’를 눌러요. 정답이 사진 4장 속에 섞여 나오니, 맞히는 친구들이 돌아보고 골라요. 끝나면 ‘어떤 몸짓이 가장 옛날 같았나요?’ 이야기해요.">
   <div class="mime">
     <div class="mcardx old" id="mCard"></div>
     <div class="mside2">
       <div class="mclock"><div class="tn" id="mTurn">1모둠 차례</div><b id="mClock">60</b></div>
       <button class="btn mint" id="mGo" onclick="mimeStart()">▶ 1분 시작</button>
       <div class="row"><button class="btn coral" onclick="mimeHit()">⭕ 맞혔어요</button><button class="btn ghost" onclick="mimeSkip()">⏭ 통과</button></div>
+      <button class="btn" id="mBoardBtn" onclick="mimeBoard()">🔍 보기판 열기</button>
       <div class="tteams" id="mTeams"></div>
       <div style="text-align:center;font-size:18px;color:var(--ink2)">모둠 수 <button class="btn ghost" style="font-size:16px;padding:2px 10px" onclick="mimeTeams(-1)">−</button> <span id="mTeamN">6</span> <button class="btn ghost" style="font-size:16px;padding:2px 10px" onclick="mimeTeams(1)">＋</button></div>
     </div>
@@ -221,7 +248,7 @@
 </section>
 
 <!-- 6 미션 2 -->
-<section class="slide" data-phase="미션 2 · 7분" style="padding-top:78px"
+<section class="slide" data-phase="미션 2 · 6분" style="padding-top:78px"
  data-notes="<b>변신 돋보기</b> — 오른쪽 위 버튼으로 짝을 골라요. 생김새와 쓰는 방법 칸은 학생이 먼저 말한 뒤 눌러 공개해요. 마지막 노란 칸 ‘왜 바뀌었을까?’가 오늘의 핵심이에요. 2차시에 배운 ‘불편함 → 생각 → 새 물건’과 연결해 주세요.">
   <div class="cmp">
     <div class="cmphead"><h2 class="title" style="font-size:42px">🔎 변신 돋보기</h2><div class="ptabs" id="ptabs"></div></div>
@@ -235,7 +262,7 @@
 </section>
 
 <!-- 8 미션 3 규칙 -->
-<section class="slide" data-phase="미션 3 · 7분"
+<section class="slide" data-phase="미션 3 · 5분"
  data-notes="<b>사람 줄서기 안내</b> — 문제마다 3~4명이 앞으로 나와요. 화면의 ⓐⓑⓒⓓ 카드 중 하나씩 맡아서, ‘가장 옛날 물건’부터 교실 앞에 한 줄로 서요(왼쪽이 옛날). 다른 친구들은 맞는지 손을 들어 판정! 정답을 공개한 뒤 ‘어떻게 바뀌어 왔는지’ 이야기해요.">
   <div class="kicker">MISSION 3</div>
   <h2 class="title">🧍 사람 줄서기</h2>
@@ -249,8 +276,8 @@
 </section>
 
 <!-- 9 미션 3 게임 -->
-<section class="slide" data-phase="미션 3 · 7분" style="padding-top:78px"
- data-notes="<b>진행</b> — 위쪽 번호로 문제를 골라요(8개). 학생들이 줄을 서고 판정이 끝나면 ‘정답 줄 보기’를 누르면 옛날부터 차례대로 글자가 채워져요. 시간이 부족하면 4~5문제만 해도 돼요.">
+<section class="slide" data-phase="미션 3 · 5분" style="padding-top:78px"
+ data-notes="<b>진행</b> — 위쪽 번호로 문제를 골라요(8개). 학생들이 줄을 서고 판정이 끝나면 ‘정답 줄 보기’를 누르면 옛날부터 차례대로 글자가 채워져요. 시간이 부족하면 3~4문제만 해도 돼요.">
   <div class="lineq">
     <div class="lhead"><div class="st" id="lTitle"></div><div class="sets" id="lSets"></div></div>
     <div class="cardsx" id="lCards"></div>
@@ -369,7 +396,7 @@
 
 <div id="notes"></div>
 <div id="bottombar"><button class="nav" onclick="go(cur-1)">◀</button><div id="dots"></div><button class="nav" onclick="go(cur+1)">▶</button></div>
-<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
+<div id="tools"><button onclick="printSheet('worksheet.html')">🖨️ 활동지 인쇄</button><button onclick="window.open('worksheet.html#answer', '_blank')" title="선생님용 예시 답안">📗 예시 답안</button><button onclick="toggleNotes()" title="N">📝 교사 메모</button><button onclick="window.open('../../print/answers.html#4', '_blank')" title="선생님만 보는 정답 모음">📕 교사용 정답지</button><button onclick="toggleFull()" title="F">⛶ 전체 화면</button></div>
 </div></div>
 
 <script>window.LESSON = {room:1, lesson:4, keyPieces:4};</script>
@@ -385,7 +412,9 @@ const OBJ = {
   oldtv:{n:'볼록 텔레비전', ph:1}, flattv:{n:'납작한 텔레비전', ph:1},
   oxcart:{n:'소달구지', ph:1}, car:{n:'자동차', ph:1}, horse:{n:'말', ph:1}, steam:{n:'증기 기관차', ph:1}, ktx:{n:'고속 열차', ph:1},
   radio:{n:'라디오', ph:1}, cassette:{n:'카세트테이프', ph:1}, cd:{n:'CD', ph:1}, earphone:{n:'스마트폰 음악', ph:1},
-  paint:{n:'그림으로 그리기', ph:1}, camera:{n:'필름 카메라', ph:1}, candle:{n:'촛불', ph:1}
+  paint:{n:'그림으로 그리기', ph:1}, camera:{n:'필름 카메라', ph:1}, candle:{n:'촛불', ph:1},
+  maetdol:{n:'맷돌', ph:1}, jeolgu:{n:'절구', ph:1}, dadeumi:{n:'다듬잇돌', ph:1}, jige:{n:'지게', ph:1}, jipsin:{n:'짚신', ph:1}, gamasot:{n:'가마솥', ph:1}, winnow:{n:'키', ph:1},
+  abacus:{n:'주판', ph:1}, typewriter:{n:'타자기', ph:1}, sewing:{n:'재봉틀', ph:1}, iron:{n:'숯다리미', ph:1}, pump:{n:'펌프', ph:1}, payphone:{n:'공중전화', ph:1}, record:{n:'전축', ph:1}
 };
 const art = k => OBJ[k].img ? `<img src="${OBJ[k].img}" alt="">` : OBJ[k].ph ? `<img class="ph" src="../shared/photos/${k}.jpg" alt="">` : `<span class="emo">${OBJ[k].e}</span>`;
 const shuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -401,23 +430,44 @@ const MIME = [
   ['oxcart', '고삐를 잡고 “이랴!” 소를 몰아요.'], ['hourglass', '휙 뒤집고, 모래가 떨어지는 걸 지켜봐요.'], ['oldtv', '채널 손잡이를 드르륵 돌리고 안테나를 맞춰요.'],
   ['letter', '편지를 쓰고, 접어서 봉투에 넣고, 우표를 붙여요.'], ['radio', '귀를 대고 손잡이를 살살 돌려 소리를 맞춰요.'], ['horse', '말 등에 올라타 달려요. 다그닥 다그닥!'],
   ['candle', '불을 붙이고, 손으로 가리며 조심조심 걸어요.'], ['steam', '팔을 바퀴처럼 돌리며 칙칙폭폭!'], ['paint', '붓을 들고 친구 얼굴을 보며 그림을 그려요.'],
-  ['sundial', '해를 올려다보고, 그림자가 가리키는 곳을 봐요.']];
-let mDeck = [], mPos = 0, mTeam = 0, mTeamN = 6, mLeft = 60, mTimer = null, mOpen = false; const mScore = Array(8).fill(0);
-function drawMime(){ const k = mDeck[mPos], [ok, h] = MIME[k];
-  document.getElementById('mCard').innerHTML = `<span class="cnt">카드 ${mPos + 1} / ${MIME.length}</span>${art(ok)}<h3>${OBJ[ok].n}</h3><p>🙆 ${h}</p>` + (mOpen ? '' : '<div class="hide" onclick="mimeOpen()">🙈 가림막<small>몸짓하는 친구만 보고 눌러요</small></div>');
+  ['sundial', '해를 올려다보고, 그림자가 가리키는 곳을 봐요.'],
+  ['maetdol', '손잡이를 잡고 빙글빙글 돌려 콩을 갈아요.'], ['jeolgu', '긴 방망이를 두 손으로 들고 쿵쿵 찧어요.'], ['dadeumi', '방망이 두 개로 옷을 똑딱똑딱 두드려요.'],
+  ['jige', '두 어깨에 메고, 무거운 짐을 지고 끙끙 걸어요.'], ['jipsin', '볏짚을 꼬아 만든 신발을 신고 걸어요.'], ['gamasot', '무거운 뚜껑을 두 손으로 열고, 주걱으로 밥을 퍼요.'],
+  ['winnow', '두 손으로 잡고 위아래로 까불러 곡식을 골라요.'], ['abacus', '손가락으로 알을 톡톡 튕겨 셈을 해요.'], ['typewriter', '두 손으로 탁탁탁 치고, 끝나면 옆으로 쓱 밀어요.'],
+  ['sewing', '발로 발판을 구르며 두 손으로 천을 밀어요.'], ['iron', '무거운 다리미를 들고 옷 위를 쓱쓱 밀어요.'], ['pump', '긴 손잡이를 위아래로 철컥철컥 움직여 물을 받아요.'],
+  ['payphone', '동전을 넣고, 수화기를 귀에 대고 번호를 눌러요.'], ['record', '둥근 판을 올리고 바늘을 살짝 내려놓고 음악을 들어요.']];
+/* 박물관 세 칸: 몸짓 퀴즈 전에 사진과 쓰는 법을 함께 봐요 */
+const MUSEUM = [['집안일과 먹을거리', ['bucket', 'pump', 'maetdol', 'jeolgu', 'gamasot', 'winnow', 'dadeumi', 'iron', 'sewing', 'jige']],
+  ['소식·글·시간·불빛', ['phone', 'payphone', 'letter', 'brush', 'typewriter', 'abacus', 'oillamp', 'candle', 'hourglass', 'sundial']],
+  ['보고 듣고 다니기', ['oldtv', 'radio', 'cassette', 'record', 'camera', 'paint', 'jipsin', 'oxcart', 'horse', 'steam']]];
+let muPage = 0;
+function drawMuseum(){ const list = MUSEUM[muPage][1];
+  document.getElementById('muTabs').innerHTML = MUSEUM.map((m, i) => `<button class="${i === muPage ? 'on' : ''}" onclick="muSet(${i})">${i + 1}. ${m[0]}</button>`).join('');
+  document.getElementById('muGrid').innerHTML = list.map(k => `<button class="mu" onclick="muOpen('${k}')">${art(k)}<b>${OBJ[k].n}</b></button>`).join(''); muClose(); }
+function muSet(i){ muPage = i; S.flip(); drawMuseum(); }
+function muOpen(k){ const m = MIME.find(x => x[0] === k), b = document.getElementById('muBig'); b.innerHTML = `${art(k)}<div><h3>${OBJ[k].n}</h3><p>${m[1]}</p><small>다 같이 몸으로 따라 해 봐요!</small></div>`; b.classList.add('show'); S.flip(); }
+function muClose(){ document.getElementById('muBig').classList.remove('show'); }
+let mDeck = [], mCur = 0, mBoard = null, mTeam = 0, mTeamN = 6, mLeft = 60, mTimer = null, mOpen = false; const mScore = Array(8).fill(0);
+function drawMime(){ const [ok, h] = MIME[mCur];
+  document.getElementById('mCard').innerHTML = `<span class="cnt">남은 카드 ${mDeck.length + 1}장</span>${art(ok)}<h3>${OBJ[ok].n}</h3><p>🙆 ${h}</p>` + (mOpen ? '' : '<div class="hide" onclick="mimeOpen()">🙈 가림막<small>몸짓하는 친구만 보고 눌러요</small></div>') +
+    (mBoard ? `<div class="pick4"><h4>이 중에서 무엇일까요?</h4>${mBoard.map(k => `<div>${art(k)}<b>${OBJ[k].n}</b></div>`).join('')}</div>` : '');
+  document.getElementById('mBoardBtn').textContent = mBoard ? '보기판 닫기' : '🔍 보기판 열기';
   document.getElementById('mTurn').textContent = `${mTeam + 1}모둠 차례`; const c = document.getElementById('mClock'); c.textContent = mLeft; c.classList.toggle('low', mLeft <= 10);
   document.getElementById('mTeams').innerHTML = [...Array(mTeamN)].map((_, t) => `<button class="${t === mTeam ? 'on' : ''}" onclick="mimeSetTeam(${t})">${t + 1}모둠<b>${mScore[t]}</b></button>`).join('');
   document.getElementById('mTeamN').textContent = mTeamN; }
 function mimeOpen(){ mOpen = true; S.flip(); drawMime(); }
-function mimeNext(){ mPos = (mPos + 1) % MIME.length; mOpen = false; drawMime(); }
+function mimeNext(back){ if(back && mDeck.length) mDeck.splice(1 + Math.floor(Math.random() * mDeck.length), 0, mCur); /* 못 맞힌 카드는 남은 카드 속에 다시 섞어요 */
+  if(!mDeck.length){ mDeck = shuffle(MIME.map((_, i) => i)); if(mDeck[0] === mCur) mDeck.push(mDeck.shift()); } /* 한 바퀴 끝: 새로 섞어요 */
+  mCur = mDeck.shift(); mOpen = false; mBoard = null; drawMime(); }
+function mimeBoard(){ if(mBoard){ mBoard = null; } else { const others = shuffle(MIME.map((_, i) => i).filter(i => i !== mCur)).slice(0, 3); mBoard = shuffle([mCur, ...others]).map(i => MIME[i][0]); } S.flip(); drawMime(); }
 function mimeHit(){ mScore[mTeam]++; S.ok(); mimeNext(); }
-function mimeSkip(){ S.no(); mimeNext(); }
+function mimeSkip(){ S.no(); mimeNext(true); }
 function mimeStop(){ clearInterval(mTimer); mTimer = null; document.getElementById('mGo').textContent = '▶ 1분 시작'; }
 function mimeStart(){ if(mTimer){ mimeStop(); return; } mLeft = 60; document.getElementById('mGo').textContent = '⏸ 멈추기'; S.tick(); drawMime();
-  mTimer = setInterval(() => { mLeft--; if(mLeft <= 0){ mimeStop(); S.end(); mLeft = 60; mTeam = (mTeam + 1) % mTeamN; mimeNext(); return; } drawMime(); }, 1000); }
+  mTimer = setInterval(() => { mLeft--; if(mLeft <= 0){ mimeStop(); S.end(); mLeft = 60; mTeam = (mTeam + 1) % mTeamN; mimeNext(true); return; } drawMime(); }, 1000); }
 function mimeSetTeam(t){ mimeStop(); mTeam = t; mLeft = 60; S.flip(); drawMime(); }
 function mimeTeams(d){ mTeamN = Math.min(8, Math.max(2, mTeamN + d)); if(mTeam >= mTeamN) mTeam = 0; drawMime(); }
-function newMime(){ mDeck = shuffle(MIME.map((_, i) => i)); mPos = 0; mOpen = false; drawMime(); }
+function newMime(){ mDeck = shuffle(MIME.map((_, i) => i)); mCur = mDeck.shift(); mOpen = false; mBoard = null; drawMime(); }
 hooks.leave = i => { if(slides[i] && slides[i].querySelector('#mClock')) mimeStop(); };
 
 /* ---------- 미션 2: 변신 돋보기 ---------- */
@@ -477,7 +527,7 @@ function confetti(){ const st = document.getElementById('stage'), cols = ['#ffc5
 hooks.escape = () => setTimeout(confetti, 300);
 
 window.onEsc = () => {};
-newMime(); setCmp(0); setLine(0); startDeck();
+drawMuseum(); newMime(); setCmp(0); setLine(0); startDeck();
 </script>
 <script src="../shared/print-sheet.js"></script>
 <script src="../shared/emoji.js"></script>

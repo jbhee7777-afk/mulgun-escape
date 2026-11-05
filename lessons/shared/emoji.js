@@ -6,7 +6,7 @@
     '🔐':'lockkey','🚪':'door','🚨':'siren','🎯':'target','🔍':'search','🔎':'search','👀':'eyes','👁':'eyes','🃏':'cards','🎴':'cards',
     '🤫':'shush','⏱':'stopwatch','⏰':'stopwatch','⏳':'stopwatch','🎉':'party','☔':'umbrella','☂':'umbrella','🌂':'umbrella','💭':'thought',
     '💡':'bulb','📮':'mail','💌':'mail','🖨':'printer','🎤':'mic','🎙':'mic','🎲':'dice','🗝':'key','🔑':'key','🕵':'detective',
-    '📗':'book','📘':'book','📖':'book','📚':'book','📔':'book','📒':'notepad','📝':'notepad','🗒':'notepad','😱':'surprised','😮':'surprised',
+    '📗':'book','📕':'book','📘':'book','📖':'book','📚':'book','📔':'book','📒':'notepad','📝':'notepad','🗒':'notepad','😱':'surprised','😮':'surprised',
     '🏆':'trophy','👉':'pointright','👆':'pointup','☝':'pointup','🖍':'crayon','⭐':'star','🌟':'star','📺':'tv','🔇':'mute','🔊':'speaker','📣':'speaker',
     '😣':'troubled','😫':'troubled','😟':'troubled','😵':'troubled','🙍':'sadperson','😅':'sweat','✏':'pencil','✍':'pencil','🖊':'pencil',
     '🎬':'clapper','🔒':'lock','🔓':'unlock','🔀':'cycle','🔄':'cycle','🔁':'cycle','🎁':'gift','✂':'scissors','🧴':'lotion','🧺':'basket',
