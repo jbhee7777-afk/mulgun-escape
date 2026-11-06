@@ -395,7 +395,7 @@
 /* ---------- 물건 그림 ---------- */
 const OBJ = {
   phone:{n:'다이얼 전화기', ph:1}, crayon:{n:'크레파스', ph:1}, boots:{n:'장화', ph:1}, camera:{n:'필름 카메라', ph:1}, cd:{n:'CD', ph:1},
-  alarm:{n:'자명종', ph:1}, tape:{n:'카세트테이프', ph:1}, radio:{n:'라디오', ph:1}, watch:{n:'손목시계', ph:1}, hourglass:{n:'모래시계', ph:1},
+  alarm:{n:'자명종', ph:1}, cassette:{n:'카세트테이프', ph:1}, radio:{n:'라디오', ph:1}, watch:{n:'손목시계', ph:1}, hourglass:{n:'모래시계', ph:1},
   pen:{n:'볼펜', ph:1}, brush:{n:'붓', ph:1}, slippers:{n:'실내화', ph:1}, raincoat:{n:'우비', ph:1}, tap:{n:'수도꼭지', ph:1}, bucket:{n:'두레박', ph:1},
   spoon:{n:'숟가락', ph:1}, fork:{n:'포크', ph:1}, candle:{n:'촛불', ph:1}, oillamp:{n:'등잔불', ph:1},
   pencil:{n:'연필', img:'../01/img/obj_pencil.png'}, sneakers:{n:'운동화', img:'../01/img/obj_sneakers.png'}, clock:{n:'벽시계', img:'../01/img/obj_clock.png'},
@@ -408,7 +408,7 @@ const art = k => OBJ[k].img ? `<img src="${OBJ[k].img}" alt="">` : `<img class="
 /* ---------- 이야기 ---------- */
 hooks.story = () => { typewriter(document.getElementById('storyText'),
   '“흐흐흐, 2번 방에는 <b class="c-coral">흐릿 안개</b>를 뿌려 두었지!”<br>안개 때문에 물건들이 조각조각, 흐릿하게만 보여요.<br>돋보기 탐정 여러분, <b class="c-navy">아주 자세히</b> 관찰해서<br>물건의 정체를 밝혀 주세요!');
-  document.getElementById('fog').innerHTML = ['phone', 'cd', 'boots', 'tape', 'camera'].map(k => `<div><img src="${src(k)}" alt=""></div>`).join(''); };
+  document.getElementById('fog').innerHTML = ['phone', 'cd', 'boots', 'cassette', 'camera'].map(k => `<div><img src="${src(k)}" alt=""></div>`).join(''); };
 
 /* ---------- 모둠 점수 ---------- */
 let TEAMS = 6; const score = Array(8).fill(0);
@@ -426,7 +426,7 @@ const ZOOM = [
   {k:'camera', o:'50% 55%', z:[4.5, 2.2], f:'가운데 <b>둥근 렌즈</b>가 있어서 사진을 찍어요.'},
   {k:'cd', o:'55% 30%', z:[4.5, 2.2], f:'빛을 받으면 <b>무지갯빛</b>이 나는 얇은 원판이에요.'},
   {k:'alarm', o:'48% 30%', z:[4.5, 2.2], f:'머리에 <b>종 두 개</b>가 있어 따르릉 울려요.'},
-  {k:'tape', o:'40% 62%', z:[4.5, 2.2], f:'<b>톱니 구멍 두 개</b>와 갈색 줄(테이프)이 있어요.'},
+  {k:'cassette', o:'35% 47%', z:[4.5, 2.2], f:'<b>톱니 구멍 두 개</b>와 갈색 줄(테이프)이 있어요.'},
   {k:'radio', o:'45% 35%', z:[4.5, 2.2], f:'소리가 나오는 곳에 <b>촘촘한 천</b>이 덮여 있어요.'},
   {k:'watch', o:'45% 50%', z:[4.5, 2.2], f:'숫자가 빙 둘러싼 판 위에 <b>바늘</b>이 있고, <b>가죽 끈</b>이 달렸어요.'},
   {k:'ktx', o:'50% 62%', z:[4.5, 2.2], f:'<b>뾰족한 앞머리</b>와 반짝이는 <b>불빛</b>이 있어요.'},
