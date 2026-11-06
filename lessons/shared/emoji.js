@@ -47,6 +47,7 @@
   const key = e => e.replace(/️/g, '');
   const html = e => { const k = key(e); if(SV[k]) return SV[k]; if(N[k]) return `<img class="emi" src="${BASE + N[k]}.png" alt="">`;
     if(k.includes('‍')){ const f = k.split('‍')[0]; if(N[f]) return `<img class="emi" src="${BASE + N[f]}.png" alt="">`; }
+    if('★☆⛶'.includes(k)) return null; /* 글자처럼 쓰는 기호 */
     console.warn('그림 없는 이모티콘', e, [...e].map(c => c.codePointAt(0).toString(16))); return null; };
   const SKIP = /^(SCRIPT|STYLE|TEXTAREA|INPUT|OPTION|TITLE|SVG|CANVAS)$/i;
   function fix(root){
