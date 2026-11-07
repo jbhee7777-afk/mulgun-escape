@@ -7,7 +7,6 @@
 | pen.jpg | 볼펜 | [04-BICcristal2008-03-26.jpg](https://commons.wikimedia.org/wiki/File:04-BICcristal2008-03-26.jpg) | Trounce | CC BY 3.0 |
 | crayon.jpg | 크레파스 | [Crayones cera.jpg](https://commons.wikimedia.org/wiki/File:Crayones_cera.jpg) | Jorge Barrios | Public domain |
 | candle.jpg | 촛불 | [Candle flame closeup.jpg](https://commons.wikimedia.org/wiki/File:Candle_flame_closeup.jpg) | domdomegg | CC BY 4.0 |
-| raincoat.jpg | 우비 | [Raincoat.jpg](https://commons.wikimedia.org/wiki/File:Raincoat.jpg) | B. Kroll | Public domain |
 | boots.jpg | 장화 | [Rain boots on Stairs.jpg](https://commons.wikimedia.org/wiki/File:Rain_boots_on_Stairs.jpg) | Erikamthompson | CC BY-SA 3.0 |
 | handbag.jpg | 손가방 | [1935-45 Prada handbag, tooled and gilded leather 02.jpg](https://commons.wikimedia.org/wiki/File:1935-45_Prada_handbag,_tooled_and_gilded_leather_02.jpg) | Photographer for the Rhode Island School of Design - Museum  | CC0 |
 | watch.jpg | 손목시계 | [2 Angle - slow Jo 17 - Swiss Made, 24 hour one hand wrist watch, GMT movement, dark brown vintage leather band, silver case, creme dial.jpg](https://commons.wikimedia.org/wiki/File:2_Angle_-_slow_Jo_17_-_Swiss_Made,_24_hour_one_hand_wrist_watch,_GMT_movement,_dark_brown_vintage_leather_band,_silver_case,_creme_dial.jpg) | Corvin Lask | CC BY-SA 3.0 de |
@@ -18,7 +17,6 @@
 | slippers.jpg | 실내화 | [Uwabaki 03.jpg](https://commons.wikimedia.org/wiki/File:Uwabaki_03.jpg) | Ken Ishikawa | CC BY-SA 3.0 |
 | oillamp.jpg | 등잔불 | [DiwaliOilLampCrop.JPG](https://commons.wikimedia.org/wiki/File:DiwaliOilLampCrop.JPG) | Arne Hückelheim | CC BY-SA 3.0 |
 | fire.jpg | 모닥불 | [A simple campfire.jpg](https://commons.wikimedia.org/wiki/File:A_simple_campfire.jpg) | Leon Bovenkerk | CC BY-SA 2.0 |
-| brush.jpg | 붓 | [Calligraphy brush at Zhu Jiuying's former residence.jpg](https://commons.wikimedia.org/wiki/File:Calligraphy_brush_at_Zhu_Jiuying%27s_former_residence.jpg) | Mx. Granger | CC0 |
 | phone.jpg | 옛날 전화기 | [Telephone modele U43-MGR Lyon-IMG 9923.jpg](https://commons.wikimedia.org/wiki/File:Telephone_modele_U43-MGR_Lyon-IMG_9923.jpg) | Rama | CC BY-SA 2.0 fr |
 | smart.jpg | 스마트폰 | [Instagram app on smartphone (grass background) (cropped).jpg](https://commons.wikimedia.org/wiki/File:Instagram_app_on_smartphone_(grass_background)_(cropped).jpg) | Santeri Viinamäki (both photo and screenshot) | CC BY-SA 4.0 |
 | letter.jpg | 편지 | [1899-Cuba-1c-envelope Germany.jpg](https://commons.wikimedia.org/wiki/File:1899-Cuba-1c-envelope_Germany.jpg) | U.S. Post Office Department | Public domain |
@@ -63,7 +61,6 @@
 | handfan.jpg | 부채 | [Folding Fan LACMA M.84.254.jpg](https://commons.wikimedia.org/wiki/File:Folding_Fan_LACMA_M.84.254.jpg) | — | Public domain |
 | fan.jpg | 선풍기 | [Kawasaki-Electric Fan.jpg](https://commons.wikimedia.org/wiki/File:Kawasaki-Electric_Fan.jpg) | — | CC BY-SA 3.0 |
 | sticky.jpg | 붙임쪽지 | [Sticky Notes in different colors.jpg](https://commons.wikimedia.org/wiki/File:Sticky_Notes_in_different_colors.jpg) | Ramesh NG | CC BY-SA 2.0 |
-| velcro.jpg | 찍찍이(벨크로) | [2023 Opaski rzepowe.jpg](https://commons.wikimedia.org/wiki/File:2023_Opaski_rzepowe.jpg) | Jacek Halicki | CC BY-SA 4.0 |
 | wheelchair.jpg | 휠체어 | [UNAwheel Mini Basic wheelchair power add-on 02.jpg](https://commons.wikimedia.org/wiki/File:UNAwheel_Mini_Basic_wheelchair_power_add-on_02.jpg) | Nick Yudin | CC BY-SA 4.0 |
 | headlamp.jpg | 헤드랜턴 | [Zebralight H600Fc Mk IV headlamp in a GITD silicone holder.jpg](https://commons.wikimedia.org/wiki/File:Zebralight_H600Fc_Mk_IV_headlamp_in_a_GITD_silicone_holder.jpg) | Siarhei Besarab | CC BY-SA 4.0 |
 | mop.jpg | 대걸레 | [Mop and bucket.jpg](https://commons.wikimedia.org/wiki/File:Mop_and_bucket.jpg) | W.carter | CC BY-SA 4.0 |
@@ -85,7 +82,6 @@
 | tapemeasure.jpg | 줄자 | [B&Q Tape Measure.jpg](https://commons.wikimedia.org/wiki/File:B%26Q_Tape_Measure.jpg) | 多多123 | CC BY 4.0 |
 | keyring.jpg | 열쇠고리 | [Car Keys.jpg](https://commons.wikimedia.org/wiki/File:Car_Keys.jpg) | Mpelletier1 | CC BY-SA 3.0 |
 | calculator.jpg | 계산기 | [Citizen SLD-100NR calculator.jpg](https://commons.wikimedia.org/wiki/File:Citizen_SLD-100NR_calculator.jpg) | LoMit | CC BY-SA 4.0 |
-| flipflop.jpg | 슬리퍼(쪼리) | [Rainbow flip-flops.jpg](https://commons.wikimedia.org/wiki/File:Rainbow_flip-flops.jpg) | alonis | CC BY-SA 2.0 |
 | stairs.jpg | 계단 | [Stairs to Subway from RNA Plaza, Exhibition Rail station, RNA Showgrounds, Bowen Hills P1130083.jpg](https://commons.wikimedia.org/wiki/File:Stairs_to_Subway_from_RNA_Plaza,_Exhibition_Rail_station,_RNA_Showgrounds,_Bowen_Hills_P1130083.jpg) | John Robert McPherson | CC0 |
 | ramp.jpg | 경사로 | [Hull Maritime Museum New Wheelchair Ramp, Kingston upon Hull Jun24.jpg](https://commons.wikimedia.org/wiki/File:Hull_Maritime_Museum_New_Wheelchair_Ramp,_Kingston_upon_Hull_Jun24.jpg) | Hullian111 | CC BY-SA 4.0 |
 | scissors.jpg | 가위 | [Small pair of blue scissors.jpg](https://commons.wikimedia.org/wiki/File:Small_pair_of_blue_scissors.jpg) | ZooFari | CC BY-SA 3.0 |
@@ -123,3 +119,8 @@
 | pump.jpg | 펌프 | [Old Pitcher pump.jpg](https://commons.wikimedia.org/wiki/File:Old_Pitcher_pump.jpg) | Dandy1022 | CC BY-SA 3.0 |
 | payphone.jpg | 공중전화 | [Radzyn-Podlaski-telephone-booth-110807-31.jpg](https://commons.wikimedia.org/wiki/File:Radzyn-Podlaski-telephone-booth-110807-31.jpg) | Grzegorz W. Tężycki | CC BY-SA 4.0 |
 | record.jpg | 전축 | [Portable HMV LP - gramophone- phonograph- record player encased in wooden box.jpg](https://commons.wikimedia.org/wiki/File:Portable_HMV_LP_-_gramophone-_phonograph-_record_player_encased_in_wooden_box.jpg) | Amitbalani | CC0 |
+| smartmusic.jpg | 스마트폰 음악 | [Samsung phones Google play (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Samsung_phones_Google_play_(Unsplash).jpg) — William Iven firmbee | Wikimedia Commons | CC0 |
+| brush.jpg | 붓 | [Chinese Brush for Writing Calligraphy.jpg](https://commons.wikimedia.org/wiki/File:Chinese_Brush_for_Writing_Calligraphy.jpg) — epSos .de | Wikimedia Commons | CC BY 2.0 |
+| raincoat.jpg | 우비 | [Yellow Raincoat.jpg](https://commons.wikimedia.org/wiki/File:Yellow_Raincoat.jpg) — Jim Grandy | Wikimedia Commons | CC BY 2.0 |
+| flipflop.jpg | 슬리퍼 | [Slide shoes.jpg](https://commons.wikimedia.org/wiki/File:Slide_shoes.jpg) — Quistnix at Dutch Wikipedia | Wikimedia Commons | CC BY-SA 3.0 |
+| velcro.jpg | 찍찍이 신발 | [Sneakers velcro.jpg](https://commons.wikimedia.org/wiki/File:Sneakers_velcro.jpg) — Flickr Username EverJean | Wikimedia Commons | CC BY 2.0 |
